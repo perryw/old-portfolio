@@ -1,0 +1,52 @@
+.menu_div {margin: 0; padding-bottom: 50px; width: 100%;}
+ul#blue { margin:0; padding:0; list-style-type:none; }
+
+ul#blue li { position:relative; float:left; border-top:4px solid #efefef; margin-right: 15px; padding-right: 20px; padding-top: 5px;}
+
+ul#blue .current { border-top:4px solid #3d496a;}
+
+ul#blue li:hover { border-top:4px solid #3d496a;}
+
+ul#blue li a { padding:2px 2px; text-decoration:none; font:bold 12px Verdana, Georgia, "Times New Roman", Times, serif; color:#68759c;}
+
+ul#blue li a:hover { color:#8895b8; border:none; }
+
+ul#blue li span{ display:none; position:absolute; top:20px; left:2px; width:160px; font:normal 9px Verdana, Georgia, "Times New Roman", Times, serif; line-height: 15px; }
+
+ul#blue li a:hover span {margin-top: 7px; display:block; color: #8895b8;}
+
+
+
+ul#green { margin:0; padding:0; list-style-type:none; }
+
+ul#green li { position:relative; float:left; border-top:4px solid #d7ebd5; margin-right: 15px; padding-right: 20px; padding-top: 5px;}
+
+ul#green .current { border-top:4px solid #3c633c;}
+
+ul#green li:hover { border-top:4px solid #3c633c;}
+
+ul#green li a { padding:2px 2px; text-decoration:none; font:bold 12px Verdana, Georgia, "Times New Roman", Times, serif; color:#3d6c3d;}
+
+ul#green li a:hover { color:#89be89; border:none; }
+
+ul#green li span{ display:none; position:absolute; top:20px; left:2px; width:160px; font:normal 9px Verdana, Georgia, "Times New Roman", Times, serif;  line-height: 15px;}
+
+ul#green li a:hover span {margin-top: 7px; display:block; color: #89be89;}
+
+
+ul#red { display:inline; margin:0; padding:0; list-style-type:none;}
+
+ul#red li { position:relative; float:left; border-top:4px solid #edcbcb; margin-right: 15px; padding-right: 20px; padding-top: 5px;}
+
+ul#red .current { border-top:4px solid #953434;}
+
+ul#red li:hover { border-top:4px solid #953434;}
+
+ul#red li a { padding:2px 2px; text-decoration:none; font:bold 12px Verdana, Georgia, "Times New Roman", Times, serif; color:#953434;}
+
+ul#red li a:hover { color:#b17878; border:none; }
+/*
+ul#red li span{ display:none; position:absolute; top:20px; left:2px; width:160px; font:normal 9px Verdana, Georgia, "Times New Roman", Times, serif;  line-height: 15px;}
+*/
+ul#red span { content: "\00BB \0020"; }
+ul#red li a:hover span {margin-top: 7px; display:block; color: #b17878;}

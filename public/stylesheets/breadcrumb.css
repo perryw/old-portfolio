@@ -1,0 +1,65 @@
+#json_div {
+	padding-bottom: 0px;
+}
+#jsviz_div {
+	margin: 0;
+	padding-bottom: 0px;
+	border: .2em dotted #900;
+	
+	height: 300px;
+	width: 800px;
+}
+#tooltip{
+	position: absolute;
+	display: none;
+	border: 1px solid #888888;
+	background: #ffffee;
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 2px;
+	z-Index: 20;
+}
+
+.bc_future {
+/*
+filter:alpha(opacity=40);
+-moz-opacity:.40;
+opacity:.40;
+*/
+background-color: rgb(250,0,255)
+}
+
+.bc_past {
+
+}
+
+.bc_disabled {
+	background-color: Grey;
+}
+
+#canvas_div {position: relative;}
+
+ul.breadcrumb{
+font: bold 14px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+list-style:none;
+position:relative;
+
+}
+
+ul.breadcrumb li a:before{
+	content: "\00BB \0020";
+}
+ul.breadcrumb li a{
+text-decoration: none;
+padding-right: 18px; /*adjust bullet image padding*/
+color: navy;
+}
+
+ul.breadcrumb li a:visited, ul.breadcrumb li a:active{
+color: navy;
+}
+
+ul.breadcrumb li a:hover{
+text-decoration: underline;
+}

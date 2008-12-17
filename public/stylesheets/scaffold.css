@@ -1,0 +1,39 @@
+.css1 { font-size: 1.0em; }
+
+.css1:hover { background-color: blue; color: white; }
+
+.css2 { font-size: 1.2em; }
+
+.css2:hover { background-color: blue; color: white; }
+
+.css3 { font-size: 1.4em; }
+
+.css3:hover { background-color: blue; color: white; }
+
+.css4 { font-size: 1.6em; }
+
+.css4:hover { 
+background-color: blue;
+color: white;
+}
+
+table
+{
+	text-align:			center;
+    border-width:		0px;
+    border-spacing:		0px;
+    border-style:		solid;
+}
+
+.highlightme { background-color: lightyellow; }
+
+.highlight_row0{ background-color: lightgrey; }
+.highlight_row0:hover{ background-color:lightyellow;}
+.highlight_row1{  }
+.highlight_row1:hover{ background-color:lightyellow; }
+
+.empty_field{ font-style:italic;}
+
+#p_page {
+	
+}
