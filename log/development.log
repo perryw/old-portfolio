@@ -1,0 +1,153 @@
+# Logfile created on Wed Dec 17 07:10:05 -0800 2008  [4;36;1mSQL (0.000429)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000339)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (0.003467)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.002976)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.000684)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000326)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20080805045804)
+  [4;36;1mSQL (0.000362)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000314)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.002880)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_type" varchar(255), "login" varchar(40), "name" varchar(100) DEFAULT '', "email" varchar(100), "crypted_password" varchar(40), "salt" varchar(40), "created_at" datetime, "updated_at" datetime, "remember_token" varchar(40), "remember_token_expires_at" datetime, "activation_code" varchar(40), "activated_at" datetime, "password_reset_code" varchar(40), "enabled" boolean DEFAULT 't', "identity_url" varchar(255), "invitation_id" integer, "invitation_limit" integer) [0m
+  [4;35;1mSQL (0.000207)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.002529)[0m   [0;1mCREATE UNIQUE INDEX "index_users_on_login" ON "users" ("login")[0m
+  [4;35;1mSQL (0.002990)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080805045804')[0m
+Migrating to CreateRoles (20080805045808)
+  [4;36;1mSQL (0.000733)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003850)[0m   [0mCREATE TABLE "roles" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255)) [0m
+  [4;36;1mSQL (0.001075)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.002883)[0m   [0mCREATE TABLE "roles_users" ("role_id" integer, "user_id" integer) [0m
+  [4;36;1mSQL (0.000268)[0m   [0;1mPRAGMA index_list("roles_users")[0m
+  [4;35;1mSQL (0.002814)[0m   [0mCREATE INDEX "index_roles_users_on_role_id" ON "roles_users" ("role_id")[0m
+  [4;36;1mSQL (0.000675)[0m   [0;1mPRAGMA index_list("roles_users")[0m
+  [4;35;1mSQL (0.000609)[0m   [0mPRAGMA index_info('index_roles_users_on_role_id')[0m
+  [4;36;1mSQL (0.002837)[0m   [0;1mCREATE INDEX "index_roles_users_on_user_id" ON "roles_users" ("user_id")[0m
+  [4;35;1mSQL (0.002113)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080805045808')[0m
+Migrating to AddOpenIdAuthenticationTables (20080805045812)
+  [4;36;1mSQL (0.000901)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000825)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.003189)[0m   [0;1mCREATE TABLE "open_id_authentication_associations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "issued" integer, "lifetime" integer, "handle" varchar(255), "assoc_type" varchar(255), "server_url" blob, "secret" blob) [0m
+  [4;35;1mSQL (0.001053)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.000887)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003405)[0m   [0mCREATE TABLE "open_id_authentication_nonces" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "timestamp" integer NOT NULL, "server_url" varchar(255), "salt" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (0.002373)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080805045812')[0m
+Migrating to SetUpFirstAdminUser (20080806025753)
+  [4;35;1mSiteUser Create (0.000491)[0m   [0mINSERT INTO "users" ("name", "salt", "created_at", "activated_at", "crypted_password", "remember_token_expires_at", "updated_at", "password_reset_code", "activation_code", "user_type", "enabled", "invitation_id", "remember_token", "login", "identity_url", "email", "invitation_limit") VALUES('', '7ceec66732238f674cc67aa0f68532568c0466bb', '2008-12-17 15:11:46', NULL, 'bfe0fd6d140416e9b95fc4f7d0ec5df3a97aed80', NULL, '2008-12-17 15:11:46', NULL, '01aa5550f06d44c05dd246235d00483077fcc3b6', 'SiteUser', 't', NULL, NULL, 'admin', NULL, 'yourpersonalemail@example.com', 5)[0m
+Compiling template _run_erb_47app47views47user_mailer47signup_notification46erb
+Sent mail to yourpersonalemail@example.com
+
+Date: Wed, 17 Dec 2008 07:11:46 -0800
+From: donotreply@yourapplication.com
+To: yourpersonalemail@example.com
+Subject: Your Application - Please activate your new account.
+Mime-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account has been created.
+
+  Username: admin
+
+Visit this url to activate your account:
+
+  http://localhost:3000/activate/01aa5550f06d44c05dd246235d00483077fcc3b6
+  [4;36;1mRole Create (0.000400)[0m   [0;1mINSERT INTO "roles" ("name") VALUES('admin')[0m
+  [4;35;1mSiteUser Load (0.001522)[0m   [0mSELECT * FROM "users" WHERE ("users"."login" = 'admin') AND ( ("users"."user_type" = 'SiteUser' ) ) LIMIT 1[0m
+  [4;36;1mRole Load (0.000471)[0m   [0;1mSELECT * FROM "roles" WHERE ("roles"."name" = 'admin') LIMIT 1[0m
+  [4;35;1mSQL (0.000446)[0m   [0mINSERT INTO "roles_users" ("role_id", "user_id") VALUES (1, 1)[0m
+  [4;36;1mSiteUser Update (0.000451)[0m   [0;1mUPDATE "users" SET "updated_at" = '2008-12-17 15:11:47', "activated_at" = '2008-12-17 15:11:47' WHERE "id" = 1[0m
+  [4;35;1mSQL (0.002175)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080806025753')[0m
+Migrating to AddExceptionTable (20080813053928)
+  [4;36;1mSQL (0.000861)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000760)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.002801)[0m   [0;1mCREATE TABLE "logged_exceptions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "exception_class" varchar(255), "controller_name" varchar(255), "action_name" varchar(255), "message" text, "backtrace" text, "environment" text, "request" text, "created_at" datetime) [0m
+  [4;35;1mSQL (0.002107)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080813053928')[0m
+Migrating to CreateFourOhFours (20080910224435)
+  [4;36;1mSQL (0.001514)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003020)[0m   [0mCREATE TABLE "four_oh_fours" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "url" varchar(255), "referer" varchar(255), "count" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.000238)[0m   [0;1mPRAGMA index_list("four_oh_fours")[0m
+  [4;35;1mSQL (0.003332)[0m   [0mCREATE UNIQUE INDEX "index_four_oh_fours_on_url_and_referer" ON "four_oh_fours" ("url", "referer")[0m
+  [4;36;1mSQL (0.000746)[0m   [0;1mPRAGMA index_list("four_oh_fours")[0m
+  [4;35;1mSQL (0.000902)[0m   [0mPRAGMA index_info('index_four_oh_fours_on_url_and_referer')[0m
+  [4;36;1mSQL (0.003630)[0m   [0;1mCREATE INDEX "index_four_oh_fours_on_url" ON "four_oh_fours" ("url")[0m
+  [4;35;1mSQL (0.002613)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080910224435')[0m
+Migrating to CreateUserFailures (20080910234648)
+  [4;36;1mSQL (0.001244)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.003551)[0m   [0mCREATE TABLE "user_failures" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "remote_ip" varchar(255), "http_user_agent" varchar(255), "failure_type" varchar(255), "username" varchar(255), "count" integer DEFAULT 0, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.000280)[0m   [0;1mPRAGMA index_list("user_failures")[0m
+  [4;35;1mSQL (0.003140)[0m   [0mCREATE INDEX "index_user_failures_on_remote_ip" ON "user_failures" ("remote_ip")[0m
+  [4;36;1mSQL (0.002734)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20080910234648')[0m
+Migrating to CreateInvitations (20080911154835)
+  [4;35;1mSQL (0.001091)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.003565)[0m   [0;1mCREATE TABLE "invitations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "sender_id" integer, "email" varchar(255), "token" varchar(255), "sent_at" datetime, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.000261)[0m   [0mPRAGMA index_list("invitations")[0m
+  [4;36;1mSQL (0.003162)[0m   [0;1mCREATE UNIQUE INDEX "index_invitations_on_token" ON "invitations" ("token")[0m
+  [4;35;1mSQL (0.003227)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20080911154835')[0m
+  [4;36;1mSQL (0.001290)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000853)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.001124)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.000495)[0m   [0mPRAGMA index_list("four_oh_fours")[0m
+  [4;36;1mSQL (0.000312)[0m   [0;1mPRAGMA index_info('index_four_oh_fours_on_url')[0m
+  [4;35;1mSQL (0.000442)[0m   [0mPRAGMA index_info('index_four_oh_fours_on_url_and_referer')[0m
+  [4;36;1mSQL (0.000318)[0m   [0;1mPRAGMA index_list("invitations")[0m
+  [4;35;1mSQL (0.000312)[0m   [0mPRAGMA index_info('index_invitations_on_token')[0m
+  [4;36;1mSQL (0.000120)[0m   [0;1mPRAGMA index_list("logged_exceptions")[0m
+  [4;35;1mSQL (0.000126)[0m   [0mPRAGMA index_list("open_id_authentication_associations")[0m
+  [4;36;1mSQL (0.000118)[0m   [0;1mPRAGMA index_list("open_id_authentication_nonces")[0m
+  [4;35;1mSQL (0.000122)[0m   [0mPRAGMA index_list("roles")[0m
+  [4;36;1mSQL (0.000446)[0m   [0;1mPRAGMA index_list("roles_users")[0m
+  [4;35;1mSQL (0.000311)[0m   [0mPRAGMA index_info('index_roles_users_on_user_id')[0m
+  [4;36;1mSQL (0.000308)[0m   [0;1mPRAGMA index_info('index_roles_users_on_role_id')[0m
+  [4;35;1mSQL (0.000331)[0m   [0mPRAGMA index_list("user_failures")[0m
+  [4;36;1mSQL (0.000315)[0m   [0;1mPRAGMA index_info('index_user_failures_on_remote_ip')[0m
+  [4;35;1mSQL (0.000331)[0m   [0mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.000313)[0m   [0;1mPRAGMA index_info('index_users_on_login')[0m
