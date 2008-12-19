@@ -33,10 +33,18 @@ ActionController::Routing::Routes.draw do |map|
 		end
   end    
 
+  map.resources :deliverables
+
+  map.resources :projects
+
+  map.resources :resources
+
+  map.resources :courses
+  map.resources :collaborators
+  
 	map.resource  :session
 	map.resource  :openid_session
 	map.resources :members
-
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -76,7 +84,7 @@ ActionController::Routing::Routes.draw do |map|
 	map.logged_exceptions "logged_exceptions/:action/:id", :controller => "logged_exceptions"
 
   # Install the default routes as the lowest priority.
-  #map.connect ':controller/:action/:id'
-  #map.connect ':controller/:action/:id.:format'
+  map.connect ':controller/:action/:id'
+  map.connect ':controller/:action/:id.:format'
 	map.connect '*path' , :controller => 'four_oh_fours'
 end

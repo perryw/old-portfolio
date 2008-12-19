@@ -9,7 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080911154835) do
+ActiveRecord::Schema.define(:version => 20081219183356) do
+
+  create_table "collaborators", :force => true do |t|
+    t.string   "lastname"
+    t.string   "firstname"
+    t.string   "uniqname"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "courses", :force => true do |t|
+    t.string   "dept"
+    t.integer  "courseno"
+    t.text     "description"
+    t.string   "coursename"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "deliverables", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "project_id"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "four_oh_fours", :force => true do |t|
     t.string   "url"
@@ -59,6 +85,31 @@ ActiveRecord::Schema.define(:version => 20080911154835) do
     t.string  "salt",       :null => false
   end
 
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "course_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "resource_owner_id"
+    t.string   "resource_owner_type"
+    t.string   "alt_text"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "roles", :force => true do |t|
     t.string "name"
   end
@@ -70,6 +121,33 @@ ActiveRecord::Schema.define(:version => 20080911154835) do
 
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
   add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "taggable_type"
+    t.string   "context"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
+  end
 
   create_table "user_failures", :force => true do |t|
     t.string   "remote_ip"

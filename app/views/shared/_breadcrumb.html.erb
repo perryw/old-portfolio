@@ -1,0 +1,14 @@
+<!--%# = debug(session) %-->
+<%= link_to_remote 'get breadcrumb json', {
+	:url => { :controller => 'breadcrumbs', :action => 'get_breadcrumb' },
+	:method => :get,
+	:evalScripts => false,
+	:update => 'json_div'}
+%>
+<button type='button' onclick='$("json_div").innerHTML=""'>Remove text</button>
+<br/>
+	
+<div id='json_div'> </div><br/>
+
+<div id='jsviz_div'></div>
+<div id='tooltip' style='position:absolute'></div>
