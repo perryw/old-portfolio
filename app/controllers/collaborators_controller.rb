@@ -1,4 +1,5 @@
 class CollaboratorsController < ApplicationController
+  before_filter :login_required
     
   # GET /collaborators
   # GET /collaborators.xml

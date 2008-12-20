@@ -30,15 +30,18 @@ ActionController::Routing::Routes.draw do |map|
 		user.resources :passwords
     user.resources :profiles do |profiles|
 			profiles.resources :password_settings
-		end
+    end
+#    user.resources :collaborators
+#    user.resources :courses
+#    user.resources :deliverables
+#    user.resources :gallery
+#    user.resources :projects
+#    user.resources :resources
   end    
 
   map.resources :deliverables
-
   map.resources :projects
-
   map.resources :resources
-
   map.resources :courses
   map.resources :collaborators
   

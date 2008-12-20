@@ -55,9 +55,91 @@
     	</div> 
 			<div id="navigation_container">
 				<% ubermenu :id => 'main_navigation' do |m| %>
-				  <% m.action 'Homepage', root_path %>
+			  		<% m.action 'Homepage', root_path %>
 					<% if_logged_in? do %>
 				  		<% m.action 'Members', members_path %>
+							<li><%= link_to_remote "Courses", {
+							    		:url=>{
+							        		:controller=>'courses',
+							        		:action=>'index'
+										}, 
+										:method => :get,
+										:update => 'p_page',
+										:complete => "document.fire('jsviz:clicked')"
+									},
+									{ :href => url_for(:controller => "courses", :action => "index") }
+								 %>
+							</li>
+							<li><%= link_to_remote 'Deliverables', {
+										:url => {
+											:controller => 'deliverables',
+											:action => 'index'
+										},
+										:method => :get,
+										:update => 'p_page',
+										:complete => "document.fire('jsviz:clicked');"
+									},
+									{
+										:href => url_for(:controller=>"deliverables", :action => "index")
+									}
+								 %>
+							</li>
+							<li><%= link_to_remote 'Gallery', {
+										:url => {
+											:controller => 'gallery',
+											:action => 'index'
+										},
+										:method => :get,
+										:update => 'p_page',
+										:complete => "Lightview.updateViews(); document.fire('jsviz:clicked');"
+									},
+									{
+										:href => url_for(:controller => "gallery", :action => "index")
+									}
+								 %>
+							</li>
+							<li><%= link_to_remote 'Collaborators', {
+										:url => {
+											:controller => 'collaborators',
+											:action => 'index'
+										},
+										:method => :get,
+										:update => 'p_page',
+										:complete => "document.fire('jsviz:clicked')"
+									},
+									{
+										:href => url_for(:controller => "collaborators", :action => "index")
+									}
+								 %>
+							</li>
+							<li><%= link_to_remote 'Projects', {
+										:url => {
+											:controller => 'projects',
+											:action => 'index'
+										},
+										:method => :get,
+										:update => 'p_page',
+										:complete => "document.fire('jsviz:clicked');"
+									},
+									{
+										:href => url_for(:controller => "projects", :action => "index")
+									}
+								 %>
+							</li>
+							<li><%= link_to_remote 'Resources', {
+										:url => {
+											:controller => 'resources',
+											:action => 'index'
+										},
+										:method => :get,
+										:update => 'p_page',
+										:complete => "document.fire('jsviz:clicked');"
+									},
+									{
+										:href => url_for(:controller => "resources", :action => "index")
+									}
+								 %>
+							 </li>
 					<% end %>
 			    	<% if_admin? do %>
 				  		<% m.action 'Admin', admin_controls_path %>

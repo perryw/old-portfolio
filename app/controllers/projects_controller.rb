@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_filter :login_required
 
   def tag_cloud
     @tags = Deliverable.tag_counts
