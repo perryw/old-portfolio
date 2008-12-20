@@ -4,7 +4,6 @@
 		<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading menu...";' %>
 		<%= render :partial => 'shared/menu' %>
 		<%= render :partial => 'shared/breadcrumb' %>
-		<%= javascript_tag '$("loading").innerHTML=" ";' %>
 			
 		<%= javascript_tag '$("loading").innerHTML= "Loading JSViz...";' %>
 		<%= javascript_include_tag 'jsviz/util/EventHandler', :cache => true %>
@@ -22,10 +21,14 @@
 		<%= javascript_include_tag 'jsviz/layout/graph/ForceDirectedLayout.js', :cache => true %>
 		
 		<%= javascript_include_tag 'jsviz' %>
-	
+		
+		<%= javascript_tag '$("loading").innerHTML=" ";' %>
+		
 		<div class="yui-b"><!-- main content block -->
 			<%= flash_messages %>
-			<%= yield %>
+			<div id='p_page'>
+				<%= yield %>
+			</div>
 		</div> 
 	</div> 
 		<div class="yui-b"><!-- narrow content block -->

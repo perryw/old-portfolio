@@ -57,10 +57,10 @@
 				<% ubermenu :id => 'main_navigation' do |m| %>
 				  <% m.action 'Homepage', root_path %>
 					<% if_logged_in? do %>
-				  	<% m.action 'Members', members_path %>
+				  		<% m.action 'Members', members_path %>
 					<% end %>
-			    <% if_admin? do %>
-				  	<% m.action 'Admin', admin_controls_path %>
+			    	<% if_admin? do %>
+				  		<% m.action 'Admin', admin_controls_path %>
 					<% end %>
 				<% end %>
 			</div>

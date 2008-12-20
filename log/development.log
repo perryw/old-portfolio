@@ -1655,3 +1655,280 @@ Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:
   Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
   Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
 Completed in 94ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:45:13) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (7.0ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (18.1ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 146ms (View: 78, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:45:14) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:45:46) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (7.9ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (19.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 147ms (View: 77, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:45:48) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:47:01) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (7.5ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (19.4ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 149ms (View: 81, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:03) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 22ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2008-12-19 12:47:07) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"courses"}
+  [4;36;1mCourse Load (0.000297)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering courses/index
+Compiling template _run_erb_47app47views47courses47index46html46erb
+Completed in 45ms (View: 3, DB: 0 1 queries) | 200 OK [http://localhost/courses?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:07) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing DeliverablesController#index (for 127.0.0.1 at 2008-12-19 12:47:09) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"deliverables"}
+  [4;35;1mDeliverable Load (0.000407)[0m   [0mSELECT * FROM "deliverables" [0m
+  [4;36;1mTag Load (0.000392)[0m   [0;1mSELECT tags.id, tags.name, COUNT(*) AS count FROM "tags" LEFT OUTER JOIN taggings ON tags.id = taggings.tag_id AND taggings.context = 'tags' LEFT OUTER JOIN deliverables ON deliverables.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Deliverable') GROUP BY tags.id, tags.name HAVING COUNT(*) > 0[0m
+Rendering deliverables/index
+Compiling template _run_erb_47app47views47deliverables47index46html46erb
+Completed in 60ms (View: 4, DB: 1 2 queries) | 200 OK [http://localhost/deliverables?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:10) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 2, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing GalleryController#index (for 127.0.0.1 at 2008-12-19 12:47:12) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"gallery"}
+  [4;35;1mResource Load (0.000326)[0m   [0mSELECT * FROM "resources" WHERE ("resources"."parent_id" IS NULL) [0m
+Rendering gallery/index
+Compiling template _run_erb_47app47views47gallery47index46html46erb
+Completed in 147ms (View: 3, DB: 0 1 queries) | 200 OK [http://localhost/gallery?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:12) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 25ms (View: 2, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing CollaboratorsController#index (for 127.0.0.1 at 2008-12-19 12:47:14) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"collaborators"}
+  [4;36;1mCollaborator Load (0.000263)[0m   [0;1mSELECT * FROM "collaborators" [0m
+Rendering collaborators/index
+Compiling template _run_erb_47app47views47collaborators47index46html46erb
+Completed in 47ms (View: 3, DB: 0 1 queries) | 200 OK [http://localhost/collaborators?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:14) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 26ms (View: 3, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing ProjectsController#index (for 127.0.0.1 at 2008-12-19 12:47:15) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"projects"}
+  [4;35;1mProject Load (0.000295)[0m   [0mSELECT * FROM "projects" [0m
+Rendering projects/index
+Compiling template _run_erb_47app47views47projects47index46html46erb
+Completed in 162ms (View: 3, DB: 0 1 queries) | 200 OK [http://localhost/projects?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:16) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 30ms (View: 3, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing ResourcesController#index (for 127.0.0.1 at 2008-12-19 12:47:17) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"resources"}
+  [4;36;1mResource Load (0.000621)[0m   [0;1mSELECT * FROM "resources" WHERE ("resources"."parent_id" IS NULL) ORDER BY created_at DESC[0m
+Rendering resources/index
+Compiling template _run_erb_47app47views47resources47index46html46erb
+Compiling template _run_erb_47app47views47resources47_form46html46erb_locals_form_label_text_object
+Rendered resources/_form (1.8ms)
+Completed in 45ms (View: 11, DB: 1 1 queries) | 200 OK [http://localhost/resources?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:17) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 30ms (View: 3, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2008-12-19 12:47:19) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"courses"}
+  [4;35;1mCourse Load (0.000262)[0m   [0mSELECT * FROM "courses" [0m
+Rendering courses/index
+Compiling template _run_erb_47app47views47courses47index46html46erb
+Completed in 48ms (View: 3, DB: 0 1 queries) | 200 OK [http://localhost/courses?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:47:19) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 242ms (View: 14, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:50:28) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (7.2ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.1ms)
+Rendered layouts/_default (17.5ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 155ms (View: 78, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:50:29) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 30ms (View: 4, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:50:48) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.9ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (32.7ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (5.4ms)
+Rendered layouts/_default (50.3ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 199ms (View: 122, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:50:50) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 32ms (View: 4, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-19 12:56:31) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_menu46html46erb_locals_menu_object
+Rendered shared/_menu (7.3ms)
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (18.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 153ms (View: 78, DB: 0 0 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 12:56:32) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 29ms (View: 4, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-19 20:47:28) [GET]
+  Session ID: 0cee9adfd4fb703621e8cc9b1b16b898
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"e4e3d8ccacdd85dd6da00c7902812976a64c3da5", "controller"=>"breadcrumbs"}
+Completed in 45ms (View: 6, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=e4e3d8ccacdd85dd6da00c7902812976a64c3da5]
