@@ -1,12 +1,18 @@
 <!--%# = debug(session) %-->
-<%= link_to_remote 'get breadcrumb json', {
-	:url => { :controller => 'breadcrumbs', :action => 'get_breadcrumb' },
-	:method => :get,
-	:evalScripts => false,
-	:update => 'json_div'}
-%>
-<button type='button' onclick='$("json_div").innerHTML=""'>Remove text</button>
-<br/>
+<% content_for :breadcrumb_debug do -%>
+	<%= link_to_remote 'get breadcrumb json', {
+		:url => { :controller => 'breadcrumbs', :action => 'get_breadcrumb' },
+		:method => :get,
+		:evalScripts => false,
+		:update => 'json_div'}
+	%>
+		<button type='button' onclick='$("json_div").innerHTML=""'>Remove text</button>
+	<br/>
+<% end -%>
+<% if Rails.env.development? && false %>
+	<%= yield :breadcrumb_debug %>
+<% end %>
+
 	
 <div id='json_div'> </div><br/>
 

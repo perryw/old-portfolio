@@ -6,8 +6,8 @@
 	padding-bottom: 0px;
 	border: .2em dotted #900;
 	
-	height: 300px;
-	width: 800px;
+	height: 200px;
+	width: 600px;
 }
 #tooltip{
 	position: absolute;
@@ -15,7 +15,7 @@
 	border: 1px solid #888888;
 	background: #ffffee;
 	font-family: Verdana, sans-serif;
-	font-size: 12px;
+	font-size: 9px;
 	font-weight: bold;
 	padding: 2px;
 	z-Index: 20;

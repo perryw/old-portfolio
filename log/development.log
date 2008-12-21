@@ -4048,3 +4048,779 @@ Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 00:
   Session ID: 3a5a10e840340296304016f147a04226
   Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"9e98dc919014aece2354bca3f3480ce79cc13a27", "controller"=>"breadcrumbs"}
 Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=9e98dc919014aece2354bca3f3480ce79cc13a27]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 16:05:02) [GET]
+  Session ID: 3a5a10e840340296304016f147a04226
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 33ms (, DB: 0 0 queries) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:05:03) [GET]
+  Session ID: 3a5a10e840340296304016f147a04226
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.008976)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:05:03') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (7.1ms)
+Rendered layouts/_default (18.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 472ms (View: 193, DB: 9 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:05:04) [GET]
+  Session ID: 3a5a10e840340296304016f147a04226
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"9e98dc919014aece2354bca3f3480ce79cc13a27", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=9e98dc919014aece2354bca3f3480ce79cc13a27]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:15:34) [GET]
+  Session ID: 3a5a10e840340296304016f147a04226
+  Parameters: {"action"=>"new", "authenticity_token"=>"9e98dc919014aece2354bca3f3480ce79cc13a27", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000298)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:15:34') LIMIT 1[0m
+Rendering sessions/new
+Compiling template _run_rjs_47app47views47sessions47new46rjs
+Compiling template _run_erb_47app47views47shared47_login46html46erb_locals_login_object
+Rendered shared/_login (3.3ms)
+Completed in 71ms (View: 34, DB: 0 1 queries) | 200 OK [http://localhost/session/new?authenticity_token=9e98dc919014aece2354bca3f3480ce79cc13a27]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2008-12-20 16:15:41) [POST]
+  Session ID: 3a5a10e840340296304016f147a04226
+  Parameters: {"action"=>"create", "authenticity_token"=>"9e98dc919014aece2354bca3f3480ce79cc13a27", "controller"=>"sessions", "login"=>"perryw", "password"=>"[FILTERED]"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [4;36;1mUserFailure Load (0.000287)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:15:41') LIMIT 1[0m
+  [4;35;1mSiteUser Load (0.004988)[0m   [0mSELECT * FROM "users" WHERE (login = 'perryw') AND ( ("users"."user_type" = 'SiteUser' ) ) LIMIT 1[0m
+  [4;36;1mRole Load (0.000753)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Cookie set: auth_token=; path=/
+Redirected to /
+Completed in 213ms (, DB: 6 5 queries) | 302 Found [http://localhost/session]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 16:15:42) [GET]
+  Session ID: 84466eeffd0b6644d42bdfc46fc76979
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001066)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000697)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (8.1ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 237ms (View: 95, DB: 2 2 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:15:43) [GET]
+  Session ID: 84466eeffd0b6644d42bdfc46fc76979
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"f453fe3c3d091d1b12323746b682af28bda5dce1", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=f453fe3c3d091d1b12323746b682af28bda5dce1]
+
+
+Processing SessionsController#destroy (for 127.0.0.1 at 2008-12-20 16:22:41) [GET]
+  Session ID: 84466eeffd0b6644d42bdfc46fc76979
+  Parameters: {"action"=>"destroy", "controller"=>"sessions"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Redirected to /
+Completed in 32ms (, DB: 0 2 queries) | 302 Found [http://localhost/logout]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 16:22:41) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 15ms (, DB: 0 0 queries) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:22:41) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000293)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:22:41') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.2ms)
+Rendered layouts/_default (8.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 137ms (View: 48, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:22:43) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 16:22:49) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 16ms (, DB: 0 0 queries) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:22:50) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000308)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:22:50') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (1.3ms)
+Rendered layouts/_default (8.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 145ms (View: 51, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:22:51) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:24:32) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:29:56) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000322)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:29:56') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.3ms)
+Rendered layouts/_default (16.6ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 151ms (View: 56, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:29:58) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:30:10) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000348)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:30:10') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (4.6ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (11.2ms)
+Rendered layouts/_default (19.8ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 189ms (View: 77, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:30:12) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:33:44) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000327)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:33:44') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.2ms)
+Rendered layouts/_default (16.6ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 145ms (View: 55, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:33:46) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:38:34) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000307)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:38:34') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.2ms)
+Rendered layouts/_default (16.3ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 146ms (View: 56, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:38:36) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 16:39:03) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000307)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-20 23:39:03') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.1ms)
+Rendered layouts/_default (17.4ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 146ms (View: 56, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 16:39:05) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:00:09) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000703)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:00:09') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.5ms)
+Rendered layouts/_default (18.1ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 149ms (View: 58, DB: 1 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:00:11) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:01:30) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000318)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:01:30') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.1ms)
+Rendered layouts/_default (16.3ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 224ms (View: 54, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:01:32) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:08:04) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000323)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:08:04') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.6ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.0ms)
+Rendered layouts/_default (22.3ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 171ms (View: 70, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:08:06) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:09:25) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 18ms (, DB: 0 0 queries) | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:09:25) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000299)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:09:25') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.4ms)
+Rendered layouts/_default (16.8ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (1.0ms)
+Completed in 154ms (View: 57, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:09:27) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:10:00) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000294)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:10:00') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.9ms)
+Rendered layouts/_default (17.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 148ms (View: 57, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:10:02) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:10:24) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000294)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:10:24') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.6ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (12.2ms)
+Rendered layouts/_default (23.6ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 210ms (View: 89, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:10:26) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:12:31) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000302)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:12:31') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.4ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.2ms)
+Rendered layouts/_default (17.4ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 147ms (View: 57, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:12:33) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:13:52) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000319)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:13:52') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.6ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.7ms)
+Rendered layouts/_default (18.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 234ms (View: 60, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:13:54) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:19:46) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000314)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:19:46') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.5ms)
+Rendered layouts/_default (18.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 160ms (View: 60, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:19:48) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:20:04) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000301)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:20:04') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.1ms)
+Rendered layouts/_default (17.5ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.6ms)
+Completed in 149ms (View: 57, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:20:06) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:20:45) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+  [4;36;1mUserFailure Load (0.000310)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:20:45') LIMIT 1[0m
+Rendering template within layouts/application
+Rendering sessions/new
+Compiling template _run_erb_47app47views47sessions47new46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.5ms)
+Rendered layouts/_default (16.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 158ms (View: 58, DB: 0 1 queries) | 200 OK [http://localhost/session/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:20:47) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2008-12-20 17:37:59) [GET]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"new", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"sessions"}
+  [4;35;1mUserFailure Load (0.000310)[0m   [0mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:37:59') LIMIT 1[0m
+Rendering sessions/new
+Compiling template _run_rjs_47app47views47sessions47new46rjs
+Compiling template _run_erb_47app47views47shared47_login46html46erb_locals_login_object
+Rendered shared/_login (2.1ms)
+Completed in 49ms (View: 9, DB: 0 1 queries) | 200 OK [http://localhost/session/new?authenticity_token=01a54138b5db020ed0c9dbb874899aaf7408ed8b]
+
+
+Processing SessionsController#create (for 127.0.0.1 at 2008-12-20 17:38:05) [POST]
+  Session ID: f06f0fdd6ccd15188fbaf99e98984ef9
+  Parameters: {"action"=>"create", "authenticity_token"=>"01a54138b5db020ed0c9dbb874899aaf7408ed8b", "controller"=>"sessions", "login"=>"perryw", "password"=>"[FILTERED]"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+  [4;36;1mUserFailure Load (0.000344)[0m   [0;1mSELECT * FROM "user_failures" WHERE (remote_ip = '127.0.0.1' and count > 5 and updated_at >= '2008-12-21 00:38:05') LIMIT 1[0m
+  [4;35;1mSiteUser Load (0.001188)[0m   [0mSELECT * FROM "users" WHERE (login = 'perryw') AND ( ("users"."user_type" = 'SiteUser' ) ) LIMIT 1[0m
+  [4;36;1mRole Load (0.000776)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Cookie set: auth_token=; path=/
+Redirected to /
+Completed in 116ms (, DB: 2 5 queries) | 302 Found [http://localhost/session]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:38:05) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001066)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000752)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.4ms)
+Rendered layouts/_default (17.1ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 201ms (View: 68, DB: 2 2 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:38:07) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 22ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:39:05) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001062)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.004901)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.1ms)
+Rendered layouts/_default (16.4ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (36.8ms)
+Completed in 353ms (View: 101, DB: 6 2 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:39:07) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 25ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:44:41) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001054)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000837)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.7ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.5ms)
+Rendered layouts/_default (16.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 287ms (View: 145, DB: 2 2 queries) | 200 OK [http://localhost/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:44:43) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 22ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:45:07) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001178)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000763)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.6ms)
+Rendered layouts/_default (17.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 209ms (View: 69, DB: 2 2 queries) | 200 OK [http://localhost/root/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:45:09) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 99ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:45:27) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001195)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000686)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (13.1ms)
+Rendered layouts/_default (21.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 208ms (View: 72, DB: 2 2 queries) | 200 OK [http://localhost/root/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:45:29) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-20 17:50:23) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;35;1mUser Load (0.001051)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000843)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (9.2ms)
+Rendered layouts/_default (16.7ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.8ms)
+Completed in 210ms (View: 65, DB: 2 2 queries) | 200 OK [http://localhost/root/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-20 17:50:25) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 22ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]

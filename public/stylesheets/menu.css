@@ -1,4 +1,5 @@
 .menu_div {margin: 0; padding-bottom: 50px; width: 100%;}
+#menu_container {margin: 0; padding-bottom: 26px; width:100%;}
 ul#blue { margin:0; padding:0; list-style-type:none; }
 
 ul#blue li { position:relative; float:left; border-top:4px solid #efefef; margin-right: 15px; padding-right: 20px; padding-top: 5px;}
