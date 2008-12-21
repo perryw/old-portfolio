@@ -414,6 +414,7 @@ module Technoweenie # :nodoc:
         # before_validation callback.
         def set_size_from_temp_path
           sleep 5 # perryw so that windows is happy
+            size = File.size(temp_path)
           self.size = File.size(temp_path) if save_attachment?
         end
 
