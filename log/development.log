@@ -9693,3 +9693,300 @@ Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:
   Session ID: 3e5f13bcb023f6240e50714ccd432e59
   Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
 Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 07:49:02) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000000)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (12.0ms)
+Rendered layouts/_default (17.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.0ms)
+Completed in 241ms (View: 58, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:49:04) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 5ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 07:49:10) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000000)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.0ms)
+Rendered layouts/_default (16.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (1.0ms)
+Completed in 252ms (View: 59, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:49:12) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing CollaboratorsController#index (for 127.0.0.1 at 2008-12-21 07:49:18) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"collaborators"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.001000)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;35;1mCollaborator Load (0.000000)[0m   [0mSELECT * FROM "collaborators" [0m
+Rendering collaborators/index
+Compiling template _run_erb_47app47views47collaborators47index46html46erb
+Completed in 54ms (View: 3, DB: 1 3 queries) | 200 OK [http://localhost/collaborators?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:49:18) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2008-12-21 07:49:21) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"courses"}
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000000)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mCourse Load (0.000000)[0m   [0;1mSELECT * FROM "courses" [0m
+Rendering courses/index
+Compiling template _run_erb_47app47views47courses47index46html46erb
+Completed in 55ms (View: 4, DB: 1 3 queries) | 200 OK [http://localhost/courses?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:49:22) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 07:49:24) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;35;1mUser Load (0.000000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.001000)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (11.0ms)
+Rendered layouts/_default (16.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.0ms)
+Completed in 253ms (View: 165, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:49:25) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 127.0.0.1 at 2008-12-21 07:57:20) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"eat_breadcrumbs", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/eat_breadcrumbs?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:57:21) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 07:57:23) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000000)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (11.0ms)
+Rendered layouts/_default (17.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (2.0ms)
+Completed in 283ms (View: 189, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:57:25) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 127.0.0.1 at 2008-12-21 07:57:29) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"eat_breadcrumbs", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/eat_breadcrumbs?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:57:29) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing CoursesController#index (for 127.0.0.1 at 2008-12-21 07:57:31) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"courses"}
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.001000)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;35;1mCourse Load (0.000000)[0m   [0mSELECT * FROM "courses" [0m
+Rendering courses/index
+Compiling template _run_erb_47app47views47courses47index46html46erb
+Completed in 58ms (View: 4, DB: 2 3 queries) | 200 OK [http://localhost/courses?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:57:31) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 127.0.0.1 at 2008-12-21 07:57:33) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"eat_breadcrumbs", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 5ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/eat_breadcrumbs?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 07:57:33) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 08:00:50) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000000)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (1.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.0ms)
+Rendered layouts/_default (17.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (1.0ms)
+Completed in 136ms (View: 57, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 08:00:51) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing MembersController#index (for 127.0.0.1 at 2008-12-21 08:01:03) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "controller"=>"members"}
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.000000)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;35;1mUser Load (0.001000)[0m   [0mSELECT * FROM "users" WHERE (enabled = 't' and activated_at IS NOT NULL) ORDER BY login LIMIT 50 OFFSET 0[0m
+Rendering template within layouts/application
+Rendering members/index
+Compiling template _run_erb_47app47views47members47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at E:/eclipse-workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (11.0ms)
+Rendered layouts/_default (16.0ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (1.0ms)
+Completed in 255ms (View: 57, DB: 2 3 queries) | 200 OK [http://localhost/members]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 08:01:05) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 127.0.0.1 at 2008-12-21 08:01:06) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"eat_breadcrumbs", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/eat_breadcrumbs?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 08:01:06) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing DeliverablesController#index (for 127.0.0.1 at 2008-12-21 08:01:09) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"index", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"deliverables"}
+  [4;36;1mUser Load (0.001000)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.001000)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mDeliverable Load (0.000000)[0m   [0;1mSELECT * FROM "deliverables" [0m
+  [4;35;1mTag Load (0.000000)[0m   [0mSELECT tags.id, tags.name, COUNT(*) AS count FROM "tags" LEFT OUTER JOIN taggings ON tags.id = taggings.tag_id AND taggings.context = 'tags' LEFT OUTER JOIN deliverables ON deliverables.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Deliverable') GROUP BY tags.id, tags.name HAVING COUNT(*) > 0[0m
+Rendering deliverables/index
+Compiling template _run_erb_47app47views47deliverables47index46html46erb
+Completed in 173ms (View: 12, DB: 2 4 queries) | 200 OK [http://localhost/deliverables?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 08:01:10) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 4ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 127.0.0.1 at 2008-12-21 08:01:11) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"eat_breadcrumbs", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 0, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/eat_breadcrumbs?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 08:01:12) [GET]
+  Session ID: 3e5f13bcb023f6240e50714ccd432e59
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"a557a2a209da73fb54a7b4c1f41b2a9c1f67f273", "controller"=>"breadcrumbs"}
+Completed in 3ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=a557a2a209da73fb54a7b4c1f41b2a9c1f67f273]

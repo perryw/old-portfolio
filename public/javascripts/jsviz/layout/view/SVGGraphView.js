@@ -126,7 +126,7 @@ SVGGraphView.prototype.addNode = function( particle, domElement,
 	// With an SVG View Element
 	if ( domElement.localName=="g" || domElement.localName=="circle" || domElement.localName == "text" ) {
 		this.ng.appendChild(domElement);
-		centerOffsetX = 0;
+		centerOffsetX = -300;
 		centerOffsetY = 0;
 
 	// With an HTML View Element
@@ -286,7 +286,8 @@ SVGGraphView.prototype.drawNode = function( particle ) {
 	if ( domNodeProps ) {
 		var domNode = domNodeProps.domElement;
 		if( domNode.localName == 'circle' || domNode.localName == 'g') {
-			domNode.setAttribute('transform','translate(' + particle.positionX*this.skewX + ' ' + particle.positionY*this.skewY + ')');
+			domNode.setAttribute('transform','translate(' + particle.positionX*this.skewX + ' ' + 
+				particle.positionY*this.skewY + ')');
 		} else if ( domNode.localName == 'text' ) {
 			domNode.setAttribute('transform','translate(' + (particle.positionX*this.skewX - 
 				domNode.getAttribute("width")) + ' ' + (particle.positionY*this.skewY - 
