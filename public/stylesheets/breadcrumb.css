@@ -1,3 +1,7 @@
+text{
+	font-weight: bold;
+	z-Index: -1;
+}
 #json_div {
 	padding-bottom: 0px;
 }
