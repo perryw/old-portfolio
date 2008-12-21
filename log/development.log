@@ -5726,3 +5726,161 @@ Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:
   Session ID: 872b4dc254ec357b46064613a43ee145
   Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"f98b3af9003a40d353fd72f5835ed6e9256eb6ac", "controller"=>"breadcrumbs"}
 Completed in 21ms (View: 2, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=f98b3af9003a40d353fd72f5835ed6e9256eb6ac]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 127.0.0.1 at 2008-12-21 04:33:34) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"root"}
+  [4;36;1mUser Load (0.001259)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000837)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering root/index
+Compiling template _run_erb_47app47views47root47index46html46erb
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (14.9ms)
+Rendered layouts/_default (24.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 310ms (View: 124, DB: 2 2 queries) | 200 OK [http://localhost/root/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:33:36) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 23ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing ResourcesController#index (for 127.0.0.1 at 2008-12-21 04:33:41) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"resources"}
+  [4;36;1mUser Load (0.001141)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000721)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mResource Load (0.001363)[0m   [0;1mSELECT * FROM "resources" WHERE ("resources"."parent_id" IS NULL) ORDER BY created_at DESC[0m
+Rendering resources/index
+Compiling template _run_erb_47app47views47resources47index46html46erb
+Compiling template _run_erb_47app47views47resources47_form46html46erb_locals_form_label_text_object
+Rendered resources/_form (1.7ms)
+Completed in 130ms (View: 10, DB: 3 3 queries) | 200 OK [http://localhost/resources?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:33:41) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 1, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing ResourcesController#new (for 127.0.0.1 at 2008-12-21 04:33:43) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"new", "controller"=>"resources"}
+  [4;35;1mUser Load (0.001122)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;36;1mRole Load (0.017616)[0m   [0;1mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+Rendering template within layouts/application
+Rendering resources/new
+Compiling template _run_erb_47app47views47resources47new46html46erb
+Compiling template _run_erb_47app47views47resources47_form46html46erb_locals_form_label_text_object
+  [4;35;1mTag Load (0.000366)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN taggings ON tags.id = taggings.tag_id WHERE (("taggings".taggable_id = NULL) AND ("taggings".taggable_type = 'Resource') AND (context = 'tags')) [0m
+Rendered resources/_form (67.3ms)
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.2ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (10.0ms)
+Rendered layouts/_default (18.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 531ms (View: 157, DB: 19 3 queries) | 200 OK [http://localhost/resources/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:33:45) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 24ms (View: 2, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing ResourcesController#create (for 127.0.0.1 at 2008-12-21 04:34:02) [POST]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"commit"=>"Create", "resource"=>{"uploaded_data"=>#<File:/var/folders/rp/rp+Ug6olFxyWNdrwlU7HzE+++TI/-Tmp-/CGI53896-1>, "url"=>"", "alt_text"=>"", "tag_list"=>"", "description"=>""}, "action"=>"create", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"resources"}
+  [4;36;1mUser Load (0.001074)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000667)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mResource Exists (0.000285)[0m   [0;1mSELECT "resources".id FROM "resources" WHERE ("resources"."filename" = 'IMG_0022.JPG') LIMIT 1[0m
+  [4;35;1mResource Create (0.000457)[0m   [0mINSERT INTO "resources" ("size", "resource_owner_type", "created_at", "content_type", "thumbnail", "updated_at", "url", "alt_text", "resource_owner_id", "parent_id", "filename", "height", "description", "width") VALUES(739305, NULL, '2008-12-21 12:34:07', 'image/jpeg', NULL, '2008-12-21 12:34:07', '', '', NULL, NULL, 'IMG_0022.JPG', 1024, '', 768)[0m
+  [4;36;1mTag Load (0.000264)[0m   [0;1mSELECT "tags".* FROM "tags" INNER JOIN taggings ON tags.id = taggings.tag_id WHERE (("taggings".taggable_id = 1) AND ("taggings".taggable_type = 'Resource') AND (context = 'tags')) [0m
+  [4;35;1mCACHE (0.000000)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN taggings ON tags.id = taggings.tag_id WHERE (("taggings".taggable_id = 1) AND ("taggings".taggable_type = 'Resource') AND (context = 'tags')) [0m
+  [4;36;1mResource Load (0.000231)[0m   [0;1mSELECT * FROM "resources" WHERE ("resources"."thumbnail" = 'lightview' AND "resources"."parent_id" = 1) LIMIT 1[0m
+  [4;35;1mResource Exists (0.000309)[0m   [0mSELECT "resources".id FROM "resources" WHERE ("resources"."filename" = 'IMG_0022_lightview.JPG') LIMIT 1[0m
+  [4;36;1mResource Create (0.000258)[0m   [0;1mINSERT INTO "resources" ("size", "resource_owner_type", "created_at", "content_type", "thumbnail", "updated_at", "url", "alt_text", "resource_owner_id", "parent_id", "filename", "height", "description", "width") VALUES(164732, NULL, '2008-12-21 12:34:13', 'image/jpeg', 'lightview', '2008-12-21 12:34:13', NULL, NULL, NULL, 1, 'IMG_0022_lightview.JPG', 400, NULL, 300)[0m
+  [4;35;1mResource Load (0.000265)[0m   [0mSELECT * FROM "resources" WHERE ("resources"."thumbnail" = 'thumb' AND "resources"."parent_id" = 1) LIMIT 1[0m
+  [4;36;1mResource Exists (0.000309)[0m   [0;1mSELECT "resources".id FROM "resources" WHERE ("resources"."filename" = 'IMG_0022_thumb.JPG') LIMIT 1[0m
+  [4;35;1mResource Create (0.000232)[0m   [0mINSERT INTO "resources" ("size", "resource_owner_type", "created_at", "content_type", "thumbnail", "updated_at", "url", "alt_text", "resource_owner_id", "parent_id", "filename", "height", "description", "width") VALUES(164732, NULL, '2008-12-21 12:34:18', 'image/jpeg', 'thumb', '2008-12-21 12:34:18', NULL, NULL, NULL, 1, 'IMG_0022_thumb.JPG', 168, NULL, 126)[0m
+Redirected to #<Resource:0x3ecee80>
+Completed in 16296ms (, DB: 4 11 queries) | 302 Found [http://localhost/resources]
+
+
+Processing ResourcesController#show (for 127.0.0.1 at 2008-12-21 04:34:18) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"show", "id"=>"1", "controller"=>"resources"}
+  [4;36;1mUser Load (0.001104)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.000716)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mResource Load (0.001009)[0m   [0;1mSELECT * FROM "resources" WHERE ("resources"."id" = 1) [0m
+Rendering template within layouts/application
+Rendering resources/show
+Compiling template _run_erb_47app47views47resources47show46html46erb
+  [4;35;1mTag Load (0.000323)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN taggings ON tags.id = taggings.tag_id WHERE (("taggings".taggable_id = 1) AND ("taggings".taggable_type = 'Resource') AND (context = 'tags')) [0m
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.0ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (8.9ms)
+Rendered layouts/_default (15.9ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 537ms (View: 315, DB: 3 4 queries) | 200 OK [http://localhost/resources/1]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:34:20) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 36ms (View: 3, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
+
+
+Processing ResourcesController#index (for 127.0.0.1 at 2008-12-21 04:34:23) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"index", "controller"=>"resources"}
+  [4;36;1mUser Load (0.001314)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 2) LIMIT 1[0m
+  [4;35;1mRole Load (0.001450)[0m   [0mSELECT "roles".*, t0.user_id as the_parent_record_id FROM "roles" INNER JOIN "roles_users" as t0 ON "roles".id = t0.role_id WHERE (t0.user_id IN (2)) [0m
+  [4;36;1mResource Load (0.001375)[0m   [0;1mSELECT * FROM "resources" WHERE ("resources"."parent_id" IS NULL) ORDER BY created_at DESC[0m
+Rendering template within layouts/application
+Rendering resources/index
+Compiling template _run_erb_47app47views47resources47index46html46erb
+Compiling template _run_erb_47app47views47resources47_resource_row46html46erb_locals_number_object_resource_row
+  [4;35;1mTag Load (0.000642)[0m   [0mSELECT "tags".* FROM "tags" INNER JOIN taggings ON tags.id = taggings.tag_id WHERE (("taggings".taggable_id = 1) AND ("taggings".taggable_type = 'Resource') AND (context = 'tags')) [0m
+Rendered resources/_resource_row (31.2ms)
+Compiling template _run_erb_47app47views47resources47_form46html46erb_locals_form_label_text_object
+Rendered resources/_form (2.7ms)
+Compiling template _run_erb_47app47views47layouts47application46html46erb
+Compiling template _run_erb_47app47views47shared47_user_bar46html46erb_locals_object_user_bar
+Rendered shared/_user_bar (2.5ms)
+DEPRECATION WARNING: The binding argument of #concat is no longer needed.  Please remove it from your views and helpers.  See http://www.rubyonrails.org/deprecation for details. (called from ubermenu at /Users/perryw/Documents/workspace/restful_authentication_tutorial/vendor/plugins/uberkit/lib/uberkit/menu.rb:6)
+Compiling template _run_erb_47app47views47layouts47_default46html46erb_locals_default_object
+Compiling template _run_erb_47app47views47shared47_breadcrumb46html46erb_locals_breadcrumb_object
+Rendered shared/_breadcrumb (12.0ms)
+Rendered layouts/_default (20.2ms)
+Compiling template _run_erb_47app47views47shared47_debug46html46erb_locals_debug_object
+Rendered shared/_debug (0.7ms)
+Completed in 400ms (View: 127, DB: 4 4 queries) | 200 OK [http://localhost/resources]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 127.0.0.1 at 2008-12-21 04:34:25) [GET]
+  Session ID: 39b2f740ceb382c1ddbc49a424e2e353
+  Parameters: {"action"=>"get_breadcrumb", "authenticity_token"=>"689be5586297231f2da2dae21fa48abbbbebd7d4", "controller"=>"breadcrumbs"}
+Completed in 28ms (View: 3, DB: 0 0 queries) | 200 OK [http://localhost/breadcrumbs/get_breadcrumb?authenticity_token=689be5586297231f2da2dae21fa48abbbbebd7d4]
