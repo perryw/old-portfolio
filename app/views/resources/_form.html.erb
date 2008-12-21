@@ -1,0 +1,33 @@
+
+<p>
+    <label for="uploaded_data">
+        Upload a file:
+    </label>
+    <%= form.file_field :uploaded_data %>
+</p>
+
+<p>
+    <b>Alt text</b>
+    <br/>
+    <%= form.text_field :alt_text %>
+</p>
+
+<p>
+    <b>Url</b>
+    <br/>
+    <%= form.text_field :url %>
+</p>
+
+<p>
+    <b>Description</b>
+    <br/>
+    <%= form.text_area :description %>
+</p>
+
+<p>
+    tags for this deliverable: <%= form.text_field :tag_list %>
+</p>
+
+<p>
+    <%= submit_tag label_text %>
+</p>

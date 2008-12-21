@@ -1,0 +1,15 @@
+<h1>Editing resource</h1>
+
+<%= error_messages_for :resource %>
+
+<% form_for(@resource) do |f| %>
+
+<% if @resource.image? %>
+	<%= image_tag(@resource.public_filename(:thumb)) %>
+<% end %>
+
+<%= render :partial => 'form', :locals => { :form => f, :label_text => 'Update' } %>
+
+<% end %>
+
+<%= link_to 'Show', @resource %> | <%= link_to 'Back', resources_path %>

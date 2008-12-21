@@ -1,0 +1,27 @@
+<h1>Editing collaborator</h1>
+
+<%= error_messages_for :collaborator %>
+
+<% form_for(@collaborator) do |f| %>
+  <p>
+    <b>Lastname</b><br />
+    <%= f.text_field :lastname %>
+  </p>
+
+  <p>
+    <b>Firstname</b><br />
+    <%= f.text_field :firstname %>
+  </p>
+
+  <p>
+    <b>Uniqname</b><br />
+    <%= f.text_field :uniqname %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @collaborator %> |
+<%= link_to 'Back', collaborators_path %>

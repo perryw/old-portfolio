@@ -1,0 +1,26 @@
+
+<%= image_tag(@resource.public_filename) %>
+
+<br />
+<br />
+
+<%= image_tag(@resource.public_filename(:thumb)) %>
+
+<br />
+<br />
+
+<% for column in Resource.content_columns %>
+<b>
+	<% #column.human_name %>:</b> <%= in_place_editor_field :resource, column.name, {}, :rows => 1, {:url => url_for(:action => "update", :id => @resource.id)} %>
+		<%= column.human_name %>:</b> <%= in_place_editor_field :resource, column.name %>
+	</b>
+<br/>
+<% end %>
+
+	<p>
+	<b>Associated Tags:</b>
+	<%=h @resource.tag_list %>
+	</p>
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

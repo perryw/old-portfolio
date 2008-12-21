@@ -1,0 +1,56 @@
+<div id='entire_gallery'>
+<h1>Gallery</h1>
+
+<div class='gallery'>
+gallery1
+<% gallery.each do |img| %>
+
+<span class='thumbnail'>
+<%= link_to image_tag(img.public_filename(:thumb)), 
+		image_path(img.public_filename), 
+		{:class =>'lightview', :rel => 'gallery[myset]'}  %>
+</span>
+
+
+<% end %>
+</div>
+
+<div id='gallery2' class='gallery'>
+	gallery2
+<% gallery.each do |img| %>
+
+<span class='thumbnail'>
+<%= link_to image_tag(img.public_filename(:thumb)), 
+{:controller => 'courses', :action => 'get_summary', :authenticity_token => form_authenticity_token}, 
+{:class => 'lightview', 
+:rel => 'ajax',
+:title => "demo_ajax :: trying to use lightview AJAX :: topclose:true, ajax: {evalScripts:true, parameters: {resource_id: #{img.id}}}"} %>
+</span>
+
+<% end %>
+</div>
+
+<div class='gallery3'>
+	gallery2
+<% gallery.each do |img| %>
+
+<span class='thumbnail'>
+<%= link_to image_tag(img.public_filename(:thumb)), 
+		image_path(img.public_filename), 
+		{:class =>'lightview', :rel => 'gallery[myset]', 
+			:onClick => remote_function(:url => {:controller => 'courses', :action => 'get_summary', :resource_id => img.id})
+		}  %>
+</span>
+
+<% end %>
+
+</div>
+<%# use_lightview -%>
+<%#= link_to_lightview( 
+	image_tag(Resource.first.public_filename(:thumb)), 
+	{:controller => 'gallery', :action => 'index', :authenticity_token => form_authenticity_token},
+	{:class => "someclass"},
+	{:title => "'title'", :caption => "'caption'"},
+	{:autosize => false, :width => 150, :height => 200}
+	)%>
+</div>

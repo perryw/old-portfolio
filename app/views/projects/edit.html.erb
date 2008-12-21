@@ -1,0 +1,30 @@
+<h1>Editing project</h1>
+
+<%= error_messages_for :project %>
+
+<% form_for(@project) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <b>Description</b><br />
+    <%= f.text_area :description %>
+  </p>
+
+<p>
+	<b>Members</b><br />
+	<ul id='member_list'>
+		<% @members.each do |member| %>
+			<li><%= check_box 'member', member.id, {:checked => @project.member_ids.include?(member.id)} %><%= member.name %></li>
+		<% end %>
+	</ul>
+	</p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @project %> |
+<%= link_to 'Back', projects_path %>

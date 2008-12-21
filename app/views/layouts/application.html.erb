@@ -38,7 +38,7 @@
 	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
 	<%= javascript_include_tag 'inplaceeditor_empty.js', :cache => true %>
 
-  <%= javascript_include_tag :defaults %>
+  	<%= javascript_include_tag :defaults %>
 </head>
 <body>
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
@@ -135,7 +135,7 @@
 								{
 									:href => url_for(:controller => "resources", :action => "index")
 								}
-						%>			
+						%>								
 					<% end %>
 			    	<% if_admin? do %>
 				  		<% m.action 'Admin', admin_controls_path %>

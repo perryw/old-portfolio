@@ -1,0 +1,19 @@
+<tr>
+	<td>
+		<span class='select'>
+			<%= collection_select :new_association, 
+									:resource_ids, 
+									resources, 
+									:id, :filename, 
+									{:include_blank => true}, 
+									{:multiple => false, 
+										:onChange => remote_function(:url => {:action => 'update_preview',
+										:span_name => span_name},
+										:with => "'selected_value='+value" )
+									} %>
+		</span>
+	</td>
+	<td>
+		<span class='preview' id=<%=span_name%>></span>
+	</td>
+</tr>

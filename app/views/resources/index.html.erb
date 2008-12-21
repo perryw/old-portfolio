@@ -1,0 +1,59 @@
+<div id='resources_index'>
+<h1>Listing resources</h1>
+
+<table id='resources_table'>
+	<thead>
+		<tr id='resources_table_header'>
+			<th>ID</th>
+			<th>Alt text</th>
+			<th>Url</th>
+			<th>Description</th>
+			<th>Tag List</th>
+			<th>Thumbnail</th>
+		</tr>
+	</thead>
+
+	<tbody id='resources_table_body'>
+		<% number = 0 %>
+		<% for resource in @resources %>
+			<%= render :partial => 'resources/resource_row', :object => resource, :locals => { :number => (number+=1)%2 } %>
+		<% end %>
+	</tbody>
+
+</table>
+</div>
+
+<br />
+
+<div id='new_resource', style="display:none">
+<% form_for(:resource, 
+			:url =>formatted_resources_path(:format => 'js'), 
+			:html => { 	:multipart => true, 
+						:target => 'upload_frame' }
+			) do |form| %>
+	
+<%= render(	:partial => 'resources/form', 
+			:object => form, 
+			:locals => {:label_text => "Create_from_index"} ) %>
+<% end %>
+
+<iframe id='upload_frame' 
+		name="upload_frame" 
+		style="width:1px;
+		height:1px;
+		border:0px" 
+		src="about:blank">
+</iframe>
+
+<%= button_to_function 'cancel', 
+		"new Effect.ScrollTo('resources_index'); new Effect.SlideUp('new_resource'); new Effect.Appear('new_resource_JS', {queue:'end'});" %> 
+<br />
+</div>
+
+<br />
+
+<div id="new_resource_JS">
+<%= link_to_function 'new resource here', "new Effect.SlideDown('new_resource'); new Effect.Fade('new_resource_JS', { queue: 'end'}); new Effect.ScrollTo('new_resource');"%> <br />
+</div>
+
+<%= link_to 'Create New resource in separate page', new_resource_path %>

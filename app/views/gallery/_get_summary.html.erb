@@ -1,0 +1,17 @@
+<h1>TestGalleryAJAX</h1>
+
+<div class='title'>
+	<%= get_summary.title %>
+</div>
+
+<div class='description'>
+	<%= get_summary.description %>
+</div>
+
+<div class='resources'>
+	<% get_summary.resources.each do |rez| %>
+		<span class='image'>
+			<%= image_tag rez.public_filename(:thumb) %>
+		</span>
+	<% end %>
+</div>

@@ -1,0 +1,17 @@
+<p>
+  <b>Name:</b>
+  <%=h @deliverable.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @deliverable.description %>
+</p>
+
+<p>
+	<b>Associated Tags:</b>
+	<%=h @deliverable.tag_list %>
+	</p>
+
+<%= link_to 'Edit', edit_deliverable_path(@deliverable) %> |
+<%= link_to 'Back', deliverables_path %>

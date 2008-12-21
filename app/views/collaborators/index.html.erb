@@ -1,0 +1,26 @@
+<h1>Listing collaborators</h1>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Uniqname</th>
+	<th># Collaborations</th>
+  </tr>
+
+<% for collaborator in @collaborators %>
+  <tr>
+    <td><%=h collaborator.lastname %></td>
+    <td><%=h collaborator.firstname %></td>
+    <td><%=h collaborator.uniqname %></td>
+	<td><%=collaborator.projects.size%></td>
+    <td><%= link_to 'Show', collaborator %></td>
+    <td><%= link_to 'Edit', edit_collaborator_path(collaborator) %></td>
+    <td><%= link_to 'Destroy', collaborator, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New collaborator', new_collaborator_path %>

@@ -1,0 +1,35 @@
+<div id='courses_show'>
+	<p>
+	  <b>Dept:</b>
+	  <%=h @course.dept %>
+	</p>
+	
+	<p>
+	  <b>Courseno:</b>
+	  <%=h @course.courseno %>
+	</p>
+	
+	<p>
+	  <b>Coursename:</b>
+	  <%=h @course.coursename %>
+	</p>
+	
+	<p>
+	  <b>Description:</b>
+	  <%=h @course.description %>
+	</p>
+	
+	<div id="resources" class="course_resource_show">
+		<b>Resources:</b>
+		<% unless @course.resources.empty? %>
+		<% @course.resources.each do |r| %>
+		<p>
+		<%= image_tag(r.public_filename) %>
+		</p>
+		<% end %>
+		<% end %>
+	</div>
+	
+	<%= link_to 'Edit', edit_course_path(@course) %> |
+	<%= link_to 'Back', courses_path %>
+</div>

@@ -1,0 +1,18 @@
+<p>
+  <b>Lastname:</b>
+  <%=h @collaborator.lastname %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%=h @collaborator.firstname %>
+</p>
+
+<p>
+  <b>Uniqname:</b>
+  <%=h @collaborator.uniqname %>
+</p>
+
+
+<%= link_to 'Edit', edit_collaborator_path(@collaborator) %> |
+<%= link_to 'Back', collaborators_path %>

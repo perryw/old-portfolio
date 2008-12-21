@@ -1,0 +1,14 @@
+<div id='entire_gallery'>
+<h1>Gallery</h1>
+
+	<div class='gallery3'>
+		<% @gallery.each do |img| %>
+			<span class='thumbnail'>
+				<%= link_to image_tag(img.public_filename(:thumb)), 
+						image_path(img.public_filename(:lightview)), 
+						{:class =>'lightview', :rel => 'gallery[myset]'}
+				%>
+			</span>
+		<% end %>
+	</div>
+</div>
