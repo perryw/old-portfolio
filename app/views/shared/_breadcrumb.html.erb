@@ -17,7 +17,8 @@
 		:method => :get,
 		:evalScripts => false,
 		:update => 'rails_messages',
-		:success => 'document.fire("jsviz:clicked")'
+		:success => 'new Effect.Parallel([new Effect.Highlight("rails_messages", {sync:true}),
+					 new Effect.Fade("rails_messages", {sync:true})], {duration: 5}); document.fire("jsviz:clicked")'
 	} %>
 	
 <div id='json_div'> </div><br/>
