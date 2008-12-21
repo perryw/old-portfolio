@@ -97,13 +97,13 @@ protected
   def update_breadcrumb_trail
     # url = eval(url) if url =~ /_path|_url|@/ # don't eval, handle in appropriate action  
     req_params = request.parameters
-    return if req_params[:action] == 'get_breadcrumb'
+    return if req_params[:action] == 'get_breadcrumb' || req_params[:action] == 'eat_breadcrumbs'
     
     session['breadcrumb'] ||= []
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail
-    session['marshalled'] ||= false
+    #session['marshalled'] ||= false
     
-    load_bct if session['marshalled'] # so that uploading can work...
+    #load_bct if session['marshalled'] # so that uploading can work...
     
     # hitting 'refresh' doesn't count as a traversal of the site, so skip all this
     unless !session['breadcrumb'].empty? && false #req_params == session['breadcrumb'].last.params
@@ -162,7 +162,7 @@ protected
         end
       end
     end
-    dump_bct
+    #dump_bct
   end
   
   def self.update_breadcrumb_trail

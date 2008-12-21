@@ -1,7 +1,22 @@
-class BreadcrumbsController < ApplicationController   
+class BreadcrumbsController < ApplicationController
   def get_breadcrumb
-    load_bct
     render :json => session['breadcrumb']
-    dump_bct
+  end
+  def eat_breadcrumbs
+    b = Breadcrumb.new
+    b.copy(session['breadcrumb'][session['breadcrumb_index']])
+    b.parent.clear
+    b.children.clear
+    b.prev = nil
+    b.next = nil
+    session['breadcrumb'].clear
+    session['breadcrumb'] << b
+    session['breadcrumb_index'] = 0
+    if request.xhr?
+      render :layout => false, :text => 'Too full to eat the last crumb...'
+    else
+      flash[:notice] = "Breadcrumbs have all been eaten up"
+      render :nothing => true
+    end
   end
 end

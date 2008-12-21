@@ -1,6 +1,7 @@
 class OpenidSessionsController < SessionsController
 	before_filter :login_prohibited
-
+  skip_filter :update_breadcrumb_trail
+  
 	def index
 	
 	end

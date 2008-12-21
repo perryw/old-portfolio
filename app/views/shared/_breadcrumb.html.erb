@@ -9,10 +9,16 @@
 		<button type='button' onclick='$("json_div").innerHTML=""'>Remove text</button>
 	<br/>
 <% end -%>
-<% if Rails.env.development? && false %>
+<% if Rails.env.development?  %>
 	<%= yield :breadcrumb_debug %>
 <% end %>
-
+<%= link_to_remote 'Eat Breadcrumbs', {
+		:url => {:controller => 'breadcrumbs', :action => 'eat_breadcrumbs' },
+		:method => :get,
+		:evalScripts => false,
+		:update => 'rails_messages',
+		:success => 'document.fire("jsviz:clicked")'
+	} %>
 	
 <div id='json_div'> </div><br/>
 

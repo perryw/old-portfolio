@@ -331,14 +331,15 @@ SVGGraphView.prototype.clear = function() {
 	}
 
 	this.edges = {};
-
+	this.nodes;
 	// now remove the nodes
 	for ( var n in this.nodes ) {
 		var domElement = this.nodes[n].domElement;
 		if (domElement.localName=="circle" || domElement.localName=="text") {
 			this.ng.removeChild(domElement);
 		} else {
-			this.container.removeChild(domElement);
+			//this.container.removeChild(domElement);
+			this.ng.removeChild(domElement);
 		}
 	}		
 

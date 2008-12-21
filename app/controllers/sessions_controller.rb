@@ -1,6 +1,7 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
 	before_filter :login_prohibited, :only => [:new, :create]
+  skip_filter :update_breadcrumb_trail
 
   # render new.html.erb
   def new

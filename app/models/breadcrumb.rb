@@ -4,8 +4,8 @@ class Breadcrumb
   attr_accessor :is_future, :cannot_undo, :prev, :next, :is_ajax
   attr_accessor :parent, :children
     
-  def initialize( params, jsonObj = nil )
-    if jsonObj.nil?
+  def initialize( params = nil, jsonObj = nil )
+    if jsonObj.nil? && !params.nil?
       @controller, @action, @params = params[:controller], params[:action], params
       if @controller.nil? || @action.nil?
         @controller, @action = params["controller"], params["action"]
@@ -15,11 +15,17 @@ class Breadcrumb
       @prev = @next = nil
       @parent = Array.new
       @children = Array.new
-    else
+    elsif !jsonObj.nil?
       @controller, @action = jsonObj["params"]["controller"], jsonObj["params"]["action"]
       @parent, @children = jsonObj["parent"], jsonObj["children"]
       @is_future, @cannot_undo, @is_ajax = jsonObj['is_future'], jsonObj['cannot_undo'], jsonObj['is_ajax']
     end
+  end
+  
+  def copy(c)
+    @controller, @action, @params = c.controller, c.action, c.params
+    @is_future, @cannot_undo, @prev, @next, @is_ajax = c.is_future, c.cannot_undo, c.prev, c.next, c.is_ajax
+    @parent, @children = c.parent, c.children
   end
   
   def to_s

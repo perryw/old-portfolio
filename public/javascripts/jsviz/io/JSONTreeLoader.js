@@ -48,7 +48,7 @@ JSONTreeLoader.prototype.notify = function() {
  */
 JSONTreeLoader.prototype.load = function( ) {
 	var localScope = this;
-	req = new Ajax.Request('/breadcrumbs/get_breadcrumb', 
+	new Ajax.Request('/breadcrumbs/get_breadcrumb', 
 		{
 			asynchronous:false, 
 			method:'get', 
@@ -67,13 +67,24 @@ JSONTreeLoader.prototype.load = function( ) {
  */
 JSONTreeLoader.prototype.handle = function( request ) {
 	this.JSONDoc = request.responseJSON;
+	if( this.JSONDoc.length <= 0 ) { 
+		this.layout.view.clear(); 
+		this.dataGraph.clear(); 
+		this.layout.clear(); 
+		this.notify(); 
+		return;
+	}
+	else if( this.JSONDoc.length < this.dataGraph.nodes.length )
+	{
+		this.layout.view.clear(); 
+		this.dataGraph.clear(); 
+		this.layout.clear(); 
+	}
 	var root = this.JSONDoc[0];
 	var params = root['params'];
 	var rootNode = new DataGraphNode();
 
-	if( CURR_CRUMB == 0 ){
-		rootNode["root"] = true;
-	}
+	rootNode["root"] = true;
 
 	rootNode["color"] = "#cccccc";
 	rootNode.text = params['controller'] + ": " + params['action'];

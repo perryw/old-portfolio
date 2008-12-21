@@ -1,4 +1,5 @@
 class FourOhFoursController < ApplicationController
+  skip_filter :update_breadcrumb_trail
   def index
     FourOhFour.add_request(request.url,
                            request.env['HTTP_REFERER'] || '')

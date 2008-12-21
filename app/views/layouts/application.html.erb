@@ -37,8 +37,6 @@
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
 	<%= javascript_include_tag 'inplaceeditor_empty.js', :cache => true %>
-
-  	<%#= javascript_include_tag :defaults %>
 </head>
 <body>
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
@@ -60,6 +58,19 @@
 			  		<% m.action 'Homepage', root_path %>
 					<% if_logged_in? do %>
 				  		<% m.action 'Members', members_path %>
+						<% m.remote_action 'Collaborators', {
+								:url => {
+									:controller => 'collaborators',
+									:action => 'index'
+								},
+								:method => :get,
+								:update => 'p_page',
+								:complete => "document.fire('jsviz:clicked')"
+							},
+							{
+								:href => url_for(:controller => "collaborators", :action => "index")
+							}
+						 %>
 						<% m.remote_action "Courses", {
 						    		:url=>{
 						        		:controller=>'courses',
@@ -97,19 +108,6 @@
 									:href => url_for(:controller => "gallery", :action => "index")
 								}
 							 %>
-						<% m.remote_action 'Collaborators', {
-									:url => {
-										:controller => 'collaborators',
-										:action => 'index'
-									},
-									:method => :get,
-									:update => 'p_page',
-									:complete => "document.fire('jsviz:clicked')"
-								},
-								{
-									:href => url_for(:controller => "collaborators", :action => "index")
-								}
-							 %>
 						<% m.remote_action 'Projects', {
 									:url => {
 										:controller => 'projects',
@@ -142,7 +140,9 @@
 					<% end %>
 				<% end %>
 			</div>
-			<%= flash_messages %>
+			<div id='rails_message'>
+				<%= flash_messages %>
+			</div>
 		</div>
 
 		<div id="bd"><!-- body -->

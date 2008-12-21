@@ -32,7 +32,9 @@ var DataGraph = function() {
 	this.nodes = new Array();	
 	this.subscribers = new Array();	
 }
-
+DataGraph.prototype.clear = function() {
+	this.nodes.length = 0;
+}
 /*
  * Subscribe an observer
  * 
