@@ -10,8 +10,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  * 
- * Author: Kyle Scholz      http://kylescholz.com/
- * Copyright: 2006-2007
+ * Author: Perry Wong (2008) based on work by Kyle Scholz      http://kylescholz.com/
+ * Copyright: 2008, 					2006-2007
  */
 /**
  * Seed DataGraph with contents of an JSON tree structure.
