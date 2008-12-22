@@ -126,7 +126,7 @@ SVGGraphView.prototype.addNode = function( particle, domElement,
 	// With an SVG View Element
 	if ( domElement.localName=="g" || domElement.localName=="circle" || domElement.localName == "text" ) {
 		this.ng.appendChild(domElement);
-		centerOffsetX = -300;
+		centerOffsetX = 0;
 		centerOffsetY = 0;
 
 	// With an HTML View Element
