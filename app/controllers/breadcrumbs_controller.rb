@@ -19,4 +19,7 @@ class BreadcrumbsController < ApplicationController
       render :nothing => true
     end
   end
+  def get_currcrumb_idx
+    render :layout => false, :text => session['breadcrumb_index']
+  end
 end

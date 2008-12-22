@@ -97,7 +97,8 @@ protected
   def update_breadcrumb_trail
     # url = eval(url) if url =~ /_path|_url|@/ # don't eval, handle in appropriate action  
     req_params = request.parameters
-    return if req_params[:action] == 'get_breadcrumb' || req_params[:action] == 'eat_breadcrumbs'
+    actn = req_params[:action]
+    return if actn == 'get_breadcrumb' || actn == 'eat_breadcrumbs' || actn == 'get_currcrumb_idx'
     
     session['breadcrumb'] ||= []
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail

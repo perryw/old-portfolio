@@ -48,16 +48,23 @@ JSONTreeLoader.prototype.notify = function() {
  */
 JSONTreeLoader.prototype.load = function( ) {
 	var localScope = this;
-	new Ajax.Request('/breadcrumbs/get_breadcrumb', 
-		{
-			asynchronous:false, 
-			method:'get', 
-			onFailure:function(request){ alert('failed to get breadcrumb for JSViz'); }, 
-			onSuccess: function(request){
-				localScope.handle(request);
-			},
-			parameters:'authenticity_token=' + encodeURIComponent(AUTH_TOKEN)
-		});
+	new Ajax.Request( '/breadcrumbs/get_currcrumb_idx', {
+		method: 'get',
+		onSuccess: function(transport) {
+			window.CURR_CRUMB = parseInt(transport.responseText);
+		},
+		onFailure: function(request) { 
+			alert('railed to get current breadcrumb index with response ' + request); 
+		}
+	} );
+	new Ajax.Request('/breadcrumbs/get_breadcrumb', {
+		asynchronous:false, 
+		method:'get', 
+		onFailure:function(request){ alert('failed to get breadcrumb for JSViz'); }, 
+		onSuccess: function(request){
+			localScope.handle(request);
+		}
+	});
 }
 	
 /*
@@ -85,8 +92,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	var rootNode = new DataGraphNode();
 
 	rootNode["root"] = true;
-
-	rootNode["color"] = "#cccccc";
+	
 	rootNode.text = params['controller'] + ": " + params['action'];
 	rootNode.URL = this.reconstructURL(params);
 	rootNode.isAjax = root['is_ajax'];
@@ -94,15 +100,25 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	
 	var idx = this.dataGraph.findNode(rootNode);
 	rootNode = (idx) ? this.dataGraph.getNode(idx) : rootNode;
+	
+	if( window.CURR_CRUMB == 0 ){
+		rootNode["color"] = "#ADD8E6";
+		rootNode.current = true;
+	}
+	else {
+		rootNode["color"] = "#cccccc";
+		rootNode.current = false;
+	}
+	
+	if (idx) {this.layout.view.nodes[rootNode.id].setAttribute("fill", rootNode["color"]); }
 	if (!idx) {
 		this.dataGraph.addNode(rootNode);
 	}
-	//this.lastCrumb = this.JSONDoc[this.JSONDoc.length-1];
 	
 	// Add children
 	var localScope = this;
 	root["children"].each( function(child) { 
-			this.lastNodeAdded = localScope.branch(child, rootNode, "#90EE90");
+			localScope.branch(child, rootNode);
 		});
 
 	this.notify();
@@ -112,33 +128,36 @@ JSONTreeLoader.prototype.handle = function( request ) {
  * @param {Object} root
  * @param {Object} rootNode
  */
-JSONTreeLoader.prototype.branch = function( root, rootNode, color ) {
+JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	var child = this.JSONDoc[root];
 	var params = child['params'];
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-	childNode["color"] = color;
 	childNode.text = params['controller'] + ": " + params['action'];
 	childNode.URL = this.reconstructURL(params);
 	childNode.isAjax = child['is_ajax'];
-/*
-	if( CURR_CRUMB == child ){
-		//childNode["root"] = true;
-	}
-	*/
+
 	var idx = this.dataGraph.findNode(childNode);
 	childNode = (idx) ? this.dataGraph.getNode(idx) : childNode;
 	
 	if(!childNode.parent) { childNode.parent = new Array(); }
 	childNode.parent.push(rootNode);
-	
-	if (!idx) {
-		this.dataGraph.addNode(childNode);
+	childNode["color"] = "red";
+	if( window.CURR_CRUMB == root ){
+		childNode["color"] = "#ADD8E6";
+		childNode.current = true;
+	}
+	else {
+		childNode['color'] = "#cccccc";
+		childNode.current = false;
 	}
 	
+	if(idx){this.layout.view.nodes[childNode.id].setAttribute("fill", childNode["color"]);}
+	if(!idx) { this.dataGraph.addNode(childNode); }
+	
 	child["children"].each( function(child) {
-			this.lastNodeAdded = localScope.branch(child, childNode, "#ADD8E6");
+			localScope.branch(child, childNode);
 			
 		});
 	return childNode;

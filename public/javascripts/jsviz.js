@@ -95,7 +95,7 @@ function jsviz_init() {
 					var container = document.getElementById("jsviz_div");
 					var offset = container.positionedOffset();
 
-					tt.innerHTML="URL: " + dataNode.URL + "\nisAjax: " + dataNode.isAjax;
+					tt.innerHTML="URL: " + dataNode.URL + "\nisAjax: " + dataNode.isAjax + " isCurr: " + dataNode.current;
 					tt.style.display="block";
 					tt.style.left=(modelNode.positionX*skewX + centerX + offset.left + 5) + "px";
 					tt.style.top=(modelNode.positionY*skewY + centerY + offset.top - 25) +  "px";
@@ -164,7 +164,7 @@ function jsviz_init() {
 	
 				nodeElement.onmouseover =  new EventHandler( window, function(dataNode, modelNode, skewX, skewY, centerX, centerY){
 					var tt = document.getElementById("tooltip");
-					tt.innerHTML="URL: " + dataNode.URL + "\nisAjax: " + dataNode.isAjax;
+					tt.innerHTML="URL: " + dataNode.URL + " isAjax: " + dataNode.isAjax + " isCurr: " + dataNode.current;
 					tt.style.display="block";
 					tt.style.left=(modelNode.positionX*skewX + centerX + 5) + "px";
 					tt.style.top=(modelNode.positionY*skewY + centerY + 35) +  "px";
