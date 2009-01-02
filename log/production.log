@@ -1,0 +1,290 @@
+# Logfile created on Fri Jan 02 00:14:20 -0800 2009** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-02 10:18:14) [GET]
+  Session ID: f210ed89bf1a51110f9c815bb13ac79a
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (, DB: 28 0 queries) | 302 Found [http://www.example.com/]
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-02 10:18:14) [GET]
+  Session ID: f210ed89bf1a51110f9c815bb13ac79a
+  Parameters: {"action"=>"index", "controller"=>"root"}
+
+
+TypeError (wrong argument type Hash (expected Data)):
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `send'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `encode'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:31:in `raise_on_circular_reference'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:20:in `encode'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:42:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `map'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/core_ext/object/misc.rb:23:in `returning'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:40:in `to_json'
+    /app/models/breadcrumb.rb:65:in `to_json'
+    /app/models/breadcrumb.rb:45:in `_dump'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `dump'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `marshal'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:110:in `close'
+    /usr/lib/ruby/1.8/cgi/session.rb:330:in `close'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1231:in `close_session'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1259:in `process_cleanup_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:140:in `process_cleanup_without_components'
+    /vendor/rails/actionpack/lib/action_controller/components.rb:165:in `process_cleanup'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:540:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:130:in `process_without_test'
+    /vendor/rails/actionpack/lib/action_controller/test_process.rb:18:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:403:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:151:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:125:in `call'
+    /vendor/rails/actionpack/lib/action_controller/integration.rb:279:in `process'
+    /vendor/rails/actionpack/lib/action_controller/integration.rb:185:in `get'
+    (irb):1:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52
+
+Rendering /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+/!\ FAILSAFE /!\  Fri Jan 02 10:18:14 -0800 2009
+  Status: 500 Internal Server Error
+  wrong argument type Hash (expected Data)
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `send'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `encode'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:31:in `raise_on_circular_reference'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:20:in `encode'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:42:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `map'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/core_ext/object/misc.rb:23:in `returning'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:40:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/app/models/breadcrumb.rb:65:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/app/models/breadcrumb.rb:45:in `_dump'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `dump'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `marshal'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:110:in `close'
+    /usr/lib/ruby/1.8/cgi/session.rb:330:in `close'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:1231:in `close_session'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:1259:in `process_cleanup_without_session_management_support'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session_management.rb:140:in `process_cleanup_without_components'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/components.rb:165:in `process_cleanup'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:540:in `process_without_filters'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session_management.rb:130:in `process_without_test'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/test_process.rb:18:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:403:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:151:in `handle_request'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:125:in `call'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/integration.rb:279:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/integration.rb:185:in `get'
+    (irb):1:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-02 10:34:48) [GET]
+  Session ID: 5e72161e16dba1866efb543e74c3078f
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to /session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 1ms (, DB: 119 0 queries) | 302 Found [http://www.example.com/]
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-02 10:34:48) [GET]
+  Session ID: 5e72161e16dba1866efb543e74c3078f
+  Parameters: {"action"=>"index", "controller"=>"root"}
+
+
+TypeError (wrong argument type Hash (expected Data)):
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `send'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `encode'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:31:in `raise_on_circular_reference'
+    /vendor/rails/activesupport/lib/active_support/json/encoding.rb:20:in `encode'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:42:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `map'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `to_json'
+    /vendor/rails/activesupport/lib/active_support/core_ext/object/misc.rb:23:in `returning'
+    /vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:40:in `to_json'
+    /app/models/breadcrumb.rb:65:in `to_json'
+    /app/models/breadcrumb.rb:45:in `_dump'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `dump'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `marshal'
+    /vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:110:in `close'
+    /usr/lib/ruby/1.8/cgi/session.rb:330:in `close'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1231:in `close_session'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:1259:in `process_cleanup_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:140:in `process_cleanup_without_components'
+    /vendor/rails/actionpack/lib/action_controller/components.rb:165:in `process_cleanup'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:540:in `process_without_filters'
+    /vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /vendor/rails/actionpack/lib/action_controller/session_management.rb:130:in `process_without_test'
+    /vendor/rails/actionpack/lib/action_controller/test_process.rb:18:in `process'
+    /vendor/rails/actionpack/lib/action_controller/base.rb:403:in `process'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:151:in `handle_request'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /vendor/rails/actionpack/lib/action_controller/dispatcher.rb:125:in `call'
+    /vendor/rails/actionpack/lib/action_controller/integration.rb:279:in `process'
+    /vendor/rails/actionpack/lib/action_controller/integration.rb:185:in `get'
+    (irb):1:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52
+
+Rendering /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+/!\ FAILSAFE /!\  Fri Jan 02 10:34:48 -0800 2009
+  Status: 500 Internal Server Error
+  wrong argument type Hash (expected Data)
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `send'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:21:in `encode'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:31:in `raise_on_circular_reference'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoding.rb:20:in `encode'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:42:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `map'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:41:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/core_ext/object/misc.rb:23:in `returning'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/activesupport/lib/active_support/json/encoders/hash.rb:40:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/app/models/breadcrumb.rb:65:in `to_json'
+    /home/perrywco/rails/restful_authentication_tutorial/app/models/breadcrumb.rb:45:in `_dump'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `dump'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:132:in `marshal'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:110:in `close'
+    /usr/lib/ruby/1.8/cgi/session.rb:330:in `close'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:1231:in `close_session'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:1259:in `process_cleanup_without_session_management_support'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session_management.rb:140:in `process_cleanup_without_components'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/components.rb:165:in `process_cleanup'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:540:in `process_without_filters'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/filters.rb:606:in `process_without_session_management_support'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/session_management.rb:130:in `process_without_test'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/test_process.rb:18:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/base.rb:403:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:151:in `handle_request'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:125:in `call'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/integration.rb:279:in `process'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/rails/actionpack/lib/action_controller/integration.rb:185:in `get'
+    (irb):1:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52:in `irb_binding'
+    /usr/lib/ruby/1.8/irb/workspace.rb:52
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-02 11:11:44) [GET]
+  Session ID: b2cbda9570631f11af492f0c7c6f3427
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to http://wyrrep.com/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 0.00511 (195 reqs/sec) | DB: 0.00000 (0%) 0 queries | 302 Found [http://wyrrep.com/]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing SessionsController#new (for 24.130.149.192 at 2009-01-02 11:11:46) [GET]
+  Session ID: b2cbda9570631f11af492f0c7c6f3427
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+
+
+ActionView::TemplateError (undefined method `development?' for "production":String) on line #159 of layouts/application.html.erb:
+156: 	</div><!-- end YUI layout -->
+157:   
+158: 	<!-- debug -->
+159: 	<% if Rails.env.development? %>
+160: 	  <div id="footnotes_holder">
+161: 	  </div>
+162: 	  <%= render :partial => 'shared/debug' %>
+
+    /home/perrywco/rails/restful_authentication_tutorial/app/views/layouts/application.html.erb:159:in `_run_erb_47app47views47layouts47application46html46erb'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:338:in `execute'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template_handlers/compilable.rb:29:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:35:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/template.rb:22:in `render_template'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_view/base.rb:245:in `render_file'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/layout.rb:257:in `render_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render_without_query_stats'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.0/lib/active_support/core_ext/benchmark.rb:8:in `realtime'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:51:in `render_without_query_stats'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/plugins/query_stats/lib/query_stats/labeler.rb:22:in `render'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:131:in `custom'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `call'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:160:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `each'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:154:in `respond'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/mime_responds.rb:107:in `respond_to'
+    /home/perrywco/rails/restful_authentication_tutorial/app/controllers/sessions_controller.rb:11:in `new'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:1162:in `perform_action_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:580:in `call_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:573:in `perform_action_without_benchmark'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/1.8/benchmark.rb:293:in `measure'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/benchmarking.rb:68:in `perform_action_without_rescue'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/rescue.rb:201:in `perform_action_without_caching'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:13:in `perform_action_without_query_stats'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/connection_adapters/abstract/query_cache.rb:33:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.0/lib/active_record/query_cache.rb:8:in `cache'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/caching/sql_cache.rb:12:in `perform_action_without_query_stats'
+    /home/perrywco/rails/restful_authentication_tutorial/vendor/plugins/query_stats/lib/query_stats/logger.rb:17:in `passenger_orig_perform_action'
+    /dh/passenger/lib/passenger/railz/request_handler.rb:53:in `perform_action'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `send'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:529:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/filters.rb:569:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/session_management.rb:130:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/base.rb:389:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.0/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /dh/passenger/lib/passenger/railz/request_handler.rb:38:in `process_request'
+    /dh/passenger/lib/passenger/abstract_request_handler.rb:165:in `main_loop'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:321:in `start_request_handler'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:282:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/utils.rb:163:in `safe_fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `safe_fork'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:280:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/utils.rb:163:in `safe_fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `safe_fork'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:279:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/lib/passenger/abstract_server.rb:135:in `start'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `fork'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `start'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:179:in `start'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:270:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:263:in `synchronize'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:263:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/lib/passenger/abstract_server.rb:135:in `start'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `fork'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `start'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:87:in `start'
+    /dh/passenger/lib/passenger/spawn_manager.rb:218:in `spawn_rails_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:213:in `synchronize'
+    /dh/passenger/lib/passenger/spawn_manager.rb:213:in `spawn_rails_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:122:in `spawn_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:247:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/bin/passenger-spawn-server:46
+
+Rendering ./public/500.html (500 Internal Server Error)
