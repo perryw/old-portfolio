@@ -62,6 +62,7 @@ class Breadcrumb
       "cannot_undo" => @cannot_undo,
       "is_ajax" => @is_ajax,
       "params" => @params }
-    action_controller.to_json
+    #action_controller.to_json
+    JSON.dump(action_controller)
   end
 end
