@@ -19,24 +19,24 @@
 	<%= stylesheet_link_tag 'lightview2_4' %>
 	
 	<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading prototype...";' %>
-	<%= javascript_include_tag 'prototype', :cache => true %>
+	<%= javascript_include_tag 'prototype' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Now setting javascript variables...";' %>
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 	<%= javascript_tag "var CURR_CRUMB = #{session['breadcrumb_index']};"%>
 			
 	<%= javascript_tag '$("loading").innerHTML= "Loading script.aculo.us...";' %>
-	<%= javascript_include_tag 'scriptaculous', :cache => true %>
-	<%= javascript_include_tag :defaults, :cache => true %>
+	<%= javascript_include_tag 'scriptaculous'  %>
+	<%= javascript_include_tag :defaults %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Loading Lightview files...";' %>
-	<%= javascript_include_tag 'lightview2_4', :cache => true %>
+	<%= javascript_include_tag 'lightview2_4' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding observers for Lightview buttons...";' %>
-	<%= javascript_include_tag 'lightview_extend', :cache => true %>
+	<%= javascript_include_tag 'lightview_extend' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
-	<%= javascript_include_tag 'inplaceeditor_empty.js', :cache => true %>
+	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
 </head>
 <body>
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
@@ -156,7 +156,7 @@
 	</div><!-- end YUI layout -->
   
 	<!-- debug -->
-	<% if Rails.env.development? %>
+	<% if true || Rails.env == "development" %>
 	  <div id="footnotes_holder">
 	  </div>
 	  <%= render :partial => 'shared/debug' %>

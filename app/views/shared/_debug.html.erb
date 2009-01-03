@@ -9,7 +9,7 @@
 			<button type='button' onclick='$("json_div").innerHTML=""'>Remove text</button>
 		<br/>
 	<% end -%>
-	<% if Rails.env.development?  %>
+	<% if true || Rails.env.development?  %>
 		<%= yield :breadcrumb_debug %>
 	<% end %>
 		
@@ -21,5 +21,4 @@
 			<div>View Queries: <%= queries.count_with_label :view %></div>
       <div>Runtime: <%= queries.runtime %></div>
   </fieldset>
-  
 </div>
