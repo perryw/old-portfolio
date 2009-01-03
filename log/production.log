@@ -4534,3 +4534,73 @@ Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-0
   Session ID: 4523255b856183a869ff061b79a807f2
   Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
 Completed in 0.00077 (1300 reqs/sec) | Rendering: 0.00042 (54%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+DEPRECATION WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library will be REMOVED FROM RAILS 2.2. Please switch to the offical mysql gem: `gem install mysql`  See http://www.rubyonrails.org/deprecation for details. (called from mysql_connection at C:/Program Files/BitNami RubyStack/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/connection_adapters/mysql_adapter.rb:81)
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-03 03:09:49) [GET]
+  Session ID: 0977f681baf7e31722d6b4ecf2fa0c6f
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 0.00900 (111 reqs/sec) | DB: 0.07400 (822%) 0 queries | 302 Found [http://localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-01-03 03:09:49) [GET]
+  Session ID: 0977f681baf7e31722d6b4ecf2fa0c6f
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 0.43300 (2 reqs/sec) | Rendering: 0.05200 (12%) | DB: 0.05000 (11%) 1 queries | 200 OK [http://localhost/session/new]
+
+
+Processing User::ProfilesController#new (for 127.0.0.1 at 2009-01-03 03:10:09) [GET]
+  Session ID: 0977f681baf7e31722d6b4ecf2fa0c6f
+  Parameters: {"action"=>"new", "controller"=>"user/profiles"}
+Rendering template within layouts/application
+Rendering user/profiles/new
+Completed in 0.27800 (3 reqs/sec) | Rendering: 0.08900 (32%) | DB: 0.10000 (35%) 1 queries | 200 OK [http://localhost/signup]
+
+
+Processing User::ProfilesController#create (for 127.0.0.1 at 2009-01-03 03:10:21) [POST]
+  Session ID: 0977f681baf7e31722d6b4ecf2fa0c6f
+  Parameters: {"user"=>{"name"=>"", "password_confirmation"=>"[FILTERED]", "invitation_token"=>"091af08fc380c58bc15153a48fd7733d81fb3599", "password"=>"[FILTERED]", "login"=>"", "email"=>"perryw@umich.edu"}, "action"=>"create", "authenticity_token"=>"15feb84101c2ab08757db52d553f53590f1a0c5a", "controller"=>"user/profiles"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Rendering template within layouts/application
+Rendering user/profiles/new
+Completed in 0.35000 (2 reqs/sec) | Rendering: 0.01200 (3%) | DB: 0.21300 (60%) 4 queries | 200 OK [http://localhost/user/profiles]
+** acts_as_taggable_on: initialized properly.
+DEPRECATION WARNING: You're using the Ruby-based MySQL library that ships with Rails. This library will be REMOVED FROM RAILS 2.2. Please switch to the offical mysql gem: `gem install mysql`  See http://www.rubyonrails.org/deprecation for details. (called from mysql_connection at C:/Program Files/BitNami RubyStack/ruby/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/connection_adapters/mysql_adapter.rb:81)
+
+
+Processing RootController#index (for 127.0.0.1 at 2009-01-03 03:43:33) [GET]
+  Session ID: 20a6a352b384d54d5af259448369bf9c
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Redirected to http://app.localhost:3000/session/new
+Filter chain halted as [:login_required] rendered_or_redirected.
+Completed in 0.01000 (100 reqs/sec) | DB: 0.06200 (620%) 0 queries | 302 Found [http://app.localhost/]
+
+
+Processing SessionsController#new (for 127.0.0.1 at 2009-01-03 03:43:33) [GET]
+  Session ID: 20a6a352b384d54d5af259448369bf9c
+  Parameters: {"action"=>"new", "controller"=>"sessions"}
+Rendering template within layouts/application
+Rendering sessions/new
+Completed in 0.31500 (3 reqs/sec) | Rendering: 0.04200 (13%) | DB: 0.02700 (8%) 1 queries | 200 OK [http://app.localhost/session/new]
+
+
+Processing User::ProfilesController#new (for 127.0.0.1 at 2009-01-03 03:43:37) [GET]
+  Session ID: 20a6a352b384d54d5af259448369bf9c
+  Parameters: {"action"=>"new", "controller"=>"user/profiles"}
+Rendering template within layouts/application
+Rendering user/profiles/new
+Completed in 0.82100 (1 reqs/sec) | Rendering: 0.01700 (2%) | DB: 0.42700 (52%) 1 queries | 200 OK [http://app.localhost/signup]
+
+
+Processing User::ProfilesController#create (for 127.0.0.1 at 2009-01-03 03:43:51) [POST]
+  Session ID: 20a6a352b384d54d5af259448369bf9c
+  Parameters: {"user"=>{"name"=>"", "password_confirmation"=>"[FILTERED]", "invitation_token"=>" \t091af08fc380c58bc15153a48fd7733d81fb3599", "password"=>"[FILTERED]", "login"=>"", "email"=>"perryw@umich.edu"}, "action"=>"create", "authenticity_token"=>"b3e46a8c124747dff0fcc2bf1b6fadd0de0cb19b", "controller"=>"user/profiles"}
+Cookie set: auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT
+Rendering template within layouts/application
+Rendering user/profiles/new
+Completed in 0.42500 (2 reqs/sec) | Rendering: 0.01200 (2%) | DB: 0.25500 (60%) 4 queries | 200 OK [http://app.localhost/user/profiles]

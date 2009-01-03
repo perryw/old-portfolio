@@ -6,21 +6,21 @@
 		<%= render :partial => 'shared/breadcrumb' %>
 			
 		<%= javascript_tag '$("loading").innerHTML= "Loading JSViz...";' %>
-		<%= javascript_include_tag 'jsviz/util/EventHandler', :cache => true %>
-		<%= javascript_include_tag 'jsviz/util/Timer', :cache => true %>
-		<%= javascript_include_tag 'jsviz/io/DataGraph', :cache => true %>
-		<%= javascript_include_tag 'jsviz/io/JSONTreeLoader', :cache => true %>
-		<%= javascript_include_tag 'jsviz/layout/view/HTMLGraphView', :cache => true %>
-		<%= javascript_include_tag 'jsviz/layout/view/SVGGraphView', :cache => true %>
+		<%= javascript_include_tag 'jsviz/util/EventHandler' %>
+		<%= javascript_include_tag 'jsviz/util/Timer' %>
+		<%= javascript_include_tag 'jsviz/io/DataGraph' %>
+		<%= javascript_include_tag 'jsviz/io/JSONTreeLoader' %>
+		<%= javascript_include_tag 'jsviz/layout/view/HTMLGraphView' %>
+		<%= javascript_include_tag 'jsviz/layout/view/SVGGraphView' %>
 		
-		<%= javascript_include_tag 'jsviz/physics/ParticleModel.js', :cache => true %>
-		<%= javascript_include_tag 'jsviz/physics/Magnet.js', :cache => true %>
-		<%= javascript_include_tag 'jsviz/physics/Spring.js', :cache => true %>
-		<%= javascript_include_tag 'jsviz/physics/Particle.js', :cache => true %>
-		<%= javascript_include_tag 'jsviz/physics/RungeKuttaIntegrator.js', :cache => true %>
-		<%= javascript_include_tag 'jsviz/layout/graph/ForceDirectedLayout.js', :cache => true %>
+		<%= javascript_include_tag 'jsviz/physics/ParticleModel.js' %>
+		<%= javascript_include_tag 'jsviz/physics/Magnet.js' %>
+		<%= javascript_include_tag 'jsviz/physics/Spring.js' %>
+		<%= javascript_include_tag 'jsviz/physics/Particle.js' %>
+		<%= javascript_include_tag 'jsviz/physics/RungeKuttaIntegrator.js' %>
+		<%= javascript_include_tag 'jsviz/layout/graph/ForceDirectedLayout.js' %>
 		
-		<%= javascript_include_tag 'jsviz', :cache => true %>
+		<%= javascript_include_tag 'jsviz' %>
 		
 		<%= javascript_tag '$("loading").innerHTML=" ";' %>
 		
