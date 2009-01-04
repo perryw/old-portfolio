@@ -6218,3 +6218,799 @@ Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-0
   Session ID: 862846af49f216e0155f547d49ec7925
   Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
 Completed in 0.00293 (340 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing CollaboratorsController#index (for 24.130.149.192 at 2009-01-03 19:15:15) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"collaborators"}
+Rendering collaborators/index
+Completed in 0.10115 (9 reqs/sec) | Rendering: 0.00278 (2%) | DB: 0.03087 (30%) 3 queries | 200 OK [http://app.wyrrep.com/collaborators]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing CoursesController#index (for 24.130.149.192 at 2009-01-03 19:15:15) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"courses"}
+Rendering courses/index
+Completed in 0.12969 (7 reqs/sec) | Rendering: 0.01341 (10%) | DB: 0.02692 (20%) 3 queries | 200 OK [http://app.wyrrep.com/courses]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:15:16) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00271 (368 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:15:16) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00064 (1552 reqs/sec) | Rendering: 0.00044 (68%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:15:16) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00069 (1453 reqs/sec) | Rendering: 0.00049 (70%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:15:16) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4485 reqs/sec) | Rendering: 0.00005 (22%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing CollaboratorsController#index (for 24.130.149.192 at 2009-01-03 19:15:30) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"collaborators"}
+Rendering collaborators/index
+Completed in 0.17778 (5 reqs/sec) | Rendering: 0.15938 (89%) | DB: 0.00491 (2%) 3 queries | 200 OK [http://app.wyrrep.com/collaborators]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:15:30) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00023 (4310 reqs/sec) | Rendering: 0.00006 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:15:30) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00065 (1538 reqs/sec) | Rendering: 0.00051 (78%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing DeliverablesController#index (for 24.130.149.192 at 2009-01-03 19:15:34) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"deliverables"}
+Rendering deliverables/index
+Completed in 0.06420 (15 reqs/sec) | Rendering: 0.01787 (27%) | DB: 0.01805 (28%) 4 queries | 200 OK [http://app.wyrrep.com/deliverables]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:15:35) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4629 reqs/sec) | Rendering: 0.00005 (25%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:15:35) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00068 (1477 reqs/sec) | Rendering: 0.00052 (76%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#eat_breadcrumbs (for 24.130.149.192 at 2009-01-03 19:16:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"eat_breadcrumbs", "controller"=>"breadcrumbs"}
+Completed in 0.00025 (3983 reqs/sec) | Rendering: 0.00005 (19%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/eat_breadcrumbs]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:16:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00021 (4670 reqs/sec) | Rendering: 0.00005 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:16:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00052 (1934 reqs/sec) | Rendering: 0.00038 (72%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing Admin::ControlsController#index (for 24.130.149.192 at 2009-01-03 19:16:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"admin/controls"}
+Rendering template within layouts/application
+Rendering admin/controls/index
+Completed in 0.09802 (10 reqs/sec) | Rendering: 0.03729 (38%) | DB: 0.04371 (44%) 4 queries | 200 OK [http://app.wyrrep.com/admin/controls]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:16:57) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00024 (4148 reqs/sec) | Rendering: 0.00006 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:16:57) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00291 (343 reqs/sec) | Rendering: 0.00043 (14%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing Admin::ControlsController#index (for 24.130.149.192 at 2009-01-03 19:21:13) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"admin/controls"}
+Rendering template within layouts/application
+Rendering admin/controls/index
+Completed in 0.07014 (14 reqs/sec) | Rendering: 0.03110 (44%) | DB: 0.00769 (10%) 4 queries | 200 OK [http://app.wyrrep.com/admin/controls]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:21:15) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00265 (377 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:21:15) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00336 (297 reqs/sec) | Rendering: 0.00056 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing Admin::ControlsController#index (for 24.130.149.192 at 2009-01-03 19:27:38) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"admin/controls"}
+Rendering template within layouts/application
+Rendering admin/controls/index
+Completed in 0.06872 (14 reqs/sec) | Rendering: 0.03119 (45%) | DB: 0.00704 (10%) 4 queries | 200 OK [http://app.wyrrep.com/admin/controls]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:27:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00260 (383 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:27:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00342 (292 reqs/sec) | Rendering: 0.00057 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing Admin::ControlsController#index (for 24.130.149.192 at 2009-01-03 19:28:24) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"admin/controls"}
+Rendering template within layouts/application
+Rendering admin/controls/index
+Completed in 0.07260 (13 reqs/sec) | Rendering: 0.03034 (41%) | DB: 0.00902 (12%) 4 queries | 200 OK [http://app.wyrrep.com/admin/controls]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:28:27) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00068 (1468 reqs/sec) | Rendering: 0.00049 (72%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:28:27) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00026 (3905 reqs/sec) | Rendering: 0.00006 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing Admin::ControlsController#index (for 24.130.149.192 at 2009-01-03 19:29:41) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"admin/controls"}
+Rendering template within layouts/application
+Rendering admin/controls/index
+Completed in 0.17745 (5 reqs/sec) | Rendering: 0.16654 (93%) | DB: 0.00431 (2%) 4 queries | 200 OK [http://app.wyrrep.com/admin/controls]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:29:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00062 (1610 reqs/sec) | Rendering: 0.00046 (74%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:29:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00023 (4369 reqs/sec) | Rendering: 0.00006 (25%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing FourOhFoursController#index (for 24.130.149.192 at 2009-01-03 19:29:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "path"=>["admin", "resources"], "controller"=>"four_oh_fours"}
+Rendering /home/perrywco/rails/restful_authentication_tutorial/public/404.html (404 Not Found)
+Completed in 0.04311 (23 reqs/sec) | Rendering: 0.00629 (14%) | DB: 0.01556 (36%) 2 queries | 404 Not Found [http://app.wyrrep.com/admin/resources]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:29:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00019 (5152 reqs/sec) | Rendering: 0.00004 (22%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:29:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00060 (1675 reqs/sec) | Rendering: 0.00044 (73%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing FourOhFoursController#index (for 24.130.149.192 at 2009-01-03 19:29:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "path"=>["admin", "projects"], "controller"=>"four_oh_fours"}
+Rendering /home/perrywco/rails/restful_authentication_tutorial/public/404.html (404 Not Found)
+Completed in 0.05658 (17 reqs/sec) | Rendering: 0.00035 (0%) | DB: 0.05205 (92%) 2 queries | 404 Not Found [http://app.wyrrep.com/admin/projects]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:29:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00059 (1706 reqs/sec) | Rendering: 0.00043 (72%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:29:51) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4481 reqs/sec) | Rendering: 0.00006 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:29:55) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.02598 (38 reqs/sec) | Rendering: 0.01790 (68%) | DB: 0.00180 (6%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:29:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00025 (4048 reqs/sec) | Rendering: 0.00006 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:29:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00064 (1555 reqs/sec) | Rendering: 0.00047 (73%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:30:22) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.01774 (56 reqs/sec) | Rendering: 0.01075 (60%) | DB: 0.00165 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:30:24) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4609 reqs/sec) | Rendering: 0.00005 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:30:24) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00073 (1377 reqs/sec) | Rendering: 0.00054 (74%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:30:54) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.01760 (56 reqs/sec) | Rendering: 0.01048 (59%) | DB: 0.00266 (15%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:30:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00067 (1487 reqs/sec) | Rendering: 0.00050 (74%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:30:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00021 (4675 reqs/sec) | Rendering: 0.00005 (25%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:31:26) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.02819 (35 reqs/sec) | Rendering: 0.01901 (67%) | DB: 0.00185 (6%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:31:28) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00065 (1533 reqs/sec) | Rendering: 0.00048 (73%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:31:28) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00025 (4080 reqs/sec) | Rendering: 0.00006 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:31:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.05982 (16 reqs/sec) | Rendering: 0.03115 (52%) | DB: 0.00594 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:31:52) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00265 (378 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:31:52) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00343 (291 reqs/sec) | Rendering: 0.00057 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:32:29) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.05966 (16 reqs/sec) | Rendering: 0.03048 (51%) | DB: 0.00547 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:32:31) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00059 (1697 reqs/sec) | Rendering: 0.00046 (77%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:32:31) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4505 reqs/sec) | Rendering: 0.00005 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:32:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06170 (16 reqs/sec) | Rendering: 0.03114 (50%) | DB: 0.00756 (12%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:32:49) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00261 (383 reqs/sec) | Rendering: 0.00005 (1%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:32:49) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00345 (290 reqs/sec) | Rendering: 0.00059 (17%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:33:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06152 (16 reqs/sec) | Rendering: 0.03231 (52%) | DB: 0.00596 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:33:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00252 (396 reqs/sec) | Rendering: 0.00005 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:33:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00341 (293 reqs/sec) | Rendering: 0.00059 (17%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:34:35) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.07937 (12 reqs/sec) | Rendering: 0.03159 (39%) | DB: 0.00533 (6%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:34:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00065 (1538 reqs/sec) | Rendering: 0.00049 (75%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:34:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00025 (3983 reqs/sec) | Rendering: 0.00006 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:43:18) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06431 (15 reqs/sec) | Rendering: 0.03262 (50%) | DB: 0.00537 (8%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:43:21) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00268 (373 reqs/sec) | Rendering: 0.00005 (1%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:43:21) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00074 (1349 reqs/sec) | Rendering: 0.00052 (70%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:44:35) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06210 (16 reqs/sec) | Rendering: 0.03232 (52%) | DB: 0.00566 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:44:38) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00251 (399 reqs/sec) | Rendering: 0.00005 (1%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:44:39) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00347 (288 reqs/sec) | Rendering: 0.00061 (17%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:48:37) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.05984 (16 reqs/sec) | Rendering: 0.03121 (52%) | DB: 0.00522 (8%) 2 queries | 200 OK [http://app.wyrrep.com/]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:48:42) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00291 (344 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:48:42) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00343 (291 reqs/sec) | Rendering: 0.00057 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 19:50:47) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06201 (16 reqs/sec) | Rendering: 0.03227 (52%) | DB: 0.00608 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 19:50:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00313 (319 reqs/sec) | Rendering: 0.00051 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 19:50:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00288 (347 reqs/sec) | Rendering: 0.00006 (1%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 20:04:55) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.08147 (12 reqs/sec) | Rendering: 0.03180 (39%) | DB: 0.02017 (24%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 20:04:57) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00256 (391 reqs/sec) | Rendering: 0.00005 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 20:04:57) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00353 (283 reqs/sec) | Rendering: 0.00061 (17%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 20:05:50) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.10958 (9 reqs/sec) | Rendering: 0.03078 (28%) | DB: 0.03421 (31%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 20:05:53) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4544 reqs/sec) | Rendering: 0.00006 (25%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 20:05:53) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00061 (1644 reqs/sec) | Rendering: 0.00046 (75%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 20:06:41) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.01847 (54 reqs/sec) | Rendering: 0.01104 (59%) | DB: 0.00193 (10%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 20:06:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4466 reqs/sec) | Rendering: 0.00005 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 20:06:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00064 (1552 reqs/sec) | Rendering: 0.00047 (73%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing ProjectsController#index (for 24.130.149.192 at 2009-01-03 20:07:18) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"projects"}
+Rendering projects/index
+Completed in 0.06806 (14 reqs/sec) | Rendering: 0.01086 (15%) | DB: 0.03085 (45%) 3 queries | 200 OK [http://app.wyrrep.com/projects]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 20:07:18) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00022 (4481 reqs/sec) | Rendering: 0.00006 (26%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 20:07:19) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00078 (1274 reqs/sec) | Rendering: 0.00058 (73%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing RootController#index (for 24.130.149.192 at 2009-01-03 20:55:56) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"root"}
+Rendering template within layouts/application
+Rendering root/index
+Completed in 0.06093 (16 reqs/sec) | Rendering: 0.03157 (51%) | DB: 0.00552 (9%) 2 queries | 200 OK [http://app.wyrrep.com/]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 20:56:00) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00280 (357 reqs/sec) | Rendering: 0.00006 (2%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 20:56:00) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00379 (263 reqs/sec) | Rendering: 0.00067 (17%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing CollaboratorsController#index (for 24.130.149.192 at 2009-01-03 21:11:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"collaborators"}
+Rendering collaborators/index
+Completed in 0.10069 (9 reqs/sec) | Rendering: 0.00168 (1%) | DB: 0.05963 (59%) 3 queries | 200 OK [http://app.wyrrep.com/collaborators]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 21:11:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00267 (374 reqs/sec) | Rendering: 0.00005 (1%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+** acts_as_taggable_on: initialized properly.
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 21:11:40) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00427 (234 reqs/sec) | Rendering: 0.00082 (19%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing ResourcesController#index (for 24.130.149.192 at 2009-01-03 21:11:44) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"resources"}
+Rendering resources/index
+Completed in 0.27768 (3 reqs/sec) | Rendering: 0.01415 (5%) | DB: 0.19043 (68%) 3 queries | 200 OK [http://app.wyrrep.com/resources]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 21:11:45) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00023 (4424 reqs/sec) | Rendering: 0.00005 (24%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 21:11:45) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00070 (1428 reqs/sec) | Rendering: 0.00054 (77%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing ResourcesController#index (for 24.130.149.192 at 2009-01-03 21:11:52) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"index", "controller"=>"resources"}
+Rendering resources/index
+Completed in 0.04022 (24 reqs/sec) | Rendering: 0.00203 (5%) | DB: 0.01485 (36%) 3 queries | 200 OK [http://app.wyrrep.com/resources]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 21:11:52) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00021 (4670 reqs/sec) | Rendering: 0.00005 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 21:11:52) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.17339 (5 reqs/sec) | Rendering: 0.02860 (16%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing ResourcesController#new (for 24.130.149.192 at 2009-01-03 21:13:09) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"new", "controller"=>"resources"}
+Rendering template within layouts/application
+Rendering resources/new
+Completed in 0.06730 (14 reqs/sec) | Rendering: 0.05070 (75%) | DB: 0.01094 (16%) 3 queries | 200 OK [http://app.wyrrep.com/resources/new]
+
+
+Processing BreadcrumbsController#get_breadcrumb (for 24.130.149.192 at 2009-01-03 21:13:10) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_breadcrumb", "controller"=>"breadcrumbs"}
+Completed in 0.00080 (1245 reqs/sec) | Rendering: 0.00060 (75%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_breadcrumb]
+
+
+Processing BreadcrumbsController#get_currcrumb_idx (for 24.130.149.192 at 2009-01-03 21:13:11) [GET]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"action"=>"get_currcrumb_idx", "controller"=>"breadcrumbs"}
+Completed in 0.00025 (3953 reqs/sec) | Rendering: 0.00006 (23%) | DB: 0.00000 (0%) 0 queries | 200 OK [http://app.wyrrep.com/breadcrumbs/get_currcrumb_idx]
+
+
+Processing ResourcesController#create (for 24.130.149.192 at 2009-01-03 21:13:50) [POST]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"commit"=>"Create", "resource"=>{"uploaded_data"=>#<File:/tmp/CGI5961-0>, "url"=>"", "alt_text"=>"", "tag_list"=>"", "description"=>""}, "action"=>"create", "controller"=>"resources"}
+Redirected to http://app.wyrrep.com/resources/1
+Completed in 1.66840 (0 reqs/sec) | DB: 0.13085 (7%) 11 queries | 302 Found [http://app.wyrrep.com/resources]
+
+
+Processing ResourcesController#create (for 24.130.149.192 at 2009-01-03 21:13:52) [POST]
+  Session ID: 862846af49f216e0155f547d49ec7925
+  Parameters: {"commit"=>"Create", "resource"=>{"uploaded_data"=>#<File:/tmp/CGI5961-0>, "url"=>"", "alt_text"=>"", "tag_list"=>"", "description"=>""}, "action"=>"create", "controller"=>"resources"}
+
+
+JSON::GeneratorError (source sequence is illegal/malformed):
+    /home/perrywco/.gems/gems/json-1.1.3/lib/json/add/rails.rb:39:in `to_json'
+    /home/perrywco/.gems/gems/json-1.1.3/lib/json/add/rails.rb:39:in `to_json'
+    /home/perrywco/.gems/gems/json-1.1.3/lib/json/add/rails.rb:27:in `to_json'
+    /app/models/breadcrumb.rb:65:in `to_json'
+    /app/models/breadcrumb.rb:45:in `_dump'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:82:in `dump'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:82:in `marshal'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:135:in `marshal_data!'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:173:in `send'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:173:in `evaluate_method'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:161:in `call'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:93:in `run'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:92:in `each'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:92:in `send'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:92:in `run'
+    /usr/lib/ruby/gems/1.8/gems/activesupport-2.1.1/lib/active_support/callbacks.rb:272:in `run_callbacks'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/callbacks.rb:298:in `callback'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/callbacks.rb:206:in `create_or_update'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/base.rb:2211:in `save_without_validation'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/validations.rb:911:in `save_without_dirty'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/dirty.rb:75:in `save_without_transactions'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:106:in `save'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/connection_adapters/abstract/database_statements.rb:66:in `transaction'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:79:in `transaction'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:98:in `transaction'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:106:in `save'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:118:in `rollback_active_record_state!'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/transactions.rb:106:in `save'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:314:in `update'
+    /usr/lib/ruby/gems/1.8/gems/activerecord-2.1.1/lib/active_record/base.rb:1267:in `silence'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:314:in `update'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session/active_record_store.rb:321:in `close'
+    /usr/lib/ruby/1.8/cgi/session.rb:330:in `close'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/base.rb:1235:in `close_session'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/base.rb:1271:in `process_cleanup_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session_management.rb:140:in `process_cleanup_without_components'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/components.rb:162:in `process_cleanup'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/base.rb:537:in `process_without_filters'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/filters.rb:568:in `process_without_session_management_support'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/session_management.rb:130:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/base.rb:389:in `process'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:149:in `handle_request'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:107:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:104:in `synchronize'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:104:in `dispatch'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:120:in `dispatch_cgi'
+    /usr/lib/ruby/gems/1.8/gems/actionpack-2.1.1/lib/action_controller/dispatcher.rb:35:in `dispatch'
+    /dh/passenger/lib/passenger/railz/request_handler.rb:38:in `process_request'
+    /dh/passenger/lib/passenger/abstract_request_handler.rb:165:in `main_loop'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:321:in `start_request_handler'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:282:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/utils.rb:163:in `safe_fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `safe_fork'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:280:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/utils.rb:163:in `safe_fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `fork'
+    /dh/passenger/lib/passenger/utils.rb:161:in `safe_fork'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:279:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/lib/passenger/abstract_server.rb:135:in `start'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `fork'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `start'
+    /dh/passenger/lib/passenger/railz/application_spawner.rb:179:in `start'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:270:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:263:in `synchronize'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:263:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/lib/passenger/abstract_server.rb:135:in `start'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `fork'
+    /dh/passenger/lib/passenger/abstract_server.rb:112:in `start'
+    /dh/passenger/lib/passenger/railz/framework_spawner.rb:87:in `start'
+    /dh/passenger/lib/passenger/spawn_manager.rb:218:in `spawn_rails_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:213:in `synchronize'
+    /dh/passenger/lib/passenger/spawn_manager.rb:213:in `spawn_rails_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:122:in `spawn_application'
+    /dh/passenger/lib/passenger/spawn_manager.rb:247:in `handle_spawn_application'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `__send__'
+    /dh/passenger/lib/passenger/abstract_server.rb:317:in `main_loop'
+    /dh/passenger/lib/passenger/abstract_server.rb:168:in `start_synchronously'
+    /dh/passenger/bin/passenger-spawn-server:46
+
+Rendering ./public/500.html (500 Internal Server Error)
