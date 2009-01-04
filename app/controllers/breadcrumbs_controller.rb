@@ -1,7 +1,7 @@
 class BreadcrumbsController < ApplicationController
   def get_breadcrumb
-    #render :json => session['breadcrumb']
-    render :text => JSON.dump(session['breadcrumb'])
+    render :json => session['breadcrumb']
+    #render :text => JSON.dump(session['breadcrumb'])
   end
   def eat_breadcrumbs
     b = Breadcrumb.new

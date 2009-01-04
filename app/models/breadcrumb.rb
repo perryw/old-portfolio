@@ -54,7 +54,7 @@ class Breadcrumb
     return b
   end
   
-  def to_json(arg1, arg2)
+  def to_json(arg1=nil, arg2=nil)
     action_controller = { 
       "parent" => @parent, 
       "children" => @children, 
@@ -62,7 +62,7 @@ class Breadcrumb
       "cannot_undo" => @cannot_undo,
       "is_ajax" => @is_ajax,
       "params" => @params }
-    #action_controller.to_json
-    JSON.dump(action_controller)
+    action_controller.to_json
+    #JSON.dump(action_controller)
   end
 end

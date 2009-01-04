@@ -8,7 +8,7 @@ require 'yaml'
 require 'rubygems'
 ENV['GEM_PATH'] = '/home/perrywco/.gems:/usr/lib/ruby/gems/1.8'
 Gem.clear_paths
-require 'json'
+require 'json/add/rails'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.1' unless defined? RAILS_GEM_VERSION
