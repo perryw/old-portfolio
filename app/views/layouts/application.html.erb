@@ -89,10 +89,10 @@
 									},
 									:method => :get,
 									:update => 'p_page',
-									:complete => "document.fire('jsviz:clicked');"
+									:complete => "updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked');"
 								},
 								{
-									:href => url_for(:controller=>"deliverables", :action => "index")
+									:id => 'menu_devlierables', :href => url_for(:controller=>"deliverables", :action => "index")
 								}
 							 %>
 						<% m.remote_action 'Gallery', {
@@ -102,10 +102,10 @@
 									},
 									:method => :get,
 									:update => 'p_page',
-									:complete => "Lightview.updateViews(); document.fire('jsviz:clicked');"
+									:complete => "updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked');"
 								},
 								{
-									:href => url_for(:controller => "gallery", :action => "index")
+									:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index")
 								}
 							 %>
 						<% m.remote_action 'Projects', {
@@ -115,10 +115,10 @@
 									},
 									:method => :get,
 									:update => 'p_page',
-									:complete => "document.fire('jsviz:clicked');"
+									:complete => "updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked');"
 								},
 								{
-									:href => url_for(:controller => "projects", :action => "index")
+									:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")
 								}
 							 %>
 						<% m.remote_action 'Resources', {
@@ -128,10 +128,10 @@
 									},
 									:method => :get,
 									:update => 'p_page',
-									:complete => "document.fire('jsviz:clicked');"
+									:complete => "updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked');"
 								},
 								{
-									:href => url_for(:controller => "resources", :action => "index")
+									:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index")
 								}
 						%>								
 					<% end %>
