@@ -42,7 +42,7 @@ class Breadcrumb
   end
   
   def _dump(depth)
-    to_json(0,0)
+    to_json
   end
   
   def Breadcrumb._load(obj)
