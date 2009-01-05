@@ -139,3 +139,9 @@ Event.observe(document, 'lightview:loaded', function(event){
 	}
 });
 */
+updateCurrMenuItem = function(newCurr) {
+	oldCurr = $$('.current');
+	oldCurr[0].removeClassName('current');
+	itm = $(newCurr).ancestors()[0];
+	itm.addClassName('current');
+};

@@ -5,7 +5,7 @@ class CreateDeliverables < ActiveRecord::Migration
       t.text :description
       
       t.references :project
-      t.references :member
+      t.references :collaborator
       
       t.timestamps
     end

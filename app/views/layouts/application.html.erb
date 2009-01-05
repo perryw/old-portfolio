@@ -32,8 +32,8 @@
 	<%= javascript_tag '$("loading").innerHTML="Loading Lightview files...";' %>
 	<%= javascript_include_tag 'lightview2_4' %>
 	
-	<%= javascript_tag '$("loading").innerHTML="Adding observers for Lightview buttons...";' %>
-	<%= javascript_include_tag 'lightview_extend' %>
+	<%= javascript_tag '$("loading").innerHTML="Adding observers for Lightview buttons & utility functions...";' %>
+	<%= javascript_include_tag 'wyrrep_utility' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
 	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
@@ -65,10 +65,10 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "document.fire('jsviz:clicked')"
+								:complete => "updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
 							},
 							{
-								:href => url_for(:controller => "collaborators", :action => "index")
+								:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index")
 							}
 						 %>
 						<% m.remote_action "Courses", {
@@ -78,9 +78,9 @@
 									}, 
 									:method => :get,
 									:update => 'p_page',
-									:complete => "document.fire('jsviz:clicked')"
+									:complete => "updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
 								},
-								{ :href => url_for(:controller => "courses", :action => "index") }
+								{ :id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
 							 %>
 						<% m.remote_action 'Deliverables', {
 									:url => {
