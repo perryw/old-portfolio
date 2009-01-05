@@ -189,6 +189,7 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 	return url;
 }
 
+// from http://krazydad.com/makecolors.php
 JSONTreeLoader.prototype.generateColorStrip = function(crumbElem) {
 	var frequency = Math.PI/10;
 	var numStops = 6; // hence phase of pi/10
@@ -205,7 +206,7 @@ JSONTreeLoader.prototype.generateColorStrip = function(crumbElem) {
 		bComponent = Math.round(Math.sin(frequency*i)*(bStop-bStart) + bStart);
 		crumbElem.colorStrip[i+1] = colorString+rComponent.toString(16)+gComponent.toString(16)+bComponent.toString(16);
 	}
-	crumbElem.colorStrip[0] = "#90EE90";
+	crumbElem.colorStrip[0] = "#FF82A0";
 	crumbElem.colorStrip;
 	crumbElem;
 }
