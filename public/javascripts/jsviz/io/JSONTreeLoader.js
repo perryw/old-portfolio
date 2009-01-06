@@ -151,6 +151,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	
 	if(!childNode.parent) { childNode.parent = new Array(); }
     childNode.parent.push(rootNode);
+    childNode.parent = childNode.parent.uniq();
 	
 	if( window.CURR_CRUMB == root ){
 		childNode["color"] = this.colorStrip[childNode.colorStripIndex=0];
