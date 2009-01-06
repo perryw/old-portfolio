@@ -107,11 +107,10 @@ protected
         # first see if we're going backwards (current page is on the same browse
         # path as the previous page
         currIndex = session['breadcrumb_index']
-        
-        if (bcIndex < (bcSize-1)) && on_same_branch( currIndex, bcIndex )
+        if on_same_branch( currIndex, bcIndex ) # (bcIndex < (bcSize-1)) &&  # jumping around in history
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
-          end
+          end          
         elsif bcIndex != currIndex
           # branch converges with previous branch
           parents = session['breadcrumb'][bcIndex].parent
