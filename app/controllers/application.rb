@@ -69,6 +69,8 @@ protected
       if thisParent == root
         next if thisParent == 0 # reached all the way to the top without sharing a parent
         return true
+      elsif thisParent.nil?
+        return false
       end
       retVal ||= on_same_branch(root, thisParent, false)
     end
