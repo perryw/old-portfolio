@@ -63,7 +63,7 @@ function jsviz_init() {
 				fanAngle: dataNode.root ? 360: 100,
 				rootAngle: 0
 				*/
-				mass: 0.6
+				mass: 0.5
 			};
 		},
 
