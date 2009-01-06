@@ -96,7 +96,8 @@ JSONTreeLoader.prototype.handle = function( request ) {
 
 	rootNode.text = params['controller'] + ": " + params['action'];
 	rootNode.URL = this.reconstructURL(params);
-	this.generateColorStrip(rootNode);
+	this.generateColorStrip();
+	rootNode.colorStripIndex = 0;
 	rootNode.isAjax = root['is_ajax'];
 	rootNode["fixed"] = true;
 	
@@ -141,17 +142,19 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 
 	childNode.text = params['controller'] + ": " + params['action'];
 	childNode.URL = this.reconstructURL(params);
-	this.generateColorStrip(childNode);
+	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];
 
 	var idx = this.dataGraph.findNode(childNode);
 	childNode = (idx) ? this.dataGraph.getNode(idx) : childNode;
 	
 	if(!childNode.parent) { childNode.parent = new Array(); }
-	childNode.parent.push(rootNode);
-
+	if (!rootNode in childNode.parent) {
+		childNode.parent.push(rootNode);
+	}
+	
 	if( window.CURR_CRUMB == root ){
-		childNode["color"] = childNode.colorStrip[childNode.colorStripIndex=0];
+		childNode["color"] = this.colorStrip[childNode.colorStripIndex=0];
 		childNode.current = true;
 	}
 	else {
@@ -191,7 +194,7 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 }
 
 // from http://krazydad.com/makecolors.php
-JSONTreeLoader.prototype.generateColorStrip = function(crumbElem) {
+JSONTreeLoader.prototype.generateColorStrip = function() {
 	var frequency = Math.PI/10;
 	var numStops = 6; // hence phase of pi/10
 	var colorString = "#";
@@ -199,15 +202,16 @@ JSONTreeLoader.prototype.generateColorStrip = function(crumbElem) {
 	var gStart = 0xD8;  var gStop = 0xcc;
 	var bStart = 0xE6;  var bStop = 0xcc;
 	
-	crumbElem.colorStrip = new Array(6);
-	crumbElem.colorStripIndex = 0;
+	this.colorStrip = new Array(6);
 	for( i=0; i<numStops; i++ ) {
 		rComponent = Math.round(Math.sin(frequency*i)*(rStop-rStart) + rStart);
 		gComponent = Math.round(Math.sin(frequency*i)*(gStop-gStart) + gStart);
 		bComponent = Math.round(Math.sin(frequency*i)*(bStop-bStart) + bStart);
-		crumbElem.colorStrip[i+1] = colorString+rComponent.toString(16)+gComponent.toString(16)+bComponent.toString(16);
+		this.colorStrip[i+1] = colorString+rComponent.toString(16)+gComponent.toString(16)+bComponent.toString(16);
 	}
-	crumbElem.colorStrip[0] = "#FF82A0";
-	crumbElem.colorStrip;
-	crumbElem;
+	this.colorStrip[0] = "#FF82A0";
+}
+
+JSONTreeLoader.prototype.findNode = function(node, container) {
+	
 }
