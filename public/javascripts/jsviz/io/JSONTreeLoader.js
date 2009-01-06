@@ -105,11 +105,12 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	rootNode = (idx) ? this.dataGraph.getNode(idx) : rootNode;
 	
 	if( window.CURR_CRUMB == 0 ){
-		rootNode["color"] = rootNode.colorStrip[rootNode.colorStripIndex=0];
+		rootNode["color"] = this.colorStrip[rootNode.colorStripIndex=0];
 		rootNode.current = true;
 	}
 	else {
-		rootNode["color"] = (rootNode.colorStripIndex<5) ? rootNode.colorStrip[rootNode.colorStripIndex+=1] : rootNode.colorStrip[5];
+		rootNode["color"] = (rootNode.colorStripIndex<5) ?
+        this.colorStrip[rootNode.colorStripIndex+=1] : this.colorStrip[5];
 		rootNode.current = false;
 	}
 	
@@ -149,18 +150,15 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	childNode = (idx) ? this.dataGraph.getNode(idx) : childNode;
 	
 	if(!childNode.parent) { childNode.parent = new Array(); }
-	if (!rootNode in childNode.parent) {
-		var parents = childNode.parent;
-		parents.push(rootNode);
-		childNode.parent = parents.uniq();
-	}
+    childNode.parent.push(rootNode);
 	
 	if( window.CURR_CRUMB == root ){
 		childNode["color"] = this.colorStrip[childNode.colorStripIndex=0];
 		childNode.current = true;
 	}
 	else {
-		childNode["color"] = (childNode.colorStripIndex<5) ? childNode.colorStrip[childNode.colorStripIndex+=1] : childNode.colorStrip[5];
+		childNode["color"] = (childNode.colorStripIndex<5) ?
+        this.colorStrip[childNode.colorStripIndex+=1] : this.colorStrip[5];
 		childNode.current = false;
 	}
 	if (idx) {
@@ -212,8 +210,4 @@ JSONTreeLoader.prototype.generateColorStrip = function() {
 		this.colorStrip[i+1] = colorString+rComponent.toString(16)+gComponent.toString(16)+bComponent.toString(16);
 	}
 	this.colorStrip[0] = "#FF82A0";
-}
-
-JSONTreeLoader.prototype.findNode = function(node, container) {
-	
 }
