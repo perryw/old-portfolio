@@ -1,15 +1,11 @@
 class DeliverablesController < ApplicationController
   before_filter :login_required
   
-  def tag_cloud
-    @tags = Deliverable.tag_counts
-  end
-  
   # GET /deliverables
   # GET /deliverables.xml
   def index
     @deliverables = Deliverable.find(:all)
-    tag_cloud
+    #self.tag_cloud
     #p "Tags are: #{@tags}"
 
     respond_to do |format|

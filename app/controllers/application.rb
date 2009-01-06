@@ -37,7 +37,8 @@ class ApplicationController < ActionController::Base
   # BCT inspired by http://szeryf.wordpress.com/2008/06/13/easy-and-flexible-breadcrumbs-for-rails/
   before_filter :update_breadcrumb_trail
   
-protected  
+protected 
+  DEBUG = true
   @@skip_filters = ['create', 'destroy', 'new_association', 'tag_cloud', 'update', 'download']
   @@simple_bct = false
   
@@ -47,7 +48,8 @@ protected
   
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
-  def on_same_branch(bcA, bcB)
+  def on_same_branch(bcA, bcB, firstTime = true)
+    return true if (firstTime && (bcA==0 || bcB==0))
     if( bcA < bcB )
       root = bcA
       leaf = bcB
@@ -66,32 +68,10 @@ protected
         next if thisParent == 0 # reached all the way to the top without sharing a parent
         return true
       end
-      retVal ||= on_same_branch(root, thisParent)
+      retVal ||= on_same_branch(root, thisParent, false)
     end
     
     return retVal
-  end
-  
-  def load_bct
-    if session['marshalled']
-      deserialize_me = Array.new
-      session['breadcrumb'].each do |sbc|
-        deserialize_me << Breadcrumb._load(sbc)
-      end
-      session['breadcrumb'] = deserialize_me
-      session['marshalled'] = false
-    end
-  end
-  
-  def dump_bct
-    unless session['marshalled']
-      serialize_me = Array.new
-      session['breadcrumb'].each do |sbc|
-        serialize_me << sbc._dump(-1)
-      end
-      session['breadcrumb'] = serialize_me
-      session['marshalled'] = true
-    end
   end
   
   def update_breadcrumb_trail
@@ -102,9 +82,6 @@ protected
     
     session['breadcrumb'] ||= []
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail
-    #session['marshalled'] ||= false
-    
-    #load_bct if session['marshalled'] # so that uploading can work...
     
     # hitting 'refresh' doesn't count as a traversal of the site, so skip all this
     unless !session['breadcrumb'].empty? && false #req_params == session['breadcrumb'].last.params
@@ -133,10 +110,16 @@ protected
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
           end
-        elsif bcIndex != session['breadcrumb_index']
+        elsif bcIndex != currIndex
           # branch converges with previous branch
           parents = session['breadcrumb'][bcIndex].parent
-          session['breadcrumb'][bcIndex].parent << session['breadcrumb_index'] unless parents.include?(currIndex)
+          pIdx = parents.index(currIndex)
+          
+          unless bcIndex == 0
+            parents.delete_at(pIdx) unless pIdx.nil?
+            parents << currIndex   # root has no parents
+            session['breadcrumb'][currIndex].children << bcIndex unless session['breadcrumb'][currIndex].children.include?(bcIndex) 
+          end
         end
 
         session['breadcrumb_index'] = bcIndex

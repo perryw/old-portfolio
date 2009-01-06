@@ -139,7 +139,6 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, color ) {
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-	childNode["color"] = "#ADD8E6";
 	childNode.text = params['controller'] + ": " + params['action'];
 	childNode.URL = this.reconstructURL(params);
 	this.generateColorStrip(childNode);
@@ -161,12 +160,9 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, color ) {
 	}
 	if (idx) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
-		var p;
-		for( p in childNode.parent ){
-			var paren = childNode.parent[p];
-			var edge = this.layout.view.edges[childNode.id][paren.id];
-			edge.domEdge.setAttribute("stroke", childNode["color"]);
-		}
+		var paren = childNode.parent.last();
+		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
+		edge.domEdge.setAttribute("stroke", childNode["color"]);
 	}
 	else {
 		this.dataGraph.addNode(childNode);

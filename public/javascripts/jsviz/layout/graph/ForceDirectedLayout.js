@@ -335,19 +335,19 @@ ForceDirectedLayout.prototype.addParticle = function( dataNode ) {
 
 	// Add a Spring Force between child and parent
 	for( pIdx in dataNode.parent ) {
-		var parent = dataNode.parent[pIdx];
-		if( ! parent.particle ) continue;
-		particle.positionX = parent.particle.positionX + rx;
-		particle.positionY = parent.particle.positionY + ry;
+		var nodeParent = dataNode.parent[pIdx];
+		if( ! nodeParent.particle ) continue;
+		particle.positionX = nodeParent.particle.positionX + rx;
+		particle.positionY = nodeParent.particle.positionY + ry;
 		var configNode = (dataNode.type in this.forces.spring &&
-			parent.type in this.forces.spring[dataNode.type]) ? 
-			this.forces.spring[dataNode.type][parent.type](dataNode, parent, true) : 
-			this.forces.spring['_default'](dataNode, parent, true);
-		this.model.makeSpring( particle, parent.particle, 
+			nodeParent.type in this.forces.spring[dataNode.type]) ? 
+			this.forces.spring[dataNode.type][nodeParent.type](dataNode, nodeParent, true) : 
+			this.forces.spring['_default'](dataNode, nodeParent, true);
+		this.model.makeSpring( particle, nodeParent.particle, 
 			configNode.springConstant, configNode.dampingConstant, configNode.restLength );
 
-		var props = this.viewEdgeBuilder( parent, dataNode );
-		this.view.addEdge( particle, parent.particle, props );
+		var props = this.viewEdgeBuilder( nodeParent, dataNode );
+		this.view.addEdge( particle, nodeParent.particle, props );
 	}
 
 	// Add repulsive force between this particle and all other particle.
