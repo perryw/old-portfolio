@@ -113,11 +113,10 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	}
 	
 	if (idx) {
-		window.debugelem = this.layout.view.nodes[rootNode.id].domElement.childNodes[0];
-		
+		//window.debugelem = this.layout.view.nodes[rootNode.id].domElement.childNodes[0];
 		this.layout.view.nodes[rootNode.id].domElement.childNodes[0].setAttribute("fill", rootNode["color"]);
 	}
-	if (!idx) {
+	else {
 		this.dataGraph.addNode(rootNode);
 	}
 	
@@ -162,8 +161,14 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, color ) {
 	}
 	if (idx) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
+		var p;
+		for( p in childNode.parent ){
+			var paren = childNode.parent[p];
+			var edge = this.layout.view.edges[childNode.id][paren.id];
+			edge.domEdge.setAttribute("stroke", childNode["color"]);
+		}
 	}
-	if (!idx) {
+	else {
 		this.dataGraph.addNode(childNode);
 	}
 	

@@ -67,76 +67,66 @@
 								:update => 'p_page',
 								:complete => "updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
 							},
-							{
-								:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index")
-							}
+							{	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index") }
 						 %>
 						<% m.remote_action "Courses", {
-						    		:url=>{
-						        		:controller=>'courses',
-						        		:action=>'index'
-									}, 
-									:method => :get,
-									:update => 'p_page',
-									:complete => "updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
-								},
-								{ :id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
-							 %>
+					    		:url=>{
+					        		:controller=>'courses',
+					        		:action=>'index'
+								}, 
+								:method => :get,
+								:update => 'p_page',
+								:complete => "updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
+							},
+							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
+						 %>
 						<% m.remote_action 'Deliverables', {
-									:url => {
-										:controller => 'deliverables',
-										:action => 'index'
-									},
-									:method => :get,
-									:update => 'p_page',
-									:complete => "updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked');"
+								:url => {
+									:controller => 'deliverables',
+									:action => 'index'
 								},
-								{
-									:id => 'menu_devlierables', :href => url_for(:controller=>"deliverables", :action => "index")
-								}
-							 %>
+								:method => :get,
+								:update => 'p_page',
+								:complete => "updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
+							},
+							{	:id => 'menu_devlierables', :href => url_for(:controller=>"deliverables", :action => "index") }
+						 %>
 						<% m.remote_action 'Gallery', {
-									:url => {
-										:controller => 'gallery',
-										:action => 'index'
-									},
-									:method => :get,
-									:update => 'p_page',
-									:complete => "updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked');"
+								:url => {
+									:controller => 'gallery',
+									:action => 'index'
 								},
-								{
-									:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index")
-								}
-							 %>
+								:method => :get,
+								:update => 'p_page',
+								:complete => "updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked')"
+							},
+							{	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
+						 %>
 						<% m.remote_action 'Projects', {
-									:url => {
-										:controller => 'projects',
-										:action => 'index'
-									},
-									:method => :get,
-									:update => 'p_page',
-									:complete => "updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked');"
+								:url => {
+									:controller => 'projects',
+									:action => 'index'
 								},
-								{
-									:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")
-								}
-							 %>
+								:method => :get,
+								:update => 'p_page',
+								:complete => "updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
+							},
+							{	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
+						 %>
 						<% m.remote_action 'Resources', {
-									:url => {
-										:controller => 'resources',
-										:action => 'index'
-									},
-									:method => :get,
-									:update => 'p_page',
-									:complete => "updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked');"
+								:url => {
+									:controller => 'resources',
+									:action => 'index'
 								},
-								{
-									:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index")
-								}
+								:method => :get,
+								:update => 'p_page',
+								:complete => "updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
+							},
+							{	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
 						%>								
 					<% end %>
 			    	<% if_admin? do %>
-                    <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
+                    	<% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
 					<% end %>
 				<% end %>
 			</div>

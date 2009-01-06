@@ -133,7 +133,7 @@ function jsviz_init() {
 						Event.stop(event); // prevent propogation
 						if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
 						if( dataNode.isAjax ){
-							var paramString = "authenticity_token=" + AUTH_TOKEN;
+							var paramString = ""; //"authenticity_token=" + AUTH_TOKEN;
 							new Ajax.Updater( 'p_page', dataNode.URL, {
 								asynchronous: true,
 								evalScripts: true,
@@ -190,7 +190,7 @@ function jsviz_init() {
 						Event.stop(event); // prevent propogation
 						if( layout.mouseMoved ) { layout.mouseMoved = false; return; }
 						if( dataNode.isAjax ){
-							var paramString = "authenticity_token=" + AUTH_TOKEN;
+							var paramString = "";//"authenticity_token=" + AUTH_TOKEN;
 							/*
 							var id = parseInt(params['id']);
 							
@@ -279,7 +279,7 @@ function jsviz_init() {
 	layout.forces.magnet = function() {
 		return {
 			magnetConstant: -5000,
-			minimumDistance: 60
+			minimumDistance: 70
 		}
 	}
 
@@ -293,13 +293,13 @@ function jsviz_init() {
 	layout.viewEdgeBuilder = function( dataNodeSrc, dataNodeDest ) {
 		if ( this.svg ) {
 			return {
-				'stroke': dataNodeSrc.color,
+				'stroke': dataNodeDest.color,
 				'stroke-width': '2px',
 				'stroke-dasharray': '2,4'
 			}
 		} else {
 			return {
-				'pixelColor': dataNodeSrc.color,
+				'pixelColor': dataNodeDest.color,
 				'pixelWidth': '2px',
 				'pixelHeight': '2px',
 				'pixels': 8
