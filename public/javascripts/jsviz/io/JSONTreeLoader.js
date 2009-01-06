@@ -124,7 +124,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	// Add children
 	var localScope = this;
 	root["children"].each( function(child) { 
-			this.lastNodeAdded = localScope.branch(child, rootNode); // , "#90EE90"
+			this.lastNodeAdded = localScope.branch(child, rootNode); // , "#90EE90" // green
 		});
 
 	this.notify();
@@ -150,7 +150,9 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	
 	if(!childNode.parent) { childNode.parent = new Array(); }
 	if (!rootNode in childNode.parent) {
-		childNode.parent.push(rootNode);
+		var parents = childNode.parent;
+		parents.push(rootNode);
+		childNode.parent = parents.uniq();
 	}
 	
 	if( window.CURR_CRUMB == root ){

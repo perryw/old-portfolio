@@ -49,13 +49,15 @@ protected
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
   def on_same_branch(bcA, bcB, firstTime = true)
-    return true if (firstTime && (bcA==0 || bcB==0))
-    if( bcA < bcB )
-      root = bcA
-      leaf = bcB
-    else
-      root = bcB
-      leaf = bcA
+    if(firstTime)
+      return true if (bcA==0 || bcB==0)
+      if( bcA < bcB )
+        root = bcA
+        leaf = bcB
+      else
+        root = bcB
+        leaf = bcA
+      end
     end
     
     return false if session['breadcrumb'][root].nil? || session['breadcrumb'][leaf].nil?
