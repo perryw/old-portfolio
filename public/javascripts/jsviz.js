@@ -105,7 +105,9 @@ function jsviz_init() {
 					var container = document.getElementById("jsviz_div");
 					var offset = container.positionedOffset();
 
-					tt.innerHTML="URL: " + dataNode.URL + "\nisAjax: " + dataNode.isAjax + " isCurr: " + dataNode.current;
+					var parenString = "";
+					dataNode.parent.each( function(paren){ parenString += ", " + paren.URL});;
+					tt.innerHTML="URL: " + dataNode.URL + " , # parents: " + parenString;
 					tt.style.display="block";
 					tt.style.left=(modelNode.positionX*skewX + centerX + offset.left + 5) + "px";
 					tt.style.top=(modelNode.positionY*skewY + centerY + offset.top - 25) +  "px";

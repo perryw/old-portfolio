@@ -133,7 +133,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
  * @param {Object} root
  * @param {Object} rootNode
  */
-JSONTreeLoader.prototype.branch = function( root, rootNode, color ) {
+JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	var child = this.JSONDoc[root];
 	var params = child['params'];
 	var childNode = new DataGraphNode();

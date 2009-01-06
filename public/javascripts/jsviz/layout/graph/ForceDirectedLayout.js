@@ -318,14 +318,20 @@ ForceDirectedLayout.prototype.forces={
  */
 ForceDirectedLayout.prototype.addParticle = function( dataNode ) {
 	// Create a particle to represent this data node in our model.
-	var particle = this.makeNodeModel(dataNode);
-	
-	var domElement = this.makeNodeView( dataNode, particle );
-	this.view.addNode( particle, domElement );
-
-	// Determine if this particle's position should be fixed.
-	if ( dataNode.fixed ) { particle.fixed = true; }
-
+	var particle;
+	if (!dataNode.particle) {
+		particle = this.makeNodeModel(dataNode);
+		var domElement = this.makeNodeView(dataNode, particle);
+		this.view.addNode(particle, domElement);
+		
+		// Determine if this particle's position should be fixed.
+		if (dataNode.fixed) {
+			particle.fixed = true;
+		}
+	}
+	else {
+		particle = dataNode.particle;
+	}
 	// Assign a random position to the particle.
 	// perryw: CHANGE this so that particles are favoured left->right as if on timeline
 	var rx = Math.random()*2-1;
@@ -336,7 +342,10 @@ ForceDirectedLayout.prototype.addParticle = function( dataNode ) {
 	// Add a Spring Force between child and parent
 	for( pIdx in dataNode.parent ) {
 		var nodeParent = dataNode.parent[pIdx];
-		if( ! nodeParent.particle ) continue;
+		if( isNaN(pIdx) ) continue; 
+		if (!nodeParent.particle) {
+			this.addParticle(nodeParent); // recursive made the particle so we can add the edges
+		}
 		particle.positionX = nodeParent.particle.positionX + rx;
 		particle.positionY = nodeParent.particle.positionY + ry;
 		var configNode = (dataNode.type in this.forces.spring &&
