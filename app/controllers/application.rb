@@ -48,15 +48,13 @@ protected
   
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
-  def on_same_branch(bcA, bcB, firstTime = true)
+  def on_same_branch(root, leaf, firstTime = true)
     if(firstTime)
-      return true if (bcA==0 || bcB==0)
-      if( bcA < bcB )
-        root = bcA
-        leaf = bcB
-      else
-        root = bcB
-        leaf = bcA
+      return true if (root==0 || leaf==0)
+      if( root > leaf )  # swap
+        tmp = root
+        root = leaf
+        leaf = tmp
       end
     end
     
