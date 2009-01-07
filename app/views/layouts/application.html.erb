@@ -65,7 +65,8 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
+								:loading => "$('spinner_div').show()",
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index") }
 						 %>
@@ -76,6 +77,7 @@
 								}, 
 								:method => :get,
 								:update => 'p_page',
+								:loading => "$('spinner_div').show()",
 								:complete => "updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
@@ -87,7 +89,8 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
+								:loading => "$('spinner_div').show()",
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index") }
 						 %>
@@ -98,7 +101,8 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked')"
+								:loading => "$('spinner_div').show()",
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
 						 %>
@@ -109,7 +113,8 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
+								:loading => "$('spinner_div').show()",
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
 						 %>
@@ -120,7 +125,8 @@
 								},
 								:method => :get,
 								:update => 'p_page',
-								:complete => "updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
+								:loading => "$('spinner_div').show()",
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
 						%>								

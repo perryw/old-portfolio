@@ -1,6 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-
+  include TagsHelper
+  
   FLASH_NOTICE_KEYS = [:error, :notice, :warning]
 
   def flash_messages

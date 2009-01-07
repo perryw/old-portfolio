@@ -146,7 +146,8 @@ function jsviz_init() {
 								evalScripts: true,
 								method: 'get',
 								parameters: paramString,
-								onComplete: function() { window.document.fire('jsviz:clicked'); }
+								onLoading: function(){ $('spinner_div').show();},
+								onComplete: function() { $('spinner_div').hide(); window.document.fire('jsviz:clicked'); }
 							});
 						} 
 						else if( dataNode['cannotUndo'] ) {	}

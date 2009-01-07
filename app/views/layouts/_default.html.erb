@@ -26,6 +26,7 @@
 		
 		<div class="yui-b"><!-- main content block -->
 			<%#= flash_messages %>
+			<div id='spinner_div' style='display:none;'><%= image_tag 'ajax-loader.gif'%></div>
 			<div id='p_page'>
 				<%= yield %>
 			</div>
