@@ -78,7 +78,7 @@
 								:method => :get,
 								:update => 'p_page',
 								:loading => "$('spinner_div').show()",
-								:complete => "updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
+								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
 						 %>
