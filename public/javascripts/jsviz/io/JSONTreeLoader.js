@@ -170,6 +170,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	
 			var props = this.layout.viewEdgeBuilder( rootNode, childNode );
 			this.layout.view.addEdge( childNode.particle, rootNode.particle, props );
+			this.layout.view.drawEdge( childNode.particle, rootNode.particle );
 		}
 		else {
 			edge.domEdge.setAttribute("stroke", childNode["color"]);
