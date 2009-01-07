@@ -158,7 +158,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 		var paren = childNode.parent.last();
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
 		if(!edge) {  //edge doesn't exist yet....create it now 
-			childNode.parent.push(rootNode);
+			//childNode.parent.push(rootNode);
 			this.dataGraph.addEdge(childNode, rootNode);
 					
 			var configNode = (childNode.type in this.layout.forces.spring &&
