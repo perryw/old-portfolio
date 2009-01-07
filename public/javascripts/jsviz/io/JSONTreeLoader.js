@@ -159,6 +159,17 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
 		if(!edge) {  //edge doesn't exist yet....create it now 
 			//childNode.parent.push(rootNode);
+			for(pdx in childNode.parent) {
+				p = childNode.parent[pdx];
+				if(!p.id) continue;
+				var e = this.layout.view.edges[childNode.id][p.id] || this.layout.view.edges[p.id][childNode.id];
+				if(!e){
+					if(pdx == (childNode.parent.size()-1)) break;
+					continue;
+				}
+				e.domEdge.setAttribute("stroke", this.colorStrip[1]);
+				
+			}
 			this.dataGraph.addEdge(childNode, rootNode);
 					
 			var configNode = (childNode.type in this.layout.forces.spring &&
