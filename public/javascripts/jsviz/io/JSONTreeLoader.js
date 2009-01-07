@@ -57,15 +57,14 @@ JSONTreeLoader.prototype.load = function( ) {
 			alert('railed to get current breadcrumb index with response ' + request); 
 		}
 	} );
-	new Ajax.Request('/breadcrumbs/get_breadcrumb', 
-		{
-			asynchronous:false, 
-			method:'get', 
-			onFailure:function(request){ alert('failed to get breadcrumb for JSViz'); }, 
-			onSuccess: function(request){
-				localScope.handle(request);
-			}
-		});
+	new Ajax.Request('/breadcrumbs/get_breadcrumb', {
+		asynchronous:false, 
+		method:'get', 
+		onFailure:function(request){ alert('failed to get breadcrumb for JSViz'); }, 
+		onSuccess: function(request){
+			localScope.handle(request);
+		}
+	});
 }
 	
 /*
@@ -75,15 +74,7 @@ JSONTreeLoader.prototype.load = function( ) {
  */
 JSONTreeLoader.prototype.handle = function( request ) {
 	this.JSONDoc = request.responseJSON;
-	if( this.JSONDoc.length <= 0 ) { 
-		this.layout.view.clear(); 
-		this.dataGraph.clear(); 
-		this.layout.clear(); 
-		this.notify(); 
-		return;
-	}
-	else if( this.JSONDoc.length < this.dataGraph.nodes.length )
-	{
+	if( this.JSONDoc.length < this.dataGraph.nodes.length )	{
 		this.layout.view.clear(); 
 		this.dataGraph.clear(); 
 		this.layout.clear(); 
@@ -166,7 +157,23 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
 		var paren = childNode.parent.last();
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
-		edge.domEdge.setAttribute("stroke", childNode["color"]);
+		if(!edge) {  //edge doesn't exist yet....create it now 
+			childNode.parent.push(rootNode);
+			this.dataGraph.addEdge(childNode, rootNode);
+					
+			var configNode = (childNode.type in this.layout.forces.spring &&
+			rootNode.type in this.layout.forces.spring[childNode.type]) ? 
+			this.layout.forces.spring[childNode.type][rootNode.type](childNode, rootNode, true) : 
+			this.layout.forces.spring['_default'](childNode, rootNode, true);
+			this.layout.model.makeSpring( childNode.particle, rootNode.particle, 
+				configNode.springConstant, configNode.dampingConstant, configNode.restLength );
+	
+			var props = this.layout.viewEdgeBuilder( rootNode, childNode );
+			this.layout.view.addEdge( childNode.particle, rootNode.particle, props );
+		}
+		else {
+			edge.domEdge.setAttribute("stroke", childNode["color"]);
+		}
 	}
 	else {
 		this.dataGraph.addNode(childNode);
