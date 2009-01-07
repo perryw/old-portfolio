@@ -363,8 +363,12 @@ Event.observe(document, 'lightview:loaded', function(event){
 // prevent weird mouse handling errors w/ lv
 $('jsviz_div').observe('mouseover', function(event){ Event.stop(event); });
 Event.observe( document, 'jsviz:clicked', function(event) {
+	$('loading').show();
+	$('loading').innerHTML = "Updating breadcrumb list...";
 	window.jsvizObj.loader.load();
+	$('loading').innerHTML = "Updating breadcrumb trail...";
 	window.jsvizObj.buildTimer.start();
+	$('loading').hide();
 });
 
 $('jsviz_div').observe('click', function(event){ Event.stop(event); });
