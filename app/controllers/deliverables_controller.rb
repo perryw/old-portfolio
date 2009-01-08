@@ -43,6 +43,10 @@ class DeliverablesController < ApplicationController
   # GET /deliverables/1/edit
   def edit
     @deliverable = Deliverable.find(params[:id])
+    @collaborators = Collaborator.all
+    respond_to do |format|
+      format.html { render :layout => false if request.xhr? }
+    end
   end
 
   # POST /deliverables
@@ -66,7 +70,16 @@ class DeliverablesController < ApplicationController
   # PUT /deliverables/1.xml
   def update
     @deliverable = Deliverable.find(params[:id])
-    
+    collaborators = params[:collaborator]
+    collaborators.delete_if{ |k,v| v == '0' } # remove unchecked collaborators
+    collaborators.each_key do |cIndex|
+      collab = Collaborator.find(cIndex)
+      unless collab.nil? || collab.deliverable_ids.include?(@deliverable.id)
+        delis = collab.deliverable_ids
+        delis << @deliverable.id
+        collab.update_attribute( :deliverable_ids, delis )
+      end
+    end
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])
         flash[:notice] = 'Deliverable was successfully updated.'

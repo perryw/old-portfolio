@@ -14,13 +14,13 @@
   </p>
 
 <p>
-	<b>Members</b><br />
-	<ul id='member_list'>
-		<% @members.each do |member| %>
-			<li><%= check_box 'member', member.id, {:checked => @project.member_ids.include?(member.id)} %><%= member.name %></li>
+	<b>Collaborators</b><br />
+	<ul id='collaborator_list'>
+		<% @collaborators.each do |collaborator| %>
+			<li><%= check_box 'collaborator', collaborator.id, {:checked => @project.collaborator_ids.include?(collaborator.id)} %><%= collaborator.name %></li>
 		<% end %>
 	</ul>
-	</p>
+</p>
   <p>
     <%= f.submit "Update" %>
   </p>

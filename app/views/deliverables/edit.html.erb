@@ -13,7 +13,14 @@
     <b>Description</b><br />
     <%= f.text_area :description %>
   </p>
-	
+<p>
+	<b>Collaborators</b><br />
+	<ul id='collaborator_list'>
+		<% @collaborators.each do |collaborator| %>
+			<li><%= check_box 'collaborator', collaborator.id, {:checked => collaborator.deliverable_ids.include?(@deliverable.id)} %><%= collaborator.name %></li>
+		<% end %>
+	</ul>
+</p>
 <p>
 	tags for this deliverable: <%= f.text_field :tag_list %>
 </p>

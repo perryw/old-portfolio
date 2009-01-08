@@ -65,7 +65,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     collaborators = params[:collaborator]
-    collaborators.delete_if{ |k,v| v == '0' }
+    collaborators.delete_if{ |k,v| v == '0' } # remove unchecked collaborators
     c_array = Array.new
     collaborators.each_key do |k,v|
       c_array << k.to_i
