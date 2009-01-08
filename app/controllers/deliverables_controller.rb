@@ -71,14 +71,12 @@ class DeliverablesController < ApplicationController
   def update
     @deliverable = Deliverable.find(params[:id])
     collaborators = params[:collaborator]
-    collaborators.delete_if{ |k,v| v == '0' } # remove unchecked collaborators
-    collaborators.each_key do |cIndex|
-      collab = Collaborator.find(cIndex)
-      unless collab.nil? || collab.deliverable_ids.include?(@deliverable.id)
-        delis = collab.deliverable_ids
-        delis << @deliverable.id
-        collab.update_attribute( :deliverable_ids, delis )
-      end
+    c_array = Array.new
+    collaborators.each do |k,v|
+      c_array << k unless v == '0'
+    end
+    unless c_array.empty?
+      params[:deliverable][:collaborator_ids] = c_array
     end
     
     respond_to do |format|

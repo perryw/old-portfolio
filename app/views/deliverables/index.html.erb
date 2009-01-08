@@ -12,7 +12,7 @@
   <tr>
     <td><%=h deliverable.name %></td>
     <td><%=h deliverable.description %></td>
-	<td><%=h Deliverable.find(:all).size%></td>
+	<td><%=h deliverable.collaborators.size %></td>
 	<td><%= deliverable.tag_list %></td>
     <td><%= link_to 'Show', deliverable %></td>
     <td><%= link_to 'Edit', edit_deliverable_path(deliverable) %></td>

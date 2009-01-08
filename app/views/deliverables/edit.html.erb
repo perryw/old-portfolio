@@ -17,7 +17,10 @@
 	<b>Collaborators</b><br />
 	<ul id='collaborator_list'>
 		<% @collaborators.each do |collaborator| %>
-			<li><%= check_box 'collaborator', collaborator.id, {:checked => collaborator.deliverable_ids.include?(@deliverable.id)} %><%= collaborator.name %></li>
+			<li><%= check_box 'collaborator', collaborator.id, 
+					{:checked => @deliverable.collaborator_ids.include?(collaborator.id)} %>
+				<%= collaborator.name %>
+			</li>
 		<% end %>
 	</ul>
 </p>
