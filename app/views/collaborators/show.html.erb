@@ -13,6 +13,20 @@
   <%=h @collaborator.uniqname %>
 </p>
 
-
+<p>
+	<b>Deliverables collaborated on: </b>
+	<table>
+		<tr>
+			<th>Deliverable name</th>
+			<th>Deliverable description</th>
+		</tr>
+		<% @collaborator.deliverables.each do |deliv| -%>
+			<tr>
+				<td><%=h deliv.name %></td>
+				<td><%=h deliv.description %></td>
+			</tr>
+		<% end -%>
+	</table>
+</p>
 <%= link_to 'Edit', edit_collaborator_path(@collaborator) %> |
 <%= link_to 'Back', collaborators_path %>

@@ -13,5 +13,14 @@
 	<%=h @deliverable.tag_list %>
 	</p>
 
+<p>
+	<b>Collaborators:</b>
+	<ul>
+		<% @deliverable.collaborators.each do |collab| -%>
+			<li><%=h collab.name %></li>
+		<% end -%>
+	</ul>
+</p>	
+		
 <%= link_to 'Edit', edit_deliverable_path(@deliverable) %> |
 <%= link_to 'Back', deliverables_path %>
