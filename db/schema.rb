@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081219183356) do
+ActiveRecord::Schema.define(:version => 20090108022839) do
+
+  create_table "collaborations", :force => true do |t|
+    t.integer  "collaborator_id"
+    t.integer  "product_id"
+    t.string   "product_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "collaborators", :force => true do |t|
     t.string   "lastname"
@@ -32,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20081219183356) do
     t.string   "name"
     t.text     "description"
     t.integer  "project_id"
-    t.integer  "member_id"
+    t.integer  "collaborator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

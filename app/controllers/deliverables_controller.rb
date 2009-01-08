@@ -80,6 +80,7 @@ class DeliverablesController < ApplicationController
         collab.update_attribute( :deliverable_ids, delis )
       end
     end
+    
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])
         flash[:notice] = 'Deliverable was successfully updated.'

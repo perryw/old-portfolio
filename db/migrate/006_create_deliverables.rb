@@ -3,9 +3,7 @@ class CreateDeliverables < ActiveRecord::Migration
     create_table :deliverables do |t|
       t.string :name
       t.text :description
-      
       t.references :project
-      t.references :collaborator
       
       t.timestamps
     end
