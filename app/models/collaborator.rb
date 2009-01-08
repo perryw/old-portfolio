@@ -1,10 +1,16 @@
 class Collaborator < ActiveRecord::Base
   has_many :collaborations
   
-  has_many :deliverables, :through => :collaborations
-  has_many :projects, :through => :collaborations
+  has_many :deliverables, :through => :collaborations, :source => :deliverable,
+          :conditions => "collaborations.product_type = 'Deliverable'"
+  has_many :projects, :through => :collaborations, :source => :project,
+          :conditions => "collaborations.product_type = 'Project'"
   
   has_many :resources, :as => :resource_owner
+
+  def products
+    self.projects + self.deliverables
+  end
   
   def name
     "#{firstname} #{lastname}"

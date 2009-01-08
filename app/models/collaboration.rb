@@ -2,8 +2,8 @@ class Collaboration < ActiveRecord::Base
   belongs_to :collaborator
   belongs_to :product, :polymorphic => true
   
-  belongs_to :project, :class_name => "Project"
-  belongs_to :deliverable, :class_name => "Deliverable"
+  belongs_to :project, :class_name => "Project", :foreign_key => "product_id"
+  belongs_to :deliverable, :class_name => "Deliverable", :foreign_key => "product_id"
 end
 
 #class Authorship < ActiveRecord::Base
