@@ -3,23 +3,23 @@
 <%= error_messages_for :deliverable %>
 
 <% form_for(@deliverable) do |f| %>
-  <p>
-    <b>Name</b><br />
+  <div>
+    <span class='key'>Name</span><br />
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
-    <b>Description</b><br />
+  <div>
+    <span class='key'>Description</span><br />
     <%= f.text_area :description %>
-  </p>
+  </div>
 	
-<p>
+<div>
 	tags for this deliverable: <%= f.text_field :tag_list %>
-</p>
+</div>
 
-  <p>
+  <div>
     <%= f.submit "Create" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Back', deliverables_path %>

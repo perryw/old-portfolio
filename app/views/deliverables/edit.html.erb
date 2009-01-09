@@ -4,33 +4,37 @@
 
 <% form_for(@deliverable) do |f| %>
 
-  <p>
-    <b>Name</b><br />
+  <div>
+    <span class='key'>Name</span>
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
-    <b>Description</b><br />
+  <div>
+    <span class='key'>Description:</span>
     <%= f.text_area :description %>
-  </p>
-<p>
-	<b>Collaborators</b><br />
-	<ul id='collaborator_list'>
-		<% @collaborators.each do |collaborator| %>
-			<li><%= check_box 'collaborator', collaborator.id, 
-					{:checked => @deliverable.collaborator_ids.include?(collaborator.id)} %>
-				<%= collaborator.name %>
-			</li>
-		<% end %>
-	</ul>
-</p>
-<p>
-	tags for this deliverable: <%= f.text_field :tag_list %>
-</p>
+  </div>
+	<div>
+		<span class='key'>Collaborators</span>
+		<ul id='collaborator_list'>
+			<% @collaborators.each do |collaborator| -%>
+				<li><%= check_box 'collaborator', collaborator.id, 
+						{:checked => @deliverable.collaborator_ids.include?(collaborator.id)} %>
+					<%= collaborator.name %>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+	<div>
+		<span class='key'>Owned by Project:</span>
+		<%= collection_select("deliverable", "project_id" , @projects, "id", "name", {:selected => @deliverable.project_id.to_s, :include_blank => true}) %>
+	</div>
+<div>
+	<span class='key'>Tags for this deliverable:</span> <%= f.text_field :tag_list %>
+</div>
 
-  <p>
+  <div>
     <%= f.submit "Update" %>
-  </p>
+  </div>
 <% end %>
 <%= link_to 'Show', @deliverable %> |
 <%= link_to 'Back', deliverables_path %>

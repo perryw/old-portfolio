@@ -5,25 +5,25 @@
 </div>
 
 <% form_for(@course) do |f| %>
-  <p>
-    <b>Dept</b><br />
+  <div>
+    <span class='key'>Dept</span><br />
     <%= f.text_field :dept %>
-  </p>
+  </div>
 
-  <p>
-    <b>Courseno</b><br />
+  <div>
+    <span class='key'>Courseno</span><br />
     <%= f.text_field :courseno %>
-  </p>
+  </div>
   
-  <p>
-	<b>Coursename</b><br />
+  <div>
+	<span class='key'>Coursename</span><br />
 	<%= f.text_field :coursename %>
-  </p>
+  </div>
 	
-  <p>
-    <b>Description</b><br />
+  <div>
+    <span class='key'>Description</span><br />
     <%= f.text_area :description %>
-  </p>
+  </div>
 
 <div id='collaborator_div'>
 	
@@ -70,9 +70,9 @@
 	</span>
 </div>
 
-  <p>
+  <div>
     <%= f.submit "Update" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Show', @course %> |

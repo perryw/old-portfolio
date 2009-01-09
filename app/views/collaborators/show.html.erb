@@ -1,20 +1,20 @@
-<p>
-  <b>Lastname:</b>
-  <%=h @collaborator.lastname %>
-</p>
+<div>
+  <span class='key'>Lastname:</span>
+  <span class='value'><%=h @collaborator.lastname %></span>
+</div>
 
-<p>
-  <b>Firstname:</b>
-  <%=h @collaborator.firstname %>
-</p>
+<div>
+  <span class='key'>Firstname:</span>
+  <span class='value'><%=h @collaborator.firstname %></span>
+</div>
 
-<p>
-  <b>Uniqname:</b>
-  <%=h @collaborator.uniqname %>
-</p>
+<div>
+  <span class='key'>Uniqname:</span>
+  <span class='value'><%=h @collaborator.uniqname %></span>
+</div>
 
-<p>
-	<b>Deliverables collaborated on: </b>
+<div>
+	<span class='key'>Deliverables collaborated on: </span>
 	<table>
 		<tr>
 			<th>Deliverable name</th>
@@ -22,11 +22,11 @@
 		</tr>
 		<% @collaborator.deliverables.each do |deliv| -%>
 			<tr>
-				<td><%=h deliv.name %></td>
-				<td><%=h deliv.description %></td>
+				<td class='value'><%=h deliv.name %></td>
+				<td class='value'><%=h deliv.description %></td>
 			</tr>
 		<% end -%>
 	</table>
-</p>
+</div>
 <%= link_to 'Edit', edit_collaborator_path(@collaborator) %> |
 <%= link_to 'Back', collaborators_path %>

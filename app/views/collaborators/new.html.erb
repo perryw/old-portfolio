@@ -3,24 +3,24 @@
 <%= error_messages_for :collaborator %>
 
 <% form_for(@collaborator) do |f| %>
-  <p>
-    <b>Lastname</b><br />
+  <div>
+    <span class='key'>Lastname</span><br />
     <%= f.text_field :lastname %>
-  </p>
+  </div>
 
-  <p>
-    <b>Firstname</b><br />
+  <div>
+    <span class='key'>Firstname</span><br />
     <%= f.text_field :firstname %>
-  </p>
+  </div>
 
-  <p>
-    <b>Uniqname</b><br />
+  <div>
+    <span class='key'>Uniqname</span><br />
     <%= f.text_field :uniqname %>
-  </p>
+  </div>
 
-  <p>
+  <div>
     <%= f.submit "Create" %>
-  </p>
+  </div>
 <% end %>
 
 <%= link_to 'Back', collaborators_path %>

@@ -1,26 +1,26 @@
-<p>
-  <b>Name:</b>
-  <%=h @deliverable.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @deliverable.description %>
-</p>
-
-<p>
-	<b>Associated Tags:</b>
-	<%=h @deliverable.tag_list %>
-	</p>
-
-<p>
-	<b>Collaborators:</b>
+<div>
+  <span class='key'>Name:</span>
+  <span class='value'><%=h @deliverable.name %></span>
+</div>
+<div>
+  <span class='key'>Description:</span>
+  <span class='value'><%=h @deliverable.description %></span>
+</div>
+<div>
+	<span class='key'>Collaborators:</span>
 	<ul>
 		<% @deliverable.collaborators.each do |collab| -%>
-			<li><%=h collab.name %></li>
+			<li class='value'><%=h collab.name %></li>
 		<% end -%>
 	</ul>
-</p>	
-		
+</div>
+<div>
+	<span class='key'>Belongs to project:</span>
+	<span class='value'><%=h (@deliverable.project.nil? ? "does not belong to any project" : @deliverable.project.name)%></span>
+</div>
+<div>
+	<span class='key'>Associated Tags:</span>
+	<span class='value'><%=h @deliverable.tag_list %></span>
+</div>
 <%= link_to 'Edit', edit_deliverable_path(@deliverable) %> |
 <%= link_to 'Back', deliverables_path %>

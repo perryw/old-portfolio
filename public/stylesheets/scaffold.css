@@ -37,3 +37,6 @@ table
 #p_page {
 	
 }
+
+.key {	font-weight: bold; }
+.value { font-style: italic; }

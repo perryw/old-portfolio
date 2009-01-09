@@ -1,31 +1,31 @@
 <div id='courses_show'>
-	<p>
-	  <b>Dept:</b>
+	<div>
+	  <span class='key'>Dept:</span>
 	  <%=h @course.dept %>
-	</p>
+	</div>
 	
-	<p>
-	  <b>Courseno:</b>
+	<div>
+	  <span class='key'>Courseno:</span>
 	  <%=h @course.courseno %>
-	</p>
+	</div>
 	
-	<p>
-	  <b>Coursename:</b>
+	<div>
+	  <span class='key'>Coursename:</span>
 	  <%=h @course.coursename %>
-	</p>
+	</div>
 	
-	<p>
-	  <b>Description:</b>
+	<div>
+	  <span class='key'>Description:</span>
 	  <%=h @course.description %>
-	</p>
+	</div>
 	
 	<div id="resources" class="course_resource_show">
-		<b>Resources:</b>
+		<span class='key'>Resources:</span>
 		<% unless @course.resources.empty? %>
 		<% @course.resources.each do |r| %>
-		<p>
+		<div>
 		<%= image_tag(r.public_filename) %>
-		</p>
+		</div>
 		<% end %>
 		<% end %>
 	</div>

@@ -44,6 +44,7 @@ class DeliverablesController < ApplicationController
   def edit
     @deliverable = Deliverable.find(params[:id])
     @collaborators = Collaborator.all
+    @projects = Project.all
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
     end

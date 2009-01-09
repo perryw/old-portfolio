@@ -1,15 +1,15 @@
-<p>
-  <b>Name:</b>
+<div>
+  <span class='key'>Name:</span>
   <%=h @project.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @project.description %>
-</p>
+</div>
 
 <div>
-	<b>Collaborators:</b>
+  <span class='key'>Description:</span>
+  <%=h @project.description %>
+</div>
+
+<div>
+	<span class='key'>Collaborators:</span>
 	<ul>
 	<% @project.collaborators.each do |m| %>
 	<li><%=h m.name %></li>

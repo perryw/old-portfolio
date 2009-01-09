@@ -3,27 +3,27 @@
 <%= error_messages_for :project %>
 
 <% form_for(@project) do |f| %>
-  <p>
-    <b>Name</b><br />
+  <div>
+    <span class='key'>Name</span><br />
     <%= f.text_field :name %>
-  </p>
+  </div>
 
-  <p>
-    <b>Description</b><br />
+  <div>
+    <span class='key'>Description</span><br />
     <%= f.text_area :description %>
-  </p>
+  </div>
 
-<p>
-	<b>Collaborators</b><br />
+<div>
+	<span class='key'>Collaborators</span><br />
 	<ul id='collaborator_list'>
 		<% @collaborators.each do |collaborator| %>
 			<li><%= check_box 'collaborator', collaborator.id, {:checked => @project.collaborator_ids.include?(collaborator.id)} %><%= collaborator.name %></li>
 		<% end %>
 	</ul>
-</p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+</div>
+<div>
+<%= f.submit "Update" %>
+</div>
 <% end %>
 
 <%= link_to 'Show', @project %> |
