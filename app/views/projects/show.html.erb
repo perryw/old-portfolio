@@ -11,9 +11,9 @@
 <div>
 	<span class='key'>Collaborators:</span>
 	<ul>
-	<% @project.collaborators.each do |m| %>
-	<li class='value'><%=h m.name %></li>
-	<% end %>
+		<% @project.collaborators.each do |m| -%>
+			<li class='value'><%=h m.name %></li>
+		<% end %>
 	</ul>
 </div>
 

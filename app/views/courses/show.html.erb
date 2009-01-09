@@ -19,6 +19,15 @@
 	  <span class='value'><%=h @course.description %></span>
 	</div>
 	
+	<div>
+		<span class='key'>Projects:</span>
+		<ul>
+		<% @course.projects.each do |proj| -%>
+			<li class='value'><%=h proj.name %></li>
+		<% end -%>
+		</ul>
+	</div>
+	
 	<div id="resources" class="course_resource_show">
 		<span class='key'>Resources:</span>
 		<% unless @course.resources.empty? %>

@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Description</th>
 	<th># Collaborators</th>
+	<th>Owned By Course</th>
 	<th># Deliverables</th>
   </tr>
 
@@ -13,6 +14,7 @@
     <td><%=h project.name %></td>
     <td><%=h project.description %></td>
 	<td><%=h project.collaborators.size %></td>
+	<td><%=h (project.course.nil? "not owned by any course" : project.course.title %></td>
 	<td><%=h project.deliverables.size %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>

@@ -6,6 +6,7 @@
     <th>Courseno</th>
 	<th>Coursename</th>
     <th>Description</th>
+	<th># Projects</th>
 	<th># Resources</th>
   </tr>
 
@@ -15,6 +16,7 @@
     <td><%=h course.courseno %></td>
 	<td><%=h course.coursename %></td>
     <td><%=h course.description %></td>
+	<td><%=h course.projects.size %></td>
 	<td><%=h course.resources.size %></td>
     <td><%= link_to 'Show', course %></td>
     <td><%= link_to 'Edit', edit_course_path(course) %></td>
