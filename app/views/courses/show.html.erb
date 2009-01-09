@@ -1,22 +1,22 @@
 <div id='courses_show'>
 	<div>
 	  <span class='key'>Dept:</span>
-	  <%=h @course.dept %>
+	  <span class='value'><%=h @course.dept %></span>
 	</div>
 	
 	<div>
 	  <span class='key'>Courseno:</span>
-	  <%=h @course.courseno %>
+	  <span class='value'><%=h @course.courseno %></span>
 	</div>
 	
 	<div>
 	  <span class='key'>Coursename:</span>
-	  <%=h @course.coursename %>
+	  <span class='value'><%=h @course.coursename %></span>
 	</div>
 	
 	<div>
 	  <span class='key'>Description:</span>
-	  <%=h @course.description %>
+	  <span class='value'><%=h @course.description %></span>
 	</div>
 	
 	<div id="resources" class="course_resource_show">
@@ -24,7 +24,7 @@
 		<% unless @course.resources.empty? %>
 		<% @course.resources.each do |r| %>
 		<div>
-		<%= image_tag(r.public_filename) %>
+			<%= image_tag(r.public_filename) %>
 		</div>
 		<% end %>
 		<% end %>

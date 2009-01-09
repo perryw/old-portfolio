@@ -41,6 +41,7 @@ class ProjectsController < ApplicationController
   def edit
     @project = Project.find(params[:id])
     @collaborators = Collaborator.find(:all)
+    @courses = Course.find(:all)
   end
 
   # POST /projects

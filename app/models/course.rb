@@ -6,5 +6,7 @@ class Course < ActiveRecord::Base
   def title
     "#{dept} #{courseno}"
   end
-  
+  def collaborators
+    self.projects.collaborators | self.deliverables.collaborators  # join arrays
+  end
 end

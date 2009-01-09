@@ -22,7 +22,11 @@
 	</ul>
 </div>
 <div>
-<%= f.submit "Update" %>
+	<span class='key'>Part of Course:</span>
+	<%= collection_select("project", "course_id" , @courses, "id", "title", {:selected => @project.course_id.to_s, :include_blank => true}) %>
+</div>
+<div>
+	<%= f.submit "Update" %>
 </div>
 <% end %>
 
