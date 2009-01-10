@@ -6,11 +6,13 @@ class Breadcrumb
     
   def initialize( params = nil, jsonObj = nil )
     if jsonObj.nil? && !params.nil?
-      @controller, @action, @params = params[:controller], params[:action], params
+      @params = params.dup
+      @controller, @action = @params[:controller], @params[:action]
       if @controller.nil? || @action.nil?
         @controller, @action = params["controller"], params["action"]
       end
       @params.delete("authenticity_token") unless @params[:authenticity_token].nil?
+      @params.delete("resource") if @action == 'create' and @controller == 'resources'
       @is_future = @cannot_undo = @is_ajax = false
       @prev = @next = nil
       @parent = Array.new

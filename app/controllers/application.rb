@@ -44,7 +44,6 @@ class ApplicationController < ActionController::Base
   before_filter :update_breadcrumb_trail
   
 protected 
-  DEBUG = true
   @@skip_filters = ['create', 'destroy', 'new_association', 'tag_cloud', 'update', 'download']
   @@simple_bct = false
   
@@ -98,7 +97,7 @@ protected
       b.is_ajax = true if request.xhr?
       
       # if action cannot be undone or re-visited (IE. create, destroy), flag it
-      if self.skip_filters.include?(req_params[:action])
+      if self.skip_filters.include?(b.action)
         b.cannot_undo = true
       end
       
