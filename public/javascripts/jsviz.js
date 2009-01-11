@@ -100,30 +100,32 @@ function jsviz_init() {
 				nodeElement.setAttribute('r', 6 + 'px');
 				
 				nodeElement.onmouseover =  new EventHandler( layout, 
-				function(dataNode, modelNode, skewX, skewY, centerX, centerY){
-					var tt = document.getElementById("tooltip");
-					var container = document.getElementById("jsviz_div");
-					var offset = container.positionedOffset();
+                  function(dataNode, modelNode, skewX, skewY, centerX, centerY){
+                      document.body.style.cursor='pointer';
+                      var tt = document.getElementById("tooltip");
+                      var container = document.getElementById("jsviz_div");
+                      var offset = container.positionedOffset();
 
-					var parenString = "";
-					if (dataNode.parent) {
-						dataNode.parent.each(function(paren){
-							parenString += ", " + paren.URL
-						});
-						;
-					}
-					tt.innerHTML="URL: " + dataNode.URL + " , # parents: " + parenString;
-					tt.style.display="block";
-					tt.style.left=(modelNode.positionX*skewX + centerX + offset.left + 5) + "px";
-					tt.style.top=(modelNode.positionY*skewY + centerY + offset.top - 25) +  "px";
-					layout.mouseHover = true;
-				}, dataNode, modelNode, 
+                      var parenString = "";
+                      if (dataNode.parent) {
+                          dataNode.parent.each(function(paren){
+                              parenString += ", " + paren.URL
+                          });
+                          ;
+                      }
+                      tt.innerHTML="URL: " + dataNode.URL + " , # parents: " + parenString;
+                      tt.style.display="block";
+                      tt.style.left=(modelNode.positionX*skewX + centerX + offset.left + 5) + "px";
+                      tt.style.top=(modelNode.positionY*skewY + centerY + offset.top - 25) +  "px";
+                      layout.mouseHover = true;
+                  }, dataNode, modelNode, 
 					layout.view.skewX, layout.view.skewY, 
 					layout.view.centerX, layout.view.centerY);
 				
 				nodeElement.onmouseout =  new EventHandler( layout, function(){
 					document.getElementById("tooltip").style.display="none";
 					layout.mouseHover = false;
+                    document.body.style.cursor='default';
 				} );
 
 				nodeElement.onmousedown =  new EventHandler( layout, 
@@ -135,24 +137,26 @@ function jsviz_init() {
 						layout.handleMouseUpEvent();
 						Event.stop(event);
 					}, nodeElement );
-				nodeElement.onclick = new EventHandler( layout, 
-					function(dataNode, domElement, event){
-						Event.stop(event); // prevent propogation
-						if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
-						if( dataNode.isAjax ){
-							var paramString = ""; //"authenticity_token=" + AUTH_TOKEN;
-							new Ajax.Updater( 'p_page', dataNode.URL, {
-								asynchronous: true,
-								evalScripts: true,
-								method: 'get',
-								parameters: paramString,
-								onLoading: function(){ $('spinner_div').show();},
-								onComplete: function() { $('spinner_div').hide(); window.document.fire('jsviz:clicked'); }
-							});
-						} 
-						else if( dataNode['cannotUndo'] ) {	}
-						else { window.location = dataNode.URL; }
-					}, dataNode, nodeElement );
+                if(!dataNode.cannot_undo){
+                  nodeElement.onclick = new EventHandler( layout, 
+                      function(dataNode, domElement, event){
+                          Event.stop(event); // prevent propogation
+                          if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
+                          if( dataNode.isAjax ){
+                              var paramString = ""; //"authenticity_token=" + AUTH_TOKEN;
+                              new Ajax.Updater( 'p_page', dataNode.URL, {
+                                  asynchronous: true,
+                                  evalScripts: true,
+                                  method: 'get',
+                                  parameters: paramString,
+                                  onLoading: function(){ $('spinner_div').show();},
+                                  onComplete: function() { $('spinner_div').hide(); window.document.fire('jsviz:clicked'); }
+                              });
+                          } 
+                          else if( dataNode['cannotUndo'] ) {	}
+                          else { window.location = dataNode.URL; }
+                      }, dataNode, nodeElement );
+                }
 					
 				group.appendChild(nodeElement);
 				
@@ -199,13 +203,6 @@ function jsviz_init() {
 						if( layout.mouseMoved ) { layout.mouseMoved = false; return; }
 						if( dataNode.isAjax ){
 							var paramString = "";//"authenticity_token=" + AUTH_TOKEN;
-							/*
-							var id = parseInt(params['id']);
-							
-							if( !isNaN(id) ){ 
-								 paramString += '&id='+id;
-							}
-							*/
 							new Ajax.Updater( 'p_page', dataNode.URL, {
 								asynchronous: true,
 								evalScripts: true,
@@ -239,7 +236,7 @@ function jsviz_init() {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
 			return {
-				springConstant: 0.4,
+				springConstant: 0.05,
 				dampingConstant: 0.2,
 				restLength: Len
 			}
@@ -269,10 +266,11 @@ function jsviz_init() {
 
 	layout.forces.spring['A'] = {};
 	layout.forces.spring['A']['B'] = function( nodeA, nodeB, isParentChild ) {
+		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		return {
 			springConstant: 0.4,
 			dampingConstant: 0.2,
-			restLength: 20
+			restLength: Len
 		}
 	}
 	/* Note that these configurations are directed: The above

@@ -30,12 +30,13 @@ Ajax.InPlaceEditorWithEmptyText = Class.create(Ajax.InPlaceEditor, {
     return $super();
 
   },
+  leaveEditMode : function($super) {
+    this.checkEmpty();
+    return $super();
+  },
 
   onComplete : function($super, transport) {
-
     this.checkEmpty();
     return $super(transport);
-
   }
-
 });

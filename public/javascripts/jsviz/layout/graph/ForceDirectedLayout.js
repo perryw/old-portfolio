@@ -124,6 +124,7 @@ ForceDirectedLayout.prototype.setSize = function() {
 ForceDirectedLayout.prototype.handleMouseMoveEvent = function( nodeElement, e ) {
 	if ( this.model.selected && !this.model.particles[this.model.selected].fixed ) {
 		this.mouseMoved = true;
+        document.body.style.cursor="move";
 		if(this.mouseHover) {
 			document.getElementById('tooltip').style.display = "none";
 			this.mouseHover = false;
@@ -154,6 +155,9 @@ ForceDirectedLayout.prototype.handleMouseUpEvent = function() {
 		this.model.particles[this.model.selected].selected = false;
 		this.model.reset();
 		this.model.selected = null;
+        if(this.mouseMoved) { 
+          document.body.style.cursor= (this.mouseHover ? 'pointer' : 'default');
+        }
 	}
 }
 

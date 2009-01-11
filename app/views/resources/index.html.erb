@@ -29,7 +29,8 @@
 <% form_for(:resource, 
 			:url =>formatted_resources_path(:format => 'js'), 
 			:html => { 	:multipart => true, 
-						:target => 'upload_frame' }
+                        :target => 'upload_frame',
+                        :id => 'resource_form'}
 			) do |form| %>
 	
 <%= render(	:partial => 'resources/form', 
@@ -46,7 +47,7 @@
 </iframe>
 
 <%= button_to_function 'cancel', 
-		"new Effect.ScrollTo('resources_index'); new Effect.SlideUp('new_resource'); new Effect.Appear('new_resource_JS', {queue:'end'});" %> 
+		"Form.reset('resource_form'); new Effect.ScrollTo('resources_index'); new Effect.SlideUp('new_resource'); new Effect.Appear('new_resource_JS', {queue:'end'});" %> 
 <br />
 </div>
 

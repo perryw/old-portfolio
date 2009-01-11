@@ -67,6 +67,7 @@ class ResourcesController < ApplicationController
               page.visual_effect :highlight, "resource_#{@resource.id}", :duration => 2.5
               page.visual_effect :fade, "resource_#{@resource.id}", :duration => 2.5, :queue => 'end'
               page.insert_html :bottom, 'resources_table_body', :partial => 'resources/resource_row', :object => @resource, :locals => {:number => Resource.find(:all, :conditions => {:parent_id => nil}).size%2}
+              page.call 'Form.reset', 'resource_form'
             end
           end
         end     
