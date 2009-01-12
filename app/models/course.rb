@@ -1,9 +1,12 @@
 class Course < ActiveRecord::Base
   has_many :projects
-  has_many :deliverables, :through => :projects
+  has_many :deliverables, :as => :owner, :dependent => :destroy #, :through => :projects
   has_many :resources, :as => :resource_owner
   
   def title
+    "#{dept} #{courseno}"
+  end
+  def name
     "#{dept} #{courseno}"
   end
   def collaborators

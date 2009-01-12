@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :course
   
-  has_many :deliverables
+  has_many :deliverables, :as => :owner, :dependent => :destroy
   has_many :collaborations, :as => :product, :dependent => :destroy
   has_many :collaborators, :through => :collaborations
   

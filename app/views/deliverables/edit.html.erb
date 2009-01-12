@@ -26,7 +26,7 @@
 	</div>
 	<div>
 		<span class='key'>Owned by Project:</span>
-		<%= collection_select("deliverable", "project_id" , @projects, "id", "name", {:selected => @deliverable.project_id.to_s, :include_blank => true}) %>
+		<%= collection_select("deliverable", "owner_id" , @owners, "id", "name", {:selected => @deliverable.owner_id.to_s, :include_blank => true}) %>
 	</div>
 <div>
 	<span class='key'>Tags for this deliverable:</span> <%= f.text_field :tag_list %>

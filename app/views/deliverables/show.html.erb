@@ -15,8 +15,8 @@
 	</ul>
 </div>
 <div>
-	<span class='key'>Belongs to project:</span>
-	<span class='value'><%=h (@deliverable.project.nil? ? "does not belong to any project" : @deliverable.project.name)%></span>
+	<span class='key'>Belongs to project/course:</span>
+	<span class='value'><%=h (@deliverable.owner.nil? ? "does not belong to any project" : @deliverable.owner.name)%></span>
 </div>
 <div>
 	<span class='key'>Associated Tags:</span>
