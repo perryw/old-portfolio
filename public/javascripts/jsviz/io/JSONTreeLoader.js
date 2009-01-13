@@ -229,5 +229,5 @@ JSONTreeLoader.prototype.generateColorStrip = function() {
 		bComponent = Math.round(Math.sin(frequency*i)*(bStop-bStart) + bStart);
 		this.colorStrip[i+1] = colorString+rComponent.toString(16)+gComponent.toString(16)+bComponent.toString(16);
 	}
-	this.colorStrip[0] = "#FF82A0";
+	this.colorStrip[0] = "#D14A6C";
 }

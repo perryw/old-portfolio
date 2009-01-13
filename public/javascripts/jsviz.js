@@ -23,7 +23,11 @@ function jsviz_init() {
 	 * position (via element.offsetWidth, element.offsetHeight,
 	 * element.offsetTop, element.offsetLeft).
 	 */
+	var refDiv = $('p_page');
 	this.divLocation = $('jsviz_div');
+	if(refDiv) {
+		this.divLocation.style.width = refDiv.getWidth()+"px";
+	}
 	//var layout = new SnowflakeLayout( divLocation, true );  commented out because it doesn't support cyclical graphs
 	this.layout  = new ForceDirectedLayout( this.divLocation, true); // doesn't properly detect SVG support in ff3
 	var layout = this.layout;

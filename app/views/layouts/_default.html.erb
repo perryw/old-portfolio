@@ -1,4 +1,8 @@
-<div class="yui-t6"><!-- t6 is a 300px sidebar -->
+<div class="yui-t3"><!-- t6 is a 300px sidebar -->
+	<div class="yui-b"><!-- narrow content block -->
+		<div id="logins"></div>
+		<%= yield :side %>
+	</div> 
 	<div class="yui-main"> 
 		
 		<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading menu...";' %>
@@ -32,8 +36,4 @@
 			</div>
 		</div> 
 	</div> 
-		<div class="yui-b"><!-- narrow content block -->
-			<div id="logins"></div>
-			<%= yield :side %>
-		</div> 
 </div>

@@ -6,10 +6,9 @@ text{
 	padding-bottom: 0px;
 }
 #jsviz_div {
-	margin: 0;
 	padding-bottom: 0px;
-	border: .2em dotted #900;
-	
+	/*border: .2em dotted #900;*/
+	margin-left:24em;
 	height: 200px;
 	width: 600px;
 }
