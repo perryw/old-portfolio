@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   has_many :collaborators, :through => :collaborations
   
   has_many :resources, :as => :resource_owner
-  
+  acts_as_taggable_on :tags
   def total_collaborators # every collaborator, even those who i did not directly deal with
     collabs = Array.new
     self.deliverables.each do |deliv|

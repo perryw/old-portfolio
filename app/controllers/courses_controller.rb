@@ -2,7 +2,7 @@ class CoursesController < ApplicationController
   before_filter :login_required
 
   def tag_cloud
-    @tags = Deliverable.tag_counts
+    @tags = Course.tag_counts
   end
   
   # GET /courses/1
@@ -18,6 +18,17 @@ class CoursesController < ApplicationController
     else
       @course = Course.find(params[:id])
     end
+
+    respond_to do |format|
+      format.html { render :layout => false if request.xhr? }# show.html.erb
+      format.xml  { render :xml => @course }
+    end
+  end
+  
+  # GET /courses/list/1
+  # GET /courses/list/1.xml
+  def list
+    @course = Course.find(params[:id])
 
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb

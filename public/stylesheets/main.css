@@ -17,8 +17,10 @@ h1, h2, h3 {
 p {
 	margin-bottom: 0em;
 }
-
-#hd {
+#user-bar-greeting {
+	float:right;
+}
+#hd, #ft {
 	background: #569AE3;
 }
 

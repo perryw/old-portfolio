@@ -1,0 +1,32 @@
+<h1><%=h "#{@course.name}: #{@course.coursename}" %></h1>
+<h2><%=h @course.description %></h2>
+
+<ul>
+	<li>
+		<h2>Projects</h2>
+		<ul>
+			<% for project in @course.projects -%>
+				<li><%=link_to project.name, project_path(project)%></li>
+				<ul>
+					<% for deliverable in project.deliverables -%>
+						<li><%=h deliverabe.name %></li>
+					<% end -%>
+				</ul>
+			<% end -%>
+		</ul>
+	</li>
+	<li><h2>Homeworks</h2>
+		<ul>
+			<% for homework in @course.deliverables -%>
+			<li><%h homework.name %></li>
+			<% end %>
+		</ul>
+	</li>
+	<li><h2>Resources</h2>
+		<ul>
+			<% for resource in @course.resources -%>
+				<li><%= image_tag(resource.public_filename(:thumb)) %></li>
+			<% end -%>
+		</ul>
+	</li>
+</ul>

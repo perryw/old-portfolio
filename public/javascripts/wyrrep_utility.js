@@ -55,7 +55,7 @@ Lightview.changedPicture = function(src){
 		asynchronous: true, 
 		evalScripts: true, 
 		method: 'get',
-		parameters: 'authenticity_token=' + AUTH_TOKEN,
+		parameters: '', //'authenticity_token=' + AUTH_TOKEN,
 		insertion: 'top'
 	});
 

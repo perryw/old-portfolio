@@ -7,7 +7,7 @@ class Collaborator < ActiveRecord::Base
           :conditions => "collaborations.product_type = 'Project'"
   
   has_many :resources, :as => :resource_owner
-
+  acts_as_taggable_on :tags
   def products
     self.projects + self.deliverables
   end
