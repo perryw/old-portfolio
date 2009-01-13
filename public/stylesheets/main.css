@@ -18,8 +18,24 @@ p {
 	margin-bottom: 0em;
 }
 
+#hd {
+	background: #569AE3;
+}
+
+#hd span {
+	background: url(/images/1px_transparent.png) repeat-x;
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 80px;
+}
+
 #hd .yui-u {
 	text-align: right;
+}
+
+#hd .yui-u h1{
+	color: #EEEEEE;
 }
 
 #hd .first {

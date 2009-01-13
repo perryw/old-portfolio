@@ -42,15 +42,16 @@
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
 
 		<div id="hd"><!-- header -->
-    	<div class="yui-gd"> <!-- the "special grid" --> 
-    		<div class="yui-u first">
+			<span></span>
+	    	<div class="yui-gd"> <!-- the "special grid" --> 
+	    		<div class="yui-u first">
 					<h1><%= APP_CONFIG['settings']['name'] %></h1>
 					<p><%= APP_CONFIG['settings']['tagline'] %></p>
 				</div> 
-    		<div class="yui-u">
+	    		<div class="yui-u">
 					<%= render :partial => "shared/user_bar" %>
 				</div> 
-    	</div> 
+	    	</div> 
 			<!--div id="navigation_container"-->
 			<div id="menu_container">
 				<%# ubermenu :id => 'main_navigation' do |m| %>
