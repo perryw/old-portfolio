@@ -1,30 +1,6 @@
 <div id='resources_index'>
 <h1>Listing resources</h1>
 
-<table id='resources_table'>
-	<thead>
-		<tr id='resources_table_header'>
-			<th>ID</th>
-			<th>Alt text</th>
-			<th>Url</th>
-			<th>Description</th>
-			<th>Tag List</th>
-			<th>Thumbnail</th>
-		</tr>
-	</thead>
-
-	<tbody id='resources_table_body'>
-		<% number = 0 %>
-		<% for resource in @resources %>
-			<%= render :partial => 'resources/resource_row', :object => resource, :locals => { :number => (number+=1)%2 } %>
-		<% end %>
-	</tbody>
-
-</table>
-</div>
-
-<br />
-
 <div id='new_resource', style="display:none">
 <% form_for(:resource, 
 			:url =>formatted_resources_path(:format => 'js'), 
@@ -49,6 +25,28 @@
 <%= button_to_function 'cancel', 
 		"Form.reset('resource_form'); new Effect.ScrollTo('resources_index'); new Effect.SlideUp('new_resource'); new Effect.Appear('new_resource_JS', {queue:'end'});" %> 
 <br />
+</div>
+
+<table id='resources_table'>
+	<thead>
+		<tr id='resources_table_header'>
+			<th>ID</th>
+			<th>Alt text</th>
+			<th>Url</th>
+			<th>Description</th>
+			<th>Tag List</th>
+			<th>Thumbnail</th>
+		</tr>
+	</thead>
+
+	<tbody id='resources_table_body'>
+		<% number = 0 %>
+		<% for resource in @resources %>
+			<%= render :partial => 'resources/resource_row', :object => resource, :locals => { :number => (number+=1)%2 } %>
+		<% end %>
+	</tbody>
+
+</table>
 </div>
 
 <br />
