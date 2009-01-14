@@ -28,6 +28,41 @@
 		<span class='key'>Owned by Project:</span>
 		<%= collection_select("deliverable", "owner_id" , @owners, "id", "name", {:selected => @deliverable.owner_id.to_s, :include_blank => true}) %>
 	</div>
+	<div id='resource_div'>
+
+	<h1>Resources:</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>Resource</td>
+				<td>Preview Thumbnail</td>
+			</tr>
+		</thead>
+		<% 0.upto(@deliverable.resource_ids.length-1) do |index| %>
+	
+		<tr>
+			<td>
+		<span class='select'>
+		<%= collection_select :deliverable, 
+								:resource_ids, 
+								@resources, 
+								:id, :filename, 
+								{:include_blank => true, :selected => @deliverable.resource_ids[index]}, 
+								{:multiple => false, 
+								 :onChange => remote_function(:url => {:action => 'update_preview', :span_name => "preview_pane#{index}"},
+								 :with => "'selected_value='+value" )
+								} %>
+		</span>
+		</td>
+		<td>
+		<span class='preview' id="preview_pane<%=index%>"><%= image_tag(@deliverable.resources[index].public_filename(:thumb))%></span>
+		</td>
+		</tr>
+		<% end %>
+	</table>
+	<span id='new_association_link'>
+		<%= link_to_remote 'Add Resource', :url => {:action => 'new_association', :div_name => "new_association_link", :id => @deliverable.id} %>
+	</span>
 <div>
 	<span class='key'>Tags for this deliverable:</span> <%= f.text_field :tag_list %>
 </div>

@@ -37,8 +37,33 @@ class CollaboratorsController < ApplicationController
   # GET /collaborators/1/edit
   def edit
     @collaborator = Collaborator.find(params[:id])
+    @resources = Resource.all
   end
+  def new_association
 
+    if @num_associations.nil?
+      @num_associations = Course.find(params[:id]).resources.size
+    else
+      @num_associations += 1
+    end
+    
+    render :update do |page|
+      page.insert_html :before, params[:div_name],
+      :partial => 'shared/new_association', 
+      :object => Collaborator.find(params[:id]),
+      :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
+
+      page.visual_effect :highlight, params[:div_name]
+    end
+  end
+  
+  def update_preview
+    return if params[:selected_value].nil?
+    render :update do |page|
+      page.replace_html params[:span_name], image_tag(Resource.find(params[:selected_value]).public_filename(:thumb))
+    end
+  end
+  
   # POST /collaborators
   # POST /collaborators.xml
   def create
@@ -60,7 +85,17 @@ class CollaboratorsController < ApplicationController
   # PUT /collaborators/1.xml
   def update
     @collaborator = Collaborator.find(params[:id])
-
+    unless params["new_association"].nil?
+      resource_id_array = params["new_association"][:resource_ids]
+    end
+    unless resource_id_array.nil?
+      #p "****** #{resource_id_array}"
+      if params[:collaborator][:resource_ids].nil?
+        params[:collaborator][:resource_ids] = resource_id_array
+      else
+        params[:collaborator][:resource_ids].concat(resource_id_array)
+      end
+    end
     respond_to do |format|
       if @collaborator.update_attributes(params[:collaborator])
         flash[:notice] = 'Collaborator was successfully updated.'

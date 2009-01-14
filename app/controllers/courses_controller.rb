@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
     
     render :update do |page|
       page.insert_html :before, params[:div_name],
-      :partial => 'courses/new_association', 
+      :partial => 'shared/new_association', 
       :object => Course.find(params[:id]),
       :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
 
@@ -69,7 +69,6 @@ class CoursesController < ApplicationController
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
       format.xml  { render :xml => @courses }
-
     end
   end
 

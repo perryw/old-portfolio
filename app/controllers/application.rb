@@ -23,7 +23,9 @@ class ApplicationController < ActionController::Base
 
   # augment rails' render method from http://jamiedubs.com/always-render-rails-views-without-the-full-layout-when-using-ajax-degradable-javascript
   def render(*args)
-    args.first[:layout] = false if request.xhr? and args.first[:layout].nil? and !args.first[:action].nil?
+    unless( args[0] == :update )
+      args.first[:layout] = false if request.xhr? and !args.first[:update] and args.first[:layout].nil? and !args.first[:action].nil?
+    end
     super    # ruby automatically forwards *args
   end
 

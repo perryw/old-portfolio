@@ -45,11 +45,37 @@ class DeliverablesController < ApplicationController
     @deliverable = Deliverable.find(params[:id])
     @collaborators = Collaborator.all
     @owners = Project.all + Course.all
+    @resources = Resource.all
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
     end
   end
+  
+  def new_association
 
+    if @num_associations.nil?
+      @num_associations = Deliverable.find(params[:id]).resources.size
+    else
+      @num_associations += 1
+    end
+    
+    render :update do |page|
+      page.insert_html :before, params[:div_name],
+      :partial => 'shared/new_association', 
+      :object => Deliverable.find(params[:id]),
+      :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
+
+      page.visual_effect :highlight, params[:div_name]
+    end
+  end
+    
+  def update_preview
+    return if params[:selected_value].nil?
+    render :update do |page|
+      page.replace_html params[:span_name], image_tag(Resource.find(params[:selected_value]).public_filename(:thumb))
+    end
+  end
+  
   # POST /deliverables
   # POST /deliverables.xml
   def create
@@ -79,7 +105,18 @@ class DeliverablesController < ApplicationController
     unless c_array.empty?
       params[:deliverable][:collaborator_ids] = c_array
     end
-    
+    unless params["new_association"].nil?
+      resource_id_array = params["new_association"][:resource_ids]
+      #params.delete("new_association")
+    end
+    unless resource_id_array.nil?
+      #p "****** #{resource_id_array}"
+      if params[:deliverable][:resource_ids].nil?
+        params[:deliverable][:resource_ids] = resource_id_array
+      else
+        params[:deliverable][:resource_ids].concat(resource_id_array)
+      end
+    end
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])
         flash[:notice] = 'Deliverable was successfully updated.'
