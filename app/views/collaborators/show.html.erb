@@ -1,3 +1,4 @@
+<div class='photo'><%= image_tag @collaborator.photo.public_filename unless @collaborator.photo.nil? %></div>
 <div>
   <span class='key'>Lastname:</span>
   <span class='value'><%=h @collaborator.lastname %></span>

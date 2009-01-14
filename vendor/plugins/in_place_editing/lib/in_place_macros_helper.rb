@@ -44,23 +44,22 @@ module InPlaceMacrosHelper
       options[:with] += " + '&authenticity_token=' + encodeURIComponent('#{form_authenticity_token}')"
     end
     js_options = {}
-      js_options['cancelText'] = %('#{options[:cancel_text]}') if options[:cancel_text]
-      js_options['okText'] = %('#{options[:save_text]}') if options[:save_text]
-      js_options['loadingText'] = %('#{options[:loading_text]}') if options[:loading_text]
-      js_options['savingText'] = %('#{options[:saving_text]}') if options[:saving_text]
-      js_options['rows'] = options[:rows] if options[:rows]
-      js_options['cols'] = options[:cols] if options[:cols]
-      js_options['size'] = options[:size] if options[:size]
-      js_options['externalControl'] = "'#{options[:external_control]}'" if options[:external_control]
-      js_options['loadTextURL'] = "'#{url_for(options[:load_text_url])}'" if options[:load_text_url]        
-      js_options['ajaxOptions'] = options[:options] if options[:options]
-      js_options['htmlResponse'] = !options[:script] if options[:script]
-      js_options['callback']   = "function(form) { return #{options[:with]} }" if options[:with]
-      js_options['clickToEditText'] = %('#{options[:click_to_edit_text]}') if options[:click_to_edit_text]
-      js_options['textBetweenControls'] = %('#{options[:text_between_controls]}') if options[:text_between_controls]
-      #function << (', ' + options_for_javascript(js_options)) unless js_options.empty?
-      function << (', ' + options_for_javascript(js_options))
-    
+    js_options['cancelText'] = %('#{options[:cancel_text]}') if options[:cancel_text]
+    js_options['okText'] = %('#{options[:save_text]}') if options[:save_text]
+    js_options['loadingText'] = %('#{options[:loading_text]}') if options[:loading_text]
+    js_options['savingText'] = %('#{options[:saving_text]}') if options[:saving_text]
+    js_options['rows'] = options[:rows] if options[:rows]
+    js_options['cols'] = options[:cols] if options[:cols]
+    js_options['size'] = options[:size] if options[:size]
+    js_options['externalControl'] = "'#{options[:external_control]}'" if options[:external_control]
+    js_options['loadTextURL'] = "'#{url_for(options[:load_text_url])}'" if options[:load_text_url]        
+    js_options['ajaxOptions'] = options[:options] if options[:options]
+    js_options['htmlResponse'] = !options[:script] if options[:script]
+    js_options['callback']   = "function(form) { return #{options[:with]} }" if options[:with]
+    js_options['clickToEditText'] = %('#{options[:click_to_edit_text]}') if options[:click_to_edit_text]
+    js_options['textBetweenControls'] = %('#{options[:text_between_controls]}') if options[:text_between_controls]
+
+    function << (', ' + options_for_javascript(js_options))    
     function << ')'
 
     javascript_tag(function)

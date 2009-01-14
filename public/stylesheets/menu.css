@@ -13,8 +13,8 @@ ul#blue li:hover { border-top:4px solid #FF82A0;}
 ul#blue li a { padding:2px 2px; text-decoration:none; font:bold 12px Verdana, Georgia, "Times New Roman", Times, serif; color:#68759c;}
 ul#blue li a.menu_admin { padding:2px 2px; text-decoration:none; font:bold 12px Verdana, Georgia, "Times New Roman", Times, serif; color:#953434;}
 
-ul#blue li a:hover.menu_admin { color:#b17878; border:none; }
-ul#blue li a:hover { color:#8895b8; border:none; }
+ul#blue li a:hover.menu_admin { font-size: 110%; color:#b17878; border:none; }
+ul#blue li a:hover {  font-size: 110%; color:#8895b8; border:none; }
 
 ul#blue li span{ display:none; position:absolute; top:20px; left:2px; width:160px; font:normal 9px Verdana, Georgia, "Times New Roman", Times, serif; line-height: 15px; }
 

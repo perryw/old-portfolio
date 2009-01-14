@@ -8,6 +8,11 @@ class Collaborator < ActiveRecord::Base
   
   has_many :resources, :as => :resource_owner
   acts_as_taggable_on :tags
+
+  def photo
+    self.resources.first
+  end
+  
   def products
     self.projects + self.deliverables
   end

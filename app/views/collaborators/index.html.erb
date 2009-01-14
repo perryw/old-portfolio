@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+  	<th>Photo</th>
     <th>Lastname</th>
     <th>Firstname</th>
     <th>Uniqname</th>
@@ -10,6 +11,7 @@
 
 <% for collaborator in @collaborators %>
   <tr>
+  	<td><%=image_tag(collaborator.photo.public_filename(:thumb)) unless collaborator.photo.nil? %></td>
     <td><%=h collaborator.lastname %></td>
     <td><%=h collaborator.firstname %></td>
     <td><%=h collaborator.uniqname %></td>

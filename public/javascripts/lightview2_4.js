@@ -38,7 +38,7 @@ var Lightview = {
       setNumberTemplate: '#{position} of #{total}'
     },
     cyclic: false,                                         // Makes galleries cyclic, no end/begin
-    images: '../images/lightview2_4/',                        // The directory of the images, from this file
+    images: '/images/lightview2_4/',                        // The directory of the images, from this file
     imgNumberTemplate: 'Image #{position} of #{total}',    // Want a different language? change it here
     keyboard: true,                                        // Toggle keyboard buttons
     menubarPadding: 6,                                     // Space between menubar and content in px
