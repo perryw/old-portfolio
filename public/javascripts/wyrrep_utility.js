@@ -67,8 +67,16 @@ Lightview.observeCloseButtonUnbound = function(event) {
 	if( $('courses_show') ) { $('courses_show').remove(); }
 	$('entire_gallery').show();
 	
-	document.fire('jsviz:clicked');
-
+	new Ajax.Updater('p_page', '/gallery', {
+			asynchronous: true, 
+			evalScripts: true, 
+			method: 'get',
+			parameters: '',//authenticity_token=' + AUTH_TOKEN,
+			onComplete: function() {
+				document.fire('jsviz:clicked');
+			}
+		});
+	
 	return false;
 }
 
