@@ -11,17 +11,17 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.xml
   def show
-    if request.xhr?
-      @resource = Resource.find(params[:id])
-      if @resource.resource_owner_type.nil?
-        @course = Course.new 
-      else
-        @course = eval(@resource.resource_owner_type).find(@resource.resource_owner_id)
-      end      
-    else
-      @course = Course.find(params[:id])
-    end
-
+#    if request.xhr?
+#      @resource = Resource.find(params[:id])
+#      if @resource.resource_owner_type.nil?
+#        @course = Course.new 
+#      else
+#        @course = eval(@resource.resource_owner_type).find(@resource.resource_owner_id)
+#      end      
+#    else
+#      
+#    end
+    @course = Course.find(params[:id])
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb
       format.xml  { render :xml => @course }

@@ -51,7 +51,7 @@ Lightview.changedPicture = function(src){
 	src = src.substring(src.lastIndexOf('/')+1);
 	$('entire_gallery').hide();
 	if( $('courses_show') ) { $('courses_show').remove(); }
-	new Ajax.Updater('p_page', '/courses/'+src, {
+	new Ajax.Updater('p_page', '/gallery/'+src, {
 		asynchronous: true, 
 		evalScripts: true, 
 		method: 'get',
@@ -68,17 +68,7 @@ Lightview.observeCloseButtonUnbound = function(event) {
 	$('entire_gallery').show();
 	
 	document.fire('jsviz:clicked');
-	/*
-	new Ajax.Updater('p_page', '/gallery', {
-			asynchronous: true, 
-			evalScripts: true, 
-			method: 'get',
-			parameters: 'authenticity_token=' + AUTH_TOKEN,
-			onComplete: function() {
-				document.fire('jsviz:clicked');
-			}
-		});
-	*/
+
 	return false;
 }
 
@@ -97,8 +87,8 @@ Lightview.observePrevNextUnbound = function(event) {
 
 Lightview.observeClicksUnbound = function(event){ // add observer for button clicks on lightview
 
-	if(!AUTH_TOKEN)
-		alert('no authenticity token set!');
+//	if(!AUTH_TOKEN)
+//		alert('no authenticity token set!');
 
 	var source = event.target;
 	source = (source == null)? null : source.href;
@@ -130,15 +120,10 @@ Lightview.observeCloseButton = Lightview.observeCloseButtonUnbound.bindAsEventLi
 
 Lightview.notObserved = true;
 
-Lightview.attachPerryEvents();
-
-/*
-Event.observe(document, 'lightview:loaded', function(event){
-	if (Prototype.Browser.WebKit419 || Prototype.Browser.Gecko) {
-		Event.stopObserving(window, 'scroll');
-	}
+Event.observe(document, 'dom:loaded', function(){
+	Lightview.attachPerryEvents();
 });
-*/
+
 updateCurrMenuItem = function(newCurr) {
 	oldCurr = $$('.current');
 	oldCurr[0].removeClassName('current');

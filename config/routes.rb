@@ -48,6 +48,10 @@ ActionController::Routing::Routes.draw do |map|
 	map.resource  :session
 	map.resource  :openid_session
 	map.resources :members
+
+  map.connect '/gallery', :controller => 'gallery', :action => 'index'
+  map.connect 'gallery/:id', :controller => 'gallery', :action => 'show'
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
