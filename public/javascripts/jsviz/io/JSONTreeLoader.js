@@ -157,7 +157,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	}
 	if (idx) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
-		this.layout.view.nodes[childNode.id].domElement.childNodes[1].style.visibility='hidden';
+		//this.layout.view.nodes[childNode.id].domElement.childNodes[1].style.visibility='hidden';
 		var paren = childNode.parent.last();
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
 		if(!edge) {  //edge doesn't exist yet....create it now 

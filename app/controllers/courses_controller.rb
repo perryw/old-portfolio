@@ -13,16 +13,6 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.xml
   def show
-#    if request.xhr?
-#      @resource = Resource.find(params[:id])
-#      if @resource.resource_owner_type.nil?
-#        @course = Course.new 
-#      else
-#        @course = eval(@resource.resource_owner_type).find(@resource.resource_owner_id)
-#      end      
-#    else
-#      
-#    end
     @course = Course.find(params[:id])
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb
@@ -34,7 +24,16 @@ class CoursesController < ApplicationController
   # GET /courses/list/1.xml
   def list
     @course = Course.find(params[:id])
-
+    @other_tags = []
+    @course.projects.each do |proj|
+      @other_tags += proj.tag_list
+    end
+    @course.deliverables.each do |deliv|
+      @other_tags += deliv.tag_list
+    end
+    @course.resources.each do |rez|
+      @other_tags += rez.tag_list
+    end
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb
       format.xml  { render :xml => @course }

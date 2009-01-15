@@ -1,5 +1,6 @@
 <span class='tags'>
-	<%= in_place_editor_field :course, "tag_list", {}, {} %>
+	<%= in_place_editor_field :course, "tag_list", {}, {} %>, 
+	<%=h @other_tags %>
 </span>
 <h1><%=h "#{@course.name}: #{@course.coursename}" %></h1>
 <h2><%=h @course.description %></h2>
@@ -28,7 +29,7 @@
 	<li><h2>Resources</h2>
 		<ul>
 			<% for resource in @course.resources -%>
-				<li><%= image_tag(resource.public_filename(:thumb)) %></li>
+				<li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h resource.tag_list %></div></li>
 			<% end -%>
 		</ul>
 	</li>

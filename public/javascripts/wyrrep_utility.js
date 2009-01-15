@@ -27,14 +27,14 @@ Lightview.moveWindow = function(){
 		new Effect.Morph('lightview', {
 			sync: true,
 			style: {
-				left: Math.round(fromLeft/xShrink*100)+'%'
+				left: Math.round((1-fromLeft/xShrink)*100)+'%'
 			}
 		}),
 		new Effect.Morph('lv_overlay', { 
 			sync: true,
 			style: {
 				width: overlayWidth+'px',
-				left: overlayOffset+'px'
+				left: 0+'px' //overlayOffset+'px'
 			}
 		})
 	], {
@@ -66,7 +66,9 @@ Lightview.observeCloseButtonUnbound = function(event) {
 	Lightview.restoreCenter = Lightview.restoreCenterBackup;
 	if( $('courses_show') ) { $('courses_show').remove(); }
 	$('entire_gallery').show();
-	
+	$('lv_overlay').setStyle( {
+		width: document.viewport.getWidth() +'px'
+	});
 	new Ajax.Updater('p_page', '/gallery', {
 			asynchronous: true, 
 			evalScripts: true, 

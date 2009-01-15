@@ -14,9 +14,14 @@ class GalleryController < ApplicationController
   end
   def show
     @resource = Resource.find(params[:id])
-    owner_type = @resource.resource_owner_type.downcase
-    @owner = eval(@resource.resource_owner_type).find(@resource.resource_owner_id)
-    eval("@#{owner_type} = @owner")
+    if @resource.resource_owner_type.nil?
+      owner_type = 'resource'
+      @resource
+    else
+      owner_type = @resource.resource_owner_type.downcase
+      owner = eval(@resource.resource_owner_type).find(@resource.resource_owner_id)  # can also use constantize instead of eval
+      eval("@#{owner_type} = owner")
+    end
     if request.xhr?
       render :layout => false, :template => "#{owner_type.pluralize}/show"
     else

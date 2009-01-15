@@ -14,11 +14,11 @@
 	<% for course in @courses %>
 		<% @course = course -%>
 	  <tr>
-	  	<td><%=in_place_editor_field :course, "tag_list", {}, { :click_to_edit_text => 'add tags…'} %></td>
-	    <td><%=h course.dept %></td>
-	    <td><%=h course.courseno %></td>
-		<td><%=h course.coursename %></td>
-	    <td><%=in_place_editor_field :course, "description", {}, { :click_to_edit_text => 'add description…'} %></td>
+	  	<td><%=in_place_editor_field :course, "tag_list", {}, { :empty_text => 'add tags…'} %></td>
+	    <td><%=in_place_editor_field :course, "dept", {}, { :empty_text => 'add tags…'} %></td>
+	    <td><%=in_place_editor_field :course, "courseno", {}, { :empty_text => 'add course number…'} %></td>
+		<td><%=in_place_editor_field :course, "coursename", {}, { :empty_text => 'click to add course name…'} %></td>
+	    <td><%=in_place_editor_field :course, "description", {}, { :empty_text => 'add description…'} %></td>
 		<td><%=h course.projects.size %></td>
 		<td><%=h course.resources.size %></td>
 	    <td><%= link_to 'Show', course %></td>

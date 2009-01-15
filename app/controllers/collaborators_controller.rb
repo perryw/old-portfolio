@@ -1,6 +1,12 @@
 class CollaboratorsController < ApplicationController
   before_filter :login_required
-    
+  for column in Course.content_columns
+    in_place_edit_for :collaborator, column.name.to_sym
+  end
+  in_place_edit_for :collaborator, :tag_list
+  in_place_edit_for :collaborator, :email
+  in_place_edit_for :collaborator, :url
+  
   # GET /collaborators
   # GET /collaborators.xml
   def index

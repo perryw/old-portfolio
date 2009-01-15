@@ -6,16 +6,20 @@
     <th>Lastname</th>
     <th>Firstname</th>
     <th>Uniqname</th>
+	<th>E-Mail Address</th>
+	<th>Website URL</th>
 	<th># Collaborations</th>
   </tr>
 
-<% for collaborator in @collaborators %>
+<% for collaborator in @collaborators -%>
+<% @collaborator = collaborator -%>
   <tr>
   	<td><%=image_tag(collaborator.photo.public_filename(:thumb)) unless collaborator.photo.nil? %></td>
     <td><%=h collaborator.lastname %></td>
     <td><%=h collaborator.firstname %></td>
     <td><%=h collaborator.uniqname %></td>
-	<td><%=h collaborator.products.size %></td>
+	<td><%=in_place_editor_field :collaborator, "email", {}, { :empty_text => 'add e-mail address…'}%>
+	<td><%=in_place_editor_field :collaborator, "url", {}, { :empty_text => 'add URL…'} %></td>
     <td><%= link_to 'Show', collaborator %></td>
     <td><%= link_to 'Edit', edit_collaborator_path(collaborator) %></td>
     <td><%= link_to 'Destroy', collaborator, :confirm => 'Are you sure?', :method => :delete %></td>
