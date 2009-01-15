@@ -10,7 +10,7 @@ class User::InvitationsController < ApplicationController
 	  @invitation.sender = current_user
 	  if @invitation.save
 	    if logged_in?
-	      UserMailer.deliver_invitation(@invitation)
+	      #UserMailer.deliver_invitation(@invitation)
 	      flash[:notice] = "Thank you, invitation sent."
 	      redirect_to root_path
 	    else
