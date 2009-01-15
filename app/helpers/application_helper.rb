@@ -31,7 +31,7 @@ module ApplicationHelper
 	end
 
 	def if_recaptcha?
-		yield if @bad_visitor
+		yield if false and @bad_visitor
 	end
 
 	def in_beta?
