@@ -170,6 +170,7 @@ function jsviz_init() {
                     Node.setAttribute('text-anchor', 'middle');
                     Node.setAttribute('x', '0px');
                     Node.setAttribute('y', '18px');
+					Node.style.visibility='hidden';
                     
                     Node.appendChild(svgText);
                     group.appendChild(Node);
@@ -323,6 +324,7 @@ function jsviz_init() {
 	 */
 	this.loader = new JSONTreeLoader( layout );
 	this.loader.load();
+	var loader = this.loader;
 	//var loader = new XMLTreeLoader( layout.dataGraph );
 	//loader.load("treedata1.xml");
 
@@ -352,6 +354,7 @@ function jsviz_init() {
 					while( layout.dequeueNode() ) {};
 				}
 				if ( this.started && !d ) { return false; }
+				//loader.toggleText();
 			}
 		}				
 		this.buildTimer = new Timer(0);
@@ -372,6 +375,7 @@ Event.observe(document, 'lightview:loaded', function(event){
 		window.jsvizObj.loader.load();
 		$('loading').innerHTML = "Updating breadcrumb trail...";
 		window.jsvizObj.buildTimer.start();
+		//window.jsvizObj.loader.toggleText();
 		$('loading').hide();
 	});
 

@@ -91,7 +91,9 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	rootNode.colorStripIndex = 0;
 	rootNode.isAjax = root['is_ajax'];
 	rootNode["fixed"] = true;
-	
+	rootNode.distFromRoot = 0;
+	rootNode.parent = new Array();
+	rootNode.children = $A(root["children"]);
 	var idx = this.dataGraph.findNode(rootNode);
 	rootNode = (idx) ? this.dataGraph.getNode(idx) : rootNode;
 	
@@ -116,9 +118,8 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	// Add children
 	var localScope = this;
 	root["children"].each( function(child) { 
-			this.lastNodeAdded = localScope.branch(child, rootNode); // , "#90EE90" // green
+			this.lastNodeAdded = localScope.branch(child, rootNode, 0); // , "#90EE90" // green
 		});
-
 	this.notify();
 }
 
@@ -126,7 +127,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
  * @param {Object} root
  * @param {Object} rootNode
  */
-JSONTreeLoader.prototype.branch = function( root, rootNode ) {
+JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var child = this.JSONDoc[root];
 	var params = child['params'];
 	var childNode = new DataGraphNode();
@@ -136,6 +137,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	childNode.URL = this.reconstructURL(params);
 	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];
+	childNode.distFromRoot = distFromRoot;
 
 	var idx = this.dataGraph.findNode(childNode);
 	childNode = (idx) ? this.dataGraph.getNode(idx) : childNode;
@@ -143,22 +145,22 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	if(!childNode.parent) { childNode.parent = new Array(); }
     childNode.parent.push(rootNode);
     childNode.parent = childNode.parent.uniq();
+	childNode.children = child["children"];
 	
 	if( window.CURR_CRUMB == root ){
 		childNode["color"] = this.colorStrip[childNode.colorStripIndex=0];
 		childNode.current = true;
-	}
-	else {
+	} else {
 		childNode["color"] = (childNode.colorStripIndex<5) ?
         this.colorStrip[childNode.colorStripIndex+=1] : this.colorStrip[5];
 		childNode.current = false;
 	}
 	if (idx) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
+		this.layout.view.nodes[childNode.id].domElement.childNodes[1].style.visibility='hidden';
 		var paren = childNode.parent.last();
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
 		if(!edge) {  //edge doesn't exist yet....create it now 
-			//childNode.parent.push(rootNode);
 			for(pdx in childNode.parent) {
 				p = childNode.parent[pdx];
 				if(!p.id) continue;
@@ -192,8 +194,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode ) {
 	}
 	
 	child["children"].each( function(child) {
-			this.lastNodeAdded = localScope.branch(child, childNode);
-			
+			localScope.branch(child, childNode, distFromRoot+1);
 		});
 	return childNode;
 }
@@ -212,7 +213,18 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 
 	return url;
 }
-
+JSONTreeLoader.prototype.toggleText = function() {
+	var leaves = $A(this.dataGraph.nodes);
+	
+	for(var i=0; i<leaves.size(); i++){
+		if (leaves[i].children.size() == 0) { // found leaf
+			this.layout.view.nodes[leaves[i].id].domElement.childNodes[1].style.visibility='visible';
+			var dfr = leaves[i].distFromRoot;
+		}
+	}
+	
+	this.layout.view.nodes[0].domElement.childNodes[1].style.visibility='visible';
+}
 // from http://krazydad.com/makecolors.php
 JSONTreeLoader.prototype.generateColorStrip = function() {
 	var frequency = Math.PI/10;
