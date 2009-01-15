@@ -16,7 +16,9 @@
 	background-color: blue;
 	color: white;
 }
-
+.listing li {
+	list-style: none;
+}
 table
 {
 	/*table-layout:		fixed;*/

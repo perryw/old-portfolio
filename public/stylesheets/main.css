@@ -40,6 +40,9 @@ p {
 	color: #EEEEEE;
 }
 
+#hd .user_bar {
+	z-index: 4000;
+}
 #hd .first {
 	text-align: left;
 }
