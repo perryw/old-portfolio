@@ -33,8 +33,8 @@ Lightview.moveWindow = function(){
 		new Effect.Morph('lv_overlay', { 
 			sync: true,
 			style: {
-				width: overlayWidth+'px',
-				left: 0+'px' //overlayOffset+'px'
+				width: overlayWidth+'px'//,
+				//left: 0+'px' //overlayOffset+'px'
 			}
 		})
 	], {
