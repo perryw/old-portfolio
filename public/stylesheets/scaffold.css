@@ -13,18 +13,19 @@
 .css4 { font-size: 1.6em; }
 
 .css4:hover { 
-background-color: blue;
-color: white;
+	background-color: blue;
+	color: white;
 }
 
 table
 {
-	table-layout:		fixed;
+	/*table-layout:		fixed;*/
 	text-align:			center;
     border-width:		0px;
     border-spacing:		0px;
     border-style:		solid;
 	word-wrap:			break-word;
+	overflow:			scroll;
 }
 
 .highlightme { background-color: lightyellow; }
