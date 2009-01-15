@@ -2,7 +2,7 @@
 Ajax.InPlaceEditorWithEmptyText = Class.create(Ajax.InPlaceEditor, {
 
   initialize : function($super, element, url, options) {
-    if (!options.emptyText)        options.emptyText      = "click to edit…";
+    if (!options.emptyText)        options.emptyText = (options.clickToEditText) ? options.clickToEditText :  "click to edit…";
     if (!options.emptyClassName)   options.emptyClassName = "inplaceeditor-empty";
 
     $super(element, url, options);

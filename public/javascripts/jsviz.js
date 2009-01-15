@@ -170,7 +170,7 @@ function jsviz_init() {
                     Node.setAttribute('text-anchor', 'middle');
                     Node.setAttribute('x', '0px');
                     Node.setAttribute('y', '18px');
-					Node.style.visibility='hidden';
+					Node.style.visibility='visible';
                     
                     Node.appendChild(svgText);
                     group.appendChild(Node);

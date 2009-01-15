@@ -2,12 +2,13 @@ class ResourcesController < ApplicationController
   before_filter :login_required
   
   def tag_cloud
-    @tags = Deliverable.tag_counts
+    @tags = Resource.tag_counts
   end
   for column in Resource.content_columns
     in_place_edit_for :resource, column.name.to_sym
     in_place_edit_for :resource, :tag_list
   end
+  
   
   # GET /resources
   # GET /resources.xml

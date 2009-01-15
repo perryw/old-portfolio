@@ -1,9 +1,11 @@
 class CoursesController < ApplicationController
   before_filter :login_required
-  for column in Resource.content_columns
-    in_place_edit_for :resource, column.name.to_sym
-    in_place_edit_for :resource, :tag_list
+  
+  for column in Course.content_columns
+    in_place_edit_for :course, column.name.to_sym
+    in_place_edit_for :course, :tag_list
   end
+
   def tag_cloud
     @tags = Course.tag_counts
   end
