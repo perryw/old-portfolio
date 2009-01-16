@@ -41,7 +41,6 @@ class CoursesController < ApplicationController
   end
   
   def new_association
-
     if @num_associations.nil?
       @num_associations = Course.find(params[:id]).resources.size
     else
@@ -104,10 +103,22 @@ class CoursesController < ApplicationController
     respond_to do |format|
       if @course.save
         flash[:notice] = 'Course was successfully created.'
-        format.html { redirect_to(@course) }
+        format.html {
+          if request.xhr?
+            render :json => @course
+          else
+            redirect_to(@course) 
+          end
+        }
         format.xml  { render :xml => @course, :status => :created, :location => @course }
       else
-        format.html { render :action => "new" }
+        format.html { 
+          if request.xhr?
+            head :bad_request
+          else
+            render :action => "new" 
+          end
+        }
         format.xml  { render :xml => @course.errors, :status => :unprocessable_entity }
       end
     end

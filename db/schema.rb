@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090115122833) do
+ActiveRecord::Schema.define(:version => 20090116015430) do
 
   create_table "collaborations", :force => true do |t|
     t.integer  "collaborator_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20090115122833) do
     t.string   "uniqname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_id"
     t.string   "email"
     t.string   "url"
   end
@@ -36,12 +37,12 @@ ActiveRecord::Schema.define(:version => 20090115122833) do
     t.string   "coursename"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "date"
   end
 
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "collaborator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
@@ -130,8 +131,8 @@ ActiveRecord::Schema.define(:version => 20090115122833) do
     t.integer "user_id"
   end
 
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -140,8 +141,8 @@ ActiveRecord::Schema.define(:version => 20090115122833) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -153,8 +154,8 @@ ActiveRecord::Schema.define(:version => 20090115122833) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
     t.string "name"

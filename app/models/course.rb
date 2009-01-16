@@ -7,7 +7,7 @@ class Course < ActiveRecord::Base
     "#{dept} #{courseno}"
   end
   def name
-    "#{dept} #{courseno}"
+    "#{dept || ''} #{courseno || ''} #{coursename || ''}"
   end
   def collaborators
     self.projects.collaborators | self.deliverables.collaborators  # join arrays
