@@ -332,7 +332,6 @@ SVGGraphView.prototype.clear = function() {
 	}
 
 	this.edges = {};
-	this.nodes;
 	// now remove the nodes
 	for ( var n in this.nodes ) {
 		var domElement = this.nodes[n].domElement;

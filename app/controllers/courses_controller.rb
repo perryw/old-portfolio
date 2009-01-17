@@ -3,8 +3,9 @@ class CoursesController < ApplicationController
   
   for column in Course.content_columns
     in_place_edit_for :course, column.name.to_sym
-    in_place_edit_for :course, :tag_list
   end
+  in_place_edit_for :course, :tag_list
+  in_place_edit_for :course, :date
 
   def tag_cloud
     @tags = Course.tag_counts
@@ -108,6 +109,7 @@ class CoursesController < ApplicationController
               page.insert_html :bottom, :courses_tbody,
                 :partial => 'courses/table_row', 
                 :object => @course
+              page.visual_effect :highlight, "courses_table_#{@course.id}"
               page.call "document.fire", "jsviz:clicked"
             end
           else

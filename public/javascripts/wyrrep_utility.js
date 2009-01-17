@@ -135,8 +135,9 @@ Event.observe(document, 'dom:loaded', function(){
 });
 
 updateCurrMenuItem = function(newCurr) {
-	oldCurr = $$('.current');
-	oldCurr[0].removeClassName('current');
-	itm = $(newCurr).ancestors()[0];
-	itm.addClassName('current');
+	var oldCurr = $$('.current');
+	if(oldCurr.size()) 
+      oldCurr[0].removeClassName('current');
+	var itm = $(newCurr).ancestors()[0];
+	if(itm) itm.addClassName('current');
 };

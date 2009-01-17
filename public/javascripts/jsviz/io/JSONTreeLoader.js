@@ -75,8 +75,8 @@ JSONTreeLoader.prototype.load = function( ) {
 JSONTreeLoader.prototype.handle = function( request ) {
 	this.JSONDoc = request.responseJSON;
 	if( this.JSONDoc.length < this.dataGraph.nodes.length )	{
-		this.dataGraph.clear(); 
 		this.layout.clear(); 
+		this.dataGraph.clear(); 
 	}
 	var root = this.JSONDoc[0];
 	var params = root['params'];
@@ -107,7 +107,6 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	}
 	
 	if (idx) {
-		//window.debugelem = this.layout.view.nodes[rootNode.id].domElement.childNodes[0];
 		this.layout.view.nodes[rootNode.id].domElement.childNodes[0].setAttribute("fill", rootNode["color"]);
 	}
 	else {
