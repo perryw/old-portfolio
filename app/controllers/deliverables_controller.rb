@@ -1,6 +1,11 @@
 class DeliverablesController < ApplicationController
   before_filter :login_required
   
+  for column in Deliverable.content_columns
+    in_place_edit_for :deliverable, column.name.to_sym
+  end
+  in_place_edit_for :deliverable, :tag_list
+  
   def tag_cloud
     @tags = Deliverable.tag_counts
   end

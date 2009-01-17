@@ -10,16 +10,7 @@
   </tr>
 
 <% for deliverable in @deliverables %>
-  <tr>
-    <td><%=h deliverable.name %></td>
-    <td><%=h deliverable.description %></td>
-	<td><%=h deliverable.collaborators.size %></td>
-	<td><%=h (deliverable.owner.nil? ? "not owned by anybody" : deliverable.owner.name )%></td>
-	<td><%= deliverable.tag_list %></td>
-    <td><%= link_to 'Show', deliverable %></td>
-    <td><%= link_to 'Edit', edit_deliverable_path(deliverable) %></td>
-    <td><%= link_to 'Destroy', deliverable, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= render :partial => 'table_row', :object => deliverable %>
 <% end %>
 </table>
 

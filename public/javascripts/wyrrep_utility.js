@@ -140,25 +140,3 @@ updateCurrMenuItem = function(newCurr) {
 	itm = $(newCurr).ancestors()[0];
 	itm.addClassName('current');
 };
-
-newTableRow = function(url, divname, position) {
-	/*
-	eval( "new Ajax.Request( url, {\
-			method: 'put',\
-			onSuccess: function(transport) {\
-				$(divname).insert(" + position +": "
-			}
-		});"
-	);
-	*/
-	new Ajax.Request( url, {
-		method: 'post',
-		onSuccess: function(transport) {
-			var rjson = $H(transport.responseText.evalJSON(true)).values()[0];
-			rjson = $H(rjson);
-			var domRow = document.createElement('tr');
-			
-			alert(rjson);
-		}
-	});
-};

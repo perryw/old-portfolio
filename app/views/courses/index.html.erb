@@ -21,7 +21,7 @@
 	<tfoot>
 	</tfoot>
 </table>
-<%= link_to_function('new row', "newTableRow('/courses', 'courses_tbody', 'bottom')") %>
+<%=link_to_remote 'New Course', {:url => { :action => 'create' }, 
+		:method => :post, 
+		:success =>"new Effect.Highlight($$('tr').last())"}, {:href => new_course_path} %>
 <br />
-
-<%= link_to 'New course', new_course_path %>

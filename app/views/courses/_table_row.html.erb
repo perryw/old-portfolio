@@ -1,5 +1,5 @@
 <% @course = table_row %>
-<tr>
+<tr id=<%="courses_table_#{@course.id}"%>>
 	<td><%=in_place_editor_field :course, "tag_list", {}, { :empty_text => 'add tags…'} %></td>
 	<td><%=in_place_editor_field :course, "dept", {}, { :empty_text => 'add tags…'} %></td>
 	<td><%=in_place_editor_field :course, "courseno", {}, { :empty_text => 'add course number…'} %></td>
@@ -9,5 +9,5 @@
 	<td><%=h @course.resources.size %></td>
 	<td><%= link_to 'Show', @course %></td>
 	<td><%= link_to 'Edit', edit_course_path(@course) %></td>
-	<td><%= link_to 'Destroy', @course, :confirm => 'Are you sure?', :method => :delete %></td>
+	<td><%= link_to_remote 'Destroy', {:url => course_path(@course), :method => :delete}, { :href => course_path(@course), :confirm => 'Are you sure?', :method => :delete} %></td>
 </tr>

@@ -52,7 +52,6 @@ class CoursesController < ApplicationController
       :partial => 'shared/new_association', 
       :object => Course.find(params[:id]),
       :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
-
       page.visual_effect :highlight, params[:div_name]
     end
   end
@@ -105,7 +104,12 @@ class CoursesController < ApplicationController
         flash[:notice] = 'Course was successfully created.'
         format.html {
           if request.xhr?
-            render :json => @course
+            render :update do |page|
+              page.insert_html :bottom, :courses_tbody,
+                :partial => 'courses/table_row', 
+                :object => @course
+              page.call "document.fire", "jsviz:clicked"
+            end
           else
             redirect_to(@course) 
           end
@@ -114,7 +118,7 @@ class CoursesController < ApplicationController
       else
         format.html { 
           if request.xhr?
-            head :bad_request
+            head :unprocessable_entity
           else
             render :action => "new" 
           end
@@ -127,7 +131,6 @@ class CoursesController < ApplicationController
   # PUT /courses/1
   # PUT /courses/1.xml
   def update
-    
     @course = Course.find(params[:id])
     unless params["new_association"].nil?
       resource_id_array = params["new_association"][:resource_ids]
@@ -161,7 +164,15 @@ class CoursesController < ApplicationController
     @course.destroy
 
     respond_to do |format|
-      format.html { redirect_to(courses_url) }
+      format.html { 
+        if request.xhr?
+          render :update do |page|
+            page.remove "courses_table_#{@course.id}"
+          end
+        else
+          redirect_to(courses_url)
+        end
+      }
       format.xml  { head :ok }
     end
   end
