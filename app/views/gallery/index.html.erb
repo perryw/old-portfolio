@@ -12,7 +12,7 @@
 				<% num=1%>
 			<% end -%>
 			<div class='thumbnail'>
-				<% if img.image? -%>
+				<% if img.image? || img.pdf? -%>
 					<%= link_to image_tag(img.public_filename(:thumb)), 
 							image_path(img.public_filename(:lightview)), 
 							{:class =>'lightview', :rel => 'set[myset]', :id => img.id}
