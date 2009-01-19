@@ -36,6 +36,12 @@ Lightview.moveWindow = function(){
 				width: overlayWidth+'px'//,
 				//left: 0+'px' //overlayOffset+'px'
 			}
+		}),
+		new Effect.Morph('lightviewController', {
+			sync: true,
+			style: {
+				left: Math.round((1-fromLeft/xShrink)*100)+'%'
+			}
 		})
 	], {
 		duration: 0.8,
