@@ -48,6 +48,14 @@ module Technoweenie # :nodoc:
               image.resize!(cols<1 ? 1 : cols, rows<1 ? 1 : rows)
             }
           end
+        
+    #      img.strip! unless attachment_options[:keep_profile]
+          if respond_to?(:parent) && parent && parent.pdf? && process_pdfs?
+            output_format = 'PNG'
+          else
+            output_format = img.format
+          end
+          
           if compress && !self.thumbnail
             self.temp_path = write_to_temp_file(img.to_blob {self.quality = 75})
           elsif self.thumbnail

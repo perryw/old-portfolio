@@ -32,7 +32,8 @@ module Technoweenie # :nodoc:
       'application/x-png',
       'image/gi_'
     ]
-    mattr_reader :content_types, :tempfile_path, :default_processors
+    @@pdf_content_types  = ['application/pdf', 'pdf']
+    mattr_reader :content_types, :tempfile_path, :default_processors, :pdf_content_types
     mattr_writer :tempfile_path
 
     class ThumbnailError < StandardError;  end
@@ -70,13 +71,14 @@ module Technoweenie # :nodoc:
       def has_attachment(options = {})
         # this allows you to redefine the acts' options for each subclass, however
         options[:min_size]         ||= 1
-        options[:max_size]         ||= 1.megabyte
+        options[:max_size]         ||= 10.megabyte
         options[:size]             ||= (options[:min_size]..options[:max_size])
         options[:thumbnails]       ||= {}
         options[:thumbnail_class]  ||= self
         options[:s3_access]        ||= :public_read
         options[:content_type] = [options[:content_type]].flatten.collect! { |t| t == :image ? Technoweenie::AttachmentFu.content_types : t }.flatten unless options[:content_type].nil?
-
+        options[:thumbnail_pdf_files] ||= true
+        
         unless options[:thumbnails].is_a?(Hash)
           raise ArgumentError, ":thumbnails option should be a hash: e.g. :thumbnails => { :foo => '50x50' }"
         end
@@ -148,7 +150,8 @@ module Technoweenie # :nodoc:
 
     module ClassMethods
       delegate :content_types, :to => Technoweenie::AttachmentFu
-
+      delegate :pdf_content_types, :to => Technoweenie::AttachmentFu
+      
       # Performs common validations for attachment models.
       def validates_as_attachment
         validates_presence_of :size, :content_type, :filename
@@ -158,6 +161,11 @@ module Technoweenie # :nodoc:
       # Returns true or false if the given content type is recognized as an image.
       def image?(content_type)
         content_types.include?(content_type)
+      end
+
+      # Returns true or false if the given content type is recognized as an image.
+      def pdf?(content_type)
+        pdf_content_types.include?(content_type)
       end
 
       def self.extended(base)
@@ -247,9 +255,13 @@ module Technoweenie # :nodoc:
         self.class.image?(content_type)
       end
 
+      def pdf?
+        self.class.pdf?(content_type)
+      end
+      
       # Returns true/false if an attachment is thumbnailable.  A thumbnailable attachment has an image content type and the parent_id attribute.
       def thumbnailable?
-        image? && respond_to?(:parent_id) && parent_id.nil?
+        (image? || (pdf? && attachment_options[:thumbnail_pdf_files] && supports_pdf?)) && respond_to?(:parent_id) && parent_id.nil?
       end
 
       # Returns the class used to create new thumbnails for this attachment.
@@ -264,6 +276,10 @@ module Technoweenie # :nodoc:
         basename = filename.gsub /\.\w+$/ do |s|
           ext = s; ''
         end
+        
+         # Change the output extension if PDFs are being converted
+        ext = ".png" if attachment_options[:thumbnail_pdf_files] && respond_to?(:parent) && parent && parent.pdf?
+        
         # ImageScience doesn't create gif thumbnails, only pngs
         ext.sub!(/gif$/, 'png') if attachment_options[:processor] == "ImageScience"
         "#{basename}_#{thumbnail}#{ext}"
@@ -279,6 +295,7 @@ module Technoweenie # :nodoc:
             :temp_path                => temp_file,
             :thumbnail_resize_options => size
           }
+          thumb.write_attribute(:content_type,'image/png') if pdf? && process_pdfs?
           callback_with_args :before_thumbnail_saved, thumb
           thumb.save!
         end
@@ -396,6 +413,15 @@ module Technoweenie # :nodoc:
       def with_image(&block)
         self.class.with_image(temp_path, &block)
       end
+      
+      # Checks with the processor to see if we support PDF file thumbnailin
+      def supports_pdf?
+        self.class.supports_pdf?
+      end
+      
+      def process_pdfs?
+        supports_pdf? && attachment_options[:thumbnail_pdf_files]
+      end
 
       protected
         # Generates a unique filename for a Tempfile.
@@ -428,6 +454,12 @@ module Technoweenie # :nodoc:
             enum = attachment_options[attr_name]
             errors.add attr_name, ActiveRecord::Errors.default_error_messages[:inclusion] unless enum.nil? || enum.include?(send(attr_name))
           end
+ 
+           #validate content type separately because a PDF could have a thumbnail of type image/png which the model may not allow
+          content_types = attachment_options[:content_type]
+          content_types << "image/png" if content_types && self.respond_to?(:parent) && self.parent && self.parent.pdf? && process_pdfs?
+          errors.add :content_type, ActiveRecord::Errors.default_error_messages[:inclusion] unless content_types.nil? || content_types.include?(send(:content_type))
+ 
         end
 
         # Initializes a new thumbnail with the given suffix.
