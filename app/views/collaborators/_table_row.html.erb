@@ -1,0 +1,14 @@
+
+<% @collaborator = table_row -%>
+<tr id=<%="collaborators_table_#{@collaborator.id}"%>>
+  	<td><%=image_tag(@collaborator.photo.public_filename(:thumb)) unless @collaborator.photo.nil? %></td>
+    <td><%=in_place_editor_field :collaborator, :lastname, {}, {} %></td>
+    <td><%=in_place_editor_field :collaborator, :firstname, {}, {} %></td>
+    <td><%=in_place_editor_field :collaborator, :uniqname, {}, {} %></td>
+	<td><%=in_place_editor_field :collaborator, "email", {}, { :empty_text => 'add e-mail address…'}%>
+	<td><%=in_place_editor_field :collaborator, "url", {}, { :empty_text => 'add URL…'} %></td>
+	<td><%=h @collaborator.products.size %></td>
+    <td><%= link_to 'Show', @collaborator %></td>
+    <td><%= link_to 'Edit', edit_collaborator_path(@collaborator) %></td>
+    <td><%= link_to_remote 'Destroy', { :url => collaborator_path(@collaborator), :method => :delete}, { :href => collaborator_path(@collaborator), :confirm => 'Are you sure?', :method => :delete }%></td>
+  </tr>
