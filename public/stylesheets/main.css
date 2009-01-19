@@ -26,11 +26,11 @@ p {
 }
 
 #hd span {
-	background: url(/images/1px_transparent.png) repeat-x;
+	background: url(/images/1x100gradient.png) repeat-x;
 	position: absolute;
 	display: block;
 	width: 950px;
-	height: 80px;
+	height: 100px;
 }
 
 #hd .yui-u {
