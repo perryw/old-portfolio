@@ -140,9 +140,9 @@ var Lightview = {
   },
   // used with auto detection
   typeExtensions: {
-    flash: 'swf',
+    flash: '', //'swf',
     image: 'bmp gif jpeg jpg png',
-    iframe: 'asp aspx cgi cfm htm html jsp php pl php3 php4 php5 phtml rb rhtml shtml txt',
+    iframe: 'asp aspx cgi cfm htm html jsp php pl php3 php4 php5 phtml rb rhtml shtml txt swf',
     quicktime: 'avi mov mpg mpeg movie'
   }
 };

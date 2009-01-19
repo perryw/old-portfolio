@@ -298,12 +298,16 @@ module Technoweenie # :nodoc:
       def image_size
         [width.to_s, height.to_s] * 'x'
       end
-
+      
       # Returns true if the attachment data will be written to the storage system on the next save
       def save_attachment?
-        File.file?(temp_path.to_s)
+        if temp_path
+          return File.file?(temp_path.to_s)
+        else
+          return false
+        end
       end
-
+      
       # nil placeholder in case this field is used in a form.
       def uploaded_data() nil; end
 
@@ -342,14 +346,14 @@ module Technoweenie # :nodoc:
       # An array of all the tempfile objects is stored so that the Tempfile instance is held on to until
       # it's not needed anymore.  The collection is cleared after saving the attachment.
       def temp_path
+        return nil if temp_paths.empty?
         p = temp_paths.first
         p.respond_to?(:path) ? p.path : p.to_s
       end
 
       # Gets an array of the currently used temp paths.  Defaults to a copy of #full_filename.
       def temp_paths
-        @temp_paths ||= (new_record? || !respond_to?(:full_filename) || !File.exist?(full_filename) ?
-          [] : [copy_to_temp_file(full_filename)])
+        @temp_paths ||= (new_record? || filename.blank? || !File.exist?(full_filename)) ? [] : [copy_to_temp_file(full_filename)]
       end
 
       # Adds a new temp_path to the array.  This should take a string or a Tempfile.  This class makes no
@@ -413,7 +417,8 @@ module Technoweenie # :nodoc:
 
         # before_validation callback.
         def set_size_from_temp_path
-            size = File.size(temp_path)
+            tp = temp_path
+            size = (tp.nil? ? 0 : File.size(tp))
           self.size = File.size(temp_path) if save_attachment?
         end
 

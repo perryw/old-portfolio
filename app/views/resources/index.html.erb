@@ -40,10 +40,10 @@
 	</thead>
 
 	<tbody id='resources_table_body'>
-		<% number = 0 %>
-		<% for resource in @resources %>
+		<% number = 0 -%>
+		<% for resource in @resources -%>
 			<%= render :partial => 'resources/resource_row', :object => resource, :locals => { :number => (number+=1)%2 } %>
-		<% end %>
+		<% end -%>
 	</tbody>
 
 </table>

@@ -46,9 +46,16 @@ Lightview.moveWindow = function(){
 	Lightview.restoreCenter = function() { }  // don't want to recenter each time
 };
 
-Lightview.changedPicture = function(src){
+Lightview.changedPicture = function(event){
+	var src = event.target.identify();
+	/*
 	src = src.substring(0, src.lastIndexOf('/'));
 	src = src.substring(src.lastIndexOf('/')+1);
+	var tmp = parseInt(src);
+	if(isNaN(tmp)) { // invalid src...probably because it's a slideshare object
+		src = event.target.identify();
+	}
+	*/
 	$('entire_gallery').hide();
 	if( $('courses_show') ) { $('courses_show').remove(); }
 	new Ajax.Updater('p_page', '/gallery/'+src, {
@@ -106,7 +113,7 @@ Lightview.observeClicksUnbound = function(event){ // add observer for button cli
 	if( source != null ) {
 		Lightview.detachPerryEvents();
 		Lightview.moveWindow();
-		Lightview.changedPicture(source);
+		Lightview.changedPicture(event);
 		Lightview.attachPerryEvents();
 	}
 

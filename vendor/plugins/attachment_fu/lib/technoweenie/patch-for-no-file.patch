@@ -1,0 +1,37 @@
+Index: attachment_fu.rb
+===================================================================
+--- attachment_fu.rb	(revision 2999)
++++ attachment_fu.rb	(working copy)
+@@ -232,8 +232,12 @@
+       end
+ 
+       # Returns true if the attachment data will be written to the storage system on the next save
+-      def save_attachment?
+-        File.file?(temp_path.to_s)
++      def save_attachment?
++        if temp_path
++          return File.file?(temp_path.to_s)
++        else
++          return false
++        end
+       end
+ 
+       # nil placeholder in case this field is used in a form.
+@@ -266,14 +270,15 @@
+       # multiple Tempfile objects may be created for various processing purposes (resizing, for example).
+       # An array of all the tempfile objects is stored so that the Tempfile instance is held on to until
+       # it's not needed anymore.  The collection is cleared after saving the attachment.
+-      def temp_path
++      def temp_path
++        return nil if temp_paths.empty?
+         p = temp_paths.first
+         p.respond_to?(:path) ? p.path : p.to_s
+       end
+       
+       # Gets an array of the currently used temp paths.  Defaults to a copy of #full_filename.
+       def temp_paths
+-        @temp_paths ||= (new_record? || !File.exist?(full_filename)) ? [] : [copy_to_temp_file(full_filename)]
++        @temp_paths ||= (new_record? || filename.blank? || !File.exist?(full_filename)) ? [] : [copy_to_temp_file(full_filename)]
+       end
+       
+       # Adds a new temp_path to the array.  This should take a string or a Tempfile.  This class makes no 

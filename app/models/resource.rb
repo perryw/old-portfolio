@@ -16,8 +16,8 @@ class Resource < ActiveRecord::Base
   :resize_to => "1024x1024>", # >" apparently means to prevent distorted resizing
   :processor => :rmagick  # :ImageScience, but :rmagick ... weird
   
-  validates_as_attachment
-  validates_uniqueness_of :filename
+  #validates_as_attachment
+  #validates_uniqueness_of :filename
 
   def self.update_thumbnails
     # from http://beast.caboo.se/forums/2/topics/4623

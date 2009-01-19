@@ -1,9 +1,8 @@
 #eat_breadcrumbs{
-  padding-top: 15px;
-  padding-left: 64em;
+  top: 125px;
+  left: 64em;
   position: absolute;
 }
-
 text{
 	/*font-weight: bold;*/
 	z-Index: -1;

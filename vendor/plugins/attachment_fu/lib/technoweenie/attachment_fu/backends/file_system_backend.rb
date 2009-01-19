@@ -17,6 +17,7 @@ module Technoweenie # :nodoc:
         # Overwrite this method in your model to customize the filename.
         # The optional thumbnail argument will output the thumbnail's filename.
         def full_filename(thumbnail = nil)
+          return nil if thumbnail_name_for(thumbnail).blank?
           file_system_path = (thumbnail ? thumbnail_class : self).attachment_options[:path_prefix].to_s
           File.join(RAILS_ROOT, file_system_path, *partitioned_path(thumbnail_name_for(thumbnail)))
         end

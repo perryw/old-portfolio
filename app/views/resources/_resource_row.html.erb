@@ -6,7 +6,7 @@
 		<%= in_place_editor_field :resource, "alt_text", {}, {} %>
 	</td>
 	<td class="url">
-		<%= in_place_editor_field :resource, "url", {}, {} %>
+		<%=in_place_editor_field :resource, "url", {}, {} %>
 	</td>
 	<td class="description">
 		<%= in_place_editor_field :resource, "description", {}, {} %>
@@ -14,7 +14,7 @@
 	<td class="tag_list">
 		<%= in_place_editor_field :resource, "tag_list", {}, {} %>
 	</td>
-	<td class="image"><%= image_tag(resource_row.public_filename(:thumb)) %></td>
+	<td class="image"><%= image_tag(resource_row.public_filename(:thumb)) unless resource_row.filename.nil? %></td>
 
     <td class="show_link"><%= link_to 'Show', resource_row %></td>
     <td class="edit_link"><%= link_to 'Edit', edit_resource_path(resource_row) %></td>
