@@ -22,6 +22,17 @@ h1 { font-weight: bold;}
 .thumbnail {
 	width: 172px;
 	height: 172px;
-	text-align: center;
 	float: left;
+	margin: 0 10px 10px 0;
+		text-align:center;
+	display: table-cell;
+	vertical-align: middle;
+	min-height: 168px;
+}
+.thumbnail a {
+
+}
+.thumbnail a img {
+	/*text-align: center;*/
+	
 }
