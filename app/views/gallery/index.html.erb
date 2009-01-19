@@ -10,7 +10,7 @@
 							{:class =>'lightview', :rel => 'set[myset]', :id => img.id}
 					%>
 				<% else # not an image...probably slideshare-%>
-					<%= link_to "resource_#{img.id}", img.url, {:class => 'lightview', :rel => 'set[myset]', :id => img.id } %>
+					<%= link_to image_tag(Resource.find(54).public_filename(:thumb)), img.url, {:class => 'lightview', :rel => 'set[myset]', :id => img.id } %>
 				<% end -%>
 			</span>
 		<% end %>
