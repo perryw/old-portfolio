@@ -58,7 +58,7 @@ module Technoweenie # :nodoc:
           else
             output_format = img.format
           end
-           RAILS_DEFAULT_LOGGER.warn "** attachment_fu: output format is #{output_format}"
+           #RAILS_DEFAULT_LOGGER.warn "** attachment_fu: output format is #{output_format}"
           
           if compress && !self.thumbnail
             #self.temp_path = write_to_temp_file(img.to_blob {self.quality = 75, self.format = output_format})
