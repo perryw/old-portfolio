@@ -23,6 +23,9 @@ module Technoweenie # :nodoc:
           ensure
             !binary_data.nil?
           end
+          def supports_pdf?
+            true
+          end
         end
 
       protected
@@ -33,7 +36,7 @@ module Technoweenie # :nodoc:
             self.width  = img.columns if respond_to?(:width)
             self.height = img.rows    if respond_to?(:height)
             callback_with_args :after_resize, img
-          end if image?
+          end if image? || (pdf? && process_pdfs?)
         end
 
         # Performs the actual resizing operation for a thumbnail
@@ -49,7 +52,7 @@ module Technoweenie # :nodoc:
             }
           end
         
-    #      img.strip! unless attachment_options[:keep_profile]
+          img.strip! unless attachment_options[:keep_profile]
           if respond_to?(:parent) && parent && parent.pdf? && process_pdfs?
             output_format = 'PNG'
           else
@@ -57,11 +60,13 @@ module Technoweenie # :nodoc:
           end
           
           if compress && !self.thumbnail
-            self.temp_path = write_to_temp_file(img.to_blob {self.quality = 75})
+            #self.temp_path = write_to_temp_file(img.to_blob {self.quality = 75, self.format = output_format})
+            self.temp_path = write_to_temp_file(img.to_blob {self.format = output_format})
           elsif self.thumbnail
-            self.temp_path = write_to_temp_file(img.to_blob {self.quality = 90})
+            #self.temp_path = write_to_temp_file(img.to_blob {self.quality = 90, self.format = output_format})
+            self.temp_path = write_to_temp_file(img.to_blob {self.format = output_format})
           else
-            self.temp_path = write_to_temp_file(img.to_blob)
+            self.temp_path = write_to_temp_file(img.to_blob {self.format = output_format})
           end
         end
       end
