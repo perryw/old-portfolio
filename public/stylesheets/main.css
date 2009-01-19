@@ -1,6 +1,7 @@
 .yui-d2f {
 	border: 1px solid #999999;
 	padding: 5px;
+    padding-top: 20px;
 }
 
 #main_navigation li {
@@ -28,7 +29,7 @@ p {
 	background: url(/images/1px_transparent.png) repeat-x;
 	position: absolute;
 	display: block;
-	width: 100%;
+	width: 950px;
 	height: 80px;
 }
 

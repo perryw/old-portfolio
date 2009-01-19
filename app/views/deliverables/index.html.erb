@@ -1,22 +1,26 @@
 <h1>Listing deliverables</h1>
 	
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-	<th># Collaborators</th>
-	<th>Owned by</th>
-	<th>Tags</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th># Collaborators</th>
+      <th>Owned by</th>
+      <th>Tags</th>
+    </tr>
+  </thead>
 
-<% for deliverable in @deliverables %>
-<%= render :partial => 'table_row', :object => deliverable %>
-<% end %>
+  <tbody id='deliverables_tbody'>
+    <% for deliverable in @deliverables -%>
+      <%= render :partial => 'table_row', :object => deliverable %>
+    <% end -%>
+  </tbody>
 </table>
 
 <br />
 
-<%= link_to 'New deliverable', new_deliverable_path %>
+<%= link_to_remote 'New deliverable', { :url => { :action => 'create' }, :method => :post}, { :href => new_deliverable_path } %>
 
 <br />
 <br />

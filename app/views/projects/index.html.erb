@@ -1,28 +1,23 @@
 <h1>Listing projects</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-	<th># Collaborators</th>
-	<th>Owned By Course</th>
-	<th># Deliverables</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th># Collaborators</th>
+      <th>Owned By Course</th>
+      <th># Deliverables</th>
+    </tr>
+  </thead>
 
-<% for project in @projects %>
-  <tr>
-    <td><%=h project.name %></td>
-    <td><%=h project.description %></td>
-	<td><%=h project.collaborators.size %></td>
-	<td><%=h (project.course.nil? ? "not owned by any course" : project.course.title) %></td>
-	<td><%=h project.deliverables.size %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <tbody id='projects_tbody'>
+    <% for project in @projects -%>
+      <%= render :partial => 'table_row', :object => project %>
+    <% end -%>
+  </tbody>
 </table>
 
 <br />
 
-<%= link_to 'New project', new_project_path %>
+<%= link_to_remote 'New project', { :url => { :action => 'create' }, :method => :post}, { :href => new_project_path } %>

@@ -1,9 +1,15 @@
 class ProjectsController < ApplicationController
   before_filter :login_required
 
-  def tag_cloud
-    @tags = Deliverable.tag_counts
+  for column in Project.content_columns
+    in_place_edit_for :project, column.name.to_sym
   end
+  in_place_edit_for :project, :tag_list
+
+  def tag_cloud
+    @tags = Project.tag_counts
+  end
+
   # GET /projects
   # GET /projects.xml
   def index
@@ -52,10 +58,28 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         flash[:notice] = 'Project was successfully created.'
-        format.html { redirect_to(@project) }
+        format.html { 
+          if request.xhr?
+            render :update do |page|
+              page.insert_html :bottom, :projects_tbody,
+                :partial => 'table_row',
+                :object => @project
+              page.visual_effect :highlight, "projects_table_#{@project.id}"
+              page.call "document.fire", "jsviz:clicked"
+            end
+          else
+            redirect_to(@project) 
+          end
+        }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
-        format.html { render :action => "new" }
+        format.html { 
+          if request.xhr?
+            head :unprocessable_entity
+          else
+            render :action => "new" 
+          end
+        }
         format.xml  { render :xml => @project.errors, :status => :unprocessable_entity }
       end
     end
@@ -94,7 +118,15 @@ class ProjectsController < ApplicationController
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to(projects_url) }
+      format.html { 
+        if request.xhr?
+          render :update do |page|
+            page.remove "projects_table_#{@project.id}"
+          end
+        else
+          redirect_to(projects_url) 
+        end
+      }
       format.xml  { head :ok }
     end
   end

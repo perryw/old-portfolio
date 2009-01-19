@@ -221,18 +221,6 @@ ForceDirectedLayout.prototype.enqueueRelationship = function( nodeA, nodeB ) {
 }
 
 /*
- * Dequeue a node and create a particle representation in the model.
- */
-ForceDirectedLayout.prototype.dequeueNode = function() {
-	var node = this.dataNodeQueue.shift();
-	if ( node ) {
-		this.addParticle( node );
-		return true;					
-	}
-	return false;
-}
-
-/*
  * Dequeue a relationship and add to the model.
  */
 ForceDirectedLayout.prototype.dequeueRelationship = function() {

@@ -1,13 +1,16 @@
 <!--%# = debug(session) %-->
 
 <%= link_to_remote 'Eat Breadcrumbs', {
-		:url => {:controller => 'breadcrumbs', :action => 'eat_breadcrumbs' },
+      :url => {:controller => 'breadcrumbs', :action => 'eat_breadcrumbs' }, 
 		:method => :get,
 		:evalScripts => false,
 		:update => 'rails_messages',
 		:success => 'new Effect.Parallel([new Effect.Highlight("rails_messages", {sync:true}),
 					 new Effect.Fade("rails_messages", {sync:true})], {duration: 5}); document.fire("jsviz:clicked");'
-	} %>
+    }, 
+    { 
+      :href => '/breadcrumbs/eat_breadcrumbs', :id => 'eat_breadcrumbs'
+    } %>
 
 <div id='jsviz_div'></div>
 <div id='tooltip' style='position:absolute'></div>

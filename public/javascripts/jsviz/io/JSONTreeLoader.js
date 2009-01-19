@@ -74,7 +74,7 @@ JSONTreeLoader.prototype.load = function( ) {
  */
 JSONTreeLoader.prototype.handle = function( request ) {
 	this.JSONDoc = request.responseJSON;
-	if( this.JSONDoc.length < this.dataGraph.nodes.length )	{
+	if( (this.JSONDoc.length == 1) || (this.JSONDoc.length < this.dataGraph.nodes.length) )	{
 		this.layout.clear(); 
 		this.dataGraph.clear(); 
 	}

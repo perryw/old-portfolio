@@ -1,6 +1,6 @@
 class CollaboratorsController < ApplicationController
   before_filter :login_required
-  for column in Course.content_columns
+  for column in Collaborator.content_columns
     in_place_edit_for :collaborator, column.name.to_sym
   end
   in_place_edit_for :collaborator, :tag_list
@@ -78,7 +78,19 @@ class CollaboratorsController < ApplicationController
     respond_to do |format|
       if @collaborator.save
         flash[:notice] = 'Collaborator was successfully created.'
-        format.html { redirect_to(@collaborator) }
+        format.html { 
+          if request.xhr?
+            render :update do |page|
+              page.insert_html :bottom, :collaborators_tbody,
+                :partial => 'table_row',
+                :object => @collaborator
+              page.visual_effect :highlight, "collaborators_table_#{@collaborator.id}"
+              page.call "document.fire", "jsviz:clicked"
+            end
+          else
+            redirect_to(@collaborator) 
+          end
+        }
         format.xml  { render :xml => @collaborator, :status => :created, :location => @collaborator }
       else
         format.html { render :action => "new" }
@@ -121,7 +133,15 @@ class CollaboratorsController < ApplicationController
     @collaborator.destroy
 
     respond_to do |format|
-      format.html { redirect_to(collaborators_url) }
+      format.html { 
+        if request.xhr?
+          render :update do |page|
+            page.remove "collaborators_table_#{@collaborator.id}"
+          end
+        else
+          redirect_to(collaborators_url) 
+        end
+      }
       format.xml  { head :ok }
     end
   end

@@ -89,7 +89,19 @@ class DeliverablesController < ApplicationController
     respond_to do |format|
       if @deliverable.save
         flash[:notice] = 'Deliverable was successfully created.'
-        format.html { redirect_to(@deliverable) }
+        format.html { 
+          if request.xhr?
+            render :update do |page|
+              page.insert_html :bottom, :deliverables_tbody,
+                :partial => 'table_row',
+                :object => @deliverable
+              page.visual_effect :highlight, "deliverables_table_#{@deliverable.id}"
+              page.call "document.fire", "jsviz:clicked"
+            end
+          else
+            redirect_to(@deliverable) 
+          end
+        }
         format.xml  { render :xml => @deliverable, :status => :created, :location => @deliverable }
       else
         format.html { render :action => "new" }
@@ -141,7 +153,15 @@ class DeliverablesController < ApplicationController
     @deliverable.destroy
 
     respond_to do |format|
-      format.html { redirect_to(deliverables_url) }
+      format.html { 
+        if request.xhr?
+          render :update do |page|
+            page.remove "deliverables_table_#{@deliverable.id}"
+          end
+        else
+          redirect_to(deliverables_url) 
+        end
+      }
       format.xml  { head :ok }
     end
   end
