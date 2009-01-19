@@ -19,3 +19,9 @@ h1 { font-weight: bold;}
 	border: 1px solid blue;
 }
 */
+.thumbnail {
+	width: 172px;
+	height: 172px;
+	text-align: center;
+	float: left;
+}

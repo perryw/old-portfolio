@@ -3,7 +3,7 @@
 
 	<div class='gallery3'>
 		<% @gallery.each do |img| %>
-			<span class='thumbnail'>
+			<div class='thumbnail'>
 				<% if img.image? -%>
 					<%= link_to image_tag(img.public_filename(:thumb)), 
 							image_path(img.public_filename(:lightview)), 
@@ -12,7 +12,7 @@
 				<% else # not an image...probably slideshare-%>
 					<%= link_to image_tag(Resource.find(54).public_filename(:thumb)), img.url, {:class => 'lightview', :rel => 'set[myset]', :id => img.id } %>
 				<% end -%>
-			</span>
+			</div>
 		<% end %>
 	</div>
 </div>
