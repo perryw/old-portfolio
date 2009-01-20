@@ -26,7 +26,11 @@
 	</div>
 	<div>
 		<span class='key'>Owned by Project:</span>
-		<%= collection_select("deliverable", "owner_type" , @owners, "id_and_class", "name", { :selected => (@deliverable.owner.nil? ? nil : @deliverable.owner.id_and_class), :include_blank => true}) %>
+		<%= collection_select(:deliverable, :owner_id_and_class, @owners, :id_and_class, :name, 
+				{ 
+					:selected => (@deliverable.owner.nil? ? nil : @deliverable.owner_id_and_class), 
+					:include_blank => true
+				}) %>
 	</div>
 	<div id='resource_div'>
 

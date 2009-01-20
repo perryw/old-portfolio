@@ -122,13 +122,11 @@ class DeliverablesController < ApplicationController
     collaborators.each do |k,v|
       c_array << k unless v == '0'
     end
-    unless c_array.empty?
-      params[:deliverable][:collaborator_ids] = c_array
-    end
-    unless params["new_association"].nil?
-      resource_id_array = params["new_association"][:resource_ids]
-      #params.delete("new_association")
-    end
+
+    params[:deliverable][:collaborator_ids] = c_array unless c_array.empty?
+
+    resource_id_array = params["new_association"][:resource_ids] unless params["new_association"].nil?
+
     unless resource_id_array.nil?
       #p "****** #{resource_id_array}"
       if params[:deliverable][:resource_ids].nil?
@@ -137,9 +135,12 @@ class DeliverablesController < ApplicationController
         params[:deliverable][:resource_ids].concat(resource_id_array)
       end
     end
-    if params[:deliverable][:owner_type]
-      params[:deliverable][:owner_id], params[:deliverable][:owner_type] = params[:deliverable][:owner_type].split(',')
+    unless params[:deliverable][:owner_id_and_class].empty?
+      params[:deliverable][:owner_id], params[:deliverable][:owner_type] = params[:deliverable][:owner_id_and_class].split(',')
+    else
+      params[:deliverable][:owner_id], params[:deliverable][:owner_type] = nil, nil
     end
+    params[:deliverable].delete(:owner_id_and_class)
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])
         flash[:notice] = 'Deliverable was successfully updated.'

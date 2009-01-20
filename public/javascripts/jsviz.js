@@ -241,15 +241,15 @@ function jsviz_init() {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
 			return {
-				springConstant: 0.05,
-				dampingConstant: 0.2,
+				springConstant: 0.45,
+				dampingConstant: 0.1,
 				restLength: Len
 			}
 		} else {
 			return {
-				springConstant: 0.2,
-				dampingConstant: 0.2,
-				restLength: Len
+				springConstant: 0.6,
+				dampingConstant: 0.28,
+				restLength: Len-20
 			}
 		}
 	}

@@ -45,6 +45,7 @@
 			<span></span>
 	    	<div class="yui-gd"> <!-- the "special grid" --> 
 	    		<div class="yui-u first">
+	    			<span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
 					<h1><%= APP_CONFIG['settings']['name'] %></h1>
 					<p><%= APP_CONFIG['settings']['tagline'] %></p>
 				</div> 
@@ -58,7 +59,7 @@
 				<% ubermenu :id => 'blue', :class=>'menu' do |m| %>
 			  		<% m.action 'Homepage', root_path %>
 					<% if_logged_in? do %>
-                        <% m.action 'Members', members_path, :class => 'menu_admin' %>
+                        <%# m.action 'Members', members_path, :class => 'menu_admin' %>
 						<% m.remote_action 'Collaborators', {
 								:url => {
 									:controller => 'collaborators',
@@ -133,7 +134,7 @@
 						%>								
 					<% end %>
 			    	<% if_admin? do %>
-                    	<% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
+                    	<%# m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
 					<% end %>
 				<% end %>
 			</div>

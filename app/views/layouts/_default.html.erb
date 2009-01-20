@@ -1,13 +1,15 @@
 <div class="yui-t3"><!-- t6 is a 300px sidebar -->
 	<div class="yui-b"><!-- narrow content block -->
 		<div id="logins"></div>
+		<div id='sidebar'><%= render :partial => 'shared/breadcrumb' %></div>
 		<%= yield :side %>
 	</div> 
 	<div class="yui-main"> 
 		
 		<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading menu...";' %>
 		<!--%= render :partial => 'shared/menu' %-->
-		<%= render :partial => 'shared/breadcrumb' %>
+		<div id='jsviz_div'></div>
+		<div id='tooltip' style='position:absolute'></div>
 			
 		<%= javascript_tag '$("loading").innerHTML= "Loading JSViz...";' %>
 		<%= javascript_include_tag 'jsviz/util/EventHandler' %>

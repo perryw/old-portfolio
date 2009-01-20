@@ -115,7 +115,7 @@ version: 3.0.0pr1
 		
 	.yui-t1 .yui-main,
 	.yui-t2 .yui-main,
-	.yui-t3 .yui-main{float:right;margin-left:-25em;/* IE: preserve layout at narrow widths */}
+	.yui-t3 .yui-main{/*float:right;margin-left:-25em;/* IE: preserve layout at narrow widths */}
 
 	.yui-t4 .yui-main,
 	.yui-t5 .yui-main,

@@ -87,8 +87,8 @@ ParticleModel.prototype = {
 	setSize: function( frameWidth, frameHeight ) {
 		this.boundsLeft = (-frameWidth/this.view.skewX)/2+30; // perryw
 		this.boundsRight = (frameWidth/this.view.skewX)/2-30;
-		this.boundsTop = (-frameHeight/this.view.skewY)/2+10;
-		this.boundsBottom = (frameHeight/this.view.skewY)/2-40;
+		this.boundsTop = (-frameHeight/this.view.skewY)/2+30;
+		this.boundsBottom = (frameHeight/this.view.skewY)/2-45;
 	},
 
 	/*
