@@ -23,15 +23,16 @@ function jsviz_init() {
 	 * position (via element.offsetWidth, element.offsetHeight,
 	 * element.offsetTop, element.offsetLeft).
 	 */
-	var refDiv = $('p_page');
+	//var refDiv = $('p_page');
 	this.divLocation = $('jsviz_div');
+	var refDiv = this.divLocation.up();
 	if(refDiv) {
 		this.divLocation.style.width = refDiv.getWidth()+"px";
 	}
 	//var layout = new SnowflakeLayout( divLocation, true );  commented out because it doesn't support cyclical graphs
 	this.layout  = new ForceDirectedLayout( this.divLocation, true); // doesn't properly detect SVG support in ff3
 	var layout = this.layout;
-	layout.view.skewBase=420; //275;
+	layout.view.skewBase=275;
 	layout.setSize();
 
 	/* 2) Configure the layout.
@@ -67,7 +68,7 @@ function jsviz_init() {
 				fanAngle: dataNode.root ? 360: 100,
 				rootAngle: 0
 				*/
-				mass: 0.5
+				mass: 0.3
 			};
 		},
 
@@ -241,13 +242,13 @@ function jsviz_init() {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
 			return {
-				springConstant: 0.45,
+				springConstant: 0.15,
 				dampingConstant: 0.1,
 				restLength: Len
 			}
 		} else {
 			return {
-				springConstant: 0.6,
+				springConstant: 0.3,
 				dampingConstant: 0.28,
 				restLength: Len-20
 			}

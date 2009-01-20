@@ -15,9 +15,11 @@ text{
 #jsviz_div {
 	padding-bottom: 0px;
 	/*border: .2em dotted #900;*/
-	margin-left:16.0769em;
+	/*margin-left:16.0769em;
 	height: 200px;
-	width: 600px;
+	width: 600px;*/
+	height: 300px;
+	width: 200px;
 }
 #tooltip{
 	position: absolute;

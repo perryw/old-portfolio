@@ -2,14 +2,14 @@
 	<div class="yui-b"><!-- narrow content block -->
 		<div id="logins"></div>
 		<div id='sidebar'><% if_logged_in? do -%><%= render :partial => 'shared/breadcrumb' %><% end -%></div>
+		<div id='jsviz_div'></div>
+		<div id='tooltip' style='position:absolute'></div>
 		<%= yield :side %>
 	</div> 
 	<div class="yui-main"> 
 		
 		<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading menu...";' %>
 		<!--%= render :partial => 'shared/menu' %-->
-		<div id='jsviz_div'></div>
-		<div id='tooltip' style='position:absolute'></div>
 			
 		<%= javascript_tag '$("loading").innerHTML= "Loading JSViz...";' %>
 		<%= javascript_include_tag 'jsviz/util/EventHandler' %>

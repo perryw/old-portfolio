@@ -136,8 +136,8 @@ ForceDirectedLayout.prototype.handleMouseMoveEvent = function( nodeElement, e ) 
 		var mouseX = e.pageX ? e.pageX : e.clientX;
 		var mouseY = e.pageY ? e.pageY : e.clientY;
 
-		mouseX -= this.view.centerX+this.container.offsetLeft;  // perryw 
-		mouseY -= this.view.centerY+this.container.offsetTop;
+		mouseX -= 1.5*this.view.centerX+this.container.offsetLeft;  // perryw 
+		mouseY -= 2*this.view.centerY+this.container.offsetTop;
 
 		// set the node position
 		this.model.particles[this.model.selected].positionX=mouseX/this.view.skewX;

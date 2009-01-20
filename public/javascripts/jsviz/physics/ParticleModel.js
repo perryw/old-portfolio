@@ -85,10 +85,10 @@ ParticleModel.prototype = {
 	 * @param {Object} frameHeight
 	 */
 	setSize: function( frameWidth, frameHeight ) {
-		this.boundsLeft = (-frameWidth/this.view.skewX)/2+30; // perryw
-		this.boundsRight = (frameWidth/this.view.skewX)/2-30;
-		this.boundsTop = (-frameHeight/this.view.skewY)/2+30;
-		this.boundsBottom = (frameHeight/this.view.skewY)/2-45;
+		this.boundsLeft = (-frameWidth/this.view.skewX)/2+20; // perryw
+		this.boundsRight = (frameWidth/this.view.skewX)/2-20;
+		this.boundsTop = (-frameHeight/this.view.skewY)/2;
+		this.boundsBottom = (frameHeight/this.view.skewY)/2;
 	},
 
 	/*
@@ -103,7 +103,11 @@ ParticleModel.prototype = {
 		var skewY = this.view.skewY;		
 		for ( var i=0, l=particles.length; i<l; i++ ) {
 			var particle = particles[i];
-
+			if(i==0) {
+				var amt = (l>4) ? 5 : i;
+				amt = amt*20;
+				particle.positionY = amt;
+			}
 			//bounds checking		
 			if( this.boundsLeft ) { //only check if the bounds have been set
 				if ( particle.positionX < this.boundsLeft+(particle.width/2)/skewX ) {

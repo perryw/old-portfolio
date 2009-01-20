@@ -84,7 +84,9 @@ JSONTreeLoader.prototype.handle = function( request ) {
 
 	rootNode["root"] = true;
 
-	rootNode.text = params['controller'] + ": " + params['action'];
+	rootNode.text = params['controller'];
+	if( params.action != 'index')
+		rootNode.text += ": " + params['action'];
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
 	rootNode.colorStripIndex = 0;
@@ -131,7 +133,9 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-	childNode.text = params['controller'] + ": " + params['action'];
+	childNode.text = params['controller'];
+	if( params.action != 'index')
+		childNode.text += ": " + params['action'];
 	childNode.URL = this.reconstructURL(params);
 	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];
