@@ -1,3 +1,9 @@
+<% unless @project.key_resource_id.nil? -%>
+<div>
+	<span class='key'>Key Photo:</span>
+	<span class='value'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
+</div>
+<% end -%>
 <div>
   <span class='key'>Name:</span>
   <span class='value'><%=h @project.name %></span>

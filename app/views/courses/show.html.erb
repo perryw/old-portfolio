@@ -1,4 +1,9 @@
 <div id='courses_show'>
+	<% unless @course.key_resource_id.nil? -%>
+	<div>
+		<span class='key'>Key Photo:</span>
+		<span class='value'><%= image_tag Resource.find(@course.key_resource_key).public_filename(:thumb) %></span>
+	<% end -%>
 	<div>
 		<span class='key'>Date:</span>
 		<span class='value'><%=in_place_editor_field :course, "date", {}, {} %></span>
