@@ -48,6 +48,9 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @collaborators = Collaborator.find(:all)
     @courses = Course.find(:all)
+    @keyable = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil })
+    @keyable.concat(@project.all_resources)
+    @keyable.delete_if{ |rez| !rez.image? && !rez.pdf? }
   end
 
   # POST /projects

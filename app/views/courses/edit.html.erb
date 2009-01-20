@@ -4,6 +4,10 @@
 </div>
 <% form_for(@course) do |f| %>
 <div>
+	<span class='key'>Key Resource</span>
+	<br />
+	<%= collection_select :course, :key_resource_id, @keyable, :id, :filename, { :selected => @course.key_resource_id, :include_blank => true}%>
+<div>
     <span class='key'>Dept</span>
     <br/>
     <%= f.text_field :dept %>

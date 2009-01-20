@@ -91,8 +91,10 @@ class CoursesController < ApplicationController
     @course = Course.find(params[:id])
     @members = Collaborator.find(:all)
     @num_associations = @course.resources.size
-    @resources = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil})
+    @keyable = @resources = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil})
     @resources.concat( Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => params[:id]}) )
+    @keyable.concat(@course.all_resources)
+    @keyable.delete_if{ |rez| !rez.image? && !rez.pdf? }
   end
 
   # POST /courses

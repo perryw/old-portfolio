@@ -1,6 +1,9 @@
 <span class='tags'>
-	<%= in_place_editor_field :course, "tag_list", {}, {} %>, 
-	<%=h @other_tags %>
+	<%= in_place_editor_field :course, "tag_list", {}, {} %> 
+	<%=h ", " + @other_tags unless @other_tags.empty %>
+</span>
+<span class='key_resource'>
+	<%= Resource.find(@course.key_resource_id) unless @course.key_resource_id.nil? %>
 </span>
 <h1><%=h "#{@course.name}" %></h1>
 <span class='date'><%=h @course.date%></span>

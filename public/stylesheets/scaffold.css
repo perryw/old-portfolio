@@ -25,11 +25,24 @@ table
 	text-align:			center;
     border-width:		0px;
     border-spacing:		0px;
-    border-style:		solid;
 	word-wrap:			break-word;
 	overflow:			scroll;
 }
+.center {
+	text-align: center;
+}
+table thead th {
+	color: #569AE3;
+    border:				none;
+	vertical-align: bottom;
+	text-align: left;
+}
 
+table tbody td{
+	text-align: left;
+    border:				none;
+	padding-left: 0.5em;
+}
 .highlightme { background-color: lightyellow; }
 
 .highlight_row0{ background-color: lightgrey; }

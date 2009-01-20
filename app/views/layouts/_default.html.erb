@@ -1,7 +1,7 @@
 <div class="yui-t3"><!-- t6 is a 300px sidebar -->
 	<div class="yui-b"><!-- narrow content block -->
 		<div id="logins"></div>
-		<div id='sidebar'><%= render :partial => 'shared/breadcrumb' %></div>
+		<div id='sidebar'><% if_logged_in? do -%><%= render :partial => 'shared/breadcrumb' %><% end -%></div>
 		<%= yield :side %>
 	</div> 
 	<div class="yui-main"> 

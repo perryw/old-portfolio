@@ -15,4 +15,14 @@ class Course < ActiveRecord::Base
   def id_and_class
     "#{self.id},#{self.class.to_s}"
   end
+  def all_resources
+    @all = Array.new
+    self.deliverables.each do |deliv|
+      @all.concat(deliv.resources)
+    end
+    self.projects.each do |proj|
+      @all.concat(proj.all_resources)
+    end
+    @all.concat(self.resources)
+  end
 end
