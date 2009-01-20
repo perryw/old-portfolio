@@ -12,4 +12,7 @@ class Course < ActiveRecord::Base
   def collaborators
     self.projects.collaborators | self.deliverables.collaborators  # join arrays
   end
+  def id_and_class
+    "#{self.id},#{self.class.to_s}"
+  end
 end

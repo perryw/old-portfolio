@@ -57,7 +57,6 @@ class DeliverablesController < ApplicationController
   end
   
   def new_association
-
     if @num_associations.nil?
       @num_associations = Deliverable.find(params[:id]).resources.size
     else
@@ -66,18 +65,22 @@ class DeliverablesController < ApplicationController
     
     render :update do |page|
       page.insert_html :before, params[:div_name],
-      :partial => 'shared/new_association', 
-      :object => Deliverable.find(params[:id]),
-      :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
-
+        :partial => 'shared/new_association', 
+        :object => Deliverable.find(params[:id]),
+        :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
       page.visual_effect :highlight, params[:div_name]
     end
   end
     
   def update_preview
     return if params[:selected_value].nil?
+    rez = Resource.find(params[:selected_value])
     render :update do |page|
-      page.replace_html params[:span_name], image_tag(Resource.find(params[:selected_value]).public_filename(:thumb))
+      if( rez.image? || rez.pdf? )
+        page.replace_html params[:span_name], image_tag(rez.public_filename(:thumb))
+      else
+        page.replace_html params[:span_name], rez.tag_list
+      end
     end
   end
   
@@ -133,6 +136,9 @@ class DeliverablesController < ApplicationController
       else
         params[:deliverable][:resource_ids].concat(resource_id_array)
       end
+    end
+    if params[:deliverable][:owner_type]
+      params[:deliverable][:owner_id], params[:deliverable][:owner_type] = params[:deliverable][:owner_type].split(',')
     end
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])

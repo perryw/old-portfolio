@@ -14,4 +14,7 @@ class Project < ActiveRecord::Base
     end
     return collabs | self.collaborators
   end
+  def id_and_class
+    "#{self.id},#{self.class.to_s}"
+  end
 end
