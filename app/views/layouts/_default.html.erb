@@ -2,7 +2,7 @@
 	<div id='left_column' class="yui-b"><!-- narrow content block -->
 		<div id="logins"></div>
 		<div id='sidebar'><% if_logged_in? do -%><%= render :partial => 'shared/breadcrumb' %><% end -%></div>
-		<div id='jsviz_div'></div>
+        <div class='bl'><div class='br'><div class='tl'><div class='tr'><div id='jsviz_div'></div></div></div></div></div>
 		<div id='tooltip' style='position:absolute'></div>
 		<%= yield :side %>
 	</div> 

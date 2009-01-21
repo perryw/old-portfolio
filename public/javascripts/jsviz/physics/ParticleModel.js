@@ -87,8 +87,8 @@ ParticleModel.prototype = {
 	setSize: function( frameWidth, frameHeight ) {
 		this.boundsLeft = (-frameWidth/this.view.skewX)/2+20; // perryw
 		this.boundsRight = (frameWidth/this.view.skewX)/2-20;
-		this.boundsTop = (-frameHeight/this.view.skewY)/2;
-		this.boundsBottom = (frameHeight/this.view.skewY)/2;
+		this.boundsTop = (-frameHeight/this.view.skewY)/2+10;
+		this.boundsBottom = (frameHeight/this.view.skewY)/2-15;
 	},
 
 	/*
@@ -104,8 +104,8 @@ ParticleModel.prototype = {
 		for ( var i=0, l=particles.length; i<l; i++ ) {
 			var particle = particles[i];
 			if(i==0) {
-				var amt = (l>4) ? 5 : i;
-				amt = amt*20;
+				var amt = (l>7) ? 8 : i;
+				amt = this.boundsTop + amt*20;
 				particle.positionY = amt;
 			}
 			//bounds checking		

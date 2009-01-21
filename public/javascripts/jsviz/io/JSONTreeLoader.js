@@ -84,7 +84,10 @@ JSONTreeLoader.prototype.handle = function( request ) {
 
 	rootNode["root"] = true;
 
-	rootNode.text = params['controller'];
+    if( params['controller'] == 'root' )
+      rootNode.text = "Home";
+    else
+      rootNode.text = params['controller'];
 	if( params.action != 'index')
 		rootNode.text += ": " + params['action'];
 	rootNode.URL = this.reconstructURL(params);
@@ -133,7 +136,11 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-	childNode.text = params['controller'];
+    if( params['controller'] == 'root' )
+      childNode.text = 'Home';
+    else
+      childNode.text = params['controller'];
+
 	if( params.action != 'index')
 		childNode.text += ": " + params['action'];
 	childNode.URL = this.reconstructURL(params);

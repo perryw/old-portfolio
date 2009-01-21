@@ -27,7 +27,7 @@ h1 { font-weight: bold;}
 	display: table-cell;
 	vertical-align: middle;
 	min-height: 168px;
+    min-width: 168px;
 }
 .spacer {
-	clear: both;
 }

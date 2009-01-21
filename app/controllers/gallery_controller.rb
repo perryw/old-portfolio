@@ -1,5 +1,5 @@
 class GalleryController < ApplicationController
-  before_filter :login_required
+  #before_filter :login_required
 
   # GET /gallery
   # GET /gallery.xml

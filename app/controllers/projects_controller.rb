@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_prohibited, :only => [:create, :update, :destroy]
 
   for column in Project.content_columns
     in_place_edit_for :project, column.name.to_sym

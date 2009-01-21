@@ -1,10 +1,11 @@
 #eat_breadcrumbs{
-	/*
-  top: 110px;
-  left: 64em;
-  position: absolute;
-  */
+  margin-bottom: 5px;
 }
+.bl { margin-top: 8px; background: url(/images/bl2.gif) 0 100% no-repeat }
+.br { background: url(/images/br2.gif) 100% 100% no-repeat }
+.tl { background: url(/images/tl2.gif) 0 0 no-repeat }
+.tr { background: url(/images/tr2.gif) 100% 0 no-repeat }
+
 text{
 	/*font-weight: bold;*/
 	z-Index: -1;
@@ -18,7 +19,7 @@ text{
 	/*margin-left:16.0769em;
 	height: 200px;
 	width: 600px;*/
-	height: 300px;
+	height: 450px;
 	width: 200px;
 }
 #tooltip{

@@ -21,7 +21,7 @@ class Resource < ActiveRecord::Base
 
   def self.update_thumbnails
     # from http://beast.caboo.se/forums/2/topics/4623
-    Resource.all.select{ |r| r.parent_id.nil? && r.image? }.each do |r|
+    Resource.all.select{ |r| r.parent_id.nil? && (r.pdf? || r.image?) }.each do |r|
       puts "######## updating thumbanails for #{r.filename}"
       temp_file = r.create_temp_file
       r.attachment_options[:thumbnails].each { |suffix, size|

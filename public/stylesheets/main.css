@@ -58,8 +58,9 @@ p {
 }
 
 #bd .yui-b {
-	border: 1px solid #999999;
-	padding: 5px;
+/*	border: 1px solid #999999;
+*/
+    padding: 5px;
 	margin-top: 16px;
 	margin-bottom: 16px;
 }
