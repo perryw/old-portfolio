@@ -1,10 +1,11 @@
+<% name_method ||= :filename %>
 <tr>
 	<td>
 		<span class='select'>
 			<%= collection_select :new_association, 
 									:resource_ids, 
 									resources, 
-									:id, :filename, 
+									:id, name_method, 
 									{:include_blank => true}, 
 									{:multiple => false, 
 										:onChange => remote_function(:url => {:action => 'update_preview',

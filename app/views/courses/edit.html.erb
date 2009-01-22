@@ -63,8 +63,8 @@
                 <span class='select'><%= collection_select :course,
                     :resource_ids,
                     @resources,
-                    :id, :filename,
-                    {:include_blank => true, :selected => @course.resource_ids[index]},
+                    :id, :tag_list,
+                    {:include_blank => true, :selected => @course.resources[index].tag_list},
                     {:multiple => false,
                     :onChange => remote_function(:url => {:action => 'update_preview', :span_name => "preview_pane#{index}"},
                     :with => "'selected_value='+value" )

@@ -50,15 +50,17 @@ class DeliverablesController < ApplicationController
     @deliverable = Deliverable.find(params[:id])
     @collaborators = Collaborator.all
     @owners = Project.all + Course.all
-    @resources = Resource.all
+    @resources = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil }) + Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => @deliverable.id})
+    #@resources = Resource.find(:all, :conditions => ["parent_id = NULL AND (resource_owner_id = NULL OR resource_owner_id = ?)", @deliverable.id])
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
     end
   end
   
   def new_association
+    @deliverable = Deliverable.find(params[:id])
     if @num_associations.nil?
-      @num_associations = Deliverable.find(params[:id]).resources.size
+      @num_associations = @deliverable.resources.size
     else
       @num_associations += 1
     end
@@ -66,8 +68,8 @@ class DeliverablesController < ApplicationController
     render :update do |page|
       page.insert_html :before, params[:div_name],
         :partial => 'shared/new_association', 
-        :object => Deliverable.find(params[:id]),
-        :locals => {:resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
+        :object => @deliverable,
+        :locals => { :name_method => :tag_list, :resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
       page.visual_effect :highlight, params[:div_name]
     end
   end
@@ -134,12 +136,15 @@ class DeliverablesController < ApplicationController
       else
         params[:deliverable][:resource_ids].concat(resource_id_array)
       end
+      params.delete(:new_association)
     end
+    
     unless params[:deliverable][:owner_id_and_class].empty?
       params[:deliverable][:owner_id], params[:deliverable][:owner_type] = params[:deliverable][:owner_id_and_class].split(',')
     else
       params[:deliverable][:owner_id], params[:deliverable][:owner_type] = nil, nil
     end
+    
     params[:deliverable].delete(:owner_id_and_class)
     respond_to do |format|
       if @deliverable.update_attributes(params[:deliverable])
