@@ -41,8 +41,9 @@
 <body>
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
 
+		<!--div class='bl'><div class='br'><div class='tl'><div class='tr'-->
 		<div id="hd"><!-- header -->
-			<span></span>
+			<!--span></span-->
 	    	<div class="yui-gd"> <!-- the "special grid" --> 
 	    		<div class="yui-u first">
 	    			<span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
@@ -58,9 +59,9 @@
 				<%# ubermenu :id => 'main_navigation' do |m| %>
 				<% ubermenu :id => 'blue', :class=>'menu' do |m| %>
 			  		<% m.action 'Homepage', root_path %>
-					<% if_logged_in? do %>
+					<% #if_logged_in? do %>
                         <%# m.action 'Members', members_path, :class => 'menu_admin' %>
-						<% m.remote_action 'Collaborators', {
+						<!--% m.remote_action 'Collaborators', {
 								:url => {
 									:controller => 'collaborators',
 									:action => 'index'
@@ -71,7 +72,7 @@
 								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
 							},
 							{	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index") }
-						 %>
+						 %-->
 						<% m.remote_action "Courses", {
 					    		:url=>{
 					        		:controller=>'courses',
@@ -132,7 +133,7 @@
 							},
 							{	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
 						%>								
-					<% end %>
+					<% #end %>
 			    	<% if_admin? do %>
                     	<%# m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
 					<% end %>
@@ -142,7 +143,8 @@
 				<%= flash_messages %>
 			</div>
 		</div>
-
+		<!--/div></div></div></div-->
+		
 		<div id="bd"><!-- body -->
 			<%= render :partial => "layouts/#{controller.nested_layout}" %>
 		</div>  

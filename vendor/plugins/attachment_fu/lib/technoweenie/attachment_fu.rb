@@ -278,7 +278,8 @@ module Technoweenie # :nodoc:
         end
         
          # Change the output extension if PDFs are being converted
-        ext = ".png" if attachment_options[:thumbnail_pdf_files] && respond_to?(:parent) && parent && parent.pdf?
+        #ext = ".png" if attachment_options[:thumbnail_pdf_files] && respond_to?(:parent) && parent && parent.pdf?
+        ext = ".png" if attachment_options[:thumbnail_pdf_files] && self.pdf?
         
         # ImageScience doesn't create gif thumbnails, only pngs
         ext.sub!(/gif$/, 'png') if attachment_options[:processor] == "ImageScience"
@@ -459,7 +460,6 @@ module Technoweenie # :nodoc:
           content_types = attachment_options[:content_type]
           content_types << "image/png" if content_types && self.respond_to?(:parent) && self.parent && self.parent.pdf? && process_pdfs?
           errors.add :content_type, ActiveRecord::Errors.default_error_messages[:inclusion] unless content_types.nil? || content_types.include?(send(:content_type))
- 
         end
 
         # Initializes a new thumbnail with the given suffix.

@@ -1,9 +1,9 @@
 <div class="yui-t3"><!-- t6 is a 300px sidebar -->
 	<div id='left_column' class="yui-b"><!-- narrow content block -->
 		<div id="logins"></div>
-		<div id='sidebar'><% if_logged_in? do -%><%= render :partial => 'shared/breadcrumb' %><% end -%></div>
         <div class='bl'><div class='br'><div class='tl'><div class='tr'><div id='jsviz_div'></div></div></div></div></div>
 		<div id='tooltip' style='position:absolute'></div>
+		<div id='sidebar'><%= render :partial => 'shared/breadcrumb' %><% if_logged_in? do -%><% end -%></div>
 		<%= yield :side %>
 	</div> 
 	<div class="yui-main"> 
@@ -29,13 +29,16 @@
 		<%= javascript_include_tag 'jsviz' %>
 		
 		<%= javascript_tag '$("loading").innerHTML=" ";' %>
-		
 		<div class="yui-b"><!-- main content block -->
-			<%#= flash_messages %>
-			<div id='spinner_div' style='display:none;'><%= image_tag 'ajax-loader.gif'%></div>
-			<div id='p_page'>
-				<%= yield %>
-			</div>
-		</div> 
+			<div class='bl'><div class='br'><div class='tl'><div class='tr'>
+				<div>
+					<%#= flash_messages %>
+					<div id='spinner_div' style='display:none;'><%= image_tag 'ajax-loader.gif'%></div>
+					<div id='p_page'>
+						<%= yield %>
+					</div>
+				</div>
+			</div></div></div></div>
+		</div>
 	</div> 
 </div>

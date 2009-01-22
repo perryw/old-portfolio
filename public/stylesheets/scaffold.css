@@ -53,7 +53,7 @@ table tbody td{
 .empty_field{ font-style:italic;}
 
 #p_page {
-	
+	padding: 8px 0 16px 16px;
 }
 
 .key {	font-weight: bold; }
