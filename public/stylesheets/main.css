@@ -3,6 +3,9 @@
 	padding: 5px;
     padding-top: 20px;
 }
+#bd {
+	margin-left: 16px;
+}
 #bd #left_column {
 	margin-top: 0;
 	padding: 0 0 5px 0;
@@ -55,9 +58,12 @@ p {
 }
 
 #hd .yui-u h1{
-	color: #AAAAAA;
+	color: #569AE3;
 }
 
+#hd .yui-u p{
+	color: #063C8C;
+}
 #hd .user_bar {
 	float: right;
 	position: relative;
