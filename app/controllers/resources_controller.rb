@@ -1,5 +1,5 @@
 class ResourcesController < ApplicationController
-  before_filter :login_prohibited, :except => [:index, :show]
+  before_filter :login_required, :only => [:create, :update, :destroy]
   
   def tag_cloud
     @tags = Resource.tag_counts
