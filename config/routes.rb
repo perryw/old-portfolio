@@ -42,8 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :deliverables
   map.resources :projects
   map.resources :resources
-  map.connect 'courses/:id', :controller => 'courses', :action => 'list'
   map.resources :courses
+  map.list 'courses/:id/list', :controller => 'courses', :action => 'list'
   map.resources :collaborators
   
 	map.resource  :session

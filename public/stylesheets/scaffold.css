@@ -1,3 +1,8 @@
+a.atom_feed {
+	background: transparent url(/images/feed.png)
+	no-repeat scroll 1px 50%;
+	padding: 2px 0 3px 16px;
+}
 .css1 { font-size: 1.0em; }
 
 .css1:hover { background-color: blue; color: white; }

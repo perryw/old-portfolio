@@ -7,7 +7,8 @@
 	<td><%=in_place_editor_field :course, "description", {}, { :empty_text => 'add description…'} %></td>
 	<td class='center'><%=h @course.projects.size %></td>
 	<td class='center'><%=h @course.resources.size %></td>
-	<td><%= link_to 'Show', @course %></td>
+	<!--td><%= link_to 'Show', @course %></td-->
+	<td><%= link_to 'List', list_url(@course.id)%></td>
 	<td><%= link_to 'Edit', edit_course_path(@course) %></td>
 	<td><%= link_to_remote 'Destroy', {:url => course_path(@course), :method => :delete}, { :href => course_path(@course), :confirm => 'Are you sure?', :method => :delete} %></td>
 </tr>
