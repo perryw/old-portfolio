@@ -1,3 +1,20 @@
 <%= render :partial => 'show', :locals => { :deliverable => @deliverable} %>
+
+<div class='img_placeholder'>
+	<%= image_tag deliverable.key_resource.public_filename(:thumb) unless(deliverable.key_resource.nil?)  %>
+</div>
+<div>
+	<span class='key'>Belongs to project/course:</span>
+	<span class='value'><%=h (@deliverable.owner.nil? ? "does not belong to any project" : @deliverable.owner.name)%></span>
+</div>
+<div>
+	<span class='key'>Collaborators:</span>
+	<ul class='collaborators_list'>
+		<% deliverable.collaborators.each do |collab| -%>
+			<li><%=h collab.name %></li>
+		<% end -%>
+	</ul>
+</div>
+
 <%= link_to 'Edit', edit_deliverable_path(@deliverable) %> |
 <%= link_to 'Back', deliverables_path %>
