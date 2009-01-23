@@ -11,14 +11,14 @@
 <% end -%>
 <h2><%=h @course.description %></h2>
 
-<ul class='listing'>
+<ul id='course_projects_list' class='listing'>
 	<li>
         <h2>Project<%= (@course.projects.size == 1) ? '' : 's' %></h2>
 		<ul>
-			<% for project in @course.projects -%>
+			<% for project in @projects_ordered -%>
 				<li><%=link_to project.name, project_path(project)%></li>
 				<ul>
-					<% for deliverable in project.deliverables -%>
+					<% for deliverable in project.ordered_deliverables -%>
 						<li><%=h deliverable.name %></li>
 					<% end -%>
 				</ul>
@@ -27,17 +27,17 @@
 	</li>
 	<% unless @course.deliverables.empty? -%>
 		<li><h2>Homeworks</h2>
-			<ul>
-				<% for homework in @course.deliverables -%>
-				<li><%h homework.name %></li>
+			<ul id='course_deliverables_list'>
+				<% for homework in @deliverables_ordered -%>
+					<li><%h homework.name %></li>
 				<% end %>
 			</ul>
 		</li>
 	<% end -%>
     <% unless @course.resources.empty? -%>
           <li><h2>Resource<%= (@course.resources.size==1) ? '' : 's' %></h2>
-          <ul>
-              <% for resource in @course.resources -%>
+          <ul id='course_resources_list'>
+              <% for resource in @resources_ordered -%>
                   <li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h resource.tag_list %></div></li>
               <% end -%>
           </ul>

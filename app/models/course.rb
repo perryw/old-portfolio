@@ -15,6 +15,21 @@ class Course < ActiveRecord::Base
   def id_and_class
     "#{self.id},#{self.class.to_s}"
   end
+  def ordered_resources
+    resources_order = self.resources_order.split(',').collect!{ |n| n.to_i } unless self.resources_order.nil? || self.resources_order.empty?
+    resources_order ||= self.resource_ids
+    return resources_order.collect{ |r| Resource.find(r) }
+  end
+  def ordered_deliverables
+    deliverables_order = self.deliverables_order.split(',').collect!{ |n| n.to_i } unless self.deliverables_order.nil? || self.deliverables_order.empty?
+    deliverables_order ||= self.deliverable_ids
+    return deliverables_order.collect{ |d| Deliverable.find(d) }
+  end
+  def ordered_projects
+    projects_order = self.projects_order.split(',').collect!{ |n| n.to_i } unless self.projects_order.nil? || self.projects_order.empty?
+    projects_order ||= self.project_ids
+    return projects_order.collect{ |p| Project.find(p) }
+  end
   def all_resources
     @all = Array.new
     self.deliverables.each do |deliv|

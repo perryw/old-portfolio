@@ -1,7 +1,7 @@
-<%= render :partial => 'show', :locals => { :deliverable => @deliverable} %>
+<%= render :partial => 'show' %>
 
 <div class='img_placeholder'>
-	<%= image_tag deliverable.key_resource.public_filename(:thumb) unless(deliverable.key_resource.nil?)  %>
+	<%= image_tag @deliverable.key_resource.public_filename(:thumb) unless(@deliverable.key_resource.nil?)  %>
 </div>
 <div>
 	<span class='key'>Belongs to project/course:</span>
@@ -10,7 +10,7 @@
 <div>
 	<span class='key'>Collaborators:</span>
 	<ul class='collaborators_list'>
-		<% deliverable.collaborators.each do |collab| -%>
+		<% @deliverable.collaborators.each do |collab| -%>
 			<li><%=h collab.name %></li>
 		<% end -%>
 	</ul>

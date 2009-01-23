@@ -10,6 +10,24 @@ class ProjectsController < ApplicationController
     @tags = Project.tag_counts
   end
 
+  def order
+    @project = Project.find(params[:id])
+    params[:project] ||= Hash.new
+    unless params[:project_resources_list].nil?
+      params[:project][:resources_order] = params[:project_resources_list].join(',')
+      params.delete(:project_resources_list)
+    end
+    unless params[:deliverables_list].nil?
+      params[:project][:deliverables_order] = params[:deliverables_list].join(',')
+      params.delete(:deliverables_list)
+    end
+    if @project.update_attributes(params[:project])
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+  
   # GET /projects
   # GET /projects.xml
   def index
@@ -25,7 +43,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = Project.find(params[:id])
-
+    @resources_ordered = @project.ordered_resources
+    @deliverables_ordered = @project.ordered_deliverables
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @project }

@@ -11,10 +11,36 @@ class CoursesController < ApplicationController
     @tags = Course.tag_counts
   end
   
+  def order
+    @course = Course.find(params[:id])
+    params[:course] ||= Hash.new
+    unless params[:course_resources_list].nil?
+      params[:course][:resources_order] = params[:course_resources_list].join(',')
+      params.delete(:course_resources_list)
+    end
+    unless params[:course_deliverables_list].nil?
+      params[:course][:deliverables_order] = params[:course_deliverables_list].join(',')
+      params.delete(:course_deliverables_list)
+    end
+    unless params[:course_projects_list].nil?
+      params[:course][:projects_order] = params[:course_projects_list].join(',')
+      params.delete(:course_projects_list)
+    end
+    if @course.update_attributes(params[:course])
+      head :ok
+    else
+      head :unprocessable_entity
+    end
+  end
+  
   # GET /courses/1
   # GET /courses/1.xml
   def show
     @course = Course.find(params[:id])
+    @resources_ordered = @course.ordered_resources
+    @deliverables_ordered = @course.ordered_deliverables
+    @projects_ordered = @course.ordered_projects
+    
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb
       format.xml  { render :xml => @course }
@@ -35,6 +61,9 @@ class CoursesController < ApplicationController
     @course.resources.each do |rez|
       @other_tags += rez.tag_list
     end
+    @resources_ordered = @course.ordered_resources
+    @deliverables_ordered = @course.ordered_deliverables
+    @projects_ordered = @course.ordered_projects
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# show.html.erb
       format.xml  { render :xml => @course }

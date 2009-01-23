@@ -1,21 +1,32 @@
 <div>
-  <span class='key'>Name:</span> <span class='value'><%=h deliverable.name %></span>
+  <span class='key'>Name:</span> <span class='value'><%=h @deliverable.name %></span>
 </div>
 <div>
 	<span class='key'>Tags:</span>
-	<span class='value'><%=h deliverable.tag_list %></span>
+	<span class='value'><%=h @deliverable.tag_list %></span>
 </div>
 
 <div>
   <span class='key'>Description:</span>
-  <span class='value'><%=h deliverable.description %></span>
+  <span class='value'><%=h @deliverable.description %></span>
 </div>
 
 <div>
-    <% deliverable.resources.each do |rez| -%>
-        <% if rez.image? || rez.pdf? -%>
-            <span><%= image_tag rez.public_filename(:thumb) %></span>
-        <% end -%>
-    <% end -%>  
+	<ul id='resources_list'>
+	    <% @resources_ordered.each do |rez| -%>
+	        <% if rez.image? || rez.pdf? -%>
+	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
+	        <% else -%>
+				<!--li id='resources_<%=rez.id%>'><%= %></li-->
+			<% end -%>
+	    <% end -%>  
+	</ul>
+	<!--p id="list-info"></p-->
+	
+	<%= sortable_element 'resources_list', 
+	      #:update => 'list-info',  
+	      #:complete => visual_effect(:highlight, 'list'), 
+	      :url => { :action => "order", :id => @deliverable.id }, 
+		  :ghosting => true %>
 </div>
 

@@ -61,13 +61,13 @@ class ResourcesController < ApplicationController
         format.js do
           responds_to_parent do
             render :update do |page|
-              page.insert_html :bottom, 'resources_index', :partial => 'resources/list_item', :object => @resource
+              #page.insert_html :bottom, 'resources_index', :partial => 'resources/list_item', :object => @resource #preview
               page.visual_effect :scroll_to, 'resources_index'
-              page.visual_effect :slide_up, 'new_resource', :duration => 3.0
+              page.visual_effect :fade, 'new_resource', :duration => 2.5
               page.visual_effect :appear, 'new_resource_JS', :duration => 1.5
-              page.visual_effect :highlight, "resource_#{@resource.id}", :duration => 2.5
-              page.visual_effect :fade, "resource_#{@resource.id}", :duration => 2.5, :queue => 'end'
-              page.insert_html :bottom, 'resources_table_body', :partial => 'resources/resource_row', :object => @resource, :locals => {:number => Resource.find(:all, :conditions => {:parent_id => nil}).size%2}
+              #page.visual_effect :highlight, "resource_#{@resource.id}", :duration => 2.5
+              #page.visual_effect :fade, "resource_#{@resource.id}", :duration => 2.5, :queue => 'end'
+              page.insert_html :top, 'resources_table_body', :partial => 'resources/resource_row', :object => @resource, :locals => {:number => Resource.find(:all, :conditions => {:parent_id => nil}).size%2}
               page.call 'Form.reset', 'resource_form'
             end
           end

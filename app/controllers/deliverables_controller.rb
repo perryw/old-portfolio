@@ -10,6 +10,21 @@ class DeliverablesController < ApplicationController
     @tags = Deliverable.tag_counts
   end
   
+  def order
+    @deliverable = Deliverable.find(params[:id])
+    params[:deliverable] ||= Hash.new
+    @order = params[:resources_list]
+    params[:deliverable][:resources_order] = @order.join(',')
+    params.delete(:collaborators)
+    params.delete(:id)
+    if @deliverable.update_attributes(params[:deliverable])
+      render :partial => 'list'
+    else
+      #render :text => 'error occurred'
+      head :unprocessable_entity
+    end
+  end
+  
   # GET /deliverables
   # GET /deliverables.xml
   def index
@@ -27,7 +42,7 @@ class DeliverablesController < ApplicationController
   # GET /deliverables/1.xml
   def show
     @deliverable = Deliverable.find(params[:id])
-
+    @resources_ordered = @deliverable.ordered_resources
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @deliverable }
