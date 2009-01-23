@@ -49,7 +49,7 @@
 		<span class='select'>
 		<%= collection_select :deliverable, 
 								:resource_ids, 
-								@resources, 
+								[@deliverable.resources[index]], 
 								:id, :tag_list, 
 								{:include_blank => true, :selected => @deliverable.resources[index].tag_list}, 
 								{:multiple => false, 

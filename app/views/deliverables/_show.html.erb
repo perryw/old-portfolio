@@ -1,0 +1,34 @@
+<div class='img_placeholder'>
+	<%= image_tag deliverable.key_resource.public_filename(:thumb) unless(deliverable.key_resource.nil?)  %>
+</div>
+
+<div>
+	<span class='key'>Belongs to project/course:</span>
+	<span class='value'><%=h (deliverable.owner.nil? ? "does not belong to any project" : deliverable.owner.name)%></span>
+</div>
+<div>
+    <% deliverable.resources.each do |rez| -%>
+        <% if rez.image? || rez.pdf? -%>
+            <span><%= image_tag rez.public_filename(:thumb) %></span>
+        <% end -%>
+    <% end -%>  
+</div>
+<div>
+	<span class='key'>Associated Tags:</span>
+	<span class='value'><%=h deliverable.tag_list %></span>
+</div>
+<div>
+  <span class='key'>Name:</span> <span class='value'><%=h deliverable.name %></span>
+	<span>
+		<span class='key'>Collaborators:</span>
+		<ul class='collaborators_list'>
+			<% deliverable.collaborators.each do |collab| -%>
+				<li><%=h collab.name %></li>
+			<% end -%>
+		</ul>
+	</span>
+</div>
+<div>
+  <span class='key'>Description:</span>
+  <span class='value'><%=h deliverable.description %></span>
+</div>

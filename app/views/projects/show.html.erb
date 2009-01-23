@@ -16,9 +16,9 @@
 
 <div>
 	<span class='key'>Collaborators:</span>
-	<ul>
+	<ul class='collaborators_list'>
 		<% @project.collaborators.each do |m| -%>
-			<li class='value'><%=h m.name %></li>
+			<li><%=h m.name %></li>
 		<% end %>
 	</ul>
 </div>
@@ -28,5 +28,12 @@
 	<span class='value'><%=h (@project.course.nil? ? 'not part of any course' : @project.course.title ) %></span>
 </div>
 
+<div>
+  <% @project.deliverables.each do |deliv| -%>
+    <div>
+      <%= render :partial => 'deliverables/show', :locals => { :deliverable => deliv } %>
+    </div>
+  <% end -%>
+</div>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

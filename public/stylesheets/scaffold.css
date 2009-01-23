@@ -16,6 +16,10 @@
 	background-color: blue;
 	color: white;
 }
+.collaborators_list li {
+  list-style: none;
+  display: inline;
+}
 .listing li {
 	list-style: none;
 }
