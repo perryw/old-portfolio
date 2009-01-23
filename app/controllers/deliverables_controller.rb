@@ -1,5 +1,5 @@
 class DeliverablesController < ApplicationController
-  before_filter :login_required, :only => [:create, :update, :destroy]
+  before_filter :login_required, :only => [:create, :update, :destroy, :order]
 
   for column in Deliverable.content_columns
     in_place_edit_for :deliverable, column.name.to_sym

@@ -16,17 +16,21 @@
         <h2>Project<%= (@course.projects.size == 1) ? '' : 's' %></h2>
 		<ul>
 			<% for project in @projects_ordered -%>
-				<li><%=link_to project.name, project_path(project)%></li>
-				<ul>
-					<% for deliverable in project.ordered_deliverables -%>
-						<li><%=h deliverable.name %></li>
-					<% end -%>
-				</ul>
+				<li><h3><%=link_to_function project.name, visual_effect(:toggle_appear, "courses_list_project_#{project.id}") %></h3>
+					<div id='courses_list_project_<%=project.id%>'>
+						<span class='key'>Description: </span><span class='value'><%=project.description%></span>
+						<ul>
+							<% for @deliverable in project.ordered_deliverables -%>
+								<li><%=render :partial => 'deliverables/show' %></li>
+							<% end -%>
+						</ul>
+					</div>
+				</li>
 			<% end -%>
 		</ul>
 	</li>
 	<% unless @course.deliverables.empty? -%>
-		<li><h2>Homeworks</h2>
+		<li><h2>Homework<%= (@course.deliverables.size==1) ? '' : 's' %></h2>
 			<ul id='course_deliverables_list'>
 				<% for homework in @deliverables_ordered -%>
 					<li><%h homework.name %></li>

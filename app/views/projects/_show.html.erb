@@ -15,6 +15,7 @@
   <span class='value'><%=h @project.description %></span>
 </div>
 <div>
+	<span class='key'>Deliverables:</span>
 	<ul id='deliverables_list'>
   		<% @deliverables_ordered.each do |@deliverable| -%>
 		    <li id='deliverables_<%=@deliverable.id%>'>

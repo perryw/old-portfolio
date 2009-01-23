@@ -1,5 +1,5 @@
 class RootController < ApplicationController
-  before_filter :login_required
+  #before_filter :login_required
 
   def index
     @feed = FeedTools::Feed.open('http://redmine.wyrrep.com/repositories/revisions/portfolio?format=atom')
