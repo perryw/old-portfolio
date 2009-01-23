@@ -10,5 +10,13 @@
 <% end -%>
 
 <h1>Welcome to my application.</h1>
-
+<br/><br/>
+ <div>
+ 	<h6>Last 5 Checkins to the project, from <a href="http://redmine.wyrrep.com">my redmine site:</a></h2>
+	<ul>
+		<% for itm in @feed.items[0..4] -%>
+			<li><%= itm.title %>, <%= itm.description %></li>
+		<% end -%>
+	</ul>
+ </div>
 
