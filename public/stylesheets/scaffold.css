@@ -5,7 +5,15 @@
 .course_projects_heading h3 {
 	display: inline-block;
 }
-
+.deliv_show {
+	display: inline-block;
+}
+.deliv_show div, span {
+	display: inline;
+}
+.blah {
+	clear: both;
+}
 a.atom_feed {
 	background: transparent url(/images/feed.png)
 	no-repeat scroll 1px 50%;
