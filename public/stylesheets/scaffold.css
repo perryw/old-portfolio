@@ -1,3 +1,11 @@
+.course_projects_heading {
+	margin: 0 auto;
+	width: 30em;
+}
+.course_projects_heading h3 {
+	display: inline-block;
+}
+
 a.atom_feed {
 	background: transparent url(/images/feed.png)
 	no-repeat scroll 1px 50%;

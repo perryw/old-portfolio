@@ -16,8 +16,13 @@
         <h2>Project<%= (@course.projects.size == 1) ? '' : 's' %></h2>
 		<ul>
 			<% for project in @projects_ordered -%>
-				<li><h3><%=link_to_function project.name, visual_effect(:toggle_appear, "courses_list_project_#{project.id}") %></h3>
-					<div id='courses_list_project_<%=project.id%>'>
+				<li><span class='course_projects_heading'>
+						<h3><%=project.name%></h3>
+						<span class='project_tags'><%=h project.tag_list %></span>
+						<span class='deliverables_tags'><%=h project.deliverables.collect{ |d| d.tag_list.collect{|tl| ', '+tl} }%></span>
+						</span>
+					(<%= link_to_function "more info", visual_effect(:toggle_appear, "courses_list_project_#{project.id}") %>)
+					<div id='courses_list_project_<%=project.id%>' style="display: none">
 						<span class='key'>Description: </span><span class='value'><%=project.description%></span>
 						<ul>
 							<% for @deliverable in project.ordered_deliverables -%>

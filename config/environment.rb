@@ -5,8 +5,8 @@
 ENV['RAILS_ENV'] ||= 'production'
 #ENV['RAILS_ENV'] = 'development'
 
-require 'yaml'
 require 'rubygems'
+require 'yaml'
 ENV['GEM_PATH'] = '/home/perrywco/.gems:/usr/lib/ruby/gems/1.8'
 Gem.clear_paths
 require 'json/add/rails'

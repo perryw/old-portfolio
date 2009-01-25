@@ -68,6 +68,11 @@
 		<%= link_to_remote 'Add Resource', :url => {:action => 'new_association', :div_name => "new_association_link", :id => @deliverable.id} %>
 	</span>
 <div>
+	<span class='key'>Key photo for this deliverable: </span>
+	<%= collection_select :deliverable, :key_resource_id, @deliverable.resources, :id, :tag_list,
+		{ :include_blank => true, :selected => (Resource.find(@deliverable.key_resource_id).tag_list unless @deliverable.key_resource_id.nil?) }%>
+</div>
+<div>
 	<span class='key'>Tags for this deliverable:</span> <%= f.text_field :tag_list %>
 </div>
 

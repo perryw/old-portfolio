@@ -1,6 +1,6 @@
 <% unless @project.key_resource_id.nil? -%>
 <div>
-	<span class='value'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
+	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
 </div>
 <% end -%>
 <div>
@@ -39,7 +39,7 @@
 		<% end -%>
 	</ul>
 	
-	<%= sortable_element 'projects_resources_list', 
+	<%= sortable_element 'project_resources_list', 
       :url => { :action => "order", :id => @project.id }, 
 	  :ghosting => true %>
 </div>

@@ -1,5 +1,8 @@
 <div>
-  <span class='key'>Name:</span> <span class='value'><%=h @deliverable.name %></span>
+	<% unless @deliverable.key_resource_id.nil? -%>
+		<span class='key_resource'><%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) unless @deliverable.key_resource_id.nil? %></span>
+	<% end -%>
+	<span class='key'>Name:</span> <span class='value'><%=h @deliverable.name %></span>
 </div>
 <div>
 	<span class='key'>Tags:</span>
@@ -16,7 +19,7 @@
 	    <% @resources_ordered.each do |rez| -%>
 	        <% if rez.image? || rez.pdf? -%>
 	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
-	        <% else -%>
+	        <% #else -%>
 				<!--li id='resources_<%=rez.id%>'><%= %></li-->
 			<% end -%>
 	    <% end -%>  
@@ -24,8 +27,6 @@
 	<!--p id="list-info"></p-->
 	
 	<%= sortable_element 'resources_list', 
-	      #:update => 'list-info',  
-	      #:complete => visual_effect(:highlight, 'list'), 
 	      :url => { :action => "order", :id => @deliverable.id }, 
 		  :ghosting => true %>
 </div>
