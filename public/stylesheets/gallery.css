@@ -2,18 +2,6 @@
  * http://www.dynamicdrive.com/style/csslibrary/item/css-image-gallery/#thumb
  */
 /*
-h1 { font-weight: bold;}
-
-.gallery
-{
-	position:relative;
-}
-
-.gallery img
-{
-	border: 1px solid white;
-}
-
 .gallery img:hover
 {
 	border: 1px solid blue;
@@ -39,6 +27,4 @@ h1 { font-weight: bold;}
 	text-align:center;
 	display: table-cell;
 	vertical-align: middle;
-}
-.spacer {
 }

@@ -34,4 +34,7 @@ class Project < ActiveRecord::Base
     end
     @all.concat(self.resources)
   end
+  def deliverable_tags
+    self.deliverables.collect{ |d| d.tag_list }.flatten.uniq
+  end
 end

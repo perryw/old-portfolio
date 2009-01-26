@@ -154,3 +154,16 @@ updateCurrMenuItem = function(newCurr) {
 	var itm = $(newCurr).ancestors()[0];
 	if(itm) itm.addClassName('current');
 };
+
+// from http://elia.wordpress.com/2007/01/18/overflow-smooth-scroll-with-scriptaculous/
+moveTo = function(container_prefix, container_id, tagname){
+	$(container_prefix+container_id).appear();
+	$('more_info_'+container_id).innerHTML='less info';
+	$$('.'+tagname).each( function(t){ t.toggleClassName('highlight'); });
+  return false;
+}
+
+toggleInfoLink = function(project_prefix, project_id, link_elem) {
+	Effect.toggle(project_prefix+project_id, 'appear', {});
+	$(link_elem).innerHTML = ($(link_elem).innerHTML=='more info')? 'less info' : 'more info';
+}

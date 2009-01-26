@@ -3,7 +3,7 @@ module Uberkit
     def ubermenu(options = {}, &block)
       nav = NavigationMenu.new(self,options)
       yield nav
-      concat(nav.to_html, block.binding) if nav.actions.any?
+      concat(nav.to_html) if nav.actions.any?
     end
 
     class NavigationMenu < Uberkit::Displayer
