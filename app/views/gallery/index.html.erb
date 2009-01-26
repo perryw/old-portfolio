@@ -2,15 +2,7 @@
 <h1>Gallery</h1>
 
 	<div class='gallery3'>
-		<% num=0 -%>
 		<% @gallery.each do |img| -%>
-			<% num = (num+1)%5 %>
-			<% if num == 0 && true -%>
-				<div class="spacer">
-				  	&nbsp;
-				</div>
-				<% num=1%>
-			<% end -%>
 			<div class='thumbnail'>
 				<% if img.image? || img.pdf? -%>
 					<%= link_to image_tag(img.public_filename(:thumb)), 
@@ -18,7 +10,7 @@
 							{:class =>'lightview', :rel => 'set[myset]', :id => img.id}
 					%>
 				<% else # not an image...probably slideshare-%>
-					<%= link_to image_tag('/images/slideshare_200x50.png', img.url, {:class => 'lightview', :rel => 'set[myset]', :id => img.id } %>
+					<%= link_to image_tag('/images/slideshare_200x50.png'), img.url, {:class => 'lightview', :rel => 'set[myset]', :id => img.id } %>
 				<% end -%>
 			</div>
 		<% end %>
