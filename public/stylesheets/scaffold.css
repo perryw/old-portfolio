@@ -1,6 +1,15 @@
 .highlight {
-	background-color: #569AE3;
+	background-color: #E7880C;
 	color: #FFFFFF;
+}
+.deliverables_tags a {
+	background-color: #EEEEEE;
+	text-decoration: none;
+	color: #007CC3;
+}
+.tag {
+	background-color: #EEEEEE;
+	text-decoration: none;
 }
 .key_resource img {
 	vertical-align: middle;

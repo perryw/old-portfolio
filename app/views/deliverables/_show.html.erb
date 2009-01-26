@@ -11,7 +11,7 @@
 	</div>
 	<div>
 		<p><span class='key'>Tags:</span>
-		<span class='value deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')}'>#{tl}</span>' " } %></span></p>
+		<span class='value deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span></p>
 	</div>
 	
 	<div>
