@@ -1,7 +1,9 @@
-
-	<% unless @deliverable.key_resource_id.nil? -%>
-		<span class='key_resource'><%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) unless @deliverable.key_resource_id.nil? %></span>
-	<% end -%>
+<div class='key_resource'>
+<% unless @deliverable.key_resource_id.nil? -%>
+	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) unless @deliverable.key_resource_id.nil? %>
+<% else -%>
+	<%= image_tag '/images/blank_placeholder.png' %>
+<% end -%>
 <div class='deliv_show'>
 	<div>
 		<p><span class='key'>Name:</span>
@@ -17,7 +19,9 @@
 	  <span class='value'><%=h @deliverable.description %></span></p>
 	</div>
 </div>
-
+<% unless @deliverable.key_resource_id.nil? -%>
+	</div>
+<% end -%>
 <div>
 	<ul id='resources_list'>
 	    <% @resources_ordered.each do |rez| -%>

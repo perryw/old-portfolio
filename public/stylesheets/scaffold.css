@@ -1,3 +1,8 @@
+.key_resource img {
+	vertical-align: middle;
+	max-width: 168px;
+	max-height: 168px;
+}
 .course_projects_heading {
 	margin: 0 auto;
 	width: 30em;
@@ -7,6 +12,7 @@
 }
 .deliv_show {
 	display: inline-block;
+	vertical-align: middle;
 }
 .deliv_show div, span {
 	display: inline;
