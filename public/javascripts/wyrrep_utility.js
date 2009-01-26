@@ -159,8 +159,15 @@ updateCurrMenuItem = function(newCurr) {
 moveTo = function(container_prefix, container_id, tagname){
 	$(container_prefix+container_id).appear();
 	$('more_info_'+container_id).innerHTML='less info';
+	
+	$$('#courses_list_project_1 .deliv_show').each( function(ds) { /* hide deliverable div if it doesn't contain the tag */
+		if( ds.select('.'+tagname).size() == 0 )	{
+			new Effect.toggle(ds.ancestors()[1], 'appear');
+		}
+	});
+
 	$$('.'+tagname).each( function(t){ t.toggleClassName('highlight'); });
-  return false;
+	return false;
 }
 
 toggleInfoLink = function(project_prefix, project_id, link_elem) {
