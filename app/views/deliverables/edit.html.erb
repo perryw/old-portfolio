@@ -59,7 +59,13 @@
 		</span>
 		</td>
 		<td>
-		<span class='preview' id="preview_pane<%=index%>"><%= image_tag(@deliverable.resources[index].public_filename(:thumb))%></span>
+		<span class='preview' id="preview_pane<%=index%>">
+			<% if @deliverable.resources[index].pdf? || @deliverable.resources[index].image? -%>
+				<%= image_tag(@deliverable.resources[index].public_filename(:thumb))%>
+			<% else -%>
+				<%= image_tag('/images/slideshare_200x50.png') %>
+			<% end -%>
+		</span>
 		</td>
 		</tr>
 		<% end %>
