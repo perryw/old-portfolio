@@ -194,7 +194,7 @@ moveTo = function(container_prefix, container_id, tagname){
 					throw $break;
 				}
 			});
-			if( removeMe )
+			if( removeMe && litTags.length == 1 )
 				ancestor.fade();
 		}
 		else if(0 != ds.select('.'+tagname).length){  // fallback case: new tag with already existing tags highlighted.  Can probably be refactored
