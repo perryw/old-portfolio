@@ -157,16 +157,56 @@ updateCurrMenuItem = function(newCurr) {
 
 // from http://elia.wordpress.com/2007/01/18/overflow-smooth-scroll-with-scriptaculous/
 moveTo = function(container_prefix, container_id, tagname){
-	$(container_prefix+container_id).appear();
+	var container = $(container_prefix+container_id);
+	container.appear();
 	$('more_info_'+container_id).innerHTML='less info';
 	
-	$$('#'+container_prefix+container_id + ' .deliv_show').each( function(ds) { /* hide deliverable div if it doesn't contain the tag */
-		if( ds.select('.'+tagname).size() == 0 && ds.select('.highlight').size() == 0 )	{
-			new Effect.toggle(ds.ancestors()[1], 'appear');
+	var tmp = container.select('.'+tagname); 
+	var hasHighlight = false;
+	if (tmp && tmp.first() )
+		hasHighlight = tmp.first().hasClassName('highlight');
+	else {
+		alert("moveTo: don't know what to do with tag '"+tagname+"'");
+		return false;
+	}
+	
+	var highlightedTags = container.select('.highlight').collect( function(ht){ return ht.innerHTML; } ).uniq();
+	var numCurrentHighlighted = highlightedTags.size();
+	
+	var delivs = container.select('.deliv_show');
+	delivs.each( function(ds) { 
+		var tagsArray = ds.select('.'+tagname);
+		var ancestor = ds.ancestors()[1];
+		if( numCurrentHighlighted == 0 ) {  // hide divs w/o tag
+			if( tagsArray.size() == 0 )
+				Effect.toggle(ancestor.identify(), 'appear');
+		}
+		else if( hasHighlight && numCurrentHighlighted == 1 ) { // want to remove only highlight and show all divs 
+			ancestor.appear();
+		}
+		else if( hasHighlight ) { // want to remove highlight, but only if no other selected tags exist
+			var removeMe = false;
+			var tags = new Array();
+			var litTags = ds.select('.highlight');
+			litTags.each( function(lt){
+				if ($w(lt.className).include(tagname)) {
+					removeMe = true;
+					throw $break;
+				}
+			});
+			if( removeMe )
+				ancestor.fade();
+		}
+		else if(0 != ds.select('.'+tagname).length){  // fallback case: new tag with already existing tags highlighted.  Can probably be refactored
+			ancestor.appear();
 		}
 	});
 
-	$$('.'+tagname).each( function(t){ t.toggleClassName('highlight'); });
+	$$('.'+tagname).each( function(t){ 
+		t.toggleClassName('highlight'); 
+		hasHighlight = (hasHighlight? hasHighlight: t.hasClassName('highlight')); 
+	});
+
 	return false;
 }
 
