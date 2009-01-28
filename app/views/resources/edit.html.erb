@@ -8,7 +8,7 @@
 	<%= image_tag(@resource.public_filename(:thumb)) %>
 <% end %>
 
-<%= render :partial => 'form', :locals => { :form => f, :label_text => 'Update' } %>
+<%= render :partial => 'form', :locals => { :form => f, :label_text => 'Update', :resource => @resource } %>
 
 <% end %>
 

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090128002856) do
+ActiveRecord::Schema.define(:version => 20090128005656) do
 
   create_table "collaborations", :force => true do |t|
     t.integer  "collaborator_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20090128002856) do
     t.string   "uniqname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_id"
     t.string   "email"
     t.string   "url"
   end
@@ -46,7 +47,6 @@ ActiveRecord::Schema.define(:version => 20090128002856) do
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "collaborator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20090128002856) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "has_slideshare",      :default => false, :null => false
   end
 
   create_table "roles", :force => true do |t|
