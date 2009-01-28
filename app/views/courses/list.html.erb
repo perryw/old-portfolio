@@ -20,7 +20,7 @@
 						<h3><%=project.name%></h3>
 						<span class='project_tags'><%=h project.tag_list %></span>
 							<span class='deliverables_tags'>
-								<%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "moveTo('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
+								<%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "toggleDivByTag('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
 							</span>
 						</span>
 					(<%= link_to_function "more info", "toggleInfoLink('courses_list_project_', '#{project.id}', 'more_info_#{project.id}')", { :id => "more_info_#{project.id}" } %>)

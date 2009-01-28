@@ -64,7 +64,81 @@ Lightview.changedPicture = function(event){
 	*/
 	$('entire_gallery').hide();
 	if( $('courses_show') ) { $('courses_show').remove(); }
-	new Ajax.Updater('p_page', '/gallery/'+src, {
+	if (!$('lightview_wyrrep_div')) {
+		var elem = document.createElement('div');
+		elem.setAttribute('id', 'lightview_wyrrep_div');
+		
+		var canvasElemBR = document.createElement('canvas');
+		canvasElemBR.setAttribute('id', 'canvasBR');
+		canvasElemBR.setAttribute('height', '12');
+		canvasElemBR.setAttribute('width', '12');
+		
+		var context = canvasElemBR.getContext('2d');
+		context.fillStyle = "white";
+		context.strokeStyle = "white";
+		context.beginPath();
+		context.arc(0,0, Lightview.radius, 0, Math.PI/2, false);
+		context.lineTo(0,0);
+		context.stroke();
+		context.fill();
+		
+		var canvasElemBL = document.createElement('canvas');
+		canvasElemBL.setAttribute('id', 'canvasBL');
+		canvasElemBL.setAttribute('height', '12');
+		canvasElemBL.setAttribute('width', '12');
+		context = canvasElemBL.getContext('2d');
+		
+		context.fillStyle = "white"; 
+		context.strokeStyle = "white";
+		context.beginPath();
+		context.lineTo(Lightview.radius, 0);
+		context.lineTo(Lightview.radius, Lightview.radius);
+		context.arc(Lightview.radius,0, Lightview.radius, Math.PI/2, Math.PI, false);
+		context.stroke();
+		context.fill();
+		
+		var canvasElemTL = document.createElement('canvas');
+		canvasElemTL.setAttribute('id', 'canvasTL');
+		canvasElemTL.setAttribute('height', '12');
+		canvasElemTL.setAttribute('width', '12');
+		context = canvasElemTL.getContext('2d');
+		
+		context.fillStyle = "white"; 
+		context.strokeStyle = "white";
+		context.beginPath();
+		context.moveTo(Lightview.radius, 0);
+		context.lineTo(Lightview.radius, Lightview.radius);
+		context.lineTo(0, Lightview.radius);
+		context.arc(Lightview.radius,Lightview.radius, Lightview.radius, Math.PI, Math.PI*3/2, false);
+		context.stroke();
+		context.fill();
+		
+		var canvasElemTR = document.createElement('canvas');
+		canvasElemTR.setAttribute('id', 'canvasTR');
+		canvasElemTR.setAttribute('height', '12');
+		canvasElemTR.setAttribute('width', '12');
+		context = canvasElemTR.getContext('2d');
+		
+		context.fillStyle = "white"; 
+		context.strokeStyle = "white";
+		context.beginPath();
+		context.arc(0,Lightview.radius, Lightview.radius, Math.PI*3/2, Math.PI*2, false);
+		context.lineTo(0, Lightview.radius);
+		context.lineTo(0,0);
+		context.stroke();
+		context.fill();
+		
+		var contentDiv = document.createElement('div');
+		contentDiv.setAttribute('id', 'canvas_content');
+		
+		elem.appendChild(canvasElemTL);
+		elem.appendChild(canvasElemTR);
+		elem.appendChild(contentDiv);
+		elem.appendChild(canvasElemBL);
+		elem.appendChild(canvasElemBR);
+		$('lightview').appendChild(elem);
+	}
+	new Ajax.Updater('canvas_content', '/gallery/'+src, {
 		asynchronous: true, 
 		evalScripts: true, 
 		method: 'get',
@@ -76,7 +150,7 @@ Lightview.changedPicture = function(event){
 };
 
 Lightview.observeCloseButtonUnbound = function(event) {
-	Lightview.restoreCenter = Lightview.restoreCenterBackup;
+	//Lightview.restoreCenter = Lightview.restoreCenterBackup;
 	if( $('courses_show') ) { $('courses_show').remove(); }
 	$('entire_gallery').show();
 	$('lv_overlay').setStyle( {
@@ -118,7 +192,7 @@ Lightview.observeClicksUnbound = function(event){ // add observer for button cli
 
 	if( source != null ) {
 		Lightview.detachPerryEvents();
-		Lightview.moveWindow();
+		//Lightview.moveWindow();
 		Lightview.changedPicture(event);
 		Lightview.attachPerryEvents();
 	}
@@ -155,18 +229,17 @@ updateCurrMenuItem = function(newCurr) {
 	if(itm) itm.addClassName('current');
 };
 
-// from http://elia.wordpress.com/2007/01/18/overflow-smooth-scroll-with-scriptaculous/
-moveTo = function(container_prefix, container_id, tagname){
+toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 	var container = $(container_prefix+container_id);
 	container.appear();
 	$('more_info_'+container_id).innerHTML='less info';
 	
-	var tmp = container.select('.'+tagname); 
+	var tmp = container.select('.'+nameOfTag); 
 	var hasHighlight = false;
 	if (tmp && tmp.first() )
 		hasHighlight = tmp.first().hasClassName('highlight');
 	else {
-		alert("moveTo: don't know what to do with tag '"+tagname+"'");
+		alert("moveTo: don't know what to do with tag '"+nameOfTag+"'");
 		return false;
 	}
 	
@@ -175,7 +248,7 @@ moveTo = function(container_prefix, container_id, tagname){
 	
 	var delivs = container.select('.deliv_show');
 	delivs.each( function(ds) { 
-		var tagsArray = ds.select('.'+tagname);
+		var tagsArray = ds.select('.'+nameOfTag);
 		var ancestor = ds.ancestors()[1];
 		if( numCurrentHighlighted == 0 ) {  // hide divs w/o tag
 			if( tagsArray.size() == 0 )
@@ -189,7 +262,7 @@ moveTo = function(container_prefix, container_id, tagname){
 			var tags = new Array();
 			var litTags = ds.select('.highlight');
 			litTags.each( function(lt){
-				if ($w(lt.className).include(tagname)) {
+				if ($w(lt.className).include(nameOfTag)) {
 					removeMe = true;
 					throw $break;
 				}
@@ -197,12 +270,12 @@ moveTo = function(container_prefix, container_id, tagname){
 			if( removeMe && litTags.length == 1 )
 				ancestor.fade();
 		}
-		else if(0 != ds.select('.'+tagname).length){  // fallback case: new tag with already existing tags highlighted.  Can probably be refactored
+		else if(0 != ds.select('.'+nameOfTag).length){  // fallback case: new tag with already existing tags highlighted.  Can probably be refactored
 			ancestor.appear();
 		}
 	});
 
-	$$('.'+tagname).each( function(t){ 
+	$$('.'+nameOfTag).each( function(t){ 
 		t.toggleClassName('highlight'); 
 		hasHighlight = (hasHighlight? hasHighlight: t.hasClassName('highlight')); 
 	});

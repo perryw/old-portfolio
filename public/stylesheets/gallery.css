@@ -7,13 +7,30 @@
 	border: 1px solid blue;
 }
 */
+#lightview_wyrrep_div {
+	z-index: 5000;
+	margin-top: 16px;
+	height: 26px;
+	width: 26px;
+}
+#lightview_wyrrep_div canvas {
+	position: relative;
+}
+#canvasBL{
+}
+#canvasBR{
+}
+#canvasTL{
+}
+#canvasTR{
+}
 .thumbnail {
 	float: left;
 	width: 168px;
 	height: 168px;
 	padding: 0 10px 10px 0;
 }
-.thumbnail a {
+.thumbnail a,img {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -24,7 +41,8 @@
 	max-height: 168px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align:center;
-	display: table-cell;
 	vertical-align: middle;
+	text-align:center;
+	
+	/*display: table-cell;*/
 }

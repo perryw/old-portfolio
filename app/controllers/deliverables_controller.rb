@@ -42,7 +42,7 @@ class DeliverablesController < ApplicationController
   # GET /deliverables/1.xml
   def show
     @deliverable = Deliverable.find(params[:id])
-    @resources_ordered = @deliverable.ordered_resources
+    #@resources_ordered = @deliverable.ordered_resources
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @deliverable }

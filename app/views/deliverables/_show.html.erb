@@ -24,7 +24,7 @@
 <% end -%>
 <div>
 	<ul id='resources_list'>
-	    <% @resources_ordered.each do |rez| -%>
+	    <% @deliverable.ordered_resources.each do |rez| -%>
 	        <% if rez.image? || rez.pdf? -%>
 	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
 	        <% #else -%>

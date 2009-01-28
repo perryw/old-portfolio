@@ -4,8 +4,7 @@ class GalleryController < ApplicationController
   # GET /gallery
   # GET /gallery.xml
   def index
-    @gallery = Resource.find(:all, :conditions => { :parent_id => nil })
-    #@gallery.delete_if{ |rez| !rez.image? }  # prune out non-images
+    @gallery = Deliverable.all
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
