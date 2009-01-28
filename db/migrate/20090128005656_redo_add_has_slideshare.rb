@@ -1,4 +1,4 @@
-class AddHasSlideshareToResources < ActiveRecord::Migration
+class RedoAddHasSlideshare < ActiveRecord::Migration
   def self.up
     add_column :resources, :has_slideshare, :boolean, :null => false, :default => false
     Resource.reset_column_information
