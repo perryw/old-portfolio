@@ -2,7 +2,7 @@
 
 # Uncomment below to force Rails into production mode when
 # you don't control web/app server and can't set it the proper way
-ENV['RAILS_ENV'] ||= 'production'
+ENV['RAILS_ENV'] ||= "production"
 #ENV['RAILS_ENV'] = 'development'
 
 require 'rubygems'
@@ -62,7 +62,7 @@ Rails::Initializer.run do |config|
   config.action_controller.session = {
     :session_key => APP_CONFIG['settings']['session_key'],
     :secret      => APP_CONFIG['settings']['secret']
-  }
+  } unless APP_CONFIG.nil?
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
