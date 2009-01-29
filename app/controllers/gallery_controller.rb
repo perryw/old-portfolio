@@ -22,7 +22,8 @@ class GalleryController < ApplicationController
       eval("@#{owner_type} = owner")
     end
     if request.xhr?
-      render :layout => false, :template => "#{owner_type.pluralize}/show"
+      render :text => owner.description
+      #render :layout => false, :template => "#{owner_type.pluralize}/show"
     else
       render :action => 'show', :template => "#{owner_type.pluralize}/show"
     end

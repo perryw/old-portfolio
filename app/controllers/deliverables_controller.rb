@@ -9,7 +9,7 @@ class DeliverablesController < ApplicationController
   def tag_cloud
     @tags = Deliverable.tag_counts
   end
-  
+
   def order
     @deliverable = Deliverable.find(params[:id])
     params[:deliverable] ||= Hash.new
