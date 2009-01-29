@@ -1,18 +1,16 @@
 <div id='entire_gallery'>
 <h1>Gallery</h1>
-	<div class='gallery'>
-		<h2>Projects</h2>
-			<% @projects.each do |display| -%>
-				<%= render :partial => 'index', :object => display %>
-			<% end %>
-	
-	</div>
-	<div class='gallery'>
-		<h2>Deliverables</h2>
-		
-			<% @deliverables.each do |display| -%>
-				<%= render :partial => 'index', :object => display %>
-			<% end -%>
-		
+<h2><%= link_to_function 'Projects', "Effect.toggle('gallery_projects', 'appear')" %></h2>
+<div id='gallery_projects' class='gallery'>
+	<% @projects.each do |display| -%>
+		<%= render :partial => 'index', :object => display %>
+	<% end %>
+</div>
+<br/>
+<h2><%= link_to_function 'Deliverables', "Effect.toggle('gallery_deliverables', 'appear')"%></h2>
+	<div id='gallery_deliverables' class='gallery'>
+		<% @deliverables.each do |display| -%>
+			<%= render :partial => 'index', :object => display %>
+		<% end -%>
 	</div>
 </div>

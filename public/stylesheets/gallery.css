@@ -5,7 +5,10 @@
 }
 #lightview_wyrrep_div canvas {
 }
-
+#entire_gallery h2 a{
+	text-decoration:none;
+	
+}
 .gallery{
 	float: left;
 }
@@ -22,7 +25,7 @@
 	float: left;
 	width: 168px;
 	height: 168px;
-	padding: 0 10px 10px 0;
+	padding: 0 12px 30px 0;
 }
 .thumbnail a,img {
 	margin-left: auto;

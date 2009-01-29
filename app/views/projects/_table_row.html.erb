@@ -3,6 +3,7 @@
 <tr id=<%="projects_table_#{@project.id}"%>>
     <td><%=in_place_editor_field :project, :name, {}, {:empty_text => 'add project name'} %></td>
     <td><%=in_place_editor_field :project, :description, {}, {:empty_text => 'add description'} %></td>
+	<td><%=in_place_editor_field :project, :tag_list %></td>
 	<td class='center'><%=h @project.collaborators.size %></td>
 	<td class='center'><%=h (@project.course.nil? ? "not owned by any course" : @project.course.title) %></td>
 	<td class='center'><%=h @project.deliverables.size %></td>
