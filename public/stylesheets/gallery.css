@@ -1,61 +1,11 @@
-/* based on 
- * http://www.dynamicdrive.com/style/csslibrary/item/css-image-gallery/#thumb
- */
-/*
-.gallery img:hover
-{
-	border: 1px solid blue;
-}
-*/
-#containerTL {
-	display: inline-block;
-}
-#containerBL{
-	display: inline-block;
-}
-#containerBR{
-	display: inline;
-}
-#lv_content_borderTop{
-	display: inline;
-}
-#lv_content_borderBottom{
-	display: inline;
-}
-#lv_content_borderLeft{
-	clear: both;
-}
-#lv_content_borderRight{
-}
-#canvas_content_container {
-	background-color: #FFFFFF;
-	margin-left: 0px;
-	margin-top: 12px;
-	margin-right: auto;
-	text-align: center;
-}
 #lightview_wyrrep_div {
-	z-index: 5000;
-	margin-top: 16px;
-	float:left;
+}
+#lightview_wyrrep_div div {
+	background-position: 0 0;
 }
 #lightview_wyrrep_div canvas {
-	position: relative;
 }
-#containerTL, #containerBL{
-	float: left;
-	height: 12px;
-}
-#containerTR, #containerBR{
-	float: left;
-	height: 12px;
-}
-#containerBL, #containerBR{
-	margin-top: -1px;
-}
-#containerTL, #containerTR{
-	margin-top: -1px;
-}
+
 .lv_content_border_horiz, .lv_content_border_sides {
 	background-color: #FFFFFF;
 }

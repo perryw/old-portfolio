@@ -54,114 +54,17 @@ Lightview.moveWindow = function(){
 
 Lightview.changedPicture = function(event){
 	var src = event.target.identify();
-	/*
-	src = src.substring(0, src.lastIndexOf('/'));
-	src = src.substring(src.lastIndexOf('/')+1);
-	var tmp = parseInt(src);
-	if(isNaN(tmp)) { // invalid src...probably because it's a slideshare object
-		src = event.target.identify();
-	}
-	*/
 	$('entire_gallery').hide();
 	if( $('courses_show') ) { $('courses_show').remove(); }
 	if (!$('lightview_wyrrep_div')) {
-		var elem = document.createElement('div');
-		elem.setAttribute('id', 'lightview_wyrrep_div');
-		
-		var containerBR = new Element('div', {'id':'containerBR'});
-		var containerBL = new Element('div', {'id':'containerBL'});
-		var containerTR = new Element('div', {'id':'containerTR'});
-		var containerTL = new Element('div', {'id':'containerTL'});
-		
-		var canvasElemBR = document.createElement('canvas');
-		canvasElemBR.setAttribute('id', 'canvasBR');
-		canvasElemBR.setAttribute('height', '12');
-		canvasElemBR.setAttribute('width', '12');
-		
-		var context = canvasElemBR.getContext('2d');
-		context.fillStyle = "white";
-		context.strokeStyle = "white";
-		context.beginPath();
-		context.arc(0,0, Lightview.radius, 0, Math.PI/2, false);
-		context.lineTo(0,0);
-		context.stroke();
-		context.fill();
-		
-		var canvasElemBL = document.createElement('canvas');
-		canvasElemBL.setAttribute('id', 'canvasBL');
-		canvasElemBL.setAttribute('height', '12');
-		canvasElemBL.setAttribute('width', '12');
-		context = canvasElemBL.getContext('2d');
-		
-		context.fillStyle = "white"; 
-		context.strokeStyle = "white";
-		context.beginPath();
-		context.lineTo(Lightview.radius, 0);
-		context.lineTo(Lightview.radius, Lightview.radius);
-		context.arc(Lightview.radius,0, Lightview.radius, Math.PI/2, Math.PI, false);
-		context.stroke();
-		context.fill();
-		
-		var canvasElemTL = document.createElement('canvas');
-		canvasElemTL.setAttribute('id', 'canvasTL');
-		canvasElemTL.setAttribute('height', '12');
-		canvasElemTL.setAttribute('width', '12');
-		context = canvasElemTL.getContext('2d');
-		
-		context.fillStyle = "white"; 
-		context.strokeStyle = "white";
-		context.beginPath();
-		context.moveTo(Lightview.radius, 0);
-		context.lineTo(Lightview.radius, Lightview.radius);
-		context.lineTo(0, Lightview.radius);
-		context.arc(Lightview.radius,Lightview.radius, Lightview.radius, Math.PI, Math.PI*3/2, false);
-		context.stroke();
-		context.fill();
-		
-		var canvasElemTR = document.createElement('canvas');
-		canvasElemTR.setAttribute('id', 'canvasTR');
-		canvasElemTR.setAttribute('height', '12');
-		canvasElemTR.setAttribute('width', '12');
-		context = canvasElemTR.getContext('2d');
-		
-		context.fillStyle = "white"; 
-		context.strokeStyle = "white";
-		context.beginPath();
-		context.arc(0,Lightview.radius, Lightview.radius, Math.PI*3/2, Math.PI*2, false);
-		context.lineTo(0, Lightview.radius);
-		context.lineTo(0,0);
-		context.stroke();
-		context.fill();
-		
-		var borderTop = new Element('div', {'id' : 'lv_content_borderTop', 'class':'lv_content_border_horiz'});
-		borderTop.setStyle({height: Lightview.radius+'px'});
-		var borderLeft = new Element('div', {'id' : 'lv_content_borderLeft', 'class':'lv_content_border_sides', 'width':Lightview.radius});
-		borderLeft.setStyle({width: Lightview.radius+'px'});
-		var borderRight = new Element('div', {'id' : 'lv_content_borderRight', 'class':'lv_content_border_sides', 'width':Lightview.radius});
-		borderRight.setStyle({width: Lightview.radius+'px'});
-		var borderBottom = new Element('div', {'id' : 'lv_content_borderBottom', 'class':'lv_content_border_horiz', 'height':Lightview.radius});
-		borderBottom.setStyle({height: Lightview.radius+'px'});
-		var contentDiv = new Element('div', { 'id': 'canvas_content'});
-		var contentContainer = new Element('div', { 'id': 'canvas_content_container'});
-		contentContainer.appendChild(contentDiv);
-		
-		containerBR.appendChild(canvasElemBR);
-		containerBL.appendChild(canvasElemBL);
-		containerTL.appendChild(canvasElemTL);
-		containerTR.appendChild(canvasElemTR);
-		
-		elem.appendChild(containerTL);
-		elem.appendChild(borderTop);
-		elem.appendChild(containerTR);
-		//elem.appendChild(borderLeft);
-		elem.appendChild(contentContainer);
-		//elem.appendChild(borderRight);
-		elem.appendChild(containerBL);
-		elem.appendChild(borderBottom);
-		elem.appendChild(containerBR);
+		var elem = new Element('div', {'id': 'lightview_wyrrep_div'});
+		var ccontent = new Element('div', {'id': 'canvas_content'});	
+		var canvasElem = new Element('canvas', {'id':'canvas_lv_content'});
+
+		elem.appendChild(canvasElem);
+		elem.appendChild(ccontent);
 		$('lightview').appendChild(elem);
 	}
-	
 	new Ajax.Updater('canvas_content', '/gallery/'+src, {
 		asynchronous: true, 
 		evalScripts: true, 
@@ -171,12 +74,29 @@ Lightview.changedPicture = function(event){
 		asynchronous: false
 	});
 
-	var w = $('canvas_content_container').getWidth();
-	var h = $('canvas_content_container').getHeight();
-	$('lv_content_borderTop').setStyle({width: w+'px'});
-	$('lv_content_borderBottom').setStyle({width: w+'px'});
-	//$('lv_content_borderLeft').setStyle({height: h+'px'});
-	//$('lv_content_borderRight').setStyle({height: h+'px'});
+	var myCanvas = $('canvas_lv_content');
+	var dimensions = $('lightview_wyrrep_div').getDimensions();
+	myCanvas.setAttribute('width', dimensions.width);
+	myCanvas.setAttribute('height', dimensions.height);
+	
+	var context = myCanvas.getContext('2d');
+	context.stokeStyle = "white";
+	context.fillStyle = "white";
+	context.beginPath();
+	context.arc(Lightview.radius, Lightview.radius, Lightview.radius, Math.PI, Math.PI*3/2, false);
+	context.lineTo(dimensions.width-Lightview.radius, 0);
+	context.arc(dimensions.width-Lightview.radius, Lightview.radius, Lightview.radius, Math.PI*3/2, Math.PI*2, false);
+	context.lineTo(dimensions.width, dimensions.height-Lightview.radius);
+	context.arc(dimensions.width-Lightview.radius, dimensions.height-Lightview.radius, Lightview.radius, 0, Math.PI/2, false);
+	context.lineTo(Lightview.radius, dimensions.height);
+	context.arc(Lightview.radius, dimensions.height-Lightview.radius, Lightview.radius, Math.PI/2, Math.PI, false);
+	context.stroke();
+	context.fill();
+	
+	$('canvas_content').setStyle( {
+		marginTop: (-1 * dimensions.height + Lightview.radius) + 'px',
+		marginLeft: (Lightview.radius)+'px'
+	});
 	return false;
 };
 

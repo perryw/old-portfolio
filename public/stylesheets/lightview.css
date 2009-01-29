@@ -421,6 +421,7 @@
 #lightviewController .lv_Corner {
 	float: right;
 	position: relative;
+	margin-top: -1px;
 }
 #lightviewController .lv_CornerTr, #lightviewController .lv_CornerBr { float: left; }
 .lv_controllerBetweenCorners {
