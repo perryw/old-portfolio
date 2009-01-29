@@ -29,8 +29,10 @@
 }
 #canvas_content_container {
 	background-color: #FFFFFF;
-	margin-left: auto;
+	margin-left: 0px;
+	margin-top: 12px;
 	margin-right: auto;
+	text-align: center;
 }
 #lightview_wyrrep_div {
 	z-index: 5000;

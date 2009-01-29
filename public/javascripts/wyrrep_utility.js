@@ -153,9 +153,9 @@ Lightview.changedPicture = function(event){
 		elem.appendChild(containerTL);
 		elem.appendChild(borderTop);
 		elem.appendChild(containerTR);
-		elem.appendChild(borderLeft);
+		//elem.appendChild(borderLeft);
 		elem.appendChild(contentContainer);
-		elem.appendChild(borderRight);
+		//elem.appendChild(borderRight);
 		elem.appendChild(containerBL);
 		elem.appendChild(borderBottom);
 		elem.appendChild(containerBR);
@@ -173,10 +173,10 @@ Lightview.changedPicture = function(event){
 
 	var w = $('canvas_content_container').getWidth();
 	var h = $('canvas_content_container').getHeight();
-	borderTop.setStyle({width: w+'px'});
-	borderBottom.setStyle({width: w+'px'});
-	borderLeft.setStyle({height: h+'px'});
-	borderRight.setStyle({height: h+'px'});
+	$('lv_content_borderTop').setStyle({width: w+'px'});
+	$('lv_content_borderBottom').setStyle({width: w+'px'});
+	//$('lv_content_borderLeft').setStyle({height: h+'px'});
+	//$('lv_content_borderRight').setStyle({height: h+'px'});
 	return false;
 };
 
