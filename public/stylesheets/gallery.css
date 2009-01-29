@@ -6,6 +6,9 @@
 #lightview_wyrrep_div canvas {
 }
 
+.gallery{
+	float: left;
+}
 .lv_content_border_horiz, .lv_content_border_sides {
 	background-color: #FFFFFF;
 }

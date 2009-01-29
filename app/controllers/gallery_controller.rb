@@ -4,7 +4,8 @@ class GalleryController < ApplicationController
   # GET /gallery
   # GET /gallery.xml
   def index
-    @gallery = Deliverable.all
+    @deliverables = Deliverable.all
+    @projects = Project.all
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
@@ -12,7 +13,6 @@ class GalleryController < ApplicationController
     end
   end
   def show
-    
     owner_type, owner_id = params[:id].split('_')
     
     owner = owner_type.constantize.find(owner_id)  # can also use constantize instead of eval

@@ -1,23 +1,18 @@
 <div id='entire_gallery'>
 <h1>Gallery</h1>
-
-	<div class='gallery3'>
-		<% @gallery.each do |deliverable| -%>
-			<div class='thumbnail'>
-				<% unless deliverable.key_resource_id.nil? -%>
-					<% img = Resource.find(deliverable.key_resource_id) -%>
-					<% if img.image? || img.pdf? -%>
-						<%= link_to image_tag(img.public_filename(:thumb)), 
-								image_path(img.public_filename(:lightview)), 
-								{:class =>'lightview', :rel => 'set[myset]', 
-									:id => "#{deliverable.class.to_s}_#{deliverable.id}", :title => "#{deliverable.name} :: #{deliverable.description} #{link_to url_for(deliverable)}"} %>
-					<% end -%>
-				<% else # not an image...probably slideshare-%>
-					<%= link_to image_tag('/images/no_image.png'), url_for(deliverable),
-							{:class => 'lightview', :rel => 'set[myset]', :id => "#{deliverable.class.to_s}_#{deliverable.id}",
-							 	:title => "#{deliverable.name} :: #{deliverable.description}"} %>
-				<% end -%>
-			</div>
-		<% end %>
+	<div class='gallery'>
+		<h2>Projects</h2>
+			<% @projects.each do |display| -%>
+				<%= render :partial => 'index', :object => display %>
+			<% end %>
+	
+	</div>
+	<div class='gallery'>
+		<h2>Deliverables</h2>
+		
+			<% @deliverables.each do |display| -%>
+				<%= render :partial => 'index', :object => display %>
+			<% end -%>
+		
 	</div>
 </div>
