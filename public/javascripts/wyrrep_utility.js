@@ -56,6 +56,7 @@ Lightview.changedPicture = function(event){
 	var src = event.target.identify();
 	$('entire_gallery').hide();
 	if( $('courses_show') ) { $('courses_show').remove(); }
+	/*
 	if (!$('lightview_wyrrep_div')) {
 		var elem = new Element('div', {'id': 'lightview_wyrrep_div'});
 		var ccontent = new Element('div', {'id': 'canvas_content'});	
@@ -65,6 +66,7 @@ Lightview.changedPicture = function(event){
 		elem.appendChild(ccontent);
 		$('lightview').appendChild(elem);
 	}
+	*/
 	new Ajax.Updater('canvas_content', '/gallery/'+src, {
 		asynchronous: true, 
 		evalScripts: true, 
@@ -73,7 +75,7 @@ Lightview.changedPicture = function(event){
 		insertion: 'top',
 		asynchronous: false
 	});
-
+/*
 	var myCanvas = $('canvas_lv_content');
 	var dimensions = $('lightview_wyrrep_div').getDimensions();
 	myCanvas.setAttribute('width', dimensions.width);
@@ -97,6 +99,7 @@ Lightview.changedPicture = function(event){
 		marginTop: (-1 * dimensions.height + Lightview.radius) + 'px',
 		marginLeft: (Lightview.radius)+'px'
 	});
+	*/
 	return false;
 };
 

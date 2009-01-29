@@ -10,11 +10,11 @@
 						<%= link_to image_tag(img.public_filename(:thumb)), 
 								image_path(img.public_filename(:lightview)), 
 								{:class =>'lightview', :rel => 'set[myset]', 
-									:id => img.id, :title => "#{deliverable.name} :: #{deliverable.description}"} %>
+									:id => "#{deliverable.class.to_s}_#{deliverable.id}", :title => "#{deliverable.name} :: #{deliverable.description} #{link_to url_for(deliverable)}"} %>
 					<% end -%>
 				<% else # not an image...probably slideshare-%>
 					<%= link_to image_tag('/images/no_image.png'), url_for(deliverable),
-							{:class => 'lightview', :rel => 'set[myset]', :id => deliverable.id,
+							{:class => 'lightview', :rel => 'set[myset]', :id => "#{deliverable.class.to_s}_#{deliverable.id}",
 							 	:title => "#{deliverable.name} :: #{deliverable.description}"} %>
 				<% end -%>
 			</div>

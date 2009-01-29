@@ -5,15 +5,15 @@
 <h1><%=h "#{@course.name}" %></h1>
 <span class='date'><%=h @course.date%></span>
 <% unless @course.key_resource_id.nil? -%>
-<span class='key_resource'>
-	<%= image_tag Resource.find(@course.key_resource_id).public_filename(:thumb)  %>
-</span>
+	<span class='key_resource'>
+		<%= image_tag Resource.find(@course.key_resource_id).public_filename(:thumb)  %>
+	</span>
 <% end -%>
 <h2><%=h @course.description %></h2>
 
 <ul id='course_projects_list' class='listing'>
 	<li>
-        <h2>Project<%= (@course.projects.size == 1) ? '' : 's' %></h2>
+        <!--h2>Project<%= (@course.projects.size == 1) ? '' : 's' %></h2-->
 		<ul>
 			<% for project in @projects_ordered -%>
 				<li><span class='course_projects_heading'>
