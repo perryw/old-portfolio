@@ -5,12 +5,14 @@
 }
 #lightview_wyrrep_div canvas {
 }
-#entire_gallery h2 {
+.toggle_gallery a{
 	clear:left;
+	text-decoration: none;
+	text-shadow: #6374AB 5px 5px 2px;
+	font-weight: bold;
+	font-size: 120%;
 }
-#entire_gallery h2 a{
-	text-decoration:none;
-}
+
 #entire_gallery {
 	overflow: hidden;
 	width: 100%;
