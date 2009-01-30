@@ -17,7 +17,7 @@
 <div>
 	<span class='key'>Deliverables:</span>
 	<ul id='deliverables_list'>
-  		<% @deliverables_ordered.each do |@deliverable| -%>
+  		<% @project.ordered_deliverables.each do |@deliverable| -%>
 		    <li id='deliverables_<%=@deliverable.id%>'>
 		      <%= render :partial => 'deliverables/show' %>
 		    </li>
@@ -30,7 +30,7 @@
 
 <div>
 	<ul id='project_resources_list'>
-		<% @resources_ordered.each do |rez| -%>
+		<% @project.ordered_resources.each do |rez| -%>
        		<% if rez.image? || rez.pdf? -%>
 	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
 	        <% else -%>

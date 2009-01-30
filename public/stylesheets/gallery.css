@@ -39,7 +39,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	line-height: 168px;
+	/*line-height: 168px;*/
 }
 .thumbnail a img {
 	max-width: 168px;

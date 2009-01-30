@@ -14,15 +14,13 @@ class GalleryController < ApplicationController
   end
   def show
     owner_type, owner_id = params[:id].split('_')
-    
     owner = owner_type.constantize.find(owner_id)  # can also use constantize instead of eval
     eval("@#{owner_type.downcase} = owner")
 
     if request.xhr?
-      render :text => owner.description
-      #render :layout => false, :template => "#{owner_type.pluralize}/show"
+      render :layout => false, :template => "#{owner_type.downcase.pluralize}/show"
     else
-      render :action => 'show', :template => "#{owner_type.pluralize}/show"
+      render :template => "#{owner_type.downcase.pluralize}/show"
     end
   end
   

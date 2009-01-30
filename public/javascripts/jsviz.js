@@ -363,22 +363,27 @@ function jsviz_init() {
 		this.buildTimer.start();
 	}
 }
-/*
+
 Event.observe(document, 'lightview:loaded', function(event){
 	$('jsviz_div').observe('click', function(event){ Event.stop(event); });
-	window.jsvizObj = new jsviz_init();
-	
+	if (typeof(window.jsvizObj) == 'undefined') {
+		window.jsvizObj = new jsviz_init();
+		window.jsviz_loading = false;
+	}
 	// prevent weird mouse handling errors w/ lightview
 	$('jsviz_div').observe('mouseover', function(event){ Event.stop(event); });
 	Event.observe( document, 'jsviz:clicked', function(event) {
 		$('loading').show();
 		$('loading').innerHTML = "Updating breadcrumb list...";
-		window.jsvizObj.loader.load();
-		$('loading').innerHTML = "Updating breadcrumb trail...";
-		window.jsvizObj.buildTimer.start();
-		//window.jsvizObj.loader.toggleText();
-		$('loading').hide();
+		if(!jsviz_loading){
+			window.jsviz_loading = true;
+			window.jsvizObj.loader.load();
+			$('loading').innerHTML = "Updating breadcrumb trail...";
+			window.jsvizObj.buildTimer.start();
+			//window.jsvizObj.loader.toggleText();
+			$('loading').hide();
+			window.jsviz_loading = false;
+		}
 	});
-
 });  
-*/
+

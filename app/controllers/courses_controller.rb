@@ -42,7 +42,13 @@ class CoursesController < ApplicationController
     @projects_ordered = @course.ordered_projects
     
     respond_to do |format|
-      format.html { render :layout => false if request.xhr? }# show.html.erb
+      format.html { 
+        if request.xhr? 
+          render :layout => false 
+        elsif params[:ignore_layout]
+          render :layout => 'ajax'
+        end
+      }# show.html.erb
       format.xml  { render :xml => @course }
     end
   end

@@ -4,13 +4,13 @@
 	<span id='tgd' class='toggle_gallery'><%= link_to_function 'Deliverables', "$('tgd').toggleClassName('highlight'); Effect.toggle('gallery_deliverables', 'appear')"%></span>
 	<div id='gallery_projects' class='gallery'>
 		<% @projects.each do |display| -%>
-			<%= render :partial => 'index', :object => display %>
+			<%= render :partial => 'index', :object => display, :locals =>{ :divname => 'gallery_projects' } %>
 		<% end %>
 	</div>
 	<br/>
 	<div id='gallery_deliverables' class='gallery' style='display: none'>
 		<% @deliverables.each do |display| -%>
-			<%= render :partial => 'index', :object => display %>
+			<%= render :partial => 'index', :object => display, :locals => {:divname => 'gallery_deliverables'} %>
 		<% end -%>
 	</div>
 </div>

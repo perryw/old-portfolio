@@ -47,7 +47,13 @@ class ProjectsController < ApplicationController
     @deliverables_ordered = @project.ordered_deliverables
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html {
+        if request.xhr?
+          render :layout => false
+        elsif params[:ignore_layout]
+          render :layout => 'ajax'  
+        end
+      }# show.html.erb
       format.xml  { render :xml => @project }
     end
   end

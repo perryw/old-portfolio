@@ -182,7 +182,29 @@ updateCurrMenuItem = function(newCurr) {
 	var itm = $(newCurr).ancestors()[0];
 	if(itm) itm.addClassName('current');
 };
-
+toggleGalleryImgsByTag = function(tagName, containerName){
+	var container = $(containerName);
+	var foundTags = container.select('.'+tagName);
+	if( foundTags.length < 1 ) return; // early exit
+	foundTags.invoke('toggleClassName','highlight');
+	var thumbnailArray = container.select('.thumbnail');
+	var isTagLit = foundTags[0].hasClassName('highlight');
+	//get div names
+	names = foundTags.collect(function(s){return s.ancestors()[1];});
+	
+	thumbnailArray.each( function(n){		
+		if((n.select('.highlight').length>1) || (names.indexOf(n)!=-1)){ 
+			// won't affect whether or not div's display
+			return; 
+		}
+		else if( container.select('.highlight').length >0){ // there are still selected tags
+			n.fade();
+		}
+		else{
+			n.appear();
+		}
+	});
+}
 toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 	var container = $(container_prefix+container_id);
 	container.appear();
