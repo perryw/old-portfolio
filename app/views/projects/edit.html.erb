@@ -27,7 +27,7 @@
 </div>
 <div>
 	<span class='key'>Key Resource:</span>
-	<%= collection_select(:project, :key_resource_id, @keyable, :id, :filename, {:selected => @project.key_resource_id, :include_blank => true}) %>
+	<%= collection_select(:project, :key_resource_id, @keyable, :id, :tag_list, {:selected => @project.key_resource_id, :include_blank => true}) %>
 <div>
 	<%= f.submit "Update" %>
 </div>
