@@ -26,11 +26,11 @@ var Lightview = {
       topclose: { side: 'right' }                          // 'right' or 'left'                    
     },
     controller: {                                          // The controller is used on sets
-      backgroundColor: '#4d4d4d',
+      backgroundColor: '#8d8d8d',
       border: 6,
       buttons: {
         innerPreviousNext: true,
-        side: false
+        side: true
       },
       margin: 18,
       opacity: 0.7,
@@ -95,7 +95,7 @@ var Lightview = {
         height: 340,
         menubar: 'top',
         scrolling: true,
-        closeButton: 'small'
+        closeButton: 'large'
       },
       inline: {
         width: 400,

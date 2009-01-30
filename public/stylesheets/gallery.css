@@ -5,9 +5,15 @@
 }
 #lightview_wyrrep_div canvas {
 }
+#entire_gallery h2 {
+	clear:left;
+}
 #entire_gallery h2 a{
 	text-decoration:none;
-	
+}
+#entire_gallery {
+	overflow: hidden;
+	width: 100%;
 }
 .gallery{
 	float: left;
