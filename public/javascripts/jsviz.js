@@ -363,7 +363,7 @@ function jsviz_init() {
 		this.buildTimer.start();
 	}
 }
-
+/*
 Event.observe(document, 'lightview:loaded', function(event){
 	$('jsviz_div').observe('click', function(event){ Event.stop(event); });
 	window.jsvizObj = new jsviz_init();
@@ -381,4 +381,4 @@ Event.observe(document, 'lightview:loaded', function(event){
 	});
 
 });  
-
+*/
