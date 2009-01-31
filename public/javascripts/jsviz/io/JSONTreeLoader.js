@@ -215,9 +215,8 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 	if( action != 'index' && action != 'show' ) {
 		url += action + "/";
 	}
-	if( params['id'] )
-	{
-		url += parseInt(params['id']);
+	if( params['id'] )	{
+		url += params['id'];
 	}
 
 	return url;

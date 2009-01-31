@@ -336,6 +336,7 @@ ForceDirectedLayout.prototype.addParticle = function( dataNode ) {
 		var nodeParent = dataNode.parent[pIdx];
 		if( isNaN(pIdx) ) continue; 
 		if (!nodeParent.particle) {
+			dataNode.particle = particle;
 			this.addParticle(nodeParent); // recursively make the particle so we can add the edges
 		}
 		particle.positionX = nodeParent.particle.positionX + rx;
