@@ -73,7 +73,10 @@ Lightview.changedPicture = function(event){
 		method: 'get',
 		parameters: '', //'authenticity_token=' + AUTH_TOKEN,
 		insertion: 'top',
-		asynchronous: false
+		asynchronous: false,
+        onComplete: function() {
+            document.fire('jsviz:clicked');
+        }
 	});
 /*
 	var myCanvas = $('canvas_lv_content');
