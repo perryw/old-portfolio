@@ -1,5 +1,5 @@
 <div class='key_resource'>
-<% unless @deliverable.key_resource_id.nil? -%>
+<% unless @deliverable.key_resource_id.nil? || !logged_in? -%>
 	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) unless @deliverable.key_resource_id.nil? %>
 <% else -%>
 	<%= image_tag '/images/blank_placeholder.png' %>

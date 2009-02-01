@@ -1,4 +1,4 @@
-<% unless @project.key_resource_id.nil? -%>
+<% unless @project.key_resource_id.nil? || !logged_in? -%>
 <div>
 	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
 </div>

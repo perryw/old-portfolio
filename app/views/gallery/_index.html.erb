@@ -5,7 +5,7 @@
 			<%= link_to image_tag(img.public_filename(:thumb)), 
 					image_path(img.public_filename(:lightview)), 
 					{:class =>'lightview', :rel => 'set[myset]', 
-						:id => "#{index.class.to_s}_#{index.id}", :title => "#{index.name} :: #{index.description} #{link_to url_for(index)}"} %>
+						:id => "#{index.class.to_s}_#{index.id}", :title => "#{index.name} :: #{index.description} #{link_to 'More Detail', url_for(index)}"} %>
 		<% elsif img.has_slideshare -%>
 			<%= link_to image_tag('slideshare_200x50.png'), img.url, 
 				{ :class=>'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}", 
@@ -16,7 +16,7 @@
 				{:class => 'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}",
 				 	:title => "#{index.name} :: #{index.description}"} %>
 	<% end -%>
-	<span class='deliverables_tags'>
+	<span class='gallery_tags'>
 		<%=index.tag_list.collect{ |dt| (dt==index.tag_list.first ? "":", ") + link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => dt.tr(' -', '_')) } %>
 	</span>
 </div>
