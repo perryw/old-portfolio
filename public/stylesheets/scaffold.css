@@ -1,3 +1,6 @@
+#deliverables_list li {
+  list-style: none;
+}
 .deliverables_tags a {
 	background-color: #EEEEEE;
 	text-decoration: none;
