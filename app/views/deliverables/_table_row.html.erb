@@ -1,5 +1,5 @@
 <% @deliverable = table_row -%>
-  <tr>
+  <tr id="deliverables_table_<%=h @deliverable.id%>">
     <td><%=in_place_editor_field :deliverable, :name %></td>
     <td><%=in_place_editor_field :deliverable, :description %></td>
 	<td><%=h @deliverable.collaborators.size %></td>

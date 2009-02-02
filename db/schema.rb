@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20090128005656) do
     t.string   "uniqname"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "photo_id"
     t.string   "email"
     t.string   "url"
   end
@@ -47,10 +46,10 @@ ActiveRecord::Schema.define(:version => 20090128005656) do
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "resources_order"
     t.integer  "key_resource_id"
   end

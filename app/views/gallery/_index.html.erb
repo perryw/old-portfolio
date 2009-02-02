@@ -1,6 +1,5 @@
 <div class='thumbnail'>
-	<% unless index.key_resource_id.nil? -%>
-		<% img = Resource.find(index.key_resource_id) -%>
+	<% if img = Resource.find(index.key_resource_id) rescue nil -%>
 		<% if img.image? || img.pdf? -%>
 			<%= link_to image_tag(img.public_filename(:thumb)), 
 					image_path(img.public_filename(:lightview)), 
@@ -11,7 +10,7 @@
 				{ :class=>'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}", 
 					:title => "#{index.name} :: #{index.description}"} %>
 		<% end -%>
-	<% else # not an image...probably slideshare-%>
+	<% elsif !img.blank? # not an image...probably slideshare-%>
 		<%= link_to image_tag('/images/no_image.png'), url_for(:action=>'show', :controller => index.class.to_s.tableize, :id=>index.id, :ignore_layout=>true),
 				{:class => 'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}",
 				 	:title => "#{index.name} :: #{index.description}"} %>

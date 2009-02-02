@@ -74,7 +74,7 @@ JSONTreeLoader.prototype.load = function( ) {
  */
 JSONTreeLoader.prototype.handle = function( request ) {
 	this.JSONDoc = request.responseJSON;
-	this.JSONDoc = '[{"cannot_undo":false,"parent":[],"is_ajax":false,"params":{"action":"index","controller":"gallery"},"is_future":false,"children":[1,5,7]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"1","controller":"projects"},"is_future":false,"children":[2]}, {"cannot_undo":false,"parent":[1],"is_ajax":true,"params":{"action":"show","id":"Project_1","controller":"gallery"},"is_future":false,"children":[3,6]}, {"cannot_undo":false,"parent":[2],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"2","controller":"projects"},"is_future":false,"children":[4]}, {"cannot_undo":false,"parent":[3],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"2","controller":"deliverables"},"is_future":false,"children":[]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"3","controller":"deliverables"},"is_future":false,"children":[6]}, {"cannot_undo":false,"parent":[5,2],"is_ajax":true,"params":{"action":"show","id":"Deliverable_3","controller":"gallery"},"is_future":false,"children":[]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"action":"show","id":"2","controller":"deliverables"},"is_future":false,"children":[]}]'.evalJSON(true);
+	//this.JSONDoc = '[{"cannot_undo":false,"parent":[],"is_ajax":false,"params":{"action":"index","controller":"gallery"},"is_future":false,"children":[1,5,7]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"1","controller":"projects"},"is_future":false,"children":[2]}, {"cannot_undo":false,"parent":[1],"is_ajax":true,"params":{"action":"show","id":"Project_1","controller":"gallery"},"is_future":false,"children":[3,6]}, {"cannot_undo":false,"parent":[2],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"2","controller":"projects"},"is_future":false,"children":[4]}, {"cannot_undo":false,"parent":[3],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"2","controller":"deliverables"},"is_future":false,"children":[]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"ignore_layout":"true","action":"show","id":"3","controller":"deliverables"},"is_future":false,"children":[6]}, {"cannot_undo":false,"parent":[5,2],"is_ajax":true,"params":{"action":"show","id":"Deliverable_3","controller":"gallery"},"is_future":false,"children":[]}, {"cannot_undo":false,"parent":[0],"is_ajax":false,"params":{"action":"show","id":"2","controller":"deliverables"},"is_future":false,"children":[]}]'.evalJSON(true);
 	if( (this.JSONDoc.length == 1) || (this.JSONDoc.length < this.dataGraph.nodes.length) )	{
 		this.layout.clear(); 
 		this.dataGraph.clear(); 
@@ -87,10 +87,16 @@ JSONTreeLoader.prototype.handle = function( request ) {
 
     if( params['controller'] == 'root' )
       rootNode.text = "Home";
-    else
-      rootNode.text = params['controller'];
-	if( params.action != 'index')
-		rootNode.text += ": " + params['action'];
+	else if( params.id ){
+		rootNode.text = params['controller'][0].toUpperCase();
+		if( params.action != 'show' ){
+			rootNode.text += ': ' + params.action;
+		}
+		rootNode.text += params.id;
+	}
+	else
+		rootNode.text = params['controller'][0].toUppserCase() + params['controller'].substring(1);
+		
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
 	rootNode.colorStripIndex = 0;
@@ -138,12 +144,17 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var localScope = this;
 
     if( params['controller'] == 'root' )
-      childNode.text = 'Home';
-    else
-      childNode.text = params['controller'];
+      childNode.text = "Home";
+	else if( params.id ) {
+		childNode.text = params['controller'][0].toUpperCase();
+		if( params.action != 'show' )
+			childNode.text += ": " + params['action'];
 
-	if( params.action != 'index')
-		childNode.text += ": " + params['action'];
+		childNode.text += ' ' + params.id;
+	}
+	else
+		childNode.text = params['controller'][0].toUpperCase() + params['controller'].substring(1);
+		
 	childNode.URL = this.reconstructURL(params);
 	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];

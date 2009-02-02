@@ -151,7 +151,7 @@ class ProjectsController < ApplicationController
     c_array = Array.new
     collaborators.each do |k,v|
       c_array << k unless v == '0'
-    end
+    end unless collaborators.blank?
     
     unless c_array.empty?
       params[:project][:collaborator_ids] = c_array

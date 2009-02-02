@@ -144,7 +144,7 @@ class DeliverablesController < ApplicationController
     c_array = Array.new
     collaborators.each do |k,v|
       c_array << k unless v == '0'
-    end
+    end unless collaborators.blank?
 
     params[:deliverable][:collaborator_ids] = c_array unless c_array.empty?
 
