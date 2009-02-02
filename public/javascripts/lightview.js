@@ -48,9 +48,9 @@ var Lightview = {
       opacity: 0.85,
       display: true
     },
-    preloadHover: false,                                   // Preload images on mouseover
+    preloadHover: true,                                   // Preload images on mouseover
     radius: 12,                                            // Corner radius of the border
-    removeTitles: false,                                    // Set to false if you want to keep title attributes intact
+    removeTitles: true,                                    // Set to false if you want to keep title attributes intact
     resizeDuration: 0.45,                                  // The duration of the resize effect in seconds
     slideshowDelay: 5,                                     // Delay in seconds before showing the next slide
     titleSplit: '::',                                      // The characters you want to split title with

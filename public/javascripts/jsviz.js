@@ -68,7 +68,7 @@ function jsviz_init() {
 				fanAngle: dataNode.root ? 360: 100,
 				rootAngle: 0
 				*/
-				mass: 0.3
+				mass: 0.5
 			};
 		},
 
@@ -242,7 +242,7 @@ function jsviz_init() {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
 			return {
-				springConstant: 0.15,
+				springConstant: 0.25,
 				dampingConstant: 0.1,
 				restLength: Len
 			}
@@ -274,7 +274,7 @@ function jsviz_init() {
 	layout.forces.spring['A']['B'] = function( nodeA, nodeB, isParentChild ) {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		return {
-			springConstant: 0.4,
+			springConstant: 0.5,
 			dampingConstant: 0.2,
 			restLength: Len
 		}
@@ -370,18 +370,14 @@ Event.observe(document, 'lightview:loaded', function(event){
 		window.jsvizObj = new jsviz_init();
 		window.jsviz_loading = false;
 	}
-	// prevent weird mouse handling errors w/ lightview
-	$('jsviz_div').observe('mouseover', function(event){ Event.stop(event); });
+	
+	$('jsviz_div').observe('mouseover', function(event){ Event.stop(event); }); // prevent weird mouse handling errors w/ lightview
 	Event.observe( document, 'jsviz:clicked', function(event) {
-//		$('loading').show();
-//		$('loading').innerHTML = "Updating breadcrumb list...";
 		if(!jsviz_loading){
 			window.jsviz_loading = true;
 			window.jsvizObj.loader.load();
-			//$('loading').innerHTML = "Updating breadcrumb trail...";
 			window.jsvizObj.buildTimer.start();
 			//window.jsvizObj.loader.toggleText();
-			//$('loading').hide();
 			window.jsviz_loading = false;
 		}
 	});

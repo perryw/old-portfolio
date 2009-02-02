@@ -157,6 +157,7 @@ class ProjectsController < ApplicationController
       params[:project][:collaborator_ids] = c_array
     end
     
+    resource_id_array = (params["new_association"].nil? ? nil : params["new_association"][:resource_ids])
     unless resource_id_array.nil?
       if params[:project][:resource_ids].nil?
         params[:project][:resource_ids] = resource_id_array

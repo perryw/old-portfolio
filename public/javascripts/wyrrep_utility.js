@@ -108,11 +108,12 @@ Lightview.changedPicture = function(event){
 
 Lightview.observeCloseButtonUnbound = function(event) {
 	//Lightview.restoreCenter = Lightview.restoreCenterBackup;
-	if( $('courses_show') ) { $('courses_show').remove(); }
+	//if( $('courses_show') ) { $('courses_show').remove(); }
 	$('entire_gallery').show();
-	$('lv_overlay').setStyle( {
+	/*$('lv_overlay').setStyle( {
 		width: document.viewport.getWidth() +'px'
 	});
+	*/
 	new Ajax.Updater('p_page', '/gallery', {
 			asynchronous: true, 
 			evalScripts: true, 
