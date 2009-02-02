@@ -10,6 +10,35 @@ class ProjectsController < ApplicationController
     @tags = Project.tag_counts
   end
 
+  def new_association
+    @project = Project.find(params[:id])
+    if @num_associations.nil?
+      @num_associations = @project.resources.size
+    else
+      @num_associations += 1
+    end
+    
+    render :update do |page|
+      page.insert_html :before, params[:div_name],
+        :partial => 'shared/new_association', 
+        :object => @project,
+        :locals => { :name_method => :tag_list, :resources => Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => nil }), :span_name => "preview_pane#{@num_associations}"}
+      page.visual_effect :highlight, params[:div_name]
+    end
+  end
+
+  def update_preview
+    return if params[:selected_value].nil?
+    rez = Resource.find(params[:selected_value])
+    render :update do |page|
+      if( rez.image? || rez.pdf? )
+        page.replace_html params[:span_name], image_tag(rez.public_filename(:thumb))
+      else
+        page.replace_html params[:span_name], rez.tag_list
+      end
+    end
+  end
+
   def order
     @project = Project.find(params[:id])
     params[:project] ||= Hash.new
@@ -126,6 +155,15 @@ class ProjectsController < ApplicationController
     
     unless c_array.empty?
       params[:project][:collaborator_ids] = c_array
+    end
+    
+    unless resource_id_array.nil?
+      if params[:project][:resource_ids].nil?
+        params[:project][:resource_ids] = resource_id_array
+      else
+        params[:project][:resource_ids].concat(resource_id_array)
+      end
+      params.delete(:new_association)
     end
     
     respond_to do |format|
