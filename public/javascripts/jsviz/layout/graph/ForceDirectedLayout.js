@@ -224,11 +224,16 @@ ForceDirectedLayout.prototype.enqueueRelationship = function( nodeA, nodeB ) {
  * Dequeue a relationship and add to the model.
  */
 ForceDirectedLayout.prototype.dequeueRelationship = function() {
+	if( this.relationshipQueue.length == 0 ) { return false; }
 	var edge = this.relationshipQueue[0]
 	if ( edge && edge.nodeA.particle && edge.nodeB.particle ) {
 		this.relationshipQueue.shift();
-		this.addSimilarity( edge.nodeA, edge.nodeB );						
+		this.addSimilarity( edge.nodeA, edge.nodeB );
+		return true;				
 	}	
+	else { // defer and push to end of queue
+		this.relationshipQueue.push( edge );
+	}
 }
 
 /*
@@ -336,6 +341,9 @@ ForceDirectedLayout.prototype.addParticle = function( dataNode ) {
 		var nodeParent = dataNode.parent[pIdx];
 		if( isNaN(pIdx) ) continue; 
 		if (!nodeParent.particle) {
+			// if particle doesn't yet exist, defer adding edges
+			this.newDataGraphEdge(dataNode, nodeParent);
+			continue;
 			dataNode.particle = particle;  // hopefully stops infinite recusion when dealing with cyclic graphcs
 			this.addParticle(nodeParent); // recursively make the particle so we can add the edges
 		}

@@ -13,17 +13,7 @@
  */
 var jsvizObj;
 function jsviz_init() {
-
 	var TIMEDBUILD = window.location.href.indexOf("TIMEDBUILD")>0 ? true : false;
-
-	/* 1) Create a new SnowflakeLayout.
-	 * 
-	 * If you're going to place the graph in an HTML Element, other
-	 * than the <body>, remember that it must have a known size and
-	 * position (via element.offsetWidth, element.offsetHeight,
-	 * element.offsetTop, element.offsetLeft).
-	 */
-	//var refDiv = $('p_page');
 	this.divLocation = $('jsviz_div');
 	var refDiv = this.divLocation.up();
 	if(refDiv) {
@@ -42,7 +32,6 @@ function jsviz_init() {
 	 * node, we tell the layout how to create a "model" and "view"
 	 * of the new node.
 	 */
-	
 	layout.config._default = {
 
 	/* The "model" defines the underlying structure of our graph.
@@ -60,7 +49,6 @@ function jsviz_init() {
 	 * class in our configuration must return a JavaScript Object
 	 * containing these values.
 	 */
-
 		model: function( dataNode ) {
 			return {
 				/*
@@ -94,7 +82,6 @@ function jsviz_init() {
 	 * scope), _handler is the function to be executed, and any
 	 * additional arguments are passed as parameters to _handler. 
 	 */
-
 		view: function( dataNode, modelNode ) {
 			if ( layout.svg ) {
 				var group = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -236,8 +223,7 @@ function jsviz_init() {
 	 * It's often the case that parent-child relationships are
 	 * represented with stricter force rules. This can help a graph
 	 * organize with fewer overlapping edges.
-	 */
-				
+	 */		
 	layout.forces.spring._default = function( nodeA, nodeB, isParentChild ) {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
@@ -269,7 +255,6 @@ function jsviz_init() {
 	 * 'A' and 'B', I can create a custom spring with greater
 	 * elasticity:
 	 */
-
 	layout.forces.spring['A'] = {};
 	layout.forces.spring['A']['B'] = function( nodeA, nodeB, isParentChild ) {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
@@ -353,6 +338,7 @@ function jsviz_init() {
 				if ( !this.started && d ) {
 					this.started=true;
 					while( layout.dequeueNode() ) {};
+					while( layout.dequeueRelationship() ){ }
 				}
 				if ( this.started && !d ) { return false; }
 				//loader.toggleText();
@@ -381,5 +367,4 @@ Event.observe(document, 'lightview:loaded', function(event){
 			window.jsviz_loading = false;
 		}
 	});
-});  
-
+});
