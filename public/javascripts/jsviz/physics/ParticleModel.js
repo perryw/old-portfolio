@@ -103,12 +103,13 @@ ParticleModel.prototype = {
 		var skewY = this.view.skewY;		
 		for ( var i=0, l=particles.length; i<l; i++ ) {
 			var particle = particles[i];
-      /*
+      
 			if(i==0) {
-				var amt = (l>7) ? 8 : i;
-				amt = this.boundsTop + amt*20;
-				particle.positionY = amt;
-			}*/
+				//var amt = (l>7) ? 8 : i;
+				//amt = this.boundsTop + amt*20;
+				//particle.positionY = amt;
+        particle.positionY = this.boundsTop;
+			}
 			//bounds checking		
 			if( this.boundsLeft ) { //only check if the bounds have been set
 				if ( particle.positionX < this.boundsLeft+(particle.width/2)/skewX ) {
