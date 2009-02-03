@@ -1,5 +1,5 @@
 
-<span class='bold'><%=link_to(@project.course.title, list_path(@project.course)) + ' > ' rescue '(not part of any course) ' %></span>
+<span class='bold'><%=link_to(@project.course.name, list_path(@project.course)) + ' > ' rescue '(not part of any course) ' %></span>
 
 <%= render :partial => 'projects/show' %>
 

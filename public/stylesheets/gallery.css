@@ -1,5 +1,6 @@
 .gallery_tags {
   padding-bottom: 5px;
+  vertical-align: bottom;
 }
 #lightview_wyrrep_div {
 }
@@ -42,7 +43,8 @@
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
-	/*line-height: 168px;*/
+	line-height: 168px;
+  vertical-align: middle;
 }
 .thumbnail a img {
 	max-width: 168px;
@@ -51,6 +53,5 @@
 	margin-right: auto;
 	vertical-align: middle;
 	text-align:center;
-	
 	/*display: table-cell;*/
 }

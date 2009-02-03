@@ -1,42 +1,35 @@
-<div class='key_resource'>
-<% if !@deliverable.key_resource_id.nil? && logged_in? -%>
-	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) rescue image_tag '/images/blank_placeholder.png' %>
-<% elsif logged_in? -%>
-	<%= image_tag '/images/blank_placeholder.png' %>
-<% end -%>
 <div class='deliv_show'>
-	<div>
-		<p><span class='key'>Name:</span>
-		<span class='value'><%=h @deliverable.name %></span></p>
-	</div>
-	<div>
-		<p><span class='key'>Tags:</span>
-		<span class='value deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span></p>
-	</div>
-	
-	<div>
-	  <p><span class='key'>Description:</span>
-	  <span class='value'><%=h @deliverable.description %></span></p>
-	</div>
+  <% if !@deliverable.key_resource_id.nil? && logged_in? -%>
+  	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) rescue image_tag '/images/blank_placeholder.png' %>
+  <% elsif logged_in? -%>
+  	<%= image_tag '/images/blank_placeholder.png' %>
+  <% end -%>
+  <div class='attribute_crumb'>
+    <span class='bold'><%=(@deliverable.owner.nil? ? "does not belong to anybody" : link_to(@deliverable.owner.name, list_path(@deliverable.owner))) + ' > '%></span>
+    <span><%=@deliverable.name%></span>
+  	<div class='tag_list'>
+  		  <span class='key'>Tags:</span>
+  		  <span class='value deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span>
+    </div>	
+  	<div>
+  	  <span class='key'>Description:</span>
+  	  <span class='value'><%=h @deliverable.description %></span>
+  	</div>
+  </div>
 </div>
-<% unless @deliverable.key_resource_id.nil? -%>
-	</div>
-<% end -%>
+
 <div>
 	<ul id='resources_list'>
 	  <% begin -%>
 	    <% @deliverable.ordered_resources.each do |rez| -%>
 	        <% if rez.image? || rez.pdf? -%>
 	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
-	        <% #else -%>
-    				<!--li id='resources_<%=rez.id%>'><%= %></li-->
     			<% end -%>
 	    <% end -%>  
     <% rescue -%>
       <% 'error occurred in ' %>
     <% end -%>
 	</ul>
-	<!--p id="list-info"></p-->
 	
 	<%= sortable_element 'resources_list', 
 	      :url => { :action => "order", :id => @deliverable.id }, 

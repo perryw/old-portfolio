@@ -1,11 +1,8 @@
+
 <%= render :partial => 'deliverables/show' %>
 
 <div class='img_placeholder'>
 	<%= image_tag @deliverable.key_resource.public_filename(:thumb) unless(@deliverable.key_resource.nil?)  %>
-</div>
-<div>
-	<span class='key'>Belongs to project/course:</span>
-	<span class='value'><%=h (@deliverable.owner.nil? ? "does not belong to any project" : @deliverable.owner.name)%></span>
 </div>
 <div>
 	<span class='key'>Collaborators:</span>

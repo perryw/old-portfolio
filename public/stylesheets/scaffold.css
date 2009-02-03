@@ -1,3 +1,7 @@
+.attribute_crumb {
+  vertical-align: middle;
+  display: inline-block;
+}
 .bold a {
   font-size:larger;
   font-weight:bold;
@@ -45,7 +49,7 @@
 	display: inline-block;
 	vertical-align: middle;
 }
-.deliv_show div, span {
+.deliv_show span {
 	display: inline;
 }
 .blah {

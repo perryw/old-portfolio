@@ -9,7 +9,9 @@ class DeliverablesController < ApplicationController
   def tag_cloud
     @tags = Deliverable.tag_counts
   end
-
+  def list
+    show
+  end
   def order
     @deliverable = Deliverable.find(params[:id])
     params[:deliverable] ||= Hash.new
@@ -73,6 +75,9 @@ class DeliverablesController < ApplicationController
     @owners = Project.all + Course.all
     @resources = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil }) + Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => @deliverable.id})
     #@resources = Resource.find(:all, :conditions => ["parent_id = NULL AND (resource_owner_id = NULL OR resource_owner_id = ?)", @deliverable.id])
+    @keyable = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil })
+    @keyable.concat(@deliverable.resources)
+    @keyable.delete_if{ |rez| !rez.image? && !rez.pdf? }
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
     end

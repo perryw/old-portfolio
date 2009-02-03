@@ -10,7 +10,7 @@
 				{ :class=>'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}", 
 					:title => "#{index.name} :: #{index.description}"} %>
 		<% end -%>
-	<% elsif !img.blank? # not an image...probably slideshare-%>
+	<% else #if !img.blank? # not an image...probably slideshare-%>
 		<%= link_to image_tag('/images/no_image.png'), url_for(:action=>'show', :controller => index.class.to_s.tableize, :id=>index.id, :ignore_layout=>true),
 				{:class => 'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}",
 				 	:title => "#{index.name} :: #{index.description}"} %>
