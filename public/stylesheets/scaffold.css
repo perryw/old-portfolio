@@ -1,3 +1,6 @@
+#project_resources_list li {
+  list-style: none;
+}
 #resources_list li {
 	list-style: none;
 }
