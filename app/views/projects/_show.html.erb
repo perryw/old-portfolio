@@ -1,12 +1,12 @@
 <% unless @project.key_resource_id.nil? || !logged_in? -%>
-<div>
-	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
-</div>
+  <div>
+  	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
+    <span class='key'>Name:</span>
+  </div>
 <% end -%>
-<div>
-  <span class='key'>Name:</span>
-  <span class='value'><%=h @project.name %></span>
-</div>
+
+<span class='value'><%=h @project.name %></span>
+
 <div>
 	<%=h @project.tag_list %>
 </div>

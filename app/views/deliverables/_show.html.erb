@@ -1,6 +1,6 @@
 <div class='key_resource'>
 <% if !@deliverable.key_resource_id.nil? && logged_in? -%>
-	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) unless @deliverable.key_resource_id.nil? %>
+	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) rescue image_tag '/images/blank_placeholder.png' %>
 <% elsif logged_in? -%>
 	<%= image_tag '/images/blank_placeholder.png' %>
 <% end -%>
@@ -24,13 +24,17 @@
 <% end -%>
 <div>
 	<ul id='resources_list'>
+	  <% begin -%>
 	    <% @deliverable.ordered_resources.each do |rez| -%>
 	        <% if rez.image? || rez.pdf? -%>
 	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
 	        <% #else -%>
-				<!--li id='resources_<%=rez.id%>'><%= %></li-->
-			<% end -%>
+    				<!--li id='resources_<%=rez.id%>'><%= %></li-->
+    			<% end -%>
 	    <% end -%>  
+    <% rescue -%>
+      <% 'error occurred in ' %>
+    <% end -%>
 	</ul>
 	<!--p id="list-info"></p-->
 	

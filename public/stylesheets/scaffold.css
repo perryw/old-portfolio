@@ -1,3 +1,7 @@
+.bold a {
+  font-size:larger;
+  font-weight:bold;
+}
 #project_resources_list li {
   list-style: none;
 }
