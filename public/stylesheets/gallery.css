@@ -36,8 +36,8 @@
 .thumbnail {
 	float: left;
 	width: 168px;
-	height: 168px;
-	padding: 0 12px 30px 0;
+	/*height: 168px;*/
+	padding: 0 12px 12px 0;
 }
 .thumbnail a,img {
 	margin-left: auto;

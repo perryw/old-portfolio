@@ -11,14 +11,14 @@
 <% end -%>
 <h2><%=h @course.description %></h2>
 
-<ul id='course_projects_list' class='listing'>
+<ul class='listing'>
 	<li>
-		<ul>
-			<% for project in @projects_ordered -%>
+		<ul id='course_projects_list'>
+		<% for project in @projects_ordered -%>
 				<li><span class='course_projects_heading'>
 						<h3><%=project.name%></h3>
 						<span class='project_tags'><%=h project.tag_list %></span>
-							<span class='deliverables_tags'>
+							<span id='<%="project_#{project.id}_deliverables_tags"%>' class='deliverables_tags'>
 								<%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "toggleDivByTag('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
 							</span>
 						</span>
@@ -27,30 +27,30 @@
 						<span class='key'>Description: </span><span class='value'><%=project.description%></span>
 						<ul>
 							<% for @deliverable in project.ordered_deliverables -%>
-								<li id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show' %></li>
+								<li class='courses_list_project_deliverable' id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show' %></li>
 							<% end -%>
 						</ul>
 					</div>
 				</li>
-			<% end -%>
+		<% end -%>
 		</ul>
 	</li>
 	<% unless @course.deliverables.empty? -%>
 		<li><h2>Homework<%= (@course.deliverables.size==1) ? '' : 's' %></h2>
 			<ul id='course_deliverables_list'>
-				<% for homework in @deliverables_ordered -%>
+			<% for homework in @deliverables_ordered -%>
 					<li><%h homework.name %></li>
-				<% end %>
+			<% end %>
 			</ul>
 		</li>
 	<% end -%>
-    <% unless @course.resources.empty? -%>
-          <li><h2>Resource<%= (@course.resources.size==1) ? '' : 's' %></h2>
-          <ul id='course_resources_list'>
-              <% for resource in @resources_ordered -%>
-                  <li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h resource.tag_list %></div></li>
-              <% end -%>
-          </ul>
-      </li>
-    <% end -%>
+  <% unless @course.resources.empty? -%>
+  <li><h2>Resource<%= (@course.resources.size==1) ? '' : 's' %></h2>
+    <ul id='course_resources_list'>
+        <% for resource in @resources_ordered -%>
+            <li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h resource.tag_list %></div></li>
+        <% end -%>
+    </ul>
+  </li>
+  <% end -%>
 </ul>

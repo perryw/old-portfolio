@@ -6,6 +6,8 @@ class GalleryController < ApplicationController
   def index
     @deliverables = Deliverable.all
     @projects = Project.all
+    @deliverable_tags = Deliverable.tag_counts
+    @project_tags = Project.tag_counts
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb

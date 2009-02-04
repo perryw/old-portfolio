@@ -1,17 +1,31 @@
 <div id='entire_gallery'>
 	<h1>Gallery</h1>
-	<span id='tgp' class='toggle_gallery highlight'><%= link_to_function 'Projects', "$('tgp').toggleClassName('highlight'); Effect.toggle('gallery_projects', 'appear')" %></span>
-	<span id='tgd' class='toggle_gallery'><%= link_to_function 'Deliverables', "$('tgd').toggleClassName('highlight'); Effect.toggle('gallery_deliverables', 'appear')"%></span>
+	<span id='tgp' class='toggle_gallery highlight'><%= link_to_function 'Projects', "$('tgp').toggleClassName('highlight'); Effect.toggle('gallery_projects', 'appear'); toggle_gallery_cloud('gallery_projects')" %></span>
+	<span id='tgd' class='toggle_gallery'><%= link_to_function 'Deliverables', "$('tgd').toggleClassName('highlight'); Effect.toggle('gallery_deliverables', 'appear'); toggle_gallery_cloud('gallery_deliverables')"%></span>
 	<div id='gallery_projects' class='gallery'>
 		<% @projects.each do |display| -%>
 			<%= render :partial => 'index', :object => display, :locals =>{ :divname => 'gallery_projects' } %>
 		<% end %>
+    <% unless @project_tags.empty? %>
+      <div id='gallery_projects_tag_cloud' style='clear:both; display: none'>
+      	<% tag_cloud @project_tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+      		<%=link_to_function tag.name, "toggleGalleryImgsByTag('#{tag.name}', 'gallery_projects')", :class => "tag #{css_class} #{tag.name.tr(' -','_')}" %>
+      	<% end %>
+      </div>
+    <% end %>
 	</div>
 	<br/>
 	<div id='gallery_deliverables' class='gallery' style='display: none'>
 		<% @deliverables.each do |display| -%>
-			<%= render :partial => 'index', :object => display, :locals => {:divname => 'gallery_deliverables'} %>
+			<%= render :partial => 'index', :object => display, :locals => {:divname => 'gallery_deliverables' } %>
 		<% end -%>
+    <% unless @deliverable_tags.empty? %>
+      <div id='gallery_deliverables_tag_cloud' style='clear:both; display: none'>
+      	<% tag_cloud @deliverable_tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+      		<%=link_to_function tag.name, "toggleGalleryImgsByTag('#{tag.name}', 'gallery_deliverables')", :class => "tag #{css_class} #{tag.name.tr(' -','_')}" %>
+      	<% end %>
+      </div>
+    <% end %>
 	</div>
 </div>
-<br/>
+<%= javascript_tag 'copyGalleryTagClouds();' %>

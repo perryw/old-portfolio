@@ -188,13 +188,12 @@ updateCurrMenuItem = function(newCurr) {
 };
 toggleGalleryImgsByTag = function(tagName, containerName){
 	var container = $(containerName);
-	var foundTags = container.select('.'+tagName);
+	var foundTags = container.select('.'+tagName).concat($('tag_cloud').select('.'+tagName));
 	if( foundTags.length < 1 ) return; // early exit
 	foundTags.invoke('toggleClassName','highlight');
 	var thumbnailArray = container.select('.thumbnail');
 	var isTagLit = foundTags[0].hasClassName('highlight');
-	//get div names
-	names = foundTags.collect(function(s){return s.ancestors()[1];});
+	names = foundTags.collect(function(s){return s.ancestors()[1];}); //get div names
 	
 	thumbnailArray.each( function(n){		
 		if((n.select('.highlight').length>1) || (names.indexOf(n)!=-1)){ 
@@ -214,7 +213,7 @@ toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 	container.appear();
 	$('more_info_'+container_id).innerHTML='less info';
 	
-	var tmp = container.select('.'+nameOfTag); 
+	var tmp = $('project_'+container_id+'_deliverables_tags').select('.'+nameOfTag); 
 	var hasHighlight = false;
 	if (tmp && tmp.first() )
 		hasHighlight = tmp.first().hasClassName('highlight');
@@ -223,47 +222,58 @@ toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 		return false;
 	}
 	
-	var highlightedTags = container.select('.highlight').collect( function(ht){ return ht.innerHTML; } ).uniq();
-	var numCurrentHighlighted = highlightedTags.size();
-	
-	var delivs = container.select('.deliv_show');
-	delivs.each( function(ds) { 
-		var tagsArray = ds.select('.'+nameOfTag);
-		var ancestor = ds.ancestors()[1];
-		if( numCurrentHighlighted == 0 ) {  // hide divs w/o tag
-			if( tagsArray.size() == 0 )
-				Effect.toggle(ancestor.identify(), 'appear');
-		}
-		else if( hasHighlight && numCurrentHighlighted == 1 ) { // want to remove only highlight and show all divs 
-			ancestor.appear();
-		}
-		else if( hasHighlight ) { // want to remove highlight, but only if no other selected tags exist
-			var removeMe = false;
-			var tags = new Array();
-			var litTags = ds.select('.highlight');
-			litTags.each( function(lt){
-				if ($w(lt.className).include(nameOfTag)) {
-					removeMe = true;
-					throw $break;
-				}
-			});
-			if( removeMe && litTags.length == 1 )
-				ancestor.fade();
-		}
-		else if(0 != ds.select('.'+nameOfTag).length){  // fallback case: new tag with already existing tags highlighted.  Can probably be refactored
-			ancestor.appear();
-		}
-	});
+	var numHighlightedTags = $('project_'+container_id+'_deliverables_tags').select('.highlight').length;
 
-	$$('.'+nameOfTag).each( function(t){ 
-		t.toggleClassName('highlight'); 
-		hasHighlight = (hasHighlight? hasHighlight: t.hasClassName('highlight')); 
+	container.select('.courses_list_project_deliverable').each( function(ds) { 
+    var tagElem = ds.select('.'+nameOfTag);
+    var litTags = ds.select('.highlight');
+    if( litTags.length > 1 ){  /* do nothing because have other tags lit */ }
+    else if( litTags.length && !tagElem.length ) { /* do nothing if ds doesn't have tag but has other lit tags */ }
+    else if(numHighlightedTags<2 && hasHighlight) { ds.appear(); }
+    else if( tagElem.length && hasHighlight ) { ds.fade(); }
+    else if( tagElem.length ) { ds.appear(); }
+    else { ds.fade(); }
+    
 	});
-
+	$$('.'+nameOfTag).invoke("toggleClassName", "highlight");
 	return false;
 }
 
 toggleInfoLink = function(project_prefix, project_id, link_elem) {
 	Effect.toggle(project_prefix+project_id, 'appear', {});
 	$(link_elem).innerHTML = ($(link_elem).innerHTML=='more info')? 'less info' : 'more info';
+}
+copyGalleryTagClouds = function() {
+  var pCloud = $('gallery_projects_tag_cloud').cloneNode(true);
+  pCloud.show();
+  pCloud.id='gallery_projects_tag_cloud_sidebar';
+  
+  var dCloud = $('gallery_deliverables_tag_cloud').cloneNode(true);
+  //dCloud.show();
+  dCloud.id='gallery_deliverables_tag_cloud_sidebar';
+  
+  var sideBar = $('tag_cloud');
+  sideBar.innerHTML = '';
+  sideBar.insert(pCloud);
+  sideBar.insert(dCloud);
+  sideBar.appear();
+  
+  window.galleryObserver = setInterval("checkGalleryExists()", 1000);
+}
+checkGalleryExists = function(){
+  if(!$('entire_gallery')){ 
+    $('tag_cloud').fade(); 
+    clearInterval(window.galleryObserver);
+  }
+ 
+  return false;
+}
+toggle_gallery_cloud = function(divname) {
+  $('tag_cloud').show();
+  Effect.toggle(divname+'_tag_cloud_sidebar','appear');
+  var showingGallery = false;
+  if(!$$('.toggle_gallery').inject(false, function(acc, val){ return acc | val.hasClassName('highlight');}) ){
+    $('tag_cloud').fade();
+  }
+  return false;
 }
