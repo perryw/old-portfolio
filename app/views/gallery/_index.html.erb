@@ -16,6 +16,6 @@
 				 	:title => "#{index.name} :: #{index.description}"} %>
 	<% end -%>
 	<span class='gallery_tags'>
-		<%=index.tag_list.collect{ |dt| (dt==index.tag_list.first ? "":", ") + link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => dt.tr(' -', '_')) } %>
+      <%=index.tag_list.collect{ |dt| (dt==index.tag_list.first ? "":", ") + link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr(' -', '_')} tag") } %>
 	</span>
 </div>
