@@ -109,11 +109,13 @@ Lightview.changedPicture = function(event){
 Lightview.observeCloseButtonUnbound = function(event) {
 	//Lightview.restoreCenter = Lightview.restoreCenterBackup;
 	//if( $('courses_show') ) { $('courses_show').remove(); }
-	$('entire_gallery').show();
 	/*$('lv_overlay').setStyle( {
 		width: document.viewport.getWidth() +'px'
 	});
 	*/
+  $('entire_gallery').show();
+  document.fire('jsviz:clicked');
+  /*
 	new Ajax.Updater('p_page', '/gallery', {
 			asynchronous: true, 
 			evalScripts: true, 
@@ -123,7 +125,7 @@ Lightview.observeCloseButtonUnbound = function(event) {
 				document.fire('jsviz:clicked');
 			}
 		});
-	
+	*/
 	return false;
 }
 

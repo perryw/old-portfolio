@@ -45,12 +45,28 @@
 	/*height: 168px;*/
 	padding: 0 12px 12px 0;
 }
-.thumbnail a,img {
+.thumbnail .thumbnail_overlay {
+  /*background: transparent url(/images/rails.png) no-repeat scroll 0 0;*/
+ z-index: 2;
+ position: absolute;
+}
+.thumbnail a {
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
 	line-height: 168px;
   vertical-align: middle;
+  z-index: 1;
+  position:relative;
+}
+.thumbnail img {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	line-height: 168px;
+  vertical-align: middle;
+  z-index: 1;
+  position:relative;
 }
 .thumbnail a img {
 	max-width: 168px;
@@ -59,5 +75,7 @@
 	margin-right: auto;
 	vertical-align: middle;
 	text-align:center;
+  z-index: 1;
+  position: relative;
 	/*display: table-cell;*/
 }
