@@ -49,6 +49,8 @@
   /*background: transparent url(/images/rails.png) no-repeat scroll 0 0;*/
  z-index: 2;
  position: absolute;
+ left: 0;
+ top: 20px;
 }
 .thumbnail a {
 	margin-left: auto;

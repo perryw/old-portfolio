@@ -279,3 +279,12 @@ toggle_gallery_cloud = function(divname) {
   }
   return false;
 }
+cropImage = function(){
+  var canvas = $('testImg');
+  var context = canvas.getContext('2d');
+  var img = new Image();
+  img.src = '/images/Apple_Background_thumb.jpg';
+  canvas.width = img.width;
+  canvas.height = img.height;
+  context.drawImage(img, 0,0,img.width, img.height);
+}
