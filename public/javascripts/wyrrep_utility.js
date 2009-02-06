@@ -324,10 +324,8 @@ var SpotLight = Class.create({
     canvas.style.background = "url("+img.src+")";
     
     context.save();
-    /* create clipping path */
-    context.beginPath();
-    context.arc(canvas.width/2, canvas.height/2, 40, 0, Math.PI*2, false);
-    context.clip()
+    this.createClip();
+
     // draw stars
     for (j=1;j<50;j++){
       context.save();
@@ -339,10 +337,17 @@ var SpotLight = Class.create({
     context.restore();
     //context.drawImage(img, 0, 0, img.width, img.height);
   },
-  drawStar: function(ctx,r){
+  createClip: function(){
+    context.beginPath();
+    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), 60, 0, Math.PI * 2, false); }
+    else { context.arc(this.x, this.y, 60, 0, Math.PI * 2, false); }
+    
+    context.clip();
+  },
+  drawStar: function(ctx,r){ // from MDC canvas tutorial
     ctx.save();
     ctx.globalCompositeOperation = "source-over";
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.moveTo(r,0);
     for (i=0;i<9;i++){
       ctx.rotate(Math.PI/5);
