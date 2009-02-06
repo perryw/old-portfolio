@@ -289,10 +289,10 @@ var SpotLight = Class.create({
     this.context = this.canvas.getContext('2d');
     this.radius = 35;
     this.gradient = this.context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
-    this.gradient.addColorStop(0, "rgba(255,255,255,1)");
-    this.gradient.addColorStop(0.2, "rgba(255,255,255,0.9)");
-    this.gradient.addColorStop(0.9, "rgba(255,255,255,0.05)");
-    this.gradient.addColorStop(1, "rgba(255,255,255,0)");
+    this.gradient.addColorStop(0, "rgba(255,255,255,0.3)");  
+    this.gradient.addColorStop(0.1, "rgba(255,255,255,0.3)");
+    this.gradient.addColorStop(0.9, "rgba(255,255,255,0.1)");
+    this.gradient.addColorStop(1, "rgba(255,255,255,0)"); 
     this.old_x = 0;
     this.old_y = 0;
     this.r = 0;
@@ -311,84 +311,60 @@ var SpotLight = Class.create({
 
     this.canvas.observe('mouseout', function(ev){
       clearInterval(this.inter);
-      this.drawImage();
+      this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
     }.bind(this));
 
   },
   drawImage: function(){
     var img = new Image();
-    img.src = '/images/Apple_Background_thumb.jpg';
+    
+    img.src='/images/Apple_Background_thumb.jpg';
     canvas = this.canvas; context = this.context;
     canvas.width = img.width;
     canvas.height = img.height;
-    canvas.style.background = "url("+img.src+")";
+    canvas.style.background = "url(/images/Apple_Background_thumb.jpg)";
     
     context.save();
-    this.createClip();
-
-    // draw stars
-    for (j=1;j<50;j++){
-      context.save();
-      context.fillStyle = '#fff';
-      context.translate(Math.floor(Math.random()*canvas.width*2),Math.floor(Math.random()*canvas.height*2));
-      this.drawStar(context,Math.floor(Math.random()*4)+2);
-      context.restore();
-    }
+    this.createClip();   
+    img.src = '/images/rails.png';
+    context.drawImage(img, 0, 0);
     context.restore();
-    //context.drawImage(img, 0, 0, img.width, img.height);
   },
   createClip: function(){
     context.beginPath();
-    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), 60, 0, Math.PI * 2, false); }
-    else { context.arc(this.x, this.y, 60, 0, Math.PI * 2, false); }
+    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
+    else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
     
     context.clip();
   },
-  drawStar: function(ctx,r){ // from MDC canvas tutorial
-    ctx.save();
-    ctx.globalCompositeOperation = "source-over";
-    ctx.beginPath();
-    ctx.moveTo(r,0);
-    for (i=0;i<9;i++){
-      ctx.rotate(Math.PI/5);
-      if(i%2 == 0) {
-        ctx.lineTo((r/0.525731)*0.200811,0);
-      } else {
-        ctx.lineTo(r,0);
-      }
-    }
-    ctx.closePath();
-    ctx.fill();
-    ctx.restore();
-  },
-
   mo: function (xc,yc,wc,hc, opacity){
     if (xc < 0) xc = 0;
     if (yc < 0) yc = 0;
     context = this.context;
     this.drawImage();
+    /*
     context.save();
     context.beginPath();
     context.globalCompositeOperation = "source-over";  
-    context.fillStyle = "rgba(255,255,255,0.2)";
+    context.fillStyle = "rgba(255,255,255,0.1)";
     context.arc(this.old_x, this.old_y, this.radius, 0, 2*Math.PI, false);
     context.fill();
     context.restore();
-
+*/
   },
   
   move: function(){
     var old_x = this.old_x; var old_y = this.old_y; var radius = this.radius;
     var x = this.x; var y = this.y; var r = this.r; var gradient = this.gradient;
     if (Math.abs(this.old_y - this.y) < 5 && Math.abs(this.old_x - this.x) < 5) {
-      return false;
+      //return false;
     }
     this.mo(old_x-radius,old_y-radius,2*radius,2*radius);
     context  = this.context;
     context.save();
     context.beginPath();
     r += Math.PI/12;
-    context.globalCompositeOperation = "destination-out";  
+    context.globalCompositeOperation = "lighter"; //"destination-out";  
     context.fillStyle=gradient; //"rgba(255,255,255,1)";
     context.translate(x,y);
     context.arc(0,0,radius,0,2*Math.PI,false);
