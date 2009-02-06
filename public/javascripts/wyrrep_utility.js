@@ -283,9 +283,23 @@ toggle_gallery_cloud = function(divname) {
 }
 
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
+function loadSpotLights(){
+    var replaceArray = $$('.gallery_image');
+    //replaceArray.each( function(elem){this.init(elem);});
+    new SpotLight(replaceArray[0]);
+    new SpotLight($('testImg'));
+}
 var SpotLight = Class.create({
-  initialize: function(){
-    this.canvas = $('testImg');
+  initialize: function(elem) {
+    if( elem.tagName == "IMG" ) {
+      var canvas = new Element("canvas", { "id": elem.id} );
+      var src = elem.getAttribute("src");
+      this.imgSrc = src.substr(0, src.indexOf("?"));
+      elem.parentNode.replaceChild(canvas, elem);
+      this.canvas = canvas;
+    }
+    else { this.canvas = elem; }
+  
     this.context = this.canvas.getContext('2d');
     this.radius = 35;
     this.gradient = this.context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
@@ -297,36 +311,42 @@ var SpotLight = Class.create({
     this.old_y = 0;
     this.r = 0;
     var scope = this;
-    
-    this.canvas.observe('mouseover', function(ev){
+    var canvas = this.canvas;
+    canvas.observe('mouseover', function(ev){
       this.old_x = ev.clientX - ev.target.offsetLeft - 8;
       this.old_y = ev.clientY - ev.target.offsetTop - 16;
       this.inter = setInterval(function(ev){
         scope.move();}, 30); }.bind(this));
 
-    this.canvas.observe('mousemove', function(ev){
+    canvas.observe('mousemove', function(ev){
       this.x = ev.clientX - ev.target.offsetLeft - 8;
       this.y = ev.clientY - ev.target.offsetTop - 16;
     }.bind(this));
 
-    this.canvas.observe('mouseout', function(ev){
+    canvas.observe('mouseout', function(ev){
       clearInterval(this.inter);
       this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
     }.bind(this));
-
+    this.drawImage();
   },
   drawImage: function(){
     var img = new Image();
     
-    img.src='/images/Apple_Background_thumb.jpg';
+    img.src= false? this.imgSrc : '/images/Apple_Background_thumb.jpg';
     canvas = this.canvas; context = this.context;
     canvas.width = img.width;
     canvas.height = img.height;
-    canvas.style.background = "url(/images/Apple_Background_thumb.jpg)";
+    canvas.style.background = "url("+img.src+")";
     
     context.save();
-    this.createClip();   
-    img.src = '/images/rails.png';
+    context.beginPath();
+    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
+    else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
+    context.clip();
+    context.fillStyle="red";
+    context.fillRect(84-this.radius*2, 84-this.radius*2, this.radius*3, this.radius*3);
+    //this.createClip();   
+    img.src = '/images/no_tag.png'; //'/images/rails.png';
     context.drawImage(img, 0, 0);
     context.restore();
   },
