@@ -16,11 +16,12 @@
 	<% else #if !img.blank? # not an image...probably slideshare-%>
 		<% link_to url_for(:action=>'show', :controller => index.class.to_s.tableize, :id=>index.id, :ignore_layout=>true),
 				{:class => 'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}",
-				 	:title => "#{index.name} :: #{index.description}"} do -%>
-          <%#= image_tag '/images/no_image.png', { :id => "gallery_image_#{index.id}", :class => 'gallery_image' } %>
+				 	:title => "#{index.name} :: #{index.description || ''}"} do -%>
+            
+          <%#= image_tag '/images/no_image.png', { :id => "fgallery_image_#{index.id}", :class => 'gallery_image' } %>
     <% end -%>
 	<% end -%>
-  <canvas id='gallery_image<%=index.id%>' src="/images/no_image.png" class='gallery_image'> </canvas>
+  <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" class='gallery_image'> </canvas>
 	<span class='gallery_tags'>
       <%=index.tag_list.collect{ |dt| (dt==index.tag_list.first ? "":", ") + link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr(' -', '_')} tag") } %>
 	</span>

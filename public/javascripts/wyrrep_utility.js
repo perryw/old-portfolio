@@ -285,7 +285,7 @@ toggle_gallery_cloud = function(divname) {
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 function loadSpotLights(){
     var replaceArray = $$('.gallery_image');
-    //replaceArray.each( function(elem){this.init(elem);});
+    //replaceArray.each( function(elem){new SpotLight(elem);});
     new SpotLight(replaceArray[0]);
     new SpotLight($('testImg'));
 }
@@ -327,6 +327,11 @@ var SpotLight = Class.create({
       clearInterval(this.inter);
       this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
     }.bind(this));
+    
+    canvas.observe('click', function(ev){
+      Lightview.show(this.canvas.siblings()[0]);
+    }.bind(this));
+    
     this.drawImage();
   },
   drawImage: function(){
@@ -343,8 +348,6 @@ var SpotLight = Class.create({
     if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
     else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
     context.clip();
-    context.fillStyle="red";
-    context.fillRect(84-this.radius*2, 84-this.radius*2, this.radius*3, this.radius*3);
     //this.createClip();   
     img.src = '/images/no_tag.png'; //'/images/rails.png';
     context.drawImage(img, 0, 0);
