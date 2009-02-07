@@ -81,6 +81,11 @@
 <div>
 	<span class='key'>Tags for this deliverable:</span> <%= f.text_field :tag_list %>
 </div>
+<div>
+  <span class='key'>Overlay for key photo: </span>
+  <%= collection_select :deliverable, :overlay_id, Resource.find_tagged_with("overlay"), :id, :tag_list, 
+		{ :include_blank => true, :selected => @deliverable.overlay_id }%>
+</div>
 
   <div>
     <%= f.submit "Update" %>

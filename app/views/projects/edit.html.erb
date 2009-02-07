@@ -60,13 +60,19 @@
   <span id='new_association_link'>
       <%= link_to_remote 'Add Resource', :url => {:action => 'new_association', :div_name => "new_association_link", :id => @project.id} %>
   </span>
-<div>
-<div>
-	<span class='key'>Key Resource:</span>
-	<%= collection_select(:project, :key_resource_id, @keyable, :id, :tag_list, {:selected => @project.key_resource_id, :include_blank => true}) %>
-<div>
-	<%= f.submit "Update" %>
-</div>
+  </div>
+  <div>
+  	<span class='key'>Key Resource:</span>
+  	<%= collection_select(:project, :key_resource_id, @keyable, :id, :tag_list, {:selected => @project.key_resource_id, :include_blank => true}) %>
+  </div>
+  <div>
+    <span class='key'>Overlay for key photo: </span>
+    <%= collection_select :project, :overlay_id, Resource.find_tagged_with("overlay"), :id, :tag_list, 
+  		{ :include_blank => true, :selected => @project.overlay_id }%>
+  </div>
+  <div>
+  	<%= f.submit "Update" %>
+  </div>
 <% end %>
 
 <%= link_to 'Show', @project %> |

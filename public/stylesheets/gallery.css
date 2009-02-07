@@ -61,7 +61,7 @@
   z-index: 1;
   position:relative;
 }
-.thumbnail img {
+.thumbnail img, canvas{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
@@ -70,7 +70,7 @@
   z-index: 1;
   position:relative;
 }
-.thumbnail a img {
+.thumbnail a img, canvas {
 	max-width: 168px;
 	max-height: 168px;
 	margin-left: auto;

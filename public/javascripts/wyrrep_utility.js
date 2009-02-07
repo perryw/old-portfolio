@@ -285,21 +285,25 @@ toggle_gallery_cloud = function(divname) {
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 function loadSpotLights(){
     var replaceArray = $$('.gallery_image');
-    //replaceArray.each( function(elem){new SpotLight(elem);});
-    new SpotLight(replaceArray[0]);
-    new SpotLight($('testImg'));
+    replaceArray.each( function(elem){new SpotLight(elem);});
+    //new SpotLight(replaceArray[2]);
+    //new SpotLight($('testImg'));
 }
 var SpotLight = Class.create({
   initialize: function(elem) {
     if( elem.tagName == "IMG" ) {
       var canvas = new Element("canvas", { "id": elem.id} );
-      var src = elem.getAttribute("src");
-      this.imgSrc = src.substr(0, src.indexOf("?"));
       elem.parentNode.replaceChild(canvas, elem);
       this.canvas = canvas;
     }
     else { this.canvas = elem; }
-  
+    
+    var src = elem.getAttribute("src");
+    if (src) {
+      this.imgSrc = (src.indexOf("?") == -1) ? src : src.substr(0,src.indexOf("?"));
+    }
+    else 
+      this.imgSrc = null;
     this.context = this.canvas.getContext('2d');
     this.radius = 35;
     this.gradient = this.context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
@@ -337,7 +341,7 @@ var SpotLight = Class.create({
   drawImage: function(){
     var img = new Image();
     
-    img.src= false? this.imgSrc : '/images/Apple_Background_thumb.jpg';
+    img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
     canvas = this.canvas; context = this.context;
     canvas.width = img.width;
     canvas.height = img.height;
