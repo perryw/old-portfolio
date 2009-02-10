@@ -288,6 +288,7 @@ function loadSpotLights(){
     replaceArray.each( function(elem){new SpotLight(elem);});
     //new SpotLight(replaceArray[2]);
     //new SpotLight($('testImg'));
+    Event.stopObserving(window, 'dom:loaded', loadSpotLights);
 }
 var SpotLight = Class.create({
   initialize: function(elem) {
@@ -313,23 +314,27 @@ var SpotLight = Class.create({
     this.gradient.addColorStop(1, "rgba(255,255,255,0)"); 
     this.old_x = 0;
     this.old_y = 0;
-    this.r = 0;
     var scope = this;
     var canvas = this.canvas;
     canvas.observe('mouseover', function(ev){
-      this.old_x = ev.clientX - ev.target.offsetLeft - 8;
-      this.old_y = ev.clientY - ev.target.offsetTop - 16;
-      this.inter = setInterval(function(ev){
-        scope.move();}, 30); }.bind(this));
+      var offset = ev.target.viewportOffset();
+      this.old_x = ev.clientX - offset.left;
+      this.old_y = ev.clientY - offset.top;
+      //this.inter = setInterval(function(ev){
+      //  scope.move();}, 200); 
+    }.bind(this));
 
     canvas.observe('mousemove', function(ev){
-      this.x = ev.clientX - ev.target.offsetLeft - 8;
-      this.y = ev.clientY - ev.target.offsetTop - 16;
+      var offset = ev.target.viewportOffset();
+      this.x = ev.clientX - offset.left;
+      this.y = ev.clientY - offset.top;
+      this.move();
     }.bind(this));
 
     canvas.observe('mouseout', function(ev){
-      clearInterval(this.inter);
       this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
+      clearInterval(this.inter);
+      this.old_x = this.x = null; this.old_y = this.y = null;
     }.bind(this));
     
     canvas.observe('click', function(ev){
@@ -339,22 +344,31 @@ var SpotLight = Class.create({
     this.drawImage();
   },
   drawImage: function(){
-    var img = new Image();
-    
-    img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
-    canvas = this.canvas; context = this.context;
-    canvas.width = img.width;
-    canvas.height = img.height;
-    canvas.style.background = "url("+img.src+")";
-    
+    var canvas = this.canvas; var context = this.context;
+    if(!this.img){
+      var img = new Image();
+      img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
+      canvas.width = img.width;
+      canvas.height = img.height;
+      this.img = img;
+      canvas.style.background = "url("+this.img.src+")";
+    }
+    this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     context.beginPath();
     if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
     else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
     context.clip();
-    //this.createClip();   
-    img.src = '/images/no_tag.png'; //'/images/rails.png';
-    context.drawImage(img, 0, 0);
+    context.fillStyle = "rgba(255,255,255,0.4)";
+    context.fillRect(0,0,canvas.width, canvas.height); 
+    if( !this.overlayImg ){
+      var overlayImg = new Image(); overlayImg.src = '/images/no_tag.png'; 
+      this.overlayImg = overlayImg;
+    }
+    try{
+      context.drawImage(this.overlayImg, 0, 0);
+    } catch(e) { alert('error trying to draw ' + this.overlayImg.src + ' for img '
+    + this.img.src); alert(e); }
     context.restore();
   },
   createClip: function(){
@@ -386,14 +400,16 @@ var SpotLight = Class.create({
     if (Math.abs(this.old_y - this.y) < 5 && Math.abs(this.old_x - this.x) < 5) {
       //return false;
     }
-    this.mo(old_x-radius,old_y-radius,2*radius,2*radius);
+    //this.mo(old_x-radius,old_y-radius,2*radius,2*radius);
+    this.drawImage();
     context  = this.context;
     context.save();
     context.beginPath();
-    r += Math.PI/12;
     context.globalCompositeOperation = "lighter"; //"destination-out";  
     context.fillStyle=gradient; //"rgba(255,255,255,1)";
-    context.translate(x,y);
+    try{
+      context.translate(x||old_x, y||old_y);
+      }catch(e){ alert('error trying to translate to ' +x+', ' + y); }
     context.arc(0,0,radius,0,2*Math.PI,false);
     context.closePath();
     context.fill();
