@@ -7,12 +7,12 @@
   	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
   </div>
 <% end -%>
-
-
+<br/>
 <div>
   <span class='key'>Description:</span>
-  <span class='value'><%=h @project.description %></span>
+  <span><%= @project.description %> </span>
 </div>
+<br/>
 <div>
 	<span class='key'>Deliverables:</span>
 	<ul id='deliverables_list'>
