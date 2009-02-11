@@ -2109,7 +2109,7 @@ Element.Methods = {
 
     element = forElement;
     do {
-      if (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'BODY'))) {
+      if (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'HTML'))) {
         valueT -= element.scrollTop  || 0;
         valueL -= element.scrollLeft || 0;
       }
