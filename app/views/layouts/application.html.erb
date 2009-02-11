@@ -120,7 +120,7 @@
 								:method => :get,
 								:update => 'p_page',
 								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); toggle_gallery_cloud(0); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked')"
+								:complete => "$('spinner_div').hide(); copyGalleryTagClouds(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()"
 							},
 							{	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
 						 %>
