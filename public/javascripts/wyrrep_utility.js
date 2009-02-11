@@ -283,12 +283,9 @@ toggle_gallery_cloud = function(divname) {
 }
 
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
-function loadSpotLights(){
-    var replaceArray = $$('.gallery_image');
-    replaceArray.each( function(elem){new SpotLight(elem);});
-    //new SpotLight(replaceArray[2]);
-    //new SpotLight($('testImg'));
+loadSpotLights = function(){
     Event.stopObserving(window, 'dom:loaded', loadSpotLights);
+    $$('.gallery_image').each( function(elem){new SpotLight(elem);});
 }
 var SpotLight = Class.create({
   initialize: function(elem) {

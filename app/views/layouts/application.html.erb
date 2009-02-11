@@ -21,7 +21,7 @@
 	<%= stylesheet_link_tag 'lightview' %>
 </head>
 <body>
-	<div id="loading">Loading CSS</div>	
+	<div class='loading-container'><span id="loading">Loading CSS</span></div>
 	<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading prototype...";' %>
 	<%= javascript_include_tag 'prototype' %>
 	
@@ -43,7 +43,6 @@
 	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
 
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
-
 		<!--div class='bl'><div class='br'><div class='tl'><div class='tr'-->
 		<div id="hd"><!-- header -->
 			<!--span></span-->
