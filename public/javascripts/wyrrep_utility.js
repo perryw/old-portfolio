@@ -344,11 +344,13 @@ var SpotLight = Class.create({
     var canvas = this.canvas; var context = this.context;
     if(!this.img){
       var img = new Image();
+      img.onload = function(){
+        canvas.width = img.width;
+        canvas.height = img.height;
+      }
       img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
-      canvas.width = img.width;
-      canvas.height = img.height;
       this.img = img;
-      canvas.style.background = "url("+this.img.src+")";
+      canvas.style.background = "url("+this.img.src+") no-repeat";
     }
     this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
@@ -358,14 +360,23 @@ var SpotLight = Class.create({
     context.clip();
     context.fillStyle = "rgba(255,255,255,0.4)";
     context.fillRect(0,0,canvas.width, canvas.height); 
-    if( !this.overlayImg ){
-      var overlayImg = new Image(); overlayImg.src = '/images/no_tag.png'; 
+    if (!this.overlayImg) {
+      var overlayImg = new Image();
+      overlayImg.onload = function(){
+        context.drawImage(overlayImg, 0, 0);
+      }
+      overlayImg.src = '/images/no_tag.png';
       this.overlayImg = overlayImg;
     }
-    try{
-      context.drawImage(this.overlayImg, 0, 0);
-    } catch(e) { alert('error trying to draw ' + this.overlayImg.src + ' for img '
-    + this.img.src); alert(e); }
+    else {
+      try {
+        context.drawImage(this.overlayImg, 0, 0);
+      } catch (e) {
+        alert('error trying to draw ' + this.overlayImg.src + ' for img ' +
+        this.img.src);
+        alert(e);
+      }
+    }
     context.restore();
   },
   createClip: function(){
