@@ -5,10 +5,9 @@
 <head>
 	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 	<title><%= APP_CONFIG['settings']['name'] %>: <%= controller.action_name %></title>
-	
 	<!--%= stylesheet_link_tag 'Jash' %-->
 	<!--%= javascript_include_tag 'Jash' %-->
-	<%= javascript_tag "var LOADING_STAGE = 'CSS';" %>
+	
 	<%= stylesheet_link_tag 'reset' %>
 	<%= stylesheet_link_tag 'fonts' %>
 	<%= stylesheet_link_tag 'grids' %>
@@ -20,36 +19,31 @@
 	<%= stylesheet_link_tag 'menu' %>
 	<%= stylesheet_link_tag 'breadcrumb' %>
 	<%= stylesheet_link_tag 'lightview' %>
-	
-  <%= javascript_tag "LOADING_STAGE = 'Environment variables';" %>
-	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
-	<%= javascript_tag "var CURR_CRUMB = #{session['breadcrumb_index']};"%>
-  
-  <%= javascript_tag "LOADING_STAGE = 'Prototype';" %>
-	<%= javascript_include_tag 'prototype' %>
-	
-  <%= javascript_tag "LOADING_STAGE = 'script.aculo.us';" %>
-  <%= javascript_include_tag 'scriptaculous'  %>
-  
-  <%= javascript_tag "LOADING_Stage = 'application.js';" %>
-  <%= javascript_include_tag 'application' %>
-	
-  <!--%#= javascript_include_tag :defaults %-->
-  
-  <%= javascript_tag "LOADING_STAGE = 'Lightview';" %>
-	<%= javascript_include_tag 'lightview' %>
-
-  <%= javascript_tag "LOADING_STAGE = 'Observers and utility functions';" %>
-	<%= javascript_include_tag 'wyrrep_utility' %>	
-  
-  <%= javascript_tag "LOADING_STAGE = 'In-Place editor';" %>
-	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
-  
-  <%= javascript_tag "LOADING_STAGE = '';" %>
 </head>
 <body>
-	<div id="loading"></div>
+	<div id="loading">Loading CSS</div>	
+	<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading prototype...";' %>
+	<%= javascript_include_tag 'prototype' %>
+	
+	<%= javascript_tag '$("loading").innerHTML="Now setting javascript variables...";' %>
+	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	<%= javascript_tag "var CURR_CRUMB = #{session['breadcrumb_index']};"%>
+			
+	<%= javascript_tag '$("loading").innerHTML= "Loading script.aculo.us...";' %>
+	<%= javascript_include_tag 'scriptaculous'  %>
+	<%= javascript_include_tag :defaults %>
+	
+	<%= javascript_tag '$("loading").innerHTML="Loading Lightview files...";' %>
+	<%= javascript_include_tag 'lightview' %>
+	
+	<%= javascript_tag '$("loading").innerHTML="Adding observers for Lightview buttons & utility functions...";' %>
+	<%= javascript_include_tag 'wyrrep_utility' %>
+	
+	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
+	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
+
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
+
 		<!--div class='bl'><div class='br'><div class='tl'><div class='tr'-->
 		<div id="hd"><!-- header -->
 			<!--span></span-->

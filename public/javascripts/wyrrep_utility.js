@@ -333,7 +333,7 @@ var SpotLight = Class.create({
 
     canvas.observe('mouseout', function(ev){
       this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
-      clearInterval(this.inter);
+      //clearInterval(this.inter);
       this.old_x = this.x = null; this.old_y = this.y = null;
     }.bind(this));
     

@@ -6,14 +6,18 @@
         <%#= image_tag(img.public_filename(:thumb), { :id => "gallery_image_#{index.id}"}) %>
 				<%#= image_tag 'zoom.png', { :class=>'thumbnail_overlay'} %>
 			<% end -%>
-      <canvas id='gallery_image_<%=index.id%>' src="<%=img.public_filename(:thumb)%>" overlay="<%=overlay_url%>" class='gallery_image'> </canvas>
+      <canvas id='gallery_image_<%=index.id%>' src="<%=img.public_filename(:thumb)%>" overlay="<%=overlay_url%>" class='gallery_image'>
+         <%= image_tag(img.public_filename(:thumb), { :id => "gallery_image_#{index.id}"}) %>
+      </canvas>
 		<% elsif img.has_slideshare -%>
 			<% link_to img.url, { :class=>'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}", 
 					:title => "#{index.name} :: #{index.description}"} do -%>
   			<%#= image_tag 'zoom.png', { :class=>'thumbnail_overlay'} %>
         <%#= image_tag('slideshare_200x50.png') %>
       <% end -%> 
-      <canvas id='gallery_image_<%=index.id%>' src="/images/slideshare_200x50.png" overlay="<%=overlay_url%>" class='gallery_image'> </canvas>
+      <canvas id='gallery_image_<%=index.id%>' src="/images/slideshare_200x50.png" overlay="<%=overlay_url%>" class='gallery_image'>
+        <%= image_tag('slideshare_200x50.png') %>
+      </canvas>
 		<% end -%>
 	<% else #if !img.blank? # not an image...probably slideshare-%>
 		<% link_to url_for(:action=>'show', :controller => index.class.to_s.tableize, :id=>index.id, :ignore_layout=>true),
@@ -22,7 +26,9 @@
             
           <%#= image_tag '/images/no_image.png', { :id => "fgallery_image_#{index.id}", :class => 'gallery_image' } %>
     <% end -%>
-    <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" overlay="<%=overlay_url%>" class='gallery_image'> </canvas>
+    <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" overlay="<%=overlay_url%>" class='gallery_image'> 
+      <%= image_tag '/images/no_image.png', { :id => "fgallery_image_#{index.id}", :class => 'gallery_image' } %>
+    </canvas>
 	<% end -%>
 
 	<span class='gallery_tags'>
