@@ -4,7 +4,7 @@
 <br />
 <br />
 
-<%= image_tag(@resource.public_filename(:thumb)) if @resource.image? %>
+<%= image_tag(@resource.public_filename(:thumb)) if @resource.thumbnailable? %>
 
 <br />
 <br />

@@ -1,6 +1,10 @@
 <div id='resources_index'>
 <h1>Listing resources</h1>
 
+<div id="new_resource_JS">
+<%= link_to_function 'new resource here', "new Effect.SlideDown('new_resource'); new Effect.Fade('new_resource_JS', { queue: 'end'}); new Effect.ScrollTo('new_resource');"%> <br />
+</div>
+
 <div id='new_resource', style="display:none">
 <% form_for(:resource, 
 			:url =>formatted_resources_path(:format => 'js'), 
@@ -50,9 +54,5 @@
 </div>
 
 <br />
-
-<div id="new_resource_JS">
-<%= link_to_function 'new resource here', "new Effect.SlideDown('new_resource'); new Effect.Fade('new_resource_JS', { queue: 'end'}); new Effect.ScrollTo('new_resource');"%> <br />
-</div>
 
 <%= link_to 'Create New resource in separate page', new_resource_path %>

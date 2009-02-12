@@ -285,7 +285,9 @@ toggle_gallery_cloud = function(divname) {
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 loadSpotLights = function(){
     Event.stopObserving(window, 'load', loadSpotLights);
+    $('loading').update("Drawing thumbnails...");
     $$('.gallery_image').each( function(elem){new SpotLight(elem);});
+    $('loading').update("");
 }
 var SpotLight = Class.create({
   initialize: function(elem) {
@@ -302,8 +304,9 @@ var SpotLight = Class.create({
     }
     else 
       this.imgSrc = null;
+    this.overlayURL = elem.getAttribute("overlay");
     this.context = this.canvas.getContext('2d');
-    this.radius = 35;
+    this.radius = 45;
     this.gradient = this.context.createRadialGradient(0, 0, 0, 0, 0, this.radius);
     this.gradient.addColorStop(0, "rgba(255,255,255,0.3)");  
     this.gradient.addColorStop(0.1, "rgba(255,255,255,0.3)");
@@ -317,8 +320,8 @@ var SpotLight = Class.create({
     canvas.observe('mouseover', function(ev){
       ev.stop(); // stop further propogation
       var offset = ev.target.viewportOffset();
-      this.old_x = ev.clientX - offset.left;
-      this.old_y = ev.clientY - offset.top;
+      this.old_x = ev.clientX - offset.left - 8;
+      this.old_y = ev.clientY - offset.top - 16;
       //this.inter = setInterval(function(ev){
       //  scope.move();}, 200); 
     }.bind(this));
@@ -326,24 +329,33 @@ var SpotLight = Class.create({
     canvas.stopObserving('mousemove');
     canvas.observe('mousemove', function(ev){
       var offset = ev.target.viewportOffset();
-      this.x = ev.clientX - offset.left;
-      this.y = ev.clientY - offset.top;
+      this.x = ev.clientX - offset.left - 8;
+      this.y = ev.clientY - offset.top - 16;
       this.move();
     }.bind(this));
 
     canvas.stopObserving('mouseout');
     canvas.observe('mouseout', function(ev){
-      this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
-      //clearInterval(this.inter);
       this.old_x = this.x = null; this.old_y = this.y = null;
+      this.drawImage();
+      this.to = setTimeout(function(){
+          this.context.clearRect(0,0,canvas.width, canvas.height);
+          clearTimeout(this.to);
+        }.bind(this), 2000);
+      //this.context.clearRect(0,0,canvas.width, canvas.height);//
+      //clearInterval(this.inter);
     }.bind(this));
     
     canvas.stopObserving('click');
     canvas.observe('click', function(ev){
-      Lightview.show(this.canvas.siblings()[0]);
+      Lightview.show(this.canvas.up().siblings()[0]);
     }.bind(this));
     
     this.drawImage();
+    this.to = setTimeout(function(){
+        clearTimeout(this.to);
+        this.context.clearRect(0,0,canvas.width, canvas.height);
+      }.bind(this), 3000);
   },
   drawImage: function(){
     var canvas = this.canvas; var context = this.context;
@@ -359,21 +371,25 @@ var SpotLight = Class.create({
     }
     this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
-    context.beginPath();
-    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
-    else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
-    context.clip();
-    context.fillStyle = "rgba(255,255,255,0.4)";
-    context.fillRect(0,0,canvas.width, canvas.height); 
     if (!this.overlayImg) {
-      var overlayImg = new Image();
-      overlayImg.onload = function(){
+        var overlayImg = new Image();
+        overlayImg.onload = function(){
+        context.fillStyle = "rgba(255,255,255,0.4)";
+        context.fillRect(0,0,canvas.width, canvas.height); 
         context.drawImage(overlayImg, 0, 0);
       }
-      overlayImg.src = '/images/no_tag.png';
+      overlayImg.src = (this.overlayURL=='')? '/images/no_tag.png' : this.overlayURL;
       this.overlayImg = overlayImg;
     }
     else {
+      context.beginPath();
+      //if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
+      if( this.x && this.y) { 
+        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        context.clip();
+      }
+      context.fillStyle = "rgba(255,255,255,0.4)";
+      context.fillRect(0,0,canvas.width, canvas.height); 
       try {
         context.drawImage(this.overlayImg, 0, 0);
       } catch (e) {

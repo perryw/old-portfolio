@@ -50,6 +50,7 @@
 }
 .thumbnail p canvas {
   vertical-align: middle;
+  cursor: pointer;
 }
 .thumbnail .thumbnail_overlay {
  z-index: 2;
