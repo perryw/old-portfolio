@@ -41,45 +41,38 @@
 .thumbnail {
 	float: left;
 	width: 168px;
-    /*border: medium double rgb(250,0,255);*/
+  /*border: medium double rgb(250,0,255);*/
 	height: 168px;
 	padding: 0 12px 12px 0;
 }
+.thumbnail p {
+  line-height: 168px;
+}
+.thumbnail p canvas {
+  vertical-align: middle;
+}
 .thumbnail .thumbnail_overlay {
-  /*background: transparent url(/images/rails.png) no-repeat scroll 0 0;*/
  z-index: 2;
  position: absolute;
  left: 0;
  top: 20px;
 }
 .thumbnail a {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  line-height: 168px;
-  vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
   z-index: 1;
   position:relative;
   display: none;
 }
-.thumbnail img, canvas{
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  line-height: 168px;
-  max-width: 168px;
-  max-height: 168px;
-  vertical-align: middle;
-  z-index: 1;
-  position:relative;
-}
-.thumbnail a img, canvas {
-  max-width: 168px;
-  max-height: 168px;
-  margin-left: auto;
-  margin-right: auto;
-  vertical-align: middle;
-  text-align:center;
+
+.thumbnail img {
+	max-width: 168px;
+	max-height: 168px;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	text-align:center;
   z-index: 1;
   position: relative;
 	/*display: table-cell;*/
