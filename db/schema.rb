@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090128005656) do
+ActiveRecord::Schema.define(:version => 20090206231151) do
 
   create_table "collaborations", :force => true do |t|
     t.integer  "collaborator_id"
@@ -41,17 +41,20 @@ ActiveRecord::Schema.define(:version => 20090128005656) do
     t.string   "projects_order"
     t.string   "deliverables_order"
     t.string   "resources_order"
+    t.integer  "overlay_id"
   end
 
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "owner_id"
-    t.string   "owner_type"
+    t.integer  "collaborator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "owner_id"
+    t.string   "owner_type"
     t.string   "resources_order"
     t.integer  "key_resource_id"
+    t.integer  "overlay_id"
   end
 
   create_table "four_oh_fours", :force => true do |t|
@@ -111,6 +114,7 @@ ActiveRecord::Schema.define(:version => 20090128005656) do
     t.integer  "key_resource_id"
     t.string   "deliverables_order"
     t.string   "resources_order"
+    t.integer  "overlay_id"
   end
 
   create_table "resources", :force => true do |t|
@@ -129,6 +133,7 @@ ActiveRecord::Schema.define(:version => 20090128005656) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "has_slideshare",      :default => false, :null => false
+    t.boolean  "is_overlay",          :default => false, :null => false
   end
 
   create_table "roles", :force => true do |t|

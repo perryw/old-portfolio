@@ -105,7 +105,7 @@ table
 	text-align:			center;
     border-width:		0px;
     border-spacing:		0px;
-	word-wrap:			break-word;
+	/*word-wrap:			break-word;*/
 	overflow:			scroll;
 }
 .center {

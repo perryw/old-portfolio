@@ -249,9 +249,9 @@ copyGalleryTagClouds = function() {
   var sideBar = $('tag_cloud');
   if(sideBar) sideBar.innerHTML = '';
   if ($('gallery_projects_tag_cloud')) {
-    var pCloud = $('gallery_projects_tag_cloud').cloneNode(true);
-    pCloud.show();
+    var pCloud = Element.extend($('gallery_projects_tag_cloud').cloneNode(true));
     pCloud.id = 'gallery_projects_tag_cloud_sidebar';
+    pCloud.show();
     sideBar.insert(pCloud);
   }
   if ($('gallery_deliverables_tag_cloud')) {
@@ -284,7 +284,7 @@ toggle_gallery_cloud = function(divname) {
 
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 loadSpotLights = function(){
-    Event.stopObserving(window, 'dom:loaded', loadSpotLights);
+    Event.stopObserving(window, 'load', loadSpotLights);
     $$('.gallery_image').each( function(elem){new SpotLight(elem);});
 }
 var SpotLight = Class.create({
@@ -313,7 +313,9 @@ var SpotLight = Class.create({
     this.old_y = 0;
     var scope = this;
     var canvas = this.canvas;
+    canvas.stopObserving('mouseover');
     canvas.observe('mouseover', function(ev){
+      ev.stop(); // stop further propogation
       var offset = ev.target.viewportOffset();
       this.old_x = ev.clientX - offset.left;
       this.old_y = ev.clientY - offset.top;
@@ -321,6 +323,7 @@ var SpotLight = Class.create({
       //  scope.move();}, 200); 
     }.bind(this));
 
+    canvas.stopObserving('mousemove');
     canvas.observe('mousemove', function(ev){
       var offset = ev.target.viewportOffset();
       this.x = ev.clientX - offset.left;
@@ -328,12 +331,14 @@ var SpotLight = Class.create({
       this.move();
     }.bind(this));
 
+    canvas.stopObserving('mouseout');
     canvas.observe('mouseout', function(ev){
       this.context.clearRect(0,0,canvas.width, canvas.height);//this.drawImage();
       //clearInterval(this.inter);
       this.old_x = this.x = null; this.old_y = this.y = null;
     }.bind(this));
     
+    canvas.stopObserving('click');
     canvas.observe('click', function(ev){
       Lightview.show(this.canvas.siblings()[0]);
     }.bind(this));
