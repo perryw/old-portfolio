@@ -191,7 +191,7 @@ updateCurrMenuItem = function(newCurr) {
 toggleGalleryImgsByTag = function(tagName, containerName){
 	var container = $(containerName);
 	var foundTags = container.select('.'+tagName).concat($('tag_cloud').select('.'+tagName));
-	if( foundTags.length < 1 ) return; // early exit
+	if( !foundTags.length ) return; // early exit
 	foundTags.invoke('toggleClassName','highlight');
 	var thumbnailArray = container.select('.thumbnail');
 	var isTagLit = foundTags[0].hasClassName('highlight');
