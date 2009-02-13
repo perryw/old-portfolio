@@ -337,13 +337,10 @@ var SpotLight = Class.create({
     canvas.stopObserving('mouseout');
     canvas.observe('mouseout', function(ev){
       this.old_x = this.x = null; this.old_y = this.y = null;
-      this.drawImage();
-      this.to = setTimeout(function(){
-          this.context.clearRect(0,0,canvas.width, canvas.height);
-          clearTimeout(this.to);
-        }.bind(this), 2000);
-      //this.context.clearRect(0,0,canvas.width, canvas.height);//
-      //clearInterval(this.inter);
+      //this.drawImage();
+      this.inter = setInterval(function(){
+        this.fadeOut();
+      }.bind(this), 100);
     }.bind(this));
     
     canvas.stopObserving('click');
@@ -352,10 +349,23 @@ var SpotLight = Class.create({
     }.bind(this));
     
     this.drawImage();
-    this.to = setTimeout(function(){
-        clearTimeout(this.to);
-        this.context.clearRect(0,0,canvas.width, canvas.height);
-      }.bind(this), 3000);
+    this.inter = setInterval(function(){
+      this.fadeOut();
+      }.bind(this), 100);
+  },
+  fadeOut: function() {
+    if( this.context.globalAlpha > 0.1 ) {
+      this.context.globalAlpha -= 0.1;
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){}
+    }
+    else {
+      this.context.globalAlpha = 1.0;
+      //alert('removing interval ' + this.inter);
+      clearInterval(this.inter);
+    }
+
+    return true;
   },
   drawImage: function(){
     var canvas = this.canvas; var context = this.context;
@@ -434,7 +444,7 @@ var SpotLight = Class.create({
     context  = this.context;
     context.save();
     context.beginPath();
-    context.globalCompositeOperation = "lighter"; //"destination-out";  
+    context.globalCompositeOperation = "destination-out";  
     context.fillStyle=gradient; //"rgba(255,255,255,1)";
     try{
       context.translate(x||old_x, y||old_y);
