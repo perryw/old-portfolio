@@ -338,8 +338,8 @@ var SpotLight = Class.create({
     canvas.observe('mouseout', function(ev){
       this.old_x = this.x = null; this.old_y = this.y = null;
       //this.drawImage();
-      this.inter = setInterval(function(){
-        this.fadeOut();
+      this.mo_inter = setInterval(function(){
+        this.fadeOut(this.mo_inter);
       }.bind(this), 100);
     }.bind(this));
     
@@ -350,10 +350,10 @@ var SpotLight = Class.create({
     
     this.drawImage();
     this.inter = setInterval(function(){
-      this.fadeOut();
+      this.fadeOut(this.inter);
       }.bind(this), 100);
   },
-  fadeOut: function() {
+  fadeOut: function(intervalID) {
     if( this.context.globalAlpha > 0.1 ) {
       this.context.globalAlpha -= 0.1;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -362,7 +362,7 @@ var SpotLight = Class.create({
     else {
       this.context.globalAlpha = 1.0;
       //alert('removing interval ' + this.inter);
-      clearInterval(this.inter);
+      clearInterval(intervalID);
     }
 
     return true;
