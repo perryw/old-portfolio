@@ -54,8 +54,8 @@ Lightview.moveWindow = function(){
 
 Lightview.changedPicture = function(event){
 	var src = event.target.identify();
-	$('entire_gallery').hide();
-	if( $('courses_show') ) { $('courses_show').remove(); }
+//	$('entire_gallery').hide();
+//	if( $('courses_show') ) { $('courses_show').remove(); }
 	/*
 	if (!$('lightview_wyrrep_div')) {
 		var elem = new Element('div', {'id': 'lightview_wyrrep_div'});
@@ -250,17 +250,19 @@ copyGalleryTagClouds = function() {
   if(sideBar) sideBar.innerHTML = '';
   if ($('gallery_projects_tag_cloud')) {
     var pCloud = Element.extend($('gallery_projects_tag_cloud').cloneNode(true));
+    if( !pCloud ) alert('ERROR: pCloud is null');
     pCloud.id = 'gallery_projects_tag_cloud_sidebar';
-    pCloud.show();
-    sideBar.insert(pCloud);
+    //pCloud.style.visibility = ''; //pCloud.show();
+    Element.show(pCloud);
+    Element.insert(sideBar,pCloud);
   }
   if ($('gallery_deliverables_tag_cloud')) {
     var dCloud = $('gallery_deliverables_tag_cloud').cloneNode(true);
     //dCloud.show();
     dCloud.id = 'gallery_deliverables_tag_cloud_sidebar';
-    sideBar.insert(dCloud);
+    Element.insert(sideBar, dCloud);
   }
-  sideBar.appear();
+  Effect.Appear(sideBar);
   
   window.galleryObserver = setInterval("checkGalleryExists()", 1000);
 }
@@ -275,7 +277,6 @@ checkGalleryExists = function(){
 toggle_gallery_cloud = function(divname) {
   $('tag_cloud').show();
   Effect.toggle(divname+'_tag_cloud_sidebar','appear');
-  var showingGallery = false;
   if(!$$('.toggle_gallery').inject(false, function(acc, val){ return acc | val.hasClassName('highlight');}) ){
     $('tag_cloud').fade();
   }
@@ -319,39 +320,76 @@ var SpotLight = Class.create({
     canvas.stopObserving('mouseover');
     canvas.observe('mouseover', function(ev){
       ev.stop(); // stop further propogation
+      if(this.inter) clearInterval(this.inter);
+      if(this.mo_inter) clearInterval(this.mo_inter);
+      if(this.mo_to) clearTimeout(this.mo_to);
+      this.context.globalAlpha = 1.0;
       var offset = ev.target.viewportOffset();
       this.old_x = ev.clientX - offset.left - 8;
       this.old_y = ev.clientY - offset.top - 16;
-      //this.inter = setInterval(function(ev){
-      //  scope.move();}, 200); 
-    }.bind(this));
+      this.startTime = new Date();
+      this.hoverTimeout = setTimeout(function(){
+        if( this.iris_inter ) clearInterval( this.iris_inter );
+        this.iris = this.radius;
+        this.iris_inter = setInterval( function() {
+          this.irisIn();
+        }.bind(this), 80 );
+        return true;
+      }.bind(this), 700);
+    }.bindAsEventListener(this));
 
     canvas.stopObserving('mousemove');
     canvas.observe('mousemove', function(ev){
+      if( this.startTime ) this.startTime = null; 
+      if( this.iris_inter ) clearInterval( this.iris_inter );
       var offset = ev.target.viewportOffset();
       this.x = ev.clientX - offset.left - 8;
       this.y = ev.clientY - offset.top - 16;
       this.move();
-    }.bind(this));
+    }.bindAsEventListener(this));
 
     canvas.stopObserving('mouseout');
-    canvas.observe('mouseout', function(ev){
+    canvas.observe('mouseout', function(){
+      if( this.startTime ) this.startTime = null; 
+      if( this.iris_inter ) clearInterval( this.iris_inter );
+      if( this.hoverTimeout ) clearInterval( this.hoverTimeout );
       this.old_x = this.x = null; this.old_y = this.y = null;
-      //this.drawImage();
-      this.mo_inter = setInterval(function(){
-        this.fadeOut(this.mo_inter);
-      }.bind(this), 100);
-    }.bind(this));
+      if(this.inter) clearInterval(this.inter);
+      if(this.mo_to) clearTimeout(this.mo_to);
+      this.drawImage();
+      this.mo_to = setTimeout( function() {
+        if(this.mo_inter) clearInterval(this.mo_inter);
+        this.mo_inter = setInterval(function(){
+          this.fadeOut(this.mo_inter);
+        }.bind(this), 100);
+      }.bind(this), 500);
+    }.bindAsEventListener(this));
     
     canvas.stopObserving('click');
-    canvas.observe('click', function(ev){
+    canvas.observe('click', function(){
+      if( this.startTime ) this.startTime = null; 
+      if( this.iris_inter ) clearInterval( this.iris_inter );
       Lightview.show(this.canvas.up().siblings()[0]);
-    }.bind(this));
+    }.bindAsEventListener(this));
     
     this.drawImage();
     this.inter = setInterval(function(){
       this.fadeOut(this.inter);
-      }.bind(this), 100);
+    }.bind(this), 100);
+  },
+  irisIn: function(){
+    this.iris += 5;
+    if( this.iris >= this.canvas.width ) {
+      this.iris = this.radius;
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      try{ this.context.drawImage(this.overlayImg, 0, 0);
+      }catch(e){alert('error in irisIn');}
+      clearInterval(this.iris_inter);
+    }
+    else {
+      this.drawImage(this.iris);
+    }
+    return true;
   },
   fadeOut: function(intervalID) {
     if( this.context.globalAlpha > 0.1 ) {
@@ -360,14 +398,18 @@ var SpotLight = Class.create({
       try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){}
     }
     else {
-      this.context.globalAlpha = 1.0;
-      //alert('removing interval ' + this.inter);
+      this.context.save();
+      this.context.globalAlpha = 0.06;
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){}
+      this.context.restore();
       clearInterval(intervalID);
+      this.context.globalAlpha = 1.0;
     }
 
     return true;
   },
-  drawImage: function(){
+  drawImage: function(drawRadius){
     var canvas = this.canvas; var context = this.context;
     if(!this.img){
       var img = new Image();
@@ -393,9 +435,9 @@ var SpotLight = Class.create({
     }
     else {
       context.beginPath();
-      //if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
+      var radius = drawRadius? drawRadius : this.radius;
       if( this.x && this.y) { 
-        context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); 
+        context.arc(this.x, this.y, radius, 0, Math.PI * 2, false); 
         context.clip();
       }
       context.fillStyle = "rgba(255,255,255,0.4)";

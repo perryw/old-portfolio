@@ -67,7 +67,7 @@
   </div>
   <div>
     <span class='key'>Overlay for key photo: </span>
-    <%= collection_select :project, :overlay_id, Resource.find_tagged_with("overlay"), :id, :tag_list, 
+    <%= collection_select :project, :overlay_id, Resource.find_all_by_is_overlay(true), :id, :tag_list, 
   		{ :include_blank => true, :selected => @project.overlay_id }%>
   </div>
   <div>
