@@ -353,10 +353,18 @@ var SpotLight = Class.create({
       if( this.startTime ) this.startTime = null; 
       if( this.iris_inter ) clearInterval( this.iris_inter );
       if( this.hoverTimeout ) clearInterval( this.hoverTimeout );
-      this.old_x = this.x = null; this.old_y = this.y = null;
+      this.x = null; this.y = null;
       if(this.inter) clearInterval(this.inter);
       if(this.mo_to) clearTimeout(this.mo_to);
-      this.drawImage();
+      this.iris = this.radius;
+      this.iris_inter = setInterval( function() {
+        this.irisIn();
+      }.bind(this), 30 );
+    }.bindAsEventListener(this));
+
+    canvas.observe('gallery:irisIn', function(){
+      if(this.mo_to) clearTimeout( this.mo_to );
+      if( this.x || this.y ) return;
       this.mo_to = setTimeout( function() {
         if(this.mo_inter) clearInterval(this.mo_inter);
         this.mo_inter = setInterval(function(){
@@ -379,15 +387,11 @@ var SpotLight = Class.create({
   },
   irisIn: function(){
     this.iris += 5;
-    if( this.iris >= this.canvas.width ) {
+    this.drawImage(this.iris);
+    if( this.iris >= (this.hypotenuse) ) {
       this.iris = this.radius;
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error in irisIn');}
       clearInterval(this.iris_inter);
-    }
-    else {
-      this.drawImage(this.iris);
+      this.canvas.fire('gallery:irisIn');
     }
     return true;
   },
@@ -414,9 +418,10 @@ var SpotLight = Class.create({
     if(!this.img){
       var img = new Image();
       img.onload = function(){
-        canvas.width = img.width;
-        canvas.height = img.height;
-      }
+        this.canvas.width = img.width;
+        this.canvas.height = img.height;
+        this.hypotenuse = Math.sqrt(canvas.width*canvas.width + canvas.height*canvas.height);
+      }.bind(this);
       img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
@@ -436,8 +441,8 @@ var SpotLight = Class.create({
     else {
       context.beginPath();
       var radius = drawRadius? drawRadius : this.radius;
-      if( this.x && this.y) { 
-        context.arc(this.x, this.y, radius, 0, Math.PI * 2, false); 
+      if( (this.x || this.old_x) && (this.y || this.old_y)) { 
+        context.arc(this.x||this.old_x, this.y||this.old_y, radius, 0, Math.PI * 2, false); 
         context.clip();
       }
       context.fillStyle = "rgba(255,255,255,0.4)";
@@ -456,7 +461,6 @@ var SpotLight = Class.create({
     context.beginPath();
     if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
     else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
-    
     context.clip();
   },
   mo: function (xc,yc,wc,hc, opacity){
@@ -478,9 +482,6 @@ var SpotLight = Class.create({
   move: function(){
     var old_x = this.old_x; var old_y = this.old_y; var radius = this.radius;
     var x = this.x; var y = this.y; var r = this.r; var gradient = this.gradient;
-    if (Math.abs(this.old_y - this.y) < 5 && Math.abs(this.old_x - this.x) < 5) {
-      //return false;
-    }
     //this.mo(old_x-radius,old_y-radius,2*radius,2*radius);
     this.drawImage();
     context  = this.context;
