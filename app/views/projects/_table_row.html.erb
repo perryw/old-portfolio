@@ -7,6 +7,7 @@
 	<td class='center'><%=h @project.collaborators.size %></td>
 	<td class='center'><%=h (@project.course.nil? ? "not owned by any course" : @project.course.title) %></td>
 	<td class='center'><%=h @project.deliverables.size %></td>
+  <td class='center'><%=h (@project.project_url.nil? ? 'N' : 'Y'%></td>
     <td><%= link_to 'Show', @project %></td>
     <td><%= link_to 'Edit', edit_project_path(@project) %></td>
     <td><%= link_to_remote 'Destroy', { :url => project_path(@project), :method => :delete}, { :href => project_path(@project), :confirm => 'Are you sure?', :method => :delete }%></td>

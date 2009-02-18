@@ -1,5 +1,5 @@
 
-<%= image_tag(@resource.public_filename) if @resource.image? %>
+<%= image_tag(@resource.public_filename) if @resource.thumbnailable?%>
 
 <br />
 <br />

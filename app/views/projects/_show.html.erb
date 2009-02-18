@@ -13,6 +13,12 @@
   <span><%= @project.description %> </span>
 </div>
 <br/>
+<% unless @project.project_url.nil? -%>
+  <div>
+    <span class='key'>Project URL:</span>
+    <span><%= link_to 'Project Website', @project.project_url %></span>
+  </div>
+<% end -%>
 <div>
 	<span class='key'>Deliverables:</span>
 	<ul id='deliverables_list'>

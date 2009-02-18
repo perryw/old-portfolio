@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090206231151) do
+ActiveRecord::Schema.define(:version => 20090218041038) do
 
   create_table "collaborations", :force => true do |t|
     t.integer  "collaborator_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20090206231151) do
     t.string   "uniqname"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "photo_id"
     t.string   "email"
     t.string   "url"
   end
@@ -47,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20090206231151) do
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "collaborator_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(:version => 20090206231151) do
     t.string   "deliverables_order"
     t.string   "resources_order"
     t.integer  "overlay_id"
+    t.string   "project_url"
   end
 
   create_table "resources", :force => true do |t|
