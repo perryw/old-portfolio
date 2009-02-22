@@ -16,8 +16,14 @@
 	/*text-shadow: #6374AB 5px 5px 2px;*/
 	font-weight: bold;
 	font-size: 120%;
+    color: #6666FF;
 }
 
+.highlight a{
+  /*background-color: #EBB46C;*/
+  background-color: white;
+  text-decoration: underline;
+}
 #entire_gallery {
 	overflow: hidden;
 	width: 100%;

@@ -450,9 +450,9 @@ var SpotLight = Class.create({
       try {
         context.drawImage(this.overlayImg, 0, 0);
       } catch (e) {
-        alert('error trying to draw ' + this.overlayImg.src + ' for img ' +
-        this.img.src);
-        alert(e);
+        //alert('error trying to draw ' + this.overlayImg.src + ' for img ' +
+        //this.img.src);
+        //alert(e);
       }
     }
     context.restore();

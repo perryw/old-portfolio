@@ -40,8 +40,9 @@
 	color: #FFFFFF;
 }
 .tag {
-	background-color: #EEEEEE;
+	/*background-color: #EEEEEE;*/
 	text-decoration: none;
+    color: #6666FF;
 }
 .highlight {
 	background-color: #E7880C;
@@ -89,6 +90,12 @@ a.atom_feed {
 .css4 { font-size: 1.6em; }
 
 .css4:hover { 
+	background-color: blue;
+	color: white;
+}
+.css5 { font-size: 1.8em; }
+
+.css5:hover { 
 	background-color: blue;
 	color: white;
 }

@@ -54,7 +54,7 @@ JSONTreeLoader.prototype.load = function( ) {
 			window.CURR_CRUMB = parseInt(transport.responseText);
 		},
 		onFailure: function(request) { 
-			alert('railed to get current breadcrumb index with response ' + request); 
+			alert('failed to get current breadcrumb index with response ' + request); 
 		}
 	} );
 	new Ajax.Request('/breadcrumbs/get_breadcrumb', {
