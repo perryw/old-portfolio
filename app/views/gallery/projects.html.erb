@@ -1,0 +1,17 @@
+<div id='entire_gallery'>
+	<h1>Projects</h1>
+  <div id='gallery_projects' class='gallery'>
+		<% @projects.each do |display| -%>
+			<%= render :partial => 'index', :object => display, :locals =>{ :divname => 'gallery_projects', :overlay_url => (Resource.find(display.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png') } %>
+		<% end %>
+    <% unless @project_tags.empty? %>
+      <div id='gallery_projects_tag_cloud' style='clear:both; display: none'>
+      	<% tag_cloud @project_tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+      		<%=link_to_function tag.name, "toggleGalleryImgsByTag('#{tag.name.tr(' -','_')}', 'gallery_projects')", :class => "tag #{css_class} #{tag.name.tr(' -','_')}" %>
+      	<% end %>
+      </div>
+    <% end %>
+	</div>
+</div>
+<%= javascript_tag 'copyGalleryTagClouds();' %>
+<%= javascript_tag 'Event.observe(window, "dom:loaded", loadSpotLights);' %>

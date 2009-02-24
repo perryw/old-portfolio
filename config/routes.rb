@@ -51,6 +51,8 @@ ActionController::Routing::Routes.draw do |map|
 	map.resources :members
 
   map.connect '/gallery', :controller => 'gallery', :action => 'index'
+  map.connect 'gallery/deliverables', :controller => 'gallery', :action => 'deliverables'
+  map.connect 'gallery/projects', :controller => 'gallery', :action => 'projects'
   map.connect 'gallery/:id', :controller => 'gallery', :action => 'show'
 
   # The priority is based upon order of creation: first created -> highest priority.

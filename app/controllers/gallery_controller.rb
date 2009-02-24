@@ -14,6 +14,22 @@ class GalleryController < ApplicationController
       format.xml  { render :xml => @gallery }
     end
   end
+  def deliverables
+    @deliverables = Deliverable.all
+    @deliverable_tags = Deliverable.tag_counts
+    respond_to do |format|
+      format.html { render :layout => false if request.xhr? }
+      format.xml  { render :xml => @gallery }
+    end
+  end
+  def projects
+    @projects = Project.all
+    @project_tags = Project.tag_counts
+    respond_to do |format|
+      format.html { render :layout => false if request.xhr? }
+      format.xml  { render :xml => @gallery }
+    end
+  end
   def show
     owner_type, owner_id = params[:id].split('_')
     owner = owner_type.constantize.find(owner_id)  # can also use constantize instead of eval
