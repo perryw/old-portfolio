@@ -258,8 +258,8 @@ copyGalleryTagClouds = function() {
   }
   if ($('gallery_deliverables_tag_cloud')) {
     var dCloud = $('gallery_deliverables_tag_cloud').cloneNode(true);
-    //dCloud.show();
     dCloud.id = 'gallery_deliverables_tag_cloud_sidebar';
+    if( !$('gallery_projects_tag_cloud') ) Element.show(dCloud);
     Element.insert(sideBar, dCloud);
   }
   Effect.Appear(sideBar);

@@ -88,28 +88,28 @@
 							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
 						 %>
  						<% m.remote_action 'Projects', {
-								:url => {
+								:url => (logged_in? ? {
 									:controller => 'projects',
 									:action => 'index'
-								},
+                                    } : { :controller => 'gallery', :action => 'projects' }),
 								:method => :get,
 								:update => 'p_page',
 								:loading => "$('spinner_div').show()",
 								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
 							},
-							{	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
+                            {	:id => 'menu_projects', :href => (logged_in? ? url_for(:controller => "projects", :action => "index") : url_for(:controller => 'gallery', :action => 'projects'))	}
 						 %>
 						<% m.remote_action 'Deliverables', {
-								:url => {
+								:url => (logged_in? ? {
 									:controller => 'deliverables',
 									:action => 'index'
-								},
+                                    } : { :controller => 'gallery', :action => 'deliverables' }),
 								:method => :get,
 								:update => 'p_page',
 								:loading => "$('spinner_div').show()",
 								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
 							},
-							{	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index") }
+                            {	:id => 'menu_deliverables', :href => (logged_in? ? url_for(:controller=>"deliverables", :action => "index") : url_for(:controller => 'gallery', :action => 'deliverables') )}
 						 %>
 						<% m.remote_action 'Gallery', {
 								:url => {
