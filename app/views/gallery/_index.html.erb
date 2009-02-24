@@ -6,6 +6,7 @@
          <p>
             <canvas id='gallery_image_<%=index.id%>' src="<%=img.public_filename(:thumb)%>" overlay="<%=overlay_url%>" class='gallery_image'>
                <%= image_tag(img.public_filename(:thumb), { :id => "cgallery_image_#{index.id}"}) %>
+               <%= image_tag( (Resource.find(index.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png'), { :id => "cgallery_overlay_#{index.id}"}) %>
             </canvas>
          </p>
 		<% elsif img.has_slideshare -%>
@@ -14,6 +15,7 @@
           <p>
             <canvas id='gallery_image_<%=index.id%>' src="/images/slideshare_200x50.png" overlay="<%=overlay_url%>" class='gallery_image'>
               <%= image_tag('slideshare_200x50.png', { :id => "cgallery_image_#{index.id}" }) %>
+              <%= image_tag( (Resource.find(index.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png'), { :id => "cgallery_overlay_#{index.id}"}) %>
             </canvas>
           </p>
 		<% end -%>
@@ -24,6 +26,7 @@
       <p>
         <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" overlay="<%=overlay_url%>" class='gallery_image'> 
           <%= image_tag '/images/no_image.png', { :id => "cgallery_image_#{index.id}" } %>
+          <%= image_tag( (Resource.find(index.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png'), { :id => "cgallery_overlay_#{index.id}"}) %>
         </canvas>
       </p>
 	<% end -%>

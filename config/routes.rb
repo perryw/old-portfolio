@@ -39,7 +39,11 @@ ActionController::Routing::Routes.draw do |map|
 #    user.resources :resources
   end    
 
+  map.connect 'deliverables/index', :controller => 'deliverables', :action => 'index'
+  map.connect 'deliverables', :controller => 'gallery', :action => 'deliverables'
   map.resources :deliverables
+  map.connect 'projects/index', :controller => 'projects', :action => 'index'  
+  map.connect 'projects', :controller => 'gallery', :action => 'projects'
   map.resources :projects
   map.resources :resources
   map.resources :courses

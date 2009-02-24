@@ -45,7 +45,6 @@
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
 		<!--div class='bl'><div class='br'><div class='tl'><div class='tr'-->
 		<div id="hd"><!-- header -->
-			<!--span></span-->
 	    	<div class="yui-gd"> <!-- the "special grid" --> 
 	    		<div class="yui-u first">
 	    			<span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
@@ -87,30 +86,60 @@
 							},
 							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
 						 %>
- 						<% m.remote_action 'Projects', {
-								:url => (logged_in? ? {
-									:controller => 'projects',
-									:action => 'index'
-                                    } : { :controller => 'gallery', :action => 'projects' }),
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
-							},
-                            {	:id => 'menu_projects', :href => (logged_in? ? url_for(:controller => "projects", :action => "index") : url_for(:controller => 'gallery', :action => 'projects'))	}
-						 %>
-						<% m.remote_action 'Deliverables', {
-								:url => (logged_in? ? {
-									:controller => 'deliverables',
-									:action => 'index'
-                                    } : { :controller => 'gallery', :action => 'deliverables' }),
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
-							},
-                            {	:id => 'menu_deliverables', :href => (logged_in? ? url_for(:controller=>"deliverables", :action => "index") : url_for(:controller => 'gallery', :action => 'deliverables') )}
-						 %>
+            <% if logged_in? -%>
+   						<% m.remote_action 'Projects', {
+  								:url => {
+  									:controller => 'projects',
+  									:action => 'index'
+                  },
+  								:method => :get,
+  								:update => 'p_page',
+  								:loading => "$('spinner_div').show()",
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
+  							},
+                {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
+  						 %>
+              <% else -%>
+     						<% m.remote_action 'Projects', {
+  								:url => {
+  									:controller => 'gallery',
+  									:action => 'projects'
+                  },
+  								:method => :get,
+  								:update => 'p_page',
+  								:loading => "$('spinner_div').show()",
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
+  							},
+                {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects")	}
+  						 %>
+            <% end -%>
+            <% if logged_in? -%>
+  						<% m.remote_action 'Deliverables', {
+  								:url => {
+  									:controller => 'deliverables',
+  									:action => 'index'
+                  },
+  								:method => :get,
+  								:update => 'p_page',
+  								:loading => "$('spinner_div').show()",
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
+  							},
+                {	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index")}
+  						 %>
+            <% else -%>
+  						<% m.remote_action 'Deliverables', {
+  								:url => {
+  									:controller => 'gallery',
+  									:action => 'deliverables'
+                  },
+  								:method => :get,
+  								:update => 'p_page',
+  								:loading => "$('spinner_div').show()",
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
+  							},
+                {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
+							%>
+            <% end -%>
 						<% m.remote_action 'Gallery', {
 								:url => {
 									:controller => 'gallery',

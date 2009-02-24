@@ -33,8 +33,7 @@ Lightview.moveWindow = function(){
 		new Effect.Morph('lv_overlay', { 
 			sync: true,
 			style: {
-				width: overlayWidth+'px'//,
-				//left: 0+'px' //overlayOffset+'px'
+				width: overlayWidth+'px'//, left: 0+'px' //overlayOffset+'px'
 			}
 		}),
 		new Effect.Morph('lightviewController', {
@@ -54,19 +53,6 @@ Lightview.moveWindow = function(){
 
 Lightview.changedPicture = function(event){
 	var src = event.target.identify();
-//	$('entire_gallery').hide();
-//	if( $('courses_show') ) { $('courses_show').remove(); }
-	/*
-	if (!$('lightview_wyrrep_div')) {
-		var elem = new Element('div', {'id': 'lightview_wyrrep_div'});
-		var ccontent = new Element('div', {'id': 'canvas_content'});	
-		var canvasElem = new Element('canvas', {'id':'canvas_lv_content'});
-
-		elem.appendChild(canvasElem);
-		elem.appendChild(ccontent);
-		$('lightview').appendChild(elem);
-	}
-	*/
 	new Ajax.Updater('canvas_content', '/gallery/'+src, {
 		asynchronous: true, 
 		evalScripts: true, 
@@ -78,31 +64,6 @@ Lightview.changedPicture = function(event){
             document.fire('jsviz:clicked');
         }
 	});
-/*
-	var myCanvas = $('canvas_lv_content');
-	var dimensions = $('lightview_wyrrep_div').getDimensions();
-	myCanvas.setAttribute('width', dimensions.width);
-	myCanvas.setAttribute('height', dimensions.height);
-	
-	var context = myCanvas.getContext('2d');
-	context.stokeStyle = "white";
-	context.fillStyle = "white";
-	context.beginPath();
-	context.arc(Lightview.radius, Lightview.radius, Lightview.radius, Math.PI, Math.PI*3/2, false);
-	context.lineTo(dimensions.width-Lightview.radius, 0);
-	context.arc(dimensions.width-Lightview.radius, Lightview.radius, Lightview.radius, Math.PI*3/2, Math.PI*2, false);
-	context.lineTo(dimensions.width, dimensions.height-Lightview.radius);
-	context.arc(dimensions.width-Lightview.radius, dimensions.height-Lightview.radius, Lightview.radius, 0, Math.PI/2, false);
-	context.lineTo(Lightview.radius, dimensions.height);
-	context.arc(Lightview.radius, dimensions.height-Lightview.radius, Lightview.radius, Math.PI/2, Math.PI, false);
-	context.stroke();
-	context.fill();
-	
-	$('canvas_content').setStyle( {
-		marginTop: (-1 * dimensions.height + Lightview.radius) + 'px',
-		marginLeft: (Lightview.radius)+'px'
-	});
-	*/
 	return false;
 };
 
@@ -152,7 +113,6 @@ Lightview.observeClicksUnbound = function(event){ // add observer for button cli
 
 	if( source != null ) {
 		Lightview.detachPerryEvents();
-		//Lightview.moveWindow();
 		Lightview.changedPicture(event);
 		Lightview.attachPerryEvents();
 	}
@@ -292,7 +252,7 @@ loadSpotLights = function(){
 }
 var SpotLight = Class.create({
   initialize: function(elem) {
-    if( elem.tagName == "IMG" ) {
+    if( elem.tagName == "IMG" ) { // FIX THIS TO embed IMG instead of replacing
       var canvas = new Element("canvas", { "id": elem.id} );
       elem.parentNode.replaceChild(canvas, elem);
       this.canvas = canvas;
@@ -416,26 +376,32 @@ var SpotLight = Class.create({
   drawImage: function(drawRadius){
     var canvas = this.canvas; var context = this.context;
     if(!this.img){
-      var img = new Image();
-      img.onload = function(){
-        this.canvas.width = img.width;
-        this.canvas.height = img.height;
-        this.hypotenuse = Math.sqrt(canvas.width*canvas.width + canvas.height*canvas.height);
-      }.bind(this);
-      img.src= this.imgSrc? this.imgSrc : '/images/Apple_Background_thumb.jpg';
+      var img = canvas.childElements()[0];
+      if (!img) {
+        img = new Image();
+        img.onload = function(){
+          this.canvas.width = img.width;
+          this.canvas.height = img.height;
+          this.hypotenuse = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height);
+        }.bind(this);
+        img.src = this.imgSrc ? this.imgSrc : '/images/Apple_Background_thumb.jpg';
+      }
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
     }
     this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     if (!this.overlayImg) {
+      var overlayImg = canvas.childElements()[1];
+      if (!overlayImg) {
         var overlayImg = new Image();
         overlayImg.onload = function(){
-        context.fillStyle = "rgba(255,255,255,0.4)";
-        context.fillRect(0,0,canvas.width, canvas.height); 
-        context.drawImage(overlayImg, 0, 0);
+          context.fillStyle = "rgba(255,255,255,0.4)";
+          context.fillRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(overlayImg, 0, 0);
+        }
+        overlayImg.src = (this.overlayURL == '') ? '/images/no_tag.png' : this.overlayURL;
       }
-      overlayImg.src = (this.overlayURL=='')? '/images/no_tag.png' : this.overlayURL;
       this.overlayImg = overlayImg;
     }
     else {
