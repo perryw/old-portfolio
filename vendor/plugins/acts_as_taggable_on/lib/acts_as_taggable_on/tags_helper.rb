@@ -9,7 +9,7 @@ module TagsHelper
     
     sorted_tags.each do |tag|
       index = ((tag.count / max_count) * (classes.size - 1)).round
-      yield tag, classes[index]
+      yield tag, classes[index], index
     end
   end
 end

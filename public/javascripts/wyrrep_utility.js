@@ -245,7 +245,7 @@ toggle_gallery_cloud = function(divname) {
 
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 loadSpotLights = function(){
-    Event.stopObserving(window, 'dom:loaded', loadSpotLights);
+    Event.stopObserving(window, 'load', loadSpotLights);
     $('loading').update("Drawing thumbnails...");
     $$('.gallery_image').each( function(elem){new SpotLight(elem);});
     $('loading').update("");
@@ -361,14 +361,14 @@ var SpotLight = Class.create({
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       if( !this.overlayImg ) return;
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error with fadeOut, GA>0.1: ' + e.name + ' ' + e.message);}
+      }catch(e){alert('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
     }
     else {
       this.context.save();
       this.context.globalAlpha = 0.06;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error fadeOut: ' + e.name + ' ' + e.message);}
+      }catch(e){alert('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
       this.context.restore();
       clearInterval(intervalID);
       this.context.globalAlpha = 1.0;
