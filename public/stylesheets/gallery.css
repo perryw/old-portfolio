@@ -45,18 +45,27 @@
   */
 }
 .thumbnail {
-	float: left;
-	width: 168px;
+  float: left;
+  width: 168px;
   /*border: medium double rgb(250,0,255);*/
-	height: 168px;
-	padding: 0 12px 12px 0;
+  height: 168px;
+  padding: 0 12px 12px 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 .thumbnail p {
+  margin-left: auto;
+  margin-right: auto;
   line-height: 168px;
+  text-align: center;
 }
 .thumbnail p canvas {
+  margin-left: auto;
+  margin-right: auto;
   vertical-align: middle;
   cursor: pointer;
+  text-align: center;
 }
 .thumbnail .thumbnail_overlay {
  z-index: 2;
@@ -65,20 +74,20 @@
  top: 20px;
 }
 .thumbnail a {
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   z-index: 1;
   position:relative;
   display: none;
 }
 .thumbnail img {
-	max-width: 168px;
-	max-height: 168px;
-	margin-left: auto;
-	margin-right: auto;
-	vertical-align: middle;
-	text-align:center;
+  max-width: 168px;
+  max-height: 168px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  text-align:center;
   z-index: 1;
   position: relative;
 	/*display: table-cell;*/
