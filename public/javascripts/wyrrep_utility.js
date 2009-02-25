@@ -361,14 +361,14 @@ var SpotLight = Class.create({
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       if( !this.overlayImg ) return;
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error with fadeOut, GA>0.1');}
+      }catch(e){alert('error with fadeOut, GA>0.1: ' + e.name + ' ' + e.message);}
     }
     else {
       this.context.save();
       this.context.globalAlpha = 0.06;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error fadeOut');}
+      }catch(e){alert('error fadeOut: ' + e.name + ' ' + e.message);}
       this.context.restore();
       clearInterval(intervalID);
       this.context.globalAlpha = 1.0;
@@ -431,7 +431,7 @@ var SpotLight = Class.create({
       } catch (e) {
         //alert('error trying to draw ' + this.overlayImg.src + ' for img ' +
         //this.img.src);
-        //alert(e);
+        alert(e.name + ' ' + e.message);
       }
     }
     context.restore();

@@ -95,7 +95,7 @@
   								:method => :get,
   								:update => 'p_page',
   								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
   							},
                 {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
   						 %>
@@ -135,7 +135,7 @@
   								:method => :get,
   								:update => 'p_page',
   								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
+  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
   							},
                 {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
 							%>
@@ -165,8 +165,8 @@
 							{	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
 						%>								
 					<% #end %>
-			    	<% if_admin? do %>
-                    	<%# m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
+		    	<% if_admin? do %>
+          	<%# m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
 					<% end %>
 				<% end %>
 			</div>
