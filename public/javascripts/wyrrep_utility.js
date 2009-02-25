@@ -359,13 +359,13 @@ var SpotLight = Class.create({
     if( this.context.globalAlpha > 0.1 ) {
       this.context.globalAlpha -= 0.1;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){}
+      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){alert('error');}
     }
     else {
       this.context.save();
       this.context.globalAlpha = 0.06;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){}
+      try{ this.context.drawImage(this.overlayImg, 0, 0); }catch(e){alert('error');}
       this.context.restore();
       clearInterval(intervalID);
       this.context.globalAlpha = 1.0;
@@ -386,13 +386,18 @@ var SpotLight = Class.create({
         }.bind(this);
         img.src = this.imgSrc ? this.imgSrc : '/images/Apple_Background_thumb.jpg';
       }
+      else{
+        this.canvas.width = img.width;
+        this.canvas.height = img.height;
+        this.hypotenuse = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height);
+      }
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
     }
     this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     if (!this.overlayImg) {
-      var overlayImg = canvas.childElements()[1];
+      canvas.childElements()[1];
       if (!overlayImg) {
         var overlayImg = new Image();
         overlayImg.onload = function(){
@@ -401,6 +406,11 @@ var SpotLight = Class.create({
           context.drawImage(overlayImg, 0, 0);
         }
         overlayImg.src = (this.overlayURL == '') ? '/images/no_tag.png' : this.overlayURL;
+      }
+      else {
+        context.fillStyle = "rgba(255,255,255,0.4)";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(overlayImg, 0, 0);
       }
       this.overlayImg = overlayImg;
     }

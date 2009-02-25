@@ -47,11 +47,10 @@ ActiveRecord::Schema.define(:version => 20090218041038) do
   create_table "deliverables", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "collaborator_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "owner_id"
     t.string   "owner_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "resources_order"
     t.integer  "key_resource_id"
     t.integer  "overlay_id"
