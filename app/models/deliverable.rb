@@ -1,4 +1,5 @@
 class Deliverable < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
   attr_accessor :key_resource
   belongs_to :owner, :polymorphic => true #project
   has_many :collaborations, :as => :product, :dependent => :destroy
@@ -12,5 +13,8 @@ class Deliverable < ActiveRecord::Base
     resources_order = self.resources_order.split(',').collect!{ |n| n.to_i } unless self.resources_order.nil? || self.resources_order.empty?
     resources_order ||= self.resource_ids
     return resources_order.collect{ |r| Resource.find(r) }
+  end
+  def snippet
+   truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => APP_CONFIG['settings']['snippet_length']) 
   end
 end

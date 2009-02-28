@@ -359,16 +359,20 @@ var SpotLight = Class.create({
     if( this.context.globalAlpha > 0.1 ) {
       this.context.globalAlpha -= 0.1;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      if( !this.overlayImg ) return;
+      if( !this.overlayImg || !this.overlayImg.src || this.overlayImg.src == '') {
+        if(console.log) console.warn('overlayimg not properly loaded');
+        return;
+      }
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
+      }catch(e){
+      if(console.error) console.log('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
     }
     else {
       this.context.save();
       this.context.globalAlpha = 0.06;
       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       try{ this.context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){alert('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
+      }catch(e){if(console.error) console.error('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
       this.context.restore();
       clearInterval(intervalID);
       this.context.globalAlpha = 1.0;
@@ -387,7 +391,7 @@ var SpotLight = Class.create({
           this.canvas.height = img.height;
           this.hypotenuse = Math.sqrt(canvas.width * canvas.width + canvas.height * canvas.height);
         }.bind(this);
-        img.src = this.imgSrc ? this.imgSrc : '/images/Apple_Background_thumb.jpg';
+        img.src = this.imgSrc;
       }
       else{
         this.canvas.width = img.width;
@@ -400,15 +404,15 @@ var SpotLight = Class.create({
     this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     if (!this.overlayImg) {
-      canvas.childElements()[1];
+      var overlayImg = canvas.childElements()[1];
       if (!overlayImg) {
-        var overlayImg = new Image();
+        overlayImg = new Image();
         overlayImg.onload = function(){
           context.fillStyle = "rgba(255,255,255,0.4)";
           context.fillRect(0, 0, canvas.width, canvas.height);
           context.drawImage(overlayImg, 0, 0);
         }
-        overlayImg.src = (this.overlayURL == '') ? '/images/no_tag.png' : this.overlayURL;
+        overlayImg.src = this.overlayURL;
       }
       else {
         context.fillStyle = "rgba(255,255,255,0.4)";

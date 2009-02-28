@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  include ActionView::Helpers::TextHelper
   belongs_to :course
   
   has_many :deliverables, :as => :owner, :dependent => :destroy
@@ -36,5 +37,8 @@ class Project < ActiveRecord::Base
   end
   def deliverable_tags
     self.deliverables.collect{ |d| d.tag_list }.flatten.uniq
+  end
+  def snippet
+   truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => APP_CONFIG['settings']['snippet_length']) 
   end
 end

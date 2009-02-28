@@ -2,7 +2,7 @@
 	<% if img = Resource.find(index.key_resource_id) rescue nil -%>
 		<% if img.image? || img.pdf? -%>
 			<%= link_to( 'hello', image_path(img.public_filename(:lightview)), {:class =>'lightview', :rel => 'set[myset]', 
-              :id => "#{index.class.to_s}_#{index.id}", :title => "#{index.name} :: #{index.description} <p>#{link_to 'More Detail', url_for(index)}</p>"}) %>
+              :id => "#{index.class.to_s}_#{index.id}", :title => "#{index.name} :: #{snippet} #{link_to 'More Detail', url_for(index)}"}) %>
          <p>
             <canvas id='gallery_image_<%=index.id%>' src="<%=img.public_filename(:thumb)%>" overlay="<%=overlay_url%>" class='gallery_image'>
                <%= image_tag(img.public_filename(:thumb), { :id => "cgallery_image_#{index.id}"}) %>
@@ -11,7 +11,7 @@
          </p>
 		<% elsif img.has_slideshare -%>
 			<%= link_to 'hello', img.url, { :class=>'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}", 
-					:title => "#{index.name} :: #{index.description}"} %>
+					:title => "#{index.name} :: #{snippet} #{link_to 'More Detail', url_for(index)}"} %>
           <p>
             <canvas id='gallery_image_<%=index.id%>' src="/images/slideshare_200x50.png" overlay="<%=overlay_url%>" class='gallery_image'>
               <%= image_tag('slideshare_200x50.png', { :id => "cgallery_image_#{index.id}" }) %>
@@ -22,7 +22,7 @@
 	<% else -%>
 		<%= link_to 'hello', url_for(:action=>'show', :controller => index.class.to_s.tableize, :id=>index.id, :ignore_layout=>true),
 				{:class => 'lightview', :rel => 'set[myset]', :id => "#{index.class.to_s}_#{index.id}",
-				 	:title => "#{index.name} :: #{index.description || ''}"} %>
+				 	:title => "#{index.name} :: #{snippet || ''} #{link_to 'More Detail', url_for(index)}"} %>
       <p>
         <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" overlay="<%=overlay_url%>" class='gallery_image'> 
           <%= image_tag '/images/no_image.png', { :id => "cgallery_image_#{index.id}" } %>

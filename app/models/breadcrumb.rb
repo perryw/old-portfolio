@@ -25,9 +25,9 @@ class Breadcrumb
   end
   
   def copy(c)
-    @controller, @action, @params = c.controller, c.action, c.params
-    @is_future, @cannot_undo, @prev, @next, @is_ajax = c.is_future, c.cannot_undo, c.prev, c.next, c.is_ajax
-    @parent, @children = c.parent, c.children
+    @controller, @action, @params = c.controller || "root", c.action || "index", c.params || {}
+    @is_future, @cannot_undo, @prev, @next, @is_ajax = c.is_future || false, c.cannot_undo || false, c.prev || nil, c.next || nil, c.is_ajax || false
+    @parent, @children = c.parent || [], c.children || []
   end
   
   def to_s
