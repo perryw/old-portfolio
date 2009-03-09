@@ -14,7 +14,9 @@ class ResourcesController < ApplicationController
   # GET /resources.xml
   def index
     @resources = Resource.find(:all, :conditions => {:parent_id => nil}, :order => 'created_at DESC')
-    
+    @deliverable_keys = Deliverable.all.collect{ |d| d.key_resource_id }.uniq.sort
+    @project_keys = Project.all.collect{ |p| p.key_resource_id }.uniq.sort
+    #@key_array = (@deliverable_keys + @project_keys).uniq.sort
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
       format.xml  { render :xml => @resources }
@@ -52,6 +54,8 @@ class ResourcesController < ApplicationController
   # POST /resources.xml
   def create
     @resource = Resource.new(params[:resource])
+    @deliverable_keys = Deliverable.all.collect{ |d| d.key_resource_id }.uniq.sort
+    @project_keys = Project.all.collect{ |p| p.key_resource_id }.uniq.sort
 
     respond_to do |format|
       if @resource.save

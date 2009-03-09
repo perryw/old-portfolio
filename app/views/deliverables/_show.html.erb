@@ -1,8 +1,6 @@
 <div class='deliv_show'>
-  <% if !@deliverable.key_resource_id.nil? && logged_in? -%>
-  	<%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb) rescue image_tag '/images/blank_placeholder.png' %>
-  <% elsif logged_in? -%>
-  	<%= image_tag '/images/blank_placeholder.png' %>
+  <% if logged_in? -%>
+  <%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb), {:class => 'key_image'} rescue image_tag '/images/blank_placeholder.png', {:class=> 'key_image'} %>
   <% end -%>
   <div class='attribute_crumb'>
     <span class='bold'><%=(@deliverable.owner.nil? ? "does not belong to anybody" : link_to(@deliverable.owner.name, list_path(@deliverable.owner))) + ' > '%></span>
@@ -23,7 +21,7 @@
 	  <% begin -%>
 	    <% @deliverable.ordered_resources.each do |rez| -%>
 	        <% if rez.image? || rez.pdf? -%>
-	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
+	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:lightview) %></li>
     			<% end -%>
 	    <% end -%>  
     <% rescue -%>

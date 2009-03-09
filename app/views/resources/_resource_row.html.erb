@@ -1,6 +1,6 @@
 
 <tr id="resource_row_<%= resource_row.id %>" class="highlight_row<%=number%>">
-	<td class="resource_id"><%= resource_row.id %></td>
+    <td class="resource_id"><%= resource_row.id %> <%='D' if @deliverable_keys.include?(resource_row.id)%><%='P' if @project_keys.include?(resource_row.id)%></td>
 	<td class="alt_text">
 		<% @resource = resource_row # apparently needed due to variable scoping -%>
 		<%= in_place_editor_field :resource, "alt_text", {}, {} %>

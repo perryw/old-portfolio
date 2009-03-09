@@ -17,7 +17,7 @@
 * html .selfclear {
   * height: 1px; /* IE < 7 */
 }
-blockquote p,ol {
+blockquote p,ol,ul {
   padding-left: 1.3em;
   padding-right: 1.3em;
 }
@@ -129,26 +129,26 @@ a.atom_feed {
 }
 .css1 { font-size: 1.0em; }
 
-.css1:hover { background-color: blue; color: white; }
+.css1:hover { background-color: #6666FF; color: white; }
 
 .css2 { font-size: 1.2em; }
 
-.css2:hover { background-color: blue; color: white; }
+.css2:hover { background-color: #6666FF; color: white; }
 
 .css3 { font-size: 1.4em; }
 
-.css3:hover { background-color: blue; color: white; }
+.css3:hover { background-color: #6666FF; color: white; }
 
 .css4 { font-size: 1.6em; }
 
 .css4:hover { 
-	background-color: blue;
+	background-color: #6666FF;
 	color: white;
 }
 .css5 { font-size: 1.8em; }
 
 .css5:hover { 
-	background-color: blue;
+	background-color: #6666FF;
 	color: white;
 }
 .collaborators_list li {

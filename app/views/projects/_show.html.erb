@@ -1,7 +1,8 @@
 <span class='value'><%=h @project.name %></span>
-<div>
+<div class='tags'>
 	<%=h @project.tag_list %>
 </div>
+<br/>
 <% unless @project.key_resource_id.nil? || !logged_in? -%>
   <div>
   	<span class='key_resource'><%= image_tag Resource.find(@project.key_resource_id).public_filename(:thumb)%></span>
@@ -34,6 +35,7 @@
 </div>
 
 <div>
+  <span class='key'>Resources:</span>
 	<ul id='project_resources_list'>
 		<% @project.ordered_resources.each do |rez| -%>
        		<% if rez.image? || rez.pdf? -%>

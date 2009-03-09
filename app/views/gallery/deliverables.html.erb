@@ -3,7 +3,7 @@
 
   <div id='gallery_deliverables' class='gallery'>
       <% @deliverables.each do |display| -%>
-        <%= render :partial => 'index', :object => display, :locals => {:divname => 'gallery_deliverables', :overlay_url => (Resource.find(display.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png'), :snippet => truncate(display.description.gsub(/<(\/)?(blockquote).*?>/,''), :length => APP_CONFIG['settings']['snippet_length']) } %>
+        <%= render :partial => 'index', :object => display, :locals => {:divname => 'gallery_deliverables', :overlay_url => (Resource.find(display.overlay_id).public_filename(:thumb) rescue '/images/no_tag.png'), :snippet => display.snippet } %>
       <% end -%>
       <div id='gallery_deliverables_tag_cloud' style='clear:both; display: none'>
     	<% tag_cloud @deliverable_tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
