@@ -14,7 +14,7 @@ class Deliverable < ActiveRecord::Base
     resources_order ||= self.resource_ids
     return resources_order.collect{ |r| Resource.find(r) }
   end
-  def snippet # if no snippet length defined, default to 250 characters
-    truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => APP_CONFIG['settings']['snippet_length'] || 250) rescue ''
+  def snippet(length=nil) # if no snippet length defined, default to 250 characters
+    truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => length || APP_CONFIG['settings']['snippet_length'] || 250) rescue ''
   end
 end

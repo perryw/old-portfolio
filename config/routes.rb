@@ -38,7 +38,7 @@ ActionController::Routing::Routes.draw do |map|
 #    user.resources :projects
 #    user.resources :resources
   end    
-
+  map.myself 'myself', :controller => 'myself'
   map.connect 'deliverables/index', :controller => 'deliverables', :action => 'index'
   map.connect 'deliverables', :controller => 'gallery', :action => 'deliverables'
   map.resources :deliverables

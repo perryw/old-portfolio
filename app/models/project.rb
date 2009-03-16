@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
   def deliverable_tags
     self.deliverables.collect{ |d| d.tag_list }.flatten.uniq
   end
-  def snippet
-    truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => APP_CONFIG['settings']['snippet_length'] || 250) rescue ''
+  def snippet(length=nil)
+    truncate(description.gsub(/<(\/)?(blockquote).*?>/,'').gsub(/(&#8221;)|(&#8220;)/,''), :length => length || APP_CONFIG['settings']['snippet_length'] || 250) rescue ''
   end
 end

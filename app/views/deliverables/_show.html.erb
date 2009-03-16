@@ -1,13 +1,13 @@
 <div class='deliv_show'>
   <% if logged_in? -%>
-  <%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb), {:class => 'key_image'} rescue image_tag '/images/blank_placeholder.png', {:class=> 'key_image'} %>
+    <%= image_tag Resource.find(@deliverable.key_resource_id).public_filename(:thumb), {:class => 'key_image'} rescue image_tag '/images/blank_placeholder.png', {:class=> 'key_image'} %>
   <% end -%>
   <div class='attribute_crumb'>
     <span class='bold'><%=(@deliverable.owner.nil? ? "does not belong to anybody" : link_to(@deliverable.owner.name, list_path(@deliverable.owner))) + ' > '%></span>
     <span><%=@deliverable.name%></span>
   	<div class='tag_list'>
-  		  <span class='key'>Tags:</span>
-  		  <span class='value deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span>
+        <span class='key'>Tags:</span>
+        <span class='value tags deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span>
     </div>	
   	<div>
   	  <span class='key'>Description:</span>
@@ -31,6 +31,6 @@
 	
 	<%= sortable_element 'resources_list', 
 	      :url => { :action => "order", :id => @deliverable.id }, 
-		  :ghosting => true %>
+		  :ghosting => true if logged_in? %>
 </div>
 

@@ -1,17 +1,12 @@
-
 <%= render :partial => 'deliverables/show' %>
 
 <div class='img_placeholder'>
-	<%= image_tag @deliverable.key_resource.public_filename(:thumb) unless(@deliverable.key_resource.nil?)  %>
+  <%= image_tag @deliverable.key_resource.public_filename(:thumb) unless(@deliverable.key_resource.nil?)  %>
 </div>
-<div>
-	<span class='key'>Collaborators:</span>
-	<ul class='collaborators_list'>
-		<% @deliverable.collaborators.each do |collab| -%>
-			<li><%=h collab.name %></li>
-		<% end -%>
-	</ul>
-</div>
+<% unless @deliverable.collaborators.blank? -%>
+  <span class='key'>Collaborators:</span>
+  <%=h @deliverable.collaborators.collect{|c| c.name}.join(', ') -%>
+<% end -%>
 
 <%= link_to 'Edit', edit_deliverable_path(@deliverable) %> |
 <%= link_to 'Back', deliverables_path %>

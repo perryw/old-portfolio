@@ -1,48 +1,62 @@
-<span class='tags'>
-	<%= in_place_editor_field :course, "tag_list", {}, {} %> 
-	<%= ", " + h(@other_tags) unless @other_tags.empty? %>
-</span>
-<h1><%=h "#{@course.name}" %></h1>
 <span class='date'><%=h @course.date%></span>
+<h1><%=h "#{@course.name}" %></h1>
+<span class='tag'>
+  <% if logged_in? -%>
+	<%= in_place_editor_field :course, "tag_list", {}, {} %> 
+  <% else -%>
+    <%= @course.tag_list %>
+  <% end -%>
+  <%= ", " + h(@other_tags.join(', ')) unless @other_tags.empty? %>
+</span>
 <% unless @course.key_resource_id.nil? -%>
-	<span class='key_resource'>
-		<%= image_tag Resource.find(@course.key_resource_id).public_filename(:thumb)  %>
-	</span>
+  <span class='key_resource'>
+    <%= image_tag Resource.find(@course.key_resource_id).public_filename(:thumb)  %>
+  </span>
 <% end -%>
 <h2><%=h @course.description %></h2>
 
 <ul class='listing'>
 	<li>
-		<ul id='course_projects_list'>
-		<% for project in @projects_ordered -%>
-				<li><span class='course_projects_heading'>
-						<h3><%=project.name%></h3>
-						<span class='project_tags'><%=h project.tag_list %></span>
-							<span id='<%="project_#{project.id}_deliverables_tags"%>' class='deliverables_tags'>
-								<%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "toggleDivByTag('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
-							</span>
-						</span>
-					(<%= link_to_function "more info", "toggleInfoLink('courses_list_project_', '#{project.id}', 'more_info_#{project.id}')", { :id => "more_info_#{project.id}" } %>)
-					<div id='courses_list_project_<%=project.id%>' style="display: none">
-						<span class='key'>Description: </span><span class='value'><%=project.description%></span>
-						<ul>
-							<% for @deliverable in project.ordered_deliverables -%>
-								<li class='courses_list_project_deliverable' id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show' %></li>
-							<% end -%>
-						</ul>
-					</div>
-				</li>
-		<% end -%>
-		</ul>
+      <ul id='course_projects_list'>
+      <% for project in @projects_ordered -%>
+          <li class='selfclear' id='course_projects_list_<%=project.id%>'>
+          <span class='thumbnail'><%= link_to image_tag(Resource.find(project.key_resource_id).public_filename(:thumb)), project %></span>
+          <span class='course_projects_heading'>
+            <h3><%=project.name%></h3>
+            <span class='project_tags'><%=h project.tag_list %></span>
+              <span id='<%="project_#{project.id}_deliverables_tags"%>' class='deliverables_tags'>
+                  <%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "toggleDivByTag('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
+              </span>
+            </span>
+            <!--
+            (<%#= link_to_function "more info", "toggleInfoLink('courses_list_project_', '#{project.id}', 'more_info_#{project.id}')", { :id => "more_info_#{project.id}" } %>)
+            -->
+            <div id='courses_list_project_<%=project.id%>' style="display: block" class='courses_list_project'>
+              <span class='key'>Description: </span><span class='value'><%=project.snippet%><%=link_to ' (more)', project%></span>
+              <ul>
+                <% for @deliverable in project.ordered_deliverables -%>
+                    <li class='courses_list_project_deliverable' id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show' %></li>
+                <% end -%>
+              </ul>
+            </div>
+          </li>
+      <% end -%>
+      </ul>
+      <%= sortable_element 'course_projects_list',
+        :url => { :action => "order", :id => @course.id },
+        :ghosting => true if logged_in? %>
 	</li>
 	<% unless @course.deliverables.empty? -%>
-		<li><h2>Homework<%= (@course.deliverables.size==1) ? '' : 's' %></h2>
-			<ul id='course_deliverables_list'>
-			<% for homework in @deliverables_ordered -%>
-					<li><%h homework.name %></li>
-			<% end %>
-			</ul>
-		</li>
+      <li><h2>Homework<%= (@course.deliverables.size==1) ? '' : 's' %></h2>
+        <ul id='course_deliverables_list'>
+        <% for homework in @deliverables_ordered -%>
+                <li><%h homework.name %></li>
+        <% end %>
+        </ul>
+        <%= sortable_element 'course_projects_list',
+          :url => { :action => "order", :id => @course.id },
+          :ghosting => true if logged_in? %>
+      </li>
 	<% end -%>
   <% unless @course.resources.empty? -%>
   <li><h2>Resource<%= (@course.resources.size==1) ? '' : 's' %></h2>

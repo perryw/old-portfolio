@@ -1,5 +1,5 @@
 <span class='value'><%=h @project.name %></span>
-<div class='tags'>
+<div class='tag'>
 	<%=h @project.tag_list %>
 </div>
 <br/>
@@ -20,7 +20,8 @@
     <span><%= link_to @project.project_url %></span>
   </div>
 <% end -%>
-<div>
+<% unless @project.deliverables.blank? -%>
+  <div>
 	<span class='key'>Deliverables:</span>
 	<ul id='deliverables_list'>
   		<% @project.ordered_deliverables.each do |@deliverable| -%>
@@ -31,22 +32,24 @@
 	</ul>
 	<%= sortable_element 'deliverables_list',
       :url => { :action => "order", :id => @project.id }, 
-	  :ghosting => true %>
-</div>
-
-<div>
-  <span class='key'>Resources:</span>
-	<ul id='project_resources_list'>
-		<% @project.ordered_resources.each do |rez| -%>
-       		<% if rez.image? || rez.pdf? -%>
-	            <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
-	        <% else -%>
-				<!--li id='resources_<%=rez.id%>'><%= %></li-->
-			<% end -%>
-		<% end -%>
-	</ul>
-	
-	<%= sortable_element 'project_resources_list', 
-      :url => { :action => "order", :id => @project.id }, 
-	  :ghosting => true %>
-</div>
+	  :ghosting => true if logged_in? %>
+  </div>
+<% end -%>
+<% unless @project.resources.blank? -%>
+  <div>
+    <span class='key'>Resources:</span>
+      <ul id='project_resources_list'>
+          <% @project.ordered_resources.each do |rez| -%>
+              <% if rez.image? || rez.pdf? -%>
+                  <li id='resource_<%=rez.id%>'><%= image_tag rez.public_filename(:thumb) %></li>
+              <% else -%>
+                  <!--li id='resources_<%=rez.id%>'><%= %></li-->
+              <% end -%>
+          <% end -%>
+      </ul>
+      
+      <%= sortable_element 'project_resources_list', 
+        :url => { :action => "order", :id => @project.id }, 
+        :ghosting => true if logged_in? %>
+  </div>
+<% end -%>

@@ -32,6 +32,6 @@
 	<% end -%>
 
 	<span class='gallery_tags'>
-      <%=index.tag_list.collect{ |dt| (dt==index.tag_list.first ? "":", ") + link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr(' -', '_')} tag") } %>
+      <%=index.tag_list.collect{ |dt| link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr('^a-zA-Z0-9-_:.', '_')} tag") }.join(', ') %>
 	</span>
 </div>

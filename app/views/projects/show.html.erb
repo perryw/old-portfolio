@@ -3,14 +3,16 @@
 
 <%= render :partial => 'projects/show' %>
 
-<div>
+<% unless @project.collaborators.blank? -%>
+  <div>
 	<span class='key'>Collaborators:</span>
 	<ul class='collaborators_list'>
 		<% @project.collaborators.each do |m| -%>
 			<li><%=h m.name %></li>
 		<% end %>
 	</ul>
-</div>
+  </div>
+<% end -%>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

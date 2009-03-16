@@ -19,6 +19,8 @@
 	<%= stylesheet_link_tag 'menu' %>
 	<%= stylesheet_link_tag 'breadcrumb' %>
 	<%= stylesheet_link_tag 'lightview' %>
+
+    <%= stylesheet_link_tag 'resume' %>
 </head>
 <body>
 	<div class='loading-container'><span id="loading">Loading CSS</span></div>
@@ -43,132 +45,130 @@
 	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
 
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
-		<!--div class='bl'><div class='br'><div class='tl'><div class='tr'-->
 		<div id="hd"><!-- header -->
 	    	<div class="yui-gd"> <!-- the "special grid" --> 
-	    		<div class="yui-u first">
-	    			<span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
-					<h1><%= APP_CONFIG['settings']['name'] %></h1>
-					<p><%= APP_CONFIG['settings']['tagline'] %></p>
-				</div> 
+              <div class="yui-u first">
+                <span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
+                <h1><%= APP_CONFIG['settings']['name'] %></h1>
+                <p><%= APP_CONFIG['settings']['tagline'] %></p>
+              </div> 
 	    	</div> 
     		<div class="yui-u user_bar">
 				<%= render :partial => "shared/user_bar" %>
 			</div> 
-			<!--div id="navigation_container"-->
 			<div id="menu_container">
-				<%# ubermenu :id => 'main_navigation' do |m| %>
-				<% ubermenu :id => 'blue', :class=>'menu' do |m| %>
-			  		<% m.action 'Homepage', root_path %>
-					<% #if_logged_in? do %>
-                        <!--% m.action 'Members', members_path, :class => 'menu_admin' %-->
-						<!--% m.remote_action 'Collaborators', {
-								:url => {
-									:controller => 'collaborators',
-									:action => 'index'
-								},
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
-							},
-							{	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index") }
-						 %-->
-						<% m.remote_action "Courses", {
-					    		:url=>{
-					        		:controller=>'courses',
-					        		:action=>'index'
-								}, 
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
-							},
-							{	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
-						 %>
-            <% if logged_in? -%>
-   						<% m.remote_action 'Projects', {
-  								:url => {
-  									:controller => 'projects',
-  									:action => 'index'
+            <% ubermenu :id => 'blue', :class=>'menu' do |m| %>
+              <% m.action 'Homepage', root_path %>
+              <% if_logged_in? do %>
+                <% m.action 'Members', members_path, :class => 'menu_admin'%>
+                <% m.remote_action 'Collaborators', {
+                        :url => {
+                            :controller => 'collaborators',
+                            :action => 'index'
+                        },
+                        :method => :get,
+                        :update => 'p_page',
+                        :loading => "$('spinner_div').show()",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
+                    },
+                    {	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index") }
+                 %>
+                <% m.remote_action "Courses", {
+                        :url=>{
+                            :controller=>'courses',
+                            :action=>'index'
+                        }, 
+                        :method => :get,
+                        :update => 'p_page',
+                        :loading => "$('spinner_div').show()",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
+                    },
+                    {	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index") }
+                 %>
+              <% end -%>
+              <% if logged_in? -%>
+                <% m.remote_action 'Projects', {
+                        :url => {
+                          :controller => 'projects',
+                          :action => 'index'
+                      },
+                      :method => :get,
+                      :update => 'p_page',
+                      :loading => "$('spinner_div').show()",
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
                   },
-  								:method => :get,
-  								:update => 'p_page',
-  								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
-  							},
-                {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
-  						 %>
+                  {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
+                %>
               <% else -%>
-     						<% m.remote_action 'Projects', {
-  								:url => {
-  									:controller => 'gallery',
-  									:action => 'projects'
+                <% m.remote_action 'Projects', {
+                    :url => {
+                        :controller => 'gallery',
+                        :action => 'projects'
+                    },
+                    :method => :get,
+                    :update => 'p_page',
+                    :loading => "$('spinner_div').show()",
+                    :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
                   },
-  								:method => :get,
-  								:update => 'p_page',
-  								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
-  							},
-                {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects")	}
-  						 %>
-            <% end -%>
-            <% if logged_in? -%>
-  						<% m.remote_action 'Deliverables', {
-  								:url => {
-  									:controller => 'deliverables',
-  									:action => 'index'
+                  {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects")	}
+                 %>
+              <% end -%>
+              <% if logged_in? -%>
+                <% m.remote_action 'Deliverables', {
+                                  :url => {
+                                      :controller => 'deliverables',
+                                      :action => 'index'
+                    },
+                          :method => :get,
+                          :update => 'p_page',
+                          :loading => "$('spinner_div').show()",
+                          :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
+                      },
+                    {	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index")}
+                 %>
+              <% else -%>
+                <% m.remote_action 'Deliverables', {
+                        :url => {
+                            :controller => 'gallery',
+                            :action => 'deliverables'
+                        },
+                        :method => :get,
+                        :update => 'p_page',
+                        :loading => "$('spinner_div').show()",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
+                    },
+                    {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
+                %>
+              <% end -%>
+              <% m.remote_action 'Gallery', {
+                      :url => {
+                          :controller => 'gallery',
+                          :action => 'index'
+                      },
+                      :method => :get,
+                      :update => 'p_page',
+                      :loading => "$('spinner_div').show()",
+                      :complete => "$('spinner_div').hide(); copyGalleryTagClouds(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()"
                   },
-  								:method => :get,
-  								:update => 'p_page',
-  								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
-  							},
-                {	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index")}
-  						 %>
-            <% else -%>
-  						<% m.remote_action 'Deliverables', {
-  								:url => {
-  									:controller => 'gallery',
-  									:action => 'deliverables'
+                  {	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
+               %>
+              <% m.remote_action 'Resources', {
+                      :url => {
+                          :controller => 'resources',
+                          :action => 'index'
+                      },
+                      :method => :get,
+                      :update => 'p_page',
+                      :loading => "$('spinner_div').show()",
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
                   },
-  								:method => :get,
-  								:update => 'p_page',
-  								:loading => "$('spinner_div').show()",
-  								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
-  							},
-                {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
-							%>
-            <% end -%>
-						<% m.remote_action 'Gallery', {
-								:url => {
-									:controller => 'gallery',
-									:action => 'index'
-								},
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); copyGalleryTagClouds(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()"
-							},
-							{	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
-						 %>
-						<% m.remote_action 'Resources', {
-								:url => {
-									:controller => 'resources',
-									:action => 'index'
-								},
-								:method => :get,
-								:update => 'p_page',
-								:loading => "$('spinner_div').show()",
-								:complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
-							},
-							{	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
-						%>								
-					<% #end %>
-		    	<% if_admin? do %>
-          	<%# m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
-					<% end %>
-				<% end %>
+                  {	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
+               %>								
+              <% m.action 'About Me', '/myself' %>
+              <% if_admin? do %>
+                <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
+              <% end %>
+            <% end %>
 			</div>
 			<div id='rails_messages'>
 				<%= flash_messages %>
@@ -193,5 +193,5 @@
 	  <%= render :partial => 'shared/debug' %>
 	<% end %>
 
-</body>
+  </body>
 </html>
