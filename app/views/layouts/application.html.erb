@@ -46,7 +46,7 @@
 
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
 		<div id="hd"><!-- header -->
-	    	<div class="yui-gd"> <!-- the "special grid" --> 
+	    	<div class="yui-gd title"> <!-- the "special grid" --> 
               <div class="yui-u first">
                 <span><%=link_to image_tag('header_invis_img.png'), '/', :id => 'invis'%></span>
                 <h1><%= APP_CONFIG['settings']['name'] %></h1>
@@ -164,7 +164,18 @@
                   },
                   {	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
                %>								
-              <% m.action 'About Me', '/myself' %>
+               <% m.remote_action 'About Me', {
+                      :url => {
+                        :controller => 'myself',
+                        :action => 'index'
+                        },
+                        :method => :get,
+                        :udpate => 'p_page',
+                        :loading => "$('spinner_div').show()",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_about');document.fire('jsviz:clicked')"
+                  },
+                  { :id => 'menu_about', :href => url_for(:controller => "myself", :action => "index") }
+               %>
               <% if_admin? do %>
                 <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
               <% end %>

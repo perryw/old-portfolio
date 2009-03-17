@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   # You can move this into a different controller, if you wish.  This module gives you the require_role helpers, and others.
   include RoleRequirementSystem
-	include ExceptionLoggable
+  include ExceptionLoggable
 
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  #protect_from_forgery :secret => APP_CONFIG['settings']['forgery'] #'5939853d8f1a67a9a3f071bbaa926cbc'
+  protect_from_forgery :secret => APP_CONFIG['settings']['forgery'] #'5939853d8f1a67a9a3f071bbaa926cbc'
 
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
@@ -30,17 +30,17 @@ class ApplicationController < ActionController::Base
   end
 
   # Change to the location of your contact form
-	def contact_site
-		root_path
-	end
+  def contact_site
+	  root_path
+  end
 
-	def nested_layout
-		"default"
-	end
+  def nested_layout
+	  "default"
+  end
 
-	def in_beta?
-		APP_CONFIG['settings']['in_beta']
-	end
+  def in_beta?
+	  APP_CONFIG['settings']['in_beta']
+  end
 
   # BCT inspired by http://szeryf.wordpress.com/2008/06/13/easy-and-flexible-breadcrumbs-for-rails/
   before_filter :update_breadcrumb_trail
@@ -110,9 +110,9 @@ protected
       bcSize = session['breadcrumb'].size
       bcIndex = ( @@simple_bct? nil : session['breadcrumb'].index(b) )
       
-      if !bcIndex.nil?  ## we're going backwards OR two pages are converging
-        # first see if we're going backwards (current page is on the same browse
-        # path as the previous page
+      if !bcIndex.nil?  # we're going backwards OR two pages are converging
+                        # first see if we're going backwards (current page is on the same browse
+                        # path as the previous page
         currIndex = session['breadcrumb_index']
         if on_same_branch( currIndex, bcIndex ) # (bcIndex < (bcSize-1)) &&  # jumping around in history
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
@@ -160,5 +160,4 @@ protected
   def self.update_breadcrumb_trail
     update_breadcrumb_trail
   end
-
 end

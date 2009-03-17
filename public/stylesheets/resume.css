@@ -83,15 +83,29 @@ div.Section3
 	{margin-bottom:0in;}
 #resume ul
 	{margin-bottom:0; margin-top:0;  margin-left:.5in; padding-left:0; float:left; }
-#resume ul li
-    { text-indent:-.5in; margin-left:.5in; list-style-position: inside;}
+#resume ul li { 
+  text-indent:-.5in; margin-left:.5in; list-style-position: inside;
+}
 #resume ul li p {
   margin:0;
-  text-indent: -81px;
-  margin-left:.5in;
+  text-indent: -33px;
+  margin-left:0in;
 }
 #Skills div { margin-left:1in; margin-top:0; margin-bottom:0; text-indent:-.5in; }
 #Skills p { margin-top:0; margin-bottom:0; }
 #resume * { font-size: 15.0pt;
 	font-family:"Garamond", "serif";}
 #name { font-size: 17.0pt; }
+#resume .stackright {
+  text-align:right;
+}
+#resume div {
+  overflow:hidden;
+}
+#Skills div {
+  overflow: visible;
+}
+#resume br {
+  line-height: 12pt;
+  font-size: 12pt;
+}

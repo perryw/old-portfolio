@@ -130,7 +130,7 @@ function jsviz_init() {
                           Event.stop(event); // prevent propogation
                           if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
                           if( dataNode.isAjax ){
-                              var paramString = ""; //"authenticity_token=" + AUTH_TOKEN;
+                              var paramString = "authenticity_token=" + AUTH_TOKEN;
                               new Ajax.Updater( 'p_page', dataNode.URL, {
                                   asynchronous: true,
                                   evalScripts: true,
@@ -190,7 +190,7 @@ function jsviz_init() {
 						Event.stop(event); // prevent propogation
 						if( layout.mouseMoved ) { layout.mouseMoved = false; return; }
 						if( dataNode.isAjax ){
-							var paramString = "";//"authenticity_token=" + AUTH_TOKEN;
+							var paramString = "authenticity_token=" + AUTH_TOKEN;
 							new Ajax.Updater( 'p_page', dataNode.URL, {
 								asynchronous: true,
 								evalScripts: true,

@@ -57,7 +57,7 @@ Lightview.changedPicture = function(event){
 		asynchronous: true, 
 		evalScripts: true, 
 		method: 'get',
-		parameters: '', //'authenticity_token=' + AUTH_TOKEN,
+		parameters: 'authenticity_token=' + AUTH_TOKEN,
 		insertion: 'top',
 		asynchronous: false,
         onComplete: function() {
@@ -76,17 +76,6 @@ Lightview.observeCloseButtonUnbound = function(event) {
 	*/
   $('entire_gallery').show();
   document.fire('jsviz:clicked');
-  /*
-	new Ajax.Updater('p_page', '/gallery', {
-			asynchronous: true, 
-			evalScripts: true, 
-			method: 'get',
-			parameters: '',//authenticity_token=' + AUTH_TOKEN,
-			onComplete: function() {
-				document.fire('jsviz:clicked');
-			}
-		});
-	*/
 	return false;
 }
 
@@ -105,9 +94,8 @@ Lightview.observePrevNextUnbound = function(event) {
 
 Lightview.observeClicksUnbound = function(event){ // add observer for button clicks on lightview
 
-//	if(!AUTH_TOKEN)
-//		alert('no authenticity token set!');
-
+	if(!AUTH_TOKEN)
+		alert('no authenticity token set!');
 	var source = event.target;
 	source = (source == null)? null : source.href;
 
@@ -446,26 +434,9 @@ var SpotLight = Class.create({
     else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
     context.clip();
   },
-  mo: function (xc,yc,wc,hc, opacity){
-    if (xc < 0) xc = 0;
-    if (yc < 0) yc = 0;
-    context = this.context;
-    this.drawImage();
-    /*
-    context.save();
-    context.beginPath();
-    context.globalCompositeOperation = "source-over";  
-    context.fillStyle = "rgba(255,255,255,0.1)";
-    context.arc(this.old_x, this.old_y, this.radius, 0, 2*Math.PI, false);
-    context.fill();
-    context.restore();
-*/
-  },
-  
   move: function(){
     var old_x = this.old_x; var old_y = this.old_y; var radius = this.radius;
     var x = this.x; var y = this.y; var r = this.r; var gradient = this.gradient;
-    //this.mo(old_x-radius,old_y-radius,2*radius,2*radius);
     this.drawImage();
     context  = this.context;
     context.save();
