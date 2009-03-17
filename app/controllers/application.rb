@@ -56,7 +56,7 @@ protected
   # simple backwards tree search by going through each parent of the leaf
   def on_same_branch(root, leaf, firstTime = true)
       
-    return (true && firstTime) if( root == 0 or leaf == 0)
+    return (true && firstTime) if(root == 0 or leaf == 0)
     return true if leaf == root
     return false if session['breadcrumb'][root].nil? || session['breadcrumb'][leaf].nil?
     
@@ -68,7 +68,7 @@ protected
         return true
       elsif thisParent.nil?
         return false
-        endoh
+      end
       retVal ||= on_same_branch(root, thisParent, false)
     end
     
