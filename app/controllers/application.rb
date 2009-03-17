@@ -56,17 +56,10 @@ protected
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
   def on_same_branch(root, leaf, firstTime = true)
-    if(firstTime)
-      return true if (root==0 || leaf==0)
-      if( root > leaf )  # swap
-        tmp = root
-        root = leaf
-        leaf = tmp
-      end
-    end
-    
-    return false if session['breadcrumb'][root].nil? || session['breadcrumb'][leaf].nil?
+      
+    return (true && firstTime) if( root == 0 or leaf == 0)
     return true if leaf == root
+    return false if session['breadcrumb'][root].nil? || session['breadcrumb'][leaf].nil?
     
     retVal = false
     
@@ -76,7 +69,7 @@ protected
         return true
       elsif thisParent.nil?
         return false
-      end
+        endoh
       retVal ||= on_same_branch(root, thisParent, false)
     end
     
@@ -93,7 +86,7 @@ protected
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail
     
     # hitting 'refresh' doesn't count as a traversal of the site, so skip all this
-    unless !session['breadcrumb'].empty? && false #req_params == session['breadcrumb'].last.params
+    unless !session['breadcrumb'].empty? #&& req_params == session['breadcrumb'].last.params
       
       b = Breadcrumb.new(req_params)
       b.is_ajax = true if request.xhr?
@@ -110,22 +103,20 @@ protected
       bcSize = session['breadcrumb'].size
       bcIndex = ( @@simple_bct? nil : session['breadcrumb'].index(b) )
       
-      if !bcIndex.nil?  # we're going backwards OR two pages are converging
+      if not bcIndex.nil?  # we're going backwards OR two pages are converging
                         # first see if we're going backwards (current page is on the same browse
                         # path as the previous page
         currIndex = session['breadcrumb_index']
-        if on_same_branch( currIndex, bcIndex ) # (bcIndex < (bcSize-1)) &&  # jumping around in history
+        if on_same_branch( currIndex, bcIndex ) # (bcIndex < (bcSize-1)) # jumping around in history
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
           end          
-        elsif bcIndex != currIndex
-          # branch converges with previous branch
+        elsif bcIndex != currIndex  # branch converges with previous branch
           parents = session['breadcrumb'][bcIndex].parent
-          pIdx = parents.index(currIndex)
           
-          unless bcIndex == 0
-            parents.delete_at(pIdx) unless pIdx.nil?
-            parents << currIndex   # root has no parents
+          unless bcIndex == 0  # bad things happen if we delete root
+            parents.delete(currIndex) # delete if exists...
+            parents << currIndex   # append to end (root has no parents)
             session['breadcrumb'][currIndex].children << bcIndex unless session['breadcrumb'][currIndex].children.include?(bcIndex) 
           end
         end
@@ -154,7 +145,6 @@ protected
         end
       end
     end
-    #dump_bct
   end
   
   def self.update_breadcrumb_trail
