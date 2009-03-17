@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  require 'RMagick'
+  
   before_filter :login_required, :only => [:create, :update, :destroy]
   
   def tag_cloud
