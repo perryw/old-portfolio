@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   
 protected 
   @@skip_filters = ['create', 'destroy', 'new_association', 'tag_cloud', 'update', 'download']
-  @@simple_bct = false
+  @@simple_bct = false  # if true, then system doesn't support branching (single linear path)
   
   def skip_filters
     @@skip_filters
@@ -85,8 +85,7 @@ protected
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail
     
     # hitting 'refresh' doesn't count as a traversal of the site, so skip all this
-    unless !session['breadcrumb'].empty? #&& req_params == session['breadcrumb'].last.params
-      
+    unless req_params == (session['breadcrumb'].last.params rescue false)
       b = Breadcrumb.new(req_params)
       b.is_ajax = true if request.xhr?
       
@@ -106,7 +105,7 @@ protected
                         # first see if we're going backwards (current page is on the same browse
                         # path as the previous page
         currIndex = session['breadcrumb_index']
-        if on_same_branch( currIndex, bcIndex ) # (bcIndex < (bcSize-1)) # jumping around in history
+        if on_same_branch( currIndex, bcIndex )   # jumping around in history?
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
           end          
@@ -137,7 +136,6 @@ protected
             session['breadcrumb'][bcIndex].children << bcSize
           end
         end
-      
         unless (b == session['breadcrumb'].last)
           session['breadcrumb_index'] = bcSize
           session['breadcrumb'] << b

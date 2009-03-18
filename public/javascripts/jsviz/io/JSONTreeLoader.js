@@ -90,22 +90,10 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	var rootNode = new DataGraphNode();
 
 	rootNode["root"] = true;
-
-  if (params['controller'] == 'root') {
-    rootNode.text = "Home";
-  }
-  else if (params.id) {
-    rootNode.text = params['controller'][0].toUpperCase();
-    if (params.action != 'show') 
-      rootNode.text += ': ' + params.action;
-    rootNode.text += params.id;
-  }
-  else {
-    rootNode.text = params['controller'][0].toUpperCase() + params['controller'].substring(1);
-  } 
-		
+  rootNode.text = this.nodeText(params);		
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
+  
 	rootNode.colorStripIndex = 0;
 	rootNode.isAjax = root['is_ajax'];
 	rootNode["fixed"] = true;
@@ -150,19 +138,9 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-  if( params['controller'] == 'root' )
-    childNode.text = "Home";
-	else if( params.id ) {
-		childNode.text = params['controller'][0].toUpperCase();
-		if( params.action != 'show' )
-			childNode.text += ": " + params['action'];
-
-		childNode.text += ' ' + params.id;
-	}
-	else
-		childNode.text = params['controller'][0].toUpperCase() + params['controller'].substring(1);
-		
+  childNode.text = this.nodeText(params);
 	childNode.URL = this.reconstructURL(params);
+  
 	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];
 	childNode.distFromRoot = distFromRoot;
@@ -239,6 +217,24 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 	}
 
 	return url;
+}
+JSONTreeLoader.prototype.nodeText = function(params){
+  var text = "";
+  if( params['controller'] == 'root' )
+    text = "Home";
+	else if( params.id ) {
+		text = params['controller'][0].toUpperCase();
+		if( params.action != 'show' )
+			text += ": " + params['action'];
+
+		text += ' ' + params.id;
+	}
+	else if( params['controller'] == 'gallery')
+    text = "Gallery: " + params["action"][0].toUpperCase() + params['action'].substring(1);
+  else
+		text = params['controller'][0].toUpperCase() + params['controller'].substring(1);
+    
+  return text;
 }
 JSONTreeLoader.prototype.toggleText = function() {
 	var leaves = $A(this.dataGraph.nodes);

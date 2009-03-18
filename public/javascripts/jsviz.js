@@ -95,10 +95,7 @@ function jsviz_init() {
 
                       var parenString = "";
                       if (dataNode.parent) {
-                          dataNode.parent.each(function(paren){
-                              parenString += ", " + paren.URL
-                          });
-                          ;
+                          dataNode.parent.each(function(paren){parenString += ", " + paren.URL;});
                       }
                       tt.innerHTML="URL: " + dataNode.URL + " , # parents: " + parenString;
                       tt.style.display="block";
@@ -106,8 +103,7 @@ function jsviz_init() {
                       tt.style.top=(modelNode.positionY*skewY + centerY + offset.top - 25) +  "px";
                       layout.mouseHover = true;
                   }, dataNode, modelNode, 
-					layout.view.skewX, layout.view.skewY, 
-					layout.view.centerX, layout.view.centerY);
+					layout.view.skewX, layout.view.skewY, layout.view.centerX, layout.view.centerY);
 				
 				nodeElement.onmouseout =  new EventHandler( layout, function(){
 					document.getElementById("tooltip").style.display="none";
@@ -130,7 +126,7 @@ function jsviz_init() {
                           Event.stop(event); // prevent propogation
                           if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
                           if( dataNode.isAjax ){
-                              var paramString = "authenticity_token=" + AUTH_TOKEN;
+                              var paramString = '';//"authenticity_token=" + AUTH_TOKEN;
                               new Ajax.Updater( 'p_page', dataNode.URL, {
                                   asynchronous: true,
                                   evalScripts: true,
@@ -160,6 +156,7 @@ function jsviz_init() {
 				}
 				
 				if( dataNode.root ) { group.setAttribute('id', 'RootNode');	}
+        else{ group.setAttribute('id', dataNode.id);}
 				
 				return group;
 			} else {
@@ -196,11 +193,8 @@ function jsviz_init() {
 								evalScripts: true,
 								parameters: paramString
 							});
-
 						} 
-						else if( dataNode['cannotUndo'] )
-						{
-							
+						else if( dataNode['cannotUndo'] )	{
 						}
 						else{
 							window.location = dataNode.URL;
