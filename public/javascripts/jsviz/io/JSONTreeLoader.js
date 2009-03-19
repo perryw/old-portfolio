@@ -220,19 +220,26 @@ JSONTreeLoader.prototype.reconstructURL = function( params ) {
 }
 JSONTreeLoader.prototype.nodeText = function(params){
   var text = "";
-  if( params['controller'] == 'root' )
+  var controller = params['controller']; var action = params['action'];
+  if( controller == 'root' )
     text = "Home";
 	else if( params.id ) {
-		text = params['controller'][0].toUpperCase();
+		text = controller[0].toUpperCase();
 		if( params.action != 'show' )
-			text += ": " + params['action'];
+			text += ": " + action;
 
 		text += ' ' + params.id;
 	}
-	else if( params['controller'] == 'gallery')
-    text = "Gallery: " + params["action"][0].toUpperCase() + params['action'].substring(1);
+  else if(controller == 'gallery')
+    text = "Gallery: " + action[0].toUpperCase() + action.substring(1);
+  else if( controller == 'myself' ) {
+    if(action == 'index')
+      text = 'About';
+    else
+      text = 'Resume';
+  }
   else
-		text = params['controller'][0].toUpperCase() + params['controller'].substring(1);
+		text = controller[0].toUpperCase() + controller.substring(1);
     
   return text;
 }

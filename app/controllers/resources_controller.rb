@@ -131,5 +131,4 @@ class ResourcesController < ApplicationController
       :type => @resource.content_type,
       :filename => URI.encode(@resource.filename)) 
   end
-
 end

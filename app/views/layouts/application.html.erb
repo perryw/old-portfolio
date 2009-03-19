@@ -168,13 +168,25 @@
                       :url => {
                         :controller => 'myself',
                         :action => 'index'
-                        },
-                        :method => :get,
-                        :udpate => 'p_page',
-                        :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_about');document.fire('jsviz:clicked')"
+                      },
+                      :method => :get,
+                      :update => 'p_page',
+                      :loading => "$('spinner_div').show()",
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_about');document.fire('jsviz:clicked')"
                   },
                   { :id => 'menu_about', :href => url_for(:controller => "myself", :action => "index") }
+               %>
+               <% m.remote_action 'Resume', {
+                      :url => {
+                        :controller => 'myself',
+                        :action => 'resume'
+                      },
+                      :method => :get,
+                      :update => 'p_page',
+                      :loading => "$('spinner_div').show()",
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resume');document.fire('jsviz:clicked')"
+                  },
+                  { :id => 'menu_resume', :href => url_for(:action => "resume", :controller => "myself") }
                %>
               <% if_admin? do %>
                 <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>

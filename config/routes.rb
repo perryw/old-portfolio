@@ -38,7 +38,8 @@ ActionController::Routing::Routes.draw do |map|
 #    user.resources :projects
 #    user.resources :resources
   end    
-  map.myself 'myself', :controller => 'myself'
+  map.connect 'myself', :controller => 'myself', :action => 'index'
+  map.connect 'myself/resume', :controller => 'myself', :action => 'resume'
   map.connect 'deliverables/index', :controller => 'deliverables', :action => 'index'
   map.connect 'deliverables', :controller => 'gallery', :action => 'deliverables'
   map.resources :deliverables
@@ -98,8 +99,10 @@ ActionController::Routing::Routes.draw do |map|
 
 	map.logged_exceptions "logged_exceptions/:action/:id", :controller => "logged_exceptions"
 
+  map.connect 'keepalive', :controller => 'keepalive', :action => 'index'
+
   # Install the default routes as the lowest priority.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-	map.connect '*path' , :controller => 'four_oh_fours'
+  map.connect '*path' , :controller => 'four_oh_fours'
 end

@@ -147,4 +147,8 @@ protected
   def self.update_breadcrumb_trail
     update_breadcrumb_trail
   end
+
+  def log_processing
+    super unless params[:controller] == "keepalive"
+  end
 end
