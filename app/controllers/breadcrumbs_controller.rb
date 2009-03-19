@@ -1,4 +1,5 @@
 class BreadcrumbsController < ApplicationController
+  skip_filter :update_breadcrumb_trail
   def get_breadcrumb
     render :json => session['breadcrumb']
     #render :text => JSON.dump(session['breadcrumb'])

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery #:secret => APP_CONFIG['settings']['forgery'] #'5939853d8f1a67a9a3f071bbaa926cbc'
+  protect_from_forgery :secret => APP_CONFIG['settings']['forgery'] #'5939853d8f1a67a9a3f071bbaa926cbc'
 
   # See ActionController::Base for details 
   # Uncomment this to filter the contents of submitted sensitive data parameters
@@ -52,6 +52,14 @@ protected
     @@skip_filters
   end
   
+  def least_distance(parents)
+    least = parents.first.dist_from_root rescue 0
+    parents.each do |p|
+      least = p.dist_from_root if p.dist_from_root < least
+    end
+    return least
+  end
+
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
   def on_same_branch(root, leaf, firstTime = true)
@@ -111,7 +119,6 @@ protected
           end          
         elsif bcIndex != currIndex  # branch converges with previous branch
           parents = session['breadcrumb'][bcIndex].parent
-          
           unless bcIndex == 0  # bad things happen if we delete root
             parents.delete(currIndex) # delete if exists...
             parents << currIndex   # append to end (root has no parents)
@@ -122,9 +129,9 @@ protected
         session['breadcrumb_index'] = bcIndex
       else
         bcIndex = session['breadcrumb_index']
-        if bcIndex == (bcSize-1) ## we are continuing a branch
+        logger.error "bcIndex is #{bcIndex} and bcSize is #{bcSize} and trail is #{session['breadcrumb']}"
+        if(bcIndex == (bcSize-1)) ## we are continuing a branch
           b.parent << bcIndex
-
           # add only if it doesn't already exist
           unless session['breadcrumb'][bcIndex].children.include?(bcSize)
             session['breadcrumb'][bcIndex].children << bcSize
@@ -138,6 +145,7 @@ protected
         end
         unless (b == session['breadcrumb'].last)
           session['breadcrumb_index'] = bcSize
+          b.dist_from_root = least_distance(b.parent)
           session['breadcrumb'] << b
         end
       end
