@@ -21,4 +21,7 @@ class BreadcrumbsController < ApplicationController
   def get_currcrumb_idx
     render :layout => false, :text => session['breadcrumb_index']
   end
+  def get_yaml
+    render :text => session['breadcrumb'].to_yaml
+  end
 end

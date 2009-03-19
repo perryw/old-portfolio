@@ -52,6 +52,15 @@ protected
     @@skip_filters
   end
   
+  def shortest_to_root(parents)
+    shortest = (session['breadcrumb'][parents.first].dist_from_root rescue -1)
+    parents.each do |p|
+      p_dist = session['breadcrumb'][p].dist_from_root
+      shortest = p_dist if p_dist < shortest
+    end
+    return shortest+1
+  end
+  
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
   def on_same_branch(root, leaf, firstTime = true)
@@ -138,6 +147,7 @@ protected
         end
         unless (b == session['breadcrumb'].last)
           session['breadcrumb_index'] = bcSize
+          b.dist_from_root = shortest_to_root(b.parent) 
           session['breadcrumb'] << b
         end
       end
