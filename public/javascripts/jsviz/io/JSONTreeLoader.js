@@ -90,7 +90,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	var rootNode = new DataGraphNode();
 
 	rootNode["root"] = true;
-    rootNode.text = this.nodeText(params);		
+  rootNode.text = this.nodeText(params);		
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
   

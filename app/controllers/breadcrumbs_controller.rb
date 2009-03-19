@@ -1,5 +1,4 @@
 class BreadcrumbsController < ApplicationController
-  skip_filter :update_breadcrumb_trail
   def get_breadcrumb
     render :json => session['breadcrumb']
     #render :text => JSON.dump(session['breadcrumb'])
@@ -9,8 +8,6 @@ class BreadcrumbsController < ApplicationController
     b.copy(session['breadcrumb'][session['breadcrumb_index']])
     b.parent.clear
     b.children.clear
-    b.prev = nil
-    b.next = nil
     session['breadcrumb'].clear
     session['breadcrumb'] << b
     session['breadcrumb_index'] = 0
