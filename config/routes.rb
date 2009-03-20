@@ -31,14 +31,10 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :profiles do |profiles|
 			profiles.resources :password_settings
     end
-#    user.resources :collaborators
-#    user.resources :courses
-#    user.resources :deliverables
-#    user.resources :gallery
-#    user.resources :projects
-#    user.resources :resources
   end    
-  map.connect 'myself', :controller => 'myself', :action => 'index'
+  map.connect '/about', :controller => 'about', :action => 'index'
+  map.connect '/myself', :controller => 'myself', :action => 'resume'
+  map.connect '/resume', :controller => 'myself', :action => 'resume'
   map.connect 'myself/resume', :controller => 'myself', :action => 'resume'
   map.connect 'deliverables/index', :controller => 'deliverables', :action => 'index'
   map.connect 'deliverables', :controller => 'gallery', :action => 'deliverables'

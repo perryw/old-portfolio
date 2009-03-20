@@ -94,6 +94,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
   
+    rootNode.controller = params['controller'];
 	rootNode.colorStripIndex = 0;
 	rootNode.isAjax = root['is_ajax'];
 	rootNode["fixed"] = true;
@@ -144,6 +145,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	childNode.colorStripIndex=0;
 	childNode.isAjax = child['is_ajax'];
 	childNode.distFromRoot = distFromRoot;
+    childNode.controller = params['controller'];
 
 	var idx = this.dataGraph.findNode(childNode);
 	childNode = (idx) ? this.dataGraph.getNode(idx) : childNode;
@@ -233,13 +235,10 @@ JSONTreeLoader.prototype.nodeText = function(params){
   else if(controller == 'gallery')
     text = "Gallery: " + action[0].toUpperCase() + action.substring(1);
   else if( controller == 'myself' ) {
-    if(action == 'index')
-      text = 'About';
-    else
-      text = 'Resume';
+    text = 'Resume';
   }
   else
-		text = controller[0].toUpperCase() + controller.substring(1);
+    text = controller[0].toUpperCase() + controller.substring(1);
     
   return text;
 }

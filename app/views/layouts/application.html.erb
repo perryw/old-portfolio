@@ -152,21 +152,23 @@
                   },
                   {	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
                %>
-              <% m.remote_action 'Resources', {
-                      :url => {
-                          :controller => 'resources',
-                          :action => 'index'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
-                  },
-                  {	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
-               %>								
+              <% if logged_in? -%>
+                <% m.remote_action 'Resources', {
+                        :url => {
+                            :controller => 'resources',
+                            :action => 'index'
+                        },
+                        :method => :get,
+                        :update => 'p_page',
+                        :loading => "$('spinner_div').show()",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
+                    },
+                    {	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index") }
+                 %>								
+               <% end -%>
                <% m.remote_action 'About Me', {
                       :url => {
-                        :controller => 'myself',
+                        :controller => 'about',
                         :action => 'index'
                       },
                       :method => :get,
@@ -174,7 +176,7 @@
                       :loading => "$('spinner_div').show()",
                       :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_about');document.fire('jsviz:clicked')"
                   },
-                  { :id => 'menu_about', :href => url_for(:controller => "myself", :action => "index") }
+                  { :id => 'menu_about', :href => url_for(:controller => "about", :action => "index") }
                %>
                <% m.remote_action 'Resume', {
                       :url => {
@@ -184,9 +186,9 @@
                       :method => :get,
                       :update => 'p_page',
                       :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resume');document.fire('jsviz:clicked')"
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_myself');document.fire('jsviz:clicked')"
                   },
-                  { :id => 'menu_resume', :href => url_for(:action => "resume", :controller => "myself") }
+                  { :id => 'menu_myself', :href => url_for(:action => "resume", :controller => "myself") }
                %>
               <% if_admin? do %>
                 <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
@@ -210,7 +212,7 @@
 	</div><!-- end YUI layout -->
   
 	<!-- debug -->
-	<% if true || Rails.env == "development" %>
+	<% if logged_in? || Rails.env == "development" %>
 	  <div id="footnotes_holder">
 	  </div>
 	  <%= render :partial => 'shared/debug' %>

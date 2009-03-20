@@ -63,25 +63,29 @@ protected
   
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
-  def on_same_branch(root, leaf, firstTime = true)
-      
-    return (true && firstTime) if(root == 0 or leaf == 0)
+  def on_same_branch(root, leaf, firstTime = true, search_history = nil)
+    return (firstTime) if(root == 0 or leaf == 0)
     return true if leaf == root
-    return false if session['breadcrumb'][root].nil? || session['breadcrumb'][leaf].nil?
-    
-    retVal = false
-    
-    session['breadcrumb'][leaf].parent.each do |thisParent|
+    crumbs = session['breadcrumb']
+    search_history = Array.new(crumbs.size) if search_history.nil?
+    return search_history[leaf] if not search_history[root].nil?
+    return false if crumbs[root].nil? || crumbs[leaf].nil?
+    crumbs[leaf].parent.each do |thisParent|
       if thisParent == root
-        next if thisParent == 0 # reached all the way to the top without sharing a parent
-        return true
+        if thisParent == 0 # reached all the way to the top without sharing a parent
+          search_history[thisParent] = false
+          next
+        else
+          search_history[thisParent] = true
+          return true
+        end
       elsif thisParent.nil?
+        search_history[thisParent] = false
         return false
       end
-      retVal ||= on_same_branch(root, thisParent, false)
+      return true if on_same_branch(root, thisParent, false, search_history)
     end
-    
-    return retVal
+    return false
   end
   
   def update_breadcrumb_trail
@@ -114,7 +118,7 @@ protected
                         # first see if we're going backwards (current page is on the same browse
                         # path as the previous page
         currIndex = session['breadcrumb_index']
-        if on_same_branch( currIndex, bcIndex )   # jumping around in history?
+        if( on_same_branch( currIndex, bcIndex ) or on_same_branch( bcIndex, currIndex) )   # jumping around in history?
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
           end          
@@ -147,7 +151,7 @@ protected
         end
         unless (b == session['breadcrumb'].last)
           session['breadcrumb_index'] = bcSize
-          b.dist_from_root = shortest_to_root(b.parent) 
+          b.dist_from_root = shortest_to_root(b.parent) # TODO remove dist_from_root
           session['breadcrumb'] << b
         end
       end

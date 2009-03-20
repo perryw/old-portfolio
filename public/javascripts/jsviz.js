@@ -133,7 +133,14 @@ function jsviz_init() {
                                   method: 'get',
                                   parameters: paramString,
                                   onLoading: function(){ $('spinner_div').show();},
-                                  onComplete: function() { $('spinner_div').hide(); window.document.fire('jsviz:clicked'); }
+                                  onComplete: function() { 
+                                    $('spinner_div').hide(); 
+                                    if($('entire_gallery')){
+                                      Lightview.updateViews();
+                                      loadSpotLights();
+                                    }
+                                    updateCurrMenuItem('menu_'+dataNode.controller);
+                                    window.document.fire('jsviz:clicked'); }
                               });
                           } 
                           else if( dataNode['cannotUndo'] ) {	}
