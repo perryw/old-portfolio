@@ -138,23 +138,29 @@ updateCurrMenuItem = function(newCurr) {
 };
 toggleGalleryImgsByTag = function(tagName, containerName){
 	var container = $(containerName);
-	var foundTags = container.select('.'+tagName).concat($('tag_cloud').select('.'+tagName));
-	if( !foundTags.length ) return; // early exit
+	var foundTags = container.select('.'+tagName);
+	var cloudTags = $('tag_cloud').select('.'+tagName);
+	if( !foundTags.length && !cloudTags.length ) return; // early exit
 	foundTags.invoke('toggleClassName','highlight');
+	cloudTags.invoke('toggleClassName','highlight');
 	var thumbnailArray = container.select('.thumbnail');
 	var isTagLit = foundTags[0].hasClassName('highlight');
 	names = foundTags.collect(function(s){return s.ancestors()[1];}); //get div names
 	
-	thumbnailArray.each( function(n){		
-		if((n.select('.highlight').length>1) || (names.indexOf(n)!=-1)){ 
+	thumbnailArray.each( function(n){
+		litTags = n.select('.highlight');
+		if(litTags.length>1){ 
 			// won't affect whether or not div's display
 			return; 
 		}
-		else if( container.select('.highlight').length >0){ // there are still selected tags
-			n.fade();
+		else if(!litTags[0].hasClassName(tagName)){ // only one lit tag, but not the right tag
+			return;
+		}
+		else if(isTagLit){ // there are still selected tags
+			n.appear();
 		}
 		else{
-			n.appear();
+			n.fade();
 		}
 	});
 }
