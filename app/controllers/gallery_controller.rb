@@ -6,8 +6,8 @@ class GalleryController < ApplicationController
   def index
     @deliverables = Deliverable.all
     @projects = Project.all
-    @deliverable_tags = Deliverable.tag_counts(:conditions => "SUBSTR(tag.name,1,1) != '*'")
-    @project_tags = Project.tag_counts(:conditions => "SUBSTR(tag.name,1,1) != '*'")
+    @deliverable_tags = Deliverable.tag_counts.reject{ |tag| tag.name.first == '*' }
+    @project_tags = Project.tag_counts.reject{ |tag| tag.name.first == '*' }
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
@@ -16,7 +16,7 @@ class GalleryController < ApplicationController
   end
   def deliverables
     @deliverables = Deliverable.all
-    @deliverable_tags = Deliverable.tag_counts(:conditions => "SUBSTR(tag.name,1,1) != '*'")
+    @deliverable_tags = Deliverable.tag_counts.reject{ |tag| tag.name.first == '*' }
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
       format.xml  { render :xml => @gallery }
@@ -24,7 +24,7 @@ class GalleryController < ApplicationController
   end
   def projects
     @projects = Project.all
-    @project_tags = Project.tag_counts(:conditions => "SUBSTR(tag.name,1,1) != '*'")
+    @project_tags = Project.tag_counts.reject{ |tag| tag.name.first == '*' }
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
       format.xml  { render :xml => @gallery }
