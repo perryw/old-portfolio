@@ -8,6 +8,7 @@ class DeliverablesController < ApplicationController
   
   def tag_cloud
     @tags = Deliverable.tag_counts
+    @tags.reject!{ |tag| tag.name.first == '*' } if logged_in?
   end
   def list
     show

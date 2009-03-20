@@ -7,7 +7,7 @@
     <span><%=@deliverable.name%></span>
   	<div class='tag_list'>
         <span class='key'>Tags:</span>
-        <span class='value tags deliverable_tags'><%=@deliverable.tag_list.collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span>
+        <span class='value tags deliverable_tags'><%=filter_tag_list_unless(logged_in?,@deliverable.tag_list).collect{ |tl| "'<span class='#{tl.tr(' -', '_')} tag'>#{tl}</span>' " } %></span>
     </div>	
   	<div>
   	  <span class='key'>Description:</span>

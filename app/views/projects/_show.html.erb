@@ -1,6 +1,6 @@
 <span class='value'><%=h @project.name %></span>
 <div class='tag'>
-	<%=h @project.tag_list %>
+	<%=h filter_tag_list_unless(logged_in?,@project.tag_list) %>
 </div>
 <br/>
 <% unless @project.key_resource_id.nil? || !logged_in? -%>

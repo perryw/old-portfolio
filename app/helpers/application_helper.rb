@@ -56,4 +56,19 @@ module ApplicationHelper
 	  end
 	end
 
+    def filter_tag_list_unless(value, tag_list)
+      if value
+        return tag_list.reject{|tag| tag.first =='*'}
+      else
+        return tag_list
+      end
+    end
+
+    def filter_tags_unless(value, tags_array)
+      if value
+        return tags_array.reject{ |tag| tag.name.first == '*' }
+      else
+        return tags_array
+      end
+    end
 end

@@ -6,8 +6,10 @@ class GalleryController < ApplicationController
   def index
     @deliverables = Deliverable.all
     @projects = Project.all
-    @deliverable_tags = Deliverable.tag_counts.reject{ |tag| tag.name.first == '*' }
-    @project_tags = Project.tag_counts.reject{ |tag| tag.name.first == '*' }
+    @deliverable_tags = Deliverable.tag_counts
+    @deliverable_tags.reject!{ |tag| tag.name.first == '*'} unless logged_in?
+    @project_tags = Project.tag_counts
+    @projects_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb

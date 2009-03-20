@@ -410,9 +410,9 @@
 	padding: 0;
 }
 .lv_controllerCornerWrapperTopLeft,
-.lv_controllerCornerWrapperBottomLeft { top: -4px; left: -100%;}
+.lv_controllerCornerWrapperBottomLeft { top: -5px; left: -100%;}
 .lv_controllerCornerWrapperTopRight,
-.lv_controllerCornerWrapperBottomRight { top: -4px; left: 100%;}
+.lv_controllerCornerWrapperBottomRight { top: -5px; left: 100%;}
 
 #lightviewController .lv_CornerWrapper {
 	width: 100%;

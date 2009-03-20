@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   def tag_cloud
     @tags = Project.tag_counts
+    @tags.reject{ |tag| tag.name.first == '*'} unless logged_in?
   end
 
   def new_association

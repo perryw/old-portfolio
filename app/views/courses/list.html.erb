@@ -4,7 +4,7 @@
   <% if logged_in? -%>
 	<%= in_place_editor_field :course, "tag_list", {}, {} %> 
   <% else -%>
-    <%= @course.tag_list %>
+    <%= filter_tag_list_unless(false,@course.tag_list) %>
   <% end -%>
   <%= ", " + h(@other_tags.join(', ')) unless @other_tags.empty? %>
 </span>
@@ -23,7 +23,7 @@
           <span class='thumbnail'><%= link_to image_tag(Resource.find(project.key_resource_id).public_filename(:thumb)), project %></span>
           <span class='course_projects_heading'>
             <h3><%=project.name%></h3>
-            <span class='project_tags'><%=h project.tag_list %></span>
+            <span class='project_tags'><%=h filter_tag_list_unless(logged_in?, project.tag_list) %></span>
               <span id='<%="project_#{project.id}_deliverables_tags"%>' class='deliverables_tags'>
                   <%=project.deliverable_tags.collect{ |dt| ", " + link_to_function(dt, "toggleDivByTag('courses_list_project_','#{project.id}','#{dt.tr(' -', '_')}')", :class => dt.tr(' -', '_')) } %>
               </span>
@@ -62,7 +62,7 @@
   <li><h2>Resource<%= (@course.resources.size==1) ? '' : 's' %></h2>
     <ul id='course_resources_list'>
         <% for resource in @resources_ordered -%>
-            <li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h resource.tag_list %></div></li>
+            <li><%= image_tag(resource.public_filename(:thumb)) %><div class='caption'><%=h filter_tag_list_unless(logged_in?,resource.tag_list) %></div></li>
         <% end -%>
     </ul>
   </li>
