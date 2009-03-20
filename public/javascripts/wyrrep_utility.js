@@ -138,31 +138,48 @@ updateCurrMenuItem = function(newCurr) {
 };
 toggleGalleryImgsByTag = function(tagName, containerName){
 	var container = $(containerName);
+	var thumbnailArray = container.select('.thumbnail');
 	var foundTags = container.select('.'+tagName);
-	var cloudTags = $('tag_cloud').select('.'+tagName);
+
+    var tagCloud = $('tag_cloud');
+	var cloudTags = tagCloud.select('.'+tagName);
+
 	if( !foundTags.length && !cloudTags.length ) return; // early exit
+
 	foundTags.invoke('toggleClassName','highlight');
 	cloudTags.invoke('toggleClassName','highlight');
-	var thumbnailArray = container.select('.thumbnail');
-	var isTagLit = foundTags[0].hasClassName('highlight');
-	names = foundTags.collect(function(s){return s.ancestors()[1];}); //get div names
-	
-	thumbnailArray.each( function(n){
-		litTags = n.select('.highlight');
-		if(litTags.length>1){ 
-			// won't affect whether or not div's display
-			return; 
-		}
-		else if(!litTags[0].hasClassName(tagName)){ // only one lit tag, but not the right tag
-			return;
-		}
-		else if(isTagLit){ // there are still selected tags
-			n.appear();
-		}
-		else{
-			n.fade();
-		}
-	});
+
+    if(!tagCloud.select('.highlight').length){
+      thumbnailArray.invoke('appear'); // all tags off, show all thumbnails
+      return;
+    }
+
+    //var partitions = thumbnailArray.partition(function(s) { 
+    //  return s.select('.'+tagName).length;});
+
+    // the following collects all the tag names that are supposed to be lit
+    var litTags = tagCloud.select('.highlight').collect(function(s){
+      return $w(s.className);}).flatten().without('tag','highlight','css1','css2','css3','css4','css5');
+
+    thumbnailArray.each( function(s){
+      var thumbTags = s.select('.gallery_tags .tag').collect(function(t){
+      return $w(t.className);}).flatten().without('tag','highlight');
+
+      // now we look for intersection between the tags in the thumbnail
+      // and the lit tags in the tag_cloud an intersection should exist
+      // if the concatenation + uniq() of the two arrays results in an
+      // array with size less than the sum of the original array lengths
+      var mergedTags = thumbTags.concat(litTags).uniq();
+      var concatLength = thumbTags.length + litTags.length;
+
+      if(mergedTags.length == concatLength){
+        // doesn't contain any of the lit tags: hide
+        if(s.visible()) s.fade();
+      }
+      else {//if( mergedTags.length == (concatLength-1) ){
+        if(!s.visible()) s.appear();
+      }
+    });
 }
 toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 	var container = $(container_prefix+container_id);

@@ -7,7 +7,7 @@
     <% unless @project_tags.empty? %>
       <div id='gallery_projects_tag_cloud' style='clear:both; display: none'>
       	<% tag_cloud @project_tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
-      		<%=link_to_function tag.name, "toggleGalleryImgsByTag('#{tag.name.tr(' -','_')}', 'gallery_projects')", :class => "tag #{css_class} #{tag.name.tr(' -','_')}" %>
+      		<%=link_to_function tag.name, "toggleGalleryImgsByTag('#{tag.name.tr('^a-zA-Z0-9-_:.', '_')}', 'gallery_projects')", :class => "tag #{css_class} #{tag.name.tr('^a-zA-Z0-9-_:.', '_')}" %>
       	<% end %>
       </div>
     <% end %>
