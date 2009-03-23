@@ -1,0 +1,182 @@
+1:
+  id: 1
+  dept: SI
+  courseno: 501
+  description: si501, contextual design
+  coursename: Contextual Design
+  created_at: 2009-01-13 20:48:00
+  updated_at: 2009-01-24 01:23:43
+  date: Sept. - Dec. 2005
+  key_resource_id: 42
+2:
+  id: 2
+  dept: SI
+  courseno: 502
+  description: 
+  coursename: Choice and Learning
+  created_at: 2009-01-13 20:48:48
+  updated_at: 2009-01-21 07:32:21
+  date: Jan. - Apr. 2006
+3:
+  id: 3
+  dept: SI
+  courseno: 503
+  description: 
+  coursename: Information Search &amp; Retrieval
+  created_at: 2009-01-13 20:50:34
+  updated_at: 2009-01-21 07:42:45
+  date: Jan. - Apr. 2006
+4:
+  id: 4
+  dept: SI
+  courseno: 504
+  description: 
+  coursename: Social Systems &amp; Collections
+  created_at: 2009-01-13 20:51:01
+  updated_at: 2009-01-21 07:33:33
+  date: Sept. - Dec. 2006
+5:
+  id: 5
+  dept: SI
+  courseno: 682
+  coursename: Interface &amp; Interaction Design
+  created_at: 2009-01-17 09:30:50
+  updated_at: 2009-01-21 07:33:57
+  date: Jan. - Apr. 2007
+6:
+  id: 12
+  dept: EECS
+  courseno: 492
+  coursename: Intro Artificial Intelligence
+  created_at: 2009-01-18 05:06:31
+  updated_at: 2009-01-21 07:34:18
+  date: Jan. - Apr. 2008
+7:
+  id: 13
+  dept: SI
+  courseno: 544
+  coursename: Statistics
+  created_at: 2009-01-18 05:06:32
+  updated_at: 2009-01-21 07:34:41
+  date: Sept. - Dec. 2006
+8:
+  id: 14
+  dept: SI
+  courseno: 562
+  coursename: Intermediate Microeconomics
+  created_at: 2009-01-18 05:06:34
+  updated_at: 2009-01-21 07:36:06
+  date: Sept. - Oct. 2008
+9:
+  id: 15
+  dept: SI
+  courseno: 563
+  coursename: Game Theory
+  created_at: 2009-01-18 05:06:35
+  updated_at: 2009-01-21 07:36:21
+  date: Nov. - Dec. 2007
+10:
+  id: 16
+  dept: SI
+  courseno: 622
+  coursename: Evaluation of System and Services
+  created_at: 2009-01-18 05:06:36
+  updated_at: 2009-01-21 07:36:59
+  date: Jan. - Apr. 2007
+11:
+  id: 17
+  dept: SI
+  courseno: 562
+  coursename: E-Commerce
+  created_at: 2009-01-18 05:06:38
+  updated_at: 2009-01-21 07:43:05
+  date: Jan. - Apr. 2006
+12:
+  id: 18
+  dept: SI
+  courseno: 676
+  coursename: Law &amp; Information Management
+  created_at: 2009-01-18 05:09:47
+  updated_at: 2009-01-21 07:37:35
+  date: Sept. - Dec. 2007
+13:
+  id: 19
+  dept: SI
+  courseno: 679
+  coursename: Aggregation &amp; Prediction Markets
+  created_at: 2009-01-18 05:09:54
+  updated_at: 2009-01-21 07:39:55
+  date: Sept. - Oct. 2007
+14:
+  id: 20
+  dept: SI
+  courseno: 680
+  coursename: "Incentive-Centered Design: Contracting &amp; Signalling"
+  created_at: 2009-01-18 05:09:58
+  updated_at: 2009-01-21 07:40:15
+  date: Mar. - Apr. 2008
+15:
+  id: 21
+  dept: SI
+  courseno: 686
+  coursename: Public Goods
+  created_at: 2009-01-18 05:09:59
+  updated_at: 2009-01-21 07:40:26
+  date: Nov. - Dec. 2007
+16:
+  id: 22
+  dept: SI
+  courseno: 687
+  coursename: Matching Mechanisms
+  created_at: 2009-01-18 05:11:39
+  updated_at: 2009-01-21 07:40:39
+  date: Sept. - Oct. 2007
+17:
+  id: 23
+  dept: SI
+  courseno: 688
+  coursename: Foundations of Behavioral Science
+  created_at: 2009-01-18 05:11:40
+  updated_at: 2009-01-21 07:40:52
+  date: Jan. - Apr. 2007
+18:
+  id: 24
+  dept: SI
+  courseno: 689
+  coursename: Computer-Supported Collaborative Work
+  created_at: 2009-01-18 05:11:42
+  updated_at: 2009-01-21 07:41:03
+  date: Sept. - Dec. 2007
+19:
+  id: 25
+  dept: SI
+  courseno: 791
+  coursename: "Independent Study: Situation Interactions"
+  created_at: 2009-01-18 05:12:48
+  updated_at: 2009-01-21 07:41:19
+  date: Jan. - Apr. 2008
+20:
+  id: 26
+  dept: SI
+  courseno: 646
+  coursename: Information Economics
+  created_at: 2009-01-18 05:15:04
+  updated_at: 2009-01-21 07:41:42
+  date: Jan. - Feb. 2008
+21:
+  id: 27
+  dept: Apple Inc.
+  description: 
+  coursename: Internship
+  created_at: 2009-01-18 10:29:57
+  updated_at: 2009-03-10 22:08:53
+  date: May. - Sept. 2008
+  projects_order: 11,8,9,14,10
+22:
+  id: 28
+  dept: SI
+  courseno: 557
+  coursename: Visual Persuasion
+  created_at: 2009-01-19 09:28:05
+  updated_at: 2009-01-21 07:42:30
+  date: Jan. - Apr. 2006

@@ -1,0 +1,265 @@
+1:
+  id: 1
+  name: CSCW Presentation
+  description: Final Presentation for our CSCW project on the Nintendo Wii
+  created_at: 2009-01-19 23:33:49
+  updated_at: 2009-03-23 05:10:50
+  owner_id: 4
+  owner_type: Project
+  key_resource_id: 345
+  overlay_id: 485
+2:
+  id: 2
+  name: WCCF Presentation
+  description: Final Presentation for our rapid contextual design project for the Wastenaw Community College Foundation (WCCF)
+  created_at: 2009-01-22 09:38:17
+  updated_at: 2009-03-07 21:59:16
+  owner_id: 2
+  owner_type: Project
+  key_resource_id: 63
+  overlay_id: 440
+3:
+  id: 3
+  name: MGoBlue Presentation
+  description: Final Presentation for our usabilility analysis project on MGoBlue.com, the University of Michigan's college athletics website
+  created_at: 2009-01-22 09:38:39
+  updated_at: 2009-03-07 22:05:53
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 66
+  overlay_id: 452
+4:
+  id: 4
+  name: WebDen Mid/Hi-Fi
+  description: &lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;Our Hi-Fi prototype is the second iteration of our design.  We conducted informal user tests on our &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%204%20-%20Lo-Fi%20Prototype&quot;&gt;Lo-Fi Prototype&lt;/a&gt;, and have incorporated findings into this milestone.  Users are also now able to interact with the system, which we hope will yield more substantive findings during the next round of user tests.  Note, however, that this prototype was made using Microsoft Powerpoint; therefore, this milestone does not offer full user-interaction of the elements of our design, and should be considered more of a &quot;mid-fi&quot; prototype.&lt;/p&gt;&lt;p&gt;&lt;b&gt;&amp;hellip;&lt;/b&gt;&lt;/p&gt;&lt;p&gt;During several of our presentations [of the Lo-Fi prototype] it was brought to our attention that we were beginning to show signs of &quot;feature creep&quot;.  Thanks to the insight of the members of our audience, we have tightened up the scope of our project towards making webDen a fully-customizable container for U-M's web resources.  We have therefore removed the calendar and RSS functionality from this milestone to focus on how to best support interaction between resources.  Unfortunately, we were not able to make the toolbar placement of webDen customizable in this iteration.&lt;/p&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;&lt;br/&gt;&lt;p&gt;For more detail description, please visit our group's &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%206%20-%20Hi-Fi%20Prototype&quot;&gt;Project Website&lt;/a&gt;&lt;/p&gt;
+  created_at: 2009-01-22 09:42:14
+  updated_at: 2009-03-07 22:01:13
+  owner_id: 3
+  owner_type: Project
+  key_resource_id: 351
+  overlay_id: 449
+5:
+  id: 5
+  name: Affinity Wall
+  description: &lt;p&gt;We followed Beyer &amp; Holtzblatt's method of creating affinity diagrams by first breaking down each piece of information gained from our contextual inquiries (both quotes as well as personal insights and questions) into &quot;affinity notes&quot;.  Pieces are then grouped together based on personal beliefs about the notes' relationships with each other.  After creating the groups, we generated problem statements (in first person voice) that these pieces are supposed to address.  Continuing with this process, we generate higher-level groupings until we have approximately 8 overarching themes.  When groups contain too many notes, we break them up and create subcategories with higher specificity such that each subcategory contains ~5 notes.&lt;/p&gt;&lt;br/&gt;&lt;p&gt;The completed affinity wall gives us a 'big picture' view of the organization without sacrificing detailed information and was essential for both understanding the scope of the problem and in generating recommendations for each aspect of the organization.&lt;/p&gt;
+  created_at: 2009-01-22 09:42:15
+  updated_at: 2009-03-05 00:20:55
+  owner_id: 2
+  owner_type: Project
+  key_resource_id: 45
+  overlay_id: 336
+6:
+  id: 6
+  name: Consolidated Sequence Model
+  description: "&lt;p&gt;After constructing the sequence models for each subject, we created a consolidated sequence model to give us an overview of the entire scholarship matching process: from the moment a donor commits to the Foundation to the final board meeting approving the recipients of the funds.&lt;/p&gt;"
+  created_at: 2009-01-22 09:43:55
+  updated_at: 2009-03-23 05:10:27
+  owner_id: 2
+  owner_type: Project
+  key_resource_id: 279
+  overlay_id: 479
+7:
+  id: 7
+  name: Generalized Transition Network
+  description: A generalized transition network (GTN) was created to map out each interaction with the website.  Due to the size of the site, however, we scoped our GTN to only cover the tasks of checking game schedules, purchasing single-game tickets, purchasing season tickets, and finding directions to sports venues.
+  created_at: 2009-01-22 22:46:02
+  updated_at: 2009-03-01 09:20:37
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 276
+  overlay_id: 312
+8:
+  id: 8
+  name: Comparative Evaluation
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;
+&lt;p&gt;In this assignment, we compared five different ticketing websites in order to develop a more comprehensive view of MGoBlue strengths and weaknesses.  These sites included:
+    &lt;ul&gt;&lt;li&gt;Michigan State University's ticketing site ( http://msusparans.cstv.com )&lt;/li&gt;&lt;li&gt;Ohio State University's ticketing site ( http://ohiostatebuckeyes.cstv.com )&lt;/li&gt;
+    &lt;li&gt;Syracuse University Athletics ticketing site (http://suathletics.com )&lt;/li&gt;
+    &lt;li&gt;Ticketmaster's website ( http://www.ticketmaster.com )&lt;/li&gt;
+    &lt;li&gt;Stubhub's website ( http://www.stubhub.com )&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/p&gt;&lt;br/&gt;
+    &lt;p&gt;From these, we specifically examined characteristics of:
+    &lt;ul&gt;
+    &lt;li&gt;The page layout or wireframe&lt;/li&gt;
+    &lt;li&gt;The presence of multimedia content&lt;/li&gt;
+    &lt;li&gt;The ease with which the user could find parking information&lt;/li&gt;
+    &lt;li&gt;The steps it takes to purchase tickets&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
+    &lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-01-22 22:46:04
+  updated_at: 2009-03-23 05:10:09
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 282
+  overlay_id: 482
+9:
+  id: 9
+  name: Heuristic Evaluation
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;
+    &lt;p&gt;Heuristic Evaluation is a set of &quot;rules of thumb&quot; that allow a rapid and inexpensive method of system evaluation.  There are several different sets of heuristics, Benjamin Shneiderman 's, Judy Olson's, and Jakob Neilson's being three of the most famous.  In performing the heuristic evaluation on the MGoBlue site, we discussed these three sets and decided to focus on: &lt;/p&gt;&lt;ul&gt;&lt;li&gt;consistency&lt;/li&gt; &lt;li&gt;correspondence&lt;/li&gt; &lt;li&gt;error recovery&lt;/li&gt; &lt;li&gt;feedback&lt;/li&gt;
+    &lt;li&gt; help and documentation&lt;/li&gt; &lt;li&gt;memory load&lt;/li&gt; &lt;li&gt;menu/command structure&lt;/li&gt;
+    &lt;li&gt;system response time&lt;/li&gt;
+    &lt;li&gt;training, and&lt;/li&gt;
+    &lt;li&gt;visual display&lt;/li&gt;&lt;/ul&gt;
+    &lt;p&gt;Running each of the personas from previous reports though the scenarios, we looked at how each of these heuristics applies.  We then organized and presented these in the context of going through the MGoBlue system: &lt;/p&gt;&lt;ol&gt;&lt;li&gt;Finding a Game&lt;/li&gt;
+    &lt;li&gt;Buying Tickets&lt;/li&gt; &lt;li&gt; Looking for Directions and Parking&lt;/li&gt;&lt;/ol&gt;&lt;p&gt; We hoped that this presentation would help developers understand the context of the assets and problems that the heuristics highlighted by illuminating some of the problem areas as well as provide rationale for the aspects of the site that work well. &lt;/p&gt;&lt;br/&gt;
+    &lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-01-22 22:46:05
+  updated_at: 2009-03-04 01:46:29
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 285
+  overlay_id: 315
+10:
+  id: 10
+  name: Personas &amp; Scenarios
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;
+    &lt;p&gt;&amp;hellip;we interviewed five individuals in order to develop a more
+    comprehensive view of MGoBlue users. The notes from these interviews were then
+    combined into three different personas:&lt;/p&gt;
+    &lt;ul&gt;&lt;li&gt;
+    Morris: a middle-aged doctor who lives in the Detroit suburbs&lt;/li&gt;
+    &lt;li&gt;Sonya: a thirty-one year-old housewife in Pittsburg&lt;/li&gt;
+    &lt;li&gt;Nancy: an international student who just started her MSI HCI program at the
+    University of Michigan&lt;/li&gt;&lt;/ul&gt;
+    &lt;p&gt;
+    Morris and Sonya were then more fully developed with scenarios; stories in which the
+    protagonist interacts with MGoBlue.&lt;/p&gt;&lt;br/&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-01-22 22:46:07
+  updated_at: 2009-03-04 01:55:43
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 288
+  overlay_id: 318
+11:
+  id: 11
+  name: Survey
+  description: &lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;&amp;hellip;The overall goal of the survey was to understand whether the site's content meets the users' expectations,  evaluate the ease of navigation, and gather opinions on the aesthetic quality of the site. In conducting a survey of the site's visitors, our team hoped to find trends that would provide insight into user behavior across age, gender and other demographics. Specifically, the survey queried &lt;b&gt;usage habits&lt;/b&gt;,  &lt;b&gt;opinions of potential features&lt;/b&gt;, the &lt;b&gt;usefulness and functionality of existing features&lt;/b&gt; and, finally, &lt;b&gt;site aesthetics&lt;/b&gt;.&lt;/p&gt;
+    &lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;
+    &lt;br/&gt;
+    &lt;p&gt;
+    Because our survey results have nominal, ordinal, and numerical data, we conducted both t-tests (for ordinal and numerical data) and Chi-squared (nominal data) tests to look for statistically significant results.  Additionally, for questions with statistically-significant quantitative results, we  created cross-tabulations and ran Chi-square tests in order to test for correlations between questions.  We then tried to rationalize any correlations that were found.&lt;/p&gt;
+  created_at: 2009-01-22 22:47:31
+  updated_at: 2009-03-04 23:18:36
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 291
+12:
+  id: 12
+  name: Usability Testing
+  description: "Finally, formal usability testing was conducted to support our findings from previous tasks.  Each session was designed to take 40-60 minutes, with no task needing more than five minutes to complete.  Initial tasks were designed to help the subject become acquainted with the website; task complexity gradually increased to the point where subjects had to reference multiple pages on the site to achieve the goal.  Our results generally matched our findings from previous deliverables; however, the test revealed several new audiences that we had not anticipated: visiting scholars and foreign students, and those who rely upon visual cues to find directions."
+  created_at: 2009-01-22 22:47:53
+  updated_at: 2009-03-01 09:23:18
+  owner_id: 5
+  owner_type: Project
+  key_resource_id: 294
+  overlay_id: 321
+13:
+  id: 14
+  name: Literature Review
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;In order to better understand how to evaluate the Wii and to develop a familiarity with the domain of virtual play, our team carried out a literature review of papers and books on related subjects.  To guide our review, we focused on four different topics which we believe to be important facets of virtual game play, namely: Tangible Interfaces, Personalization, Shared Virtual Spaces, and Concepts of Play.&lt;/p&gt;&lt;p&gt;From our literature review, we discovered:&lt;/p&gt;
+    &lt;ol&gt;&lt;li&gt;Tangible interfaces can more easily fit into the way we engage with our everyday physical environment by focusing on more fluid, mirrored interactions. &lt;/li&gt;&lt;li&gt;Personalization of environments leads to higher motivation to excel in games.&lt;/li&gt;&lt;li&gt;Visual representations of people in groupware systems (i.e. avatars, telepointers, etc.) can embody a large amount of information, in many different contexts, and with minimal distraction.  &lt;/li&gt;&lt;li&gt;Collaborative virtual environments have potential for complex social organizations, foster strong social bonds between players, and support for safe interactions between strangers.&lt;/li&gt;&lt;li&gt;Virtual environments can create life-like simulations of games that can “break” the constraints of time and space, as shown by projects such as table tennis for three people.&lt;/li&gt;&lt;li&gt;Play can be defined as voluntary and intrinsically motivating, and games, according to this theory, are models and enactments of real-life dramas, providing a socially-acceptable means of rehearsing the necessary skills and anxieties that my be needed later in life. &lt;/li&gt;&lt;li&gt;In addition to the definition of “play” above, the term can also be thought of as an example of “flow” as defined by Csikszentmihalyi.&lt;/li&gt;&lt;/ol&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-01-22 22:58:52
+  updated_at: 2009-03-01 09:23:40
+  owner_id: 4
+  owner_type: Project
+  key_resource_id: 300
+  overlay_id: 324
+14:
+  id: 15
+  name: Personas &amp; Scenarios
+  description: Personas and scenarios were developed based on data gathered from our contextual inquiries and were meant to reflect MGoBlue's intended audience - chiefly, students and alumni living near the Ann Arbor campus.
+  created_at: 2009-01-22 23:02:07
+  updated_at: 2009-03-01 09:24:11
+  owner_id: 4
+  owner_type: Project
+  key_resource_id: 303
+  overlay_id: 327
+15:
+  id: 20
+  name: Project Focus
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;&lt;b&gt;Problem:&lt;/b&gt;  Students are frustrated with the on-campus computing services provided by the university. Computing sites are often the scene of chaos as students jockey for seats and shuffle through hundreds of pages in search of their printed course readings. There are also multiple umich web resources available to students and often the boundaries between them are unclear...&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;p&gt;&lt;b&gt;Goal:&lt;/b&gt;
+    We believe that the many of these issues could be addressed if students could access and print their course resources and access authenticated umich web resources quickly and effeciently on a mobile device. Given the current array of mobile gadgets available on the market this sounds like an impossibility! Enter the handheld web computer: this new class of device is centered around providing access to rich access to web content...&lt;/p&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-03-03 10:01:16
+  updated_at: 2009-03-07 22:18:20
+  owner_id: 3
+  owner_type: Project
+  key_resource_id: 431
+  overlay_id: 461
+16:
+  id: 21
+  name: Contextual Inquiries
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;Based on our project focus, our groups first get together and identified two types of people to conduct interview with: Administrative people who provide the web application services to students and end users who would be using the product...&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;p&gt;After putting together our affinity diagram, we discovered several major issues [such as]:&lt;ul&gt;&lt;li&gt;political issues&lt;/li&gt;&lt;li&gt;Different technologies behind the systems&lt;/li&gt;&lt;li&gt;usage pattern from users&lt;/li&gt;&lt;li&gt;UM brand must be clear and present&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;"
+  created_at: 2009-03-03 10:02:53
+  updated_at: 2009-03-07 22:08:08
+  owner_id: 3
+  owner_type: Project
+  key_resource_id: 434
+  overlay_id: 455
+17:
+  id: 22
+  name: Personas
+  description: "&lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt; As Alan Cooper and Robert Reimann wrote in &lt;a href=&quot;http://www.amazon.com/About-Face-2-0-Essentials-Interaction    /dp/0764526413/sr=8-1/qid=1171471816/ref=pd_bbs_sr_1/105-4612198-1204423?ie=UTF8&amp;s=books&quot;&gt;About Face 2.0 - The Essentials of Interaction Design&lt;/a&gt;, &quot;The best way to successfully accommodate a variety of users is to design for &lt;I&gt;specific types of individuals wi    th specific needs&lt;/I&gt;.&quot;  Through observations and contextual inquiries, we have developed and personified [4] user models.&lt;/p&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;
+    &lt;br/&gt;
+    &lt;p&gt;We focused mainly on technological expertise (novice to expert), but we also developed the context in which each persona uses technology in his/her life.  &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%203%20-%20Personas#pers4&quot;&gt;Dave&lt;a&gt;, for example, is an avid writer who is well-versed in desktop publishing technologies but cannot afford his own computer.  He therefore relies heavily upon the university's computing resources.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;
+    &lt;I&gt;&quot;A scenario spells out what a user would have to do and what he or she would see step-by-step in performing a task using a given system...Developing the scenarios forced us to get specific about our design, and it forced us to consider how the various features of the system would work together to accomplish real work.&quot;&lt;/I&gt;
+    &lt;p class=&quot;style9&quot; style=&quot;margin-left:40px; margin-right:40px;&quot;&gt;
+    &lt;font size=&quot;-1&quot;&gt;
+    - &lt;a href=&quot;http://www.hcibib.org/tcuid/index.html&quot;&gt;Task-Centered User Interface Design: A Practical Introduction&lt;/a&gt; (&lt;a href=&quot;http://www.hcibib.org/tcuid/chap-2.html#2-3&quot;&gt;Ch. 2.3&lt;/a&gt;)&lt;/font&gt;
+    &lt;/p&gt;&lt;br/&gt;
+     &lt;p&gt; The scenarios are developed based on different needs and characteristics of our &lt;a class=&quot;snap_nopreview&quot; href=&quot;index.php?milestone=Milestone%203%20-%20Personas&quot;&gt;personas from Milestone 3&lt;/a&gt;. Much of the functionalities developed in our &lt;a class=&quot;snap_nopreview&quot; href=&quot;index.php?milestone=Milestone%204%20-%20Lo-Fi%20Prototype&quot;&gt;Lo-fi prototype&lt;/a&gt; came from the development and analysis of these scenarios. Feedback from our user interview is also taken into account and context that the device will be used are described. Each scenario contains three to four different basic tasks that most users will perform.&lt;/p&gt;
+    &lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;
+    &lt;p&gt;For full descriptions of each persona, please visit our group website's sections for &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%203%20-%20Personas&quot;&gt; personas&lt;/a&gt;, and &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%205%20-%20Scenarios&quot;&gt;scenarios&lt;/a&gt;."
+  created_at: 2009-03-03 10:03:23
+  updated_at: 2009-03-07 22:08:53
+  owner_id: 3
+  owner_type: Project
+  key_resource_id: 417
+  overlay_id: 458
+18:
+  id: 23
+  name: Lo-Fi Prototype
+  description: "&lt;p&gt;Based on our project focus and information gathered from our contextual inquiries, we created lo-fi prototypes of our system, focusing on the following areas:
+    &lt;/p&gt;
+    &lt;ol&gt;&lt;li&gt;tabbed interface&lt;/li&gt;
+    &lt;li&gt;webDen Homepage (local page in xml)&lt;/li&gt;
+    &lt;li&gt;Local Storage Page w/breadcrumbs (in xml)&lt;/li&gt;
+    &lt;li&gt;Draggable elements (consolidation of services)&lt;/li&gt;
+    &lt;li&gt;Contextual menus Right-click overriding (xml w/ajax)&lt;/li&gt;
+    &lt;li&gt;local storage of passwords for automatic authentication&lt;/li&gt;&lt;/ol&gt;
+    &lt;br/&gt;
+    &lt;p&gt;For more detail, please visit our group's &lt;a href=&quot;http://www.wyrrep.com/si682/index.php?milestone=Milestone%204%20-%20Lo-Fi%20Prototype&quot;&gt;project website&lt;/a&gt;
+    &lt;/p&gt;"
+  created_at: 2009-03-03 10:03:38
+  updated_at: 2009-03-07 22:21:46
+  owner_id: 3
+  owner_type: Project
+  resources_order: 354,357,363,366,369,372,375,378,381,384,387,390,393,396,399,402,405,408,411,414
+  key_resource_id: 384
+  overlay_id: 464
+19:
+  id: 26
+  name: webDen Final Presentation
+  description: "Final Presentation for our user interface and interaction design project: webDen"
+  created_at: 2009-03-03 23:45:51
+  updated_at: 2009-03-07 22:32:46
+  owner_id: 3
+  owner_type: Project
+  key_resource_id: 72
+  overlay_id: 473
+20:
+  id: 27
+  name: "Comparative Evaluation: Xbox360"
+  description: "&lt;p&gt;At the time of the project, Microsoft's Xbox Live paired with the Xbox360 console was the Wii's biggest competitor in terms of collaborative gameplay.  We conducted a comparative evaluation of the Xbox360 (and Xbox Live) with regards to:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;methods of communication&lt;/li&gt;&lt;li&gt;interaction controls, and&lt;/li&gt;&lt;li&gt;gaming community&lt;/li&gt;&lt;/ul&gt;"
+  created_at: 2009-03-05 00:38:21
+  updated_at: 2009-03-07 22:26:18
+  owner_id: 4
+  owner_type: Project
+  key_resource_id: 348
+  overlay_id: 470

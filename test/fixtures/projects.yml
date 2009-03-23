@@ -1,0 +1,131 @@
+1:
+  id: 2
+  name: Wastenaw Community College Foundation
+  description: Our task for this SI 501 project was to optimize the Washtenaw Community College Foundation's scholarship granting process.
+  course_id: 1
+  created_at: 2009-01-18 08:07:24
+  updated_at: 2009-02-17 08:59:10
+  key_resource_id: 42
+  overlay_id: 237
+2:
+  id: 3
+  name: WebDen
+  description: &lt;blockquote class=&quot;selfclear&quot;&gt;&lt;span class=&quot;open-quote&quot;&gt;&amp;#8220;&lt;/span&gt;&lt;p&gt;To design an interactive interface for the PepperPad 3 that would visually frame Wolverine Access, CTools, mFile, U-M Webmail, and other UM authenticated services into a mobile solution for access to computing resources on campus for Michigan students.&lt;/p&gt;&lt;span class=&quot;close-quote&quot;&gt;&amp;#8221;&lt;/span&gt;&lt;/blockquote&gt;
+  course_id: 5
+  created_at: 2009-01-18 08:10:47
+  updated_at: 2009-03-03 11:24:17
+  key_resource_id: 72
+  deliverables_order: 20,21,22,23,24,4
+  overlay_id: 249
+  project_url: http://www.wyrrep.com/si682
+3:
+  id: 4
+  name: Nintendo Wii
+  description: The Nintendo Wii is marketed as a next-generation gaming system, but we also saw potential for it to be used for collaborative work.  We analyzed various aspects of the system, from its interaction controls to its user interface to its use of avatars to see how easily users can achieve the state of &quot;flow&quot; as described by (Csikszentmihalyi, 1998)
+  course_id: 24
+  created_at: 2009-01-18 08:12:36
+  updated_at: 2009-03-05 01:41:05
+  key_resource_id: 69
+  deliverables_order: 14,17,15,27,1
+  overlay_id: 258
+4:
+  id: 5
+  name: MGoBlue.com
+  description: MGoBlue.com is the University of Michigan's official portal for its athletic department.  From this site, users and read news updates, find information on teams, players, and venues, and also to purchase tickets to sporting events.
+  course_id: 16
+  created_at: 2009-01-18 08:13:14
+  updated_at: 2009-02-17 08:59:57
+  key_resource_id: 66
+  deliverables_order: 3,12,9,10,11,7,8,16
+  overlay_id: 243
+5:
+  id: 6
+  name: Analysis of Yahoo! Yootopia
+  description: Yootopia is a scrip system developed by Yahoo! Research for the purpose of exploring various group decision-making and group-prediction mechanisms.  My report provides descriptions of the mechanisms used, the philosophies behind the system, and discussion of the potential of such a system.
+  course_id: 19
+  created_at: 2009-01-18 08:27:45
+  updated_at: 2009-02-17 09:00:20
+  key_resource_id: 108
+  overlay_id: 246
+6:
+  id: 7
+  name: Analysis of MichiPoster.com
+  description: "MichiPoster.com was an interactive public-display system developed by fellow SIer Joshua Palay for the purpose of displaying information relevant to the SI community.  Even though the system has a target audience, MichiPoster.com is still by definition a pure public good and is susceptible to the same problems - most notably, free riding.
+
+    At the time of analysis, MichiPoster was still in its nascent stages, having been up for less than a year and in the process of adding a new display in SI's North campus.  MichiPoster therefore allowed me to track the effects of changes to the system and analyze its effectiveness in integrating with the lives and habits of the people of the School of Information.
+
+    By analyzing the data produced by Google Analytics, it was found to also be susceptible to the free-rider problem.  Specific recommendations on how to alleviate the issue, however, could not be given because the privacy-orientated nature of SI's community prevented accurate and detailed usage patterns from being collected by Google Analytics (most everybody disabled cookies from MichiPoster)"
+  course_id: 21
+  created_at: 2009-01-18 08:28:02
+  updated_at: 2009-02-17 21:02:09
+  key_resource_id: 120
+  overlay_id: 273
+7:
+  id: 8
+  name: Key Bindings
+  description: "In conjunction with the menu redesign project, I was tasked with conducting a usability audit of each of the applications' existing key bindings and recommend alternative mappings.  To achieve this, I also conducted comparative analysis of competitor products such as Microsoft's Visual Studio and OmniGraffle and modeled a typical application development workflow based on Apple's Cocoa (Objective-C) and RubyCocoa tutorials."
+  course_id: 27
+  created_at: 2009-01-18 10:28:08
+  updated_at: 2009-02-17 21:08:04
+  key_resource_id: 81
+  overlay_id: 222
+8:
+  id: 9
+  name: Survey
+  description: "I designed a 40-question survey regarding user experience and satisfaction with several applications in Apple's Xcode Developer Tools suite.  The survey's major goals were: 1) to find out whether or not Apple's core customers had evolved over the years; 2) whether or not users' mental models of specific features matched those of the development team; 3) to find out the level of satisfaction with their tools; and finally, 4) to make the survey short enough that it can be completed by attendees at WWDC.  The survey, however, was not deployed or conducted."
+  course_id: 27
+  created_at: 2009-01-18 10:28:19
+  updated_at: 2009-02-17 09:01:26
+  key_resource_id: 117
+  overlay_id: 270
+9:
+  id: 10
+  name: Code Analysis
+  description: "Rudimentary statistical analysis of randomly-selected source code was conducted in effort to answer several questions regarding programmers' editing preferences such as: 1) how many people use Xcode's line-wrapping feature? 2) does programming language matter? 3) how do formatting preferences change between development teams?&lt;br/&gt;Results were collected using Ruby and processed with R.  Outliers were culled (some files had thousands of lines of code while others had less than 100) and normalized.  "
+  course_id: 27
+  created_at: 2009-01-18 10:28:30
+  updated_at: 2009-02-17 21:09:16
+  key_resource_id: 96
+  overlay_id: 219
+10:
+  id: 11
+  name: Menu Redesign
+  description: "As part of acquainting me with Apple's Xcode Developer Tools suite, I was tasked with conducting a usability audit of the menus for Xcode, Interface Builder, and Dashcode and recommend changes so that they align more closely with the company's Human-Interface Guidelines (HIG)"
+  course_id: 27
+  created_at: 2009-01-18 10:29:07
+  updated_at: 2009-02-17 21:12:36
+  key_resource_id: 84
+  overlay_id: 225
+11:
+  id: 12
+  name: TV Disclaimer Noticeability
+  description: We took a television pharmaceutical advertisement and digitally edited out the disclaimer blurb to see whether or not viewers had noticed the difference.
+  course_id: 28
+  created_at: 2009-01-19 09:28:24
+  updated_at: 2009-02-17 09:02:24
+  key_resource_id: 108
+  overlay_id: 240
+12:
+  id: 13
+  name: Privacy Filter
+  description: "I developed a simple 2-step content-filtration system using a combination of bluetooth detection and AttentionMeter to control the type and scope of information that is displayed.  In short, I made a privacy filter for Ben's public display.
+
+    In the first step, the system takes as input the identities, distances of people from the display, attention level of people interacting with the display.  For each person, I assign   one of four &quot;phases of interaction&quot;, as described by (Vogel et al, 2004): ambient, implicit, subtle, and personal.  I split the last phase, personal interaction, into group interaction (more than one person interacting) and personal (a single person interacting).
+
+    In the second step, each individual's context is taken into account to filter out information that is inappropriate for the current context.  For example, calendar event details for an individual far away from the system should not be displayed, but details for someone looking directly at the display should be shown.
+
+    You can read more detail about my system at Ben's &lt;a href='http://situated.wordpress.com/proposals/'&gt;Situation Interactions Blog&lt;/a&gt;"
+  course_id: 25
+  created_at: 2009-02-09 02:11:43
+  updated_at: 2009-02-17 09:02:48
+  key_resource_id: 123
+  overlay_id: 264
+13:
+  id: 14
+  name: Xcode Message Bubbles Redesign
+  description: "One of Xcode's newest features were message bubbles: the ability to display various types of information (compilation errors, conditional breakpoints, etc.) within the Xcode editor itself.  However, one major issue with message bubbles was that its implementation (as of summer 2008) alters the formatting of the code itself by introducing line breaks.  Working with my manager and one of the DT developers, I conducted contextual inquiries within the department (especially the lead developer of the feature), created lo-fi image prototypes, mid-fi protoypes using Keynote, and hi-fi prototypes written in Cocoa (Objective-C)."
+  course_id: 27
+  created_at: 2009-02-10 10:39:15
+  updated_at: 2009-02-17 09:03:10
+  key_resource_id: 216
+  overlay_id: 231
