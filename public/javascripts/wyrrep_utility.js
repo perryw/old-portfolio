@@ -59,10 +59,11 @@ Lightview.changedPicture = function(event){
 		method: 'get',
 		parameters: 'authenticity_token=' + AUTH_TOKEN,
 		insertion: 'top',
-		asynchronous: false,
+		asynchronous: false/*,
         onComplete: function() {
-            document.fire('jsviz:clicked');
+            document.fire('jsviz:clicked');  // don't fire because it just slows things down
         }
+        */
 	});
 	return false;
 };
@@ -76,7 +77,7 @@ Lightview.observeCloseButtonUnbound = function(event) {
 	*/
   $('entire_gallery').show();
   document.fire('jsviz:clicked');
-	return false;
+  return false;
 }
 
 Lightview.observePrevNextUnbound = function(event) {
@@ -257,6 +258,7 @@ toggle_gallery_cloud = function(divname) {
 // from http://virtuelvis.com/gallery/canvas/searchlight-soft.html
 loadSpotLights = function(){
     Event.stopObserving(window, 'load', loadSpotLights);
+    copyGalleryTagClouds();
     $('loading').update("Drawing thumbnails...");
     $$('.gallery_image').each( function(elem){new SpotLight(elem);});
     $('loading').update("");
