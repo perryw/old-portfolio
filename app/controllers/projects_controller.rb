@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = Project.find(:all)
+    @projects = Project.find(:all, :include => :tags)
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
@@ -72,7 +72,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id], :include => [:resources, {:deliverables => [:resources, :tags, :collaborators]}, :tags])
     @resources_ordered = @project.ordered_resources
     @deliverables_ordered = @project.ordered_deliverables
     
@@ -101,7 +101,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id], :include => [:resources, :tags])
     @collaborators = Collaborator.find(:all)
     @courses = Course.find(:all)
     @keyable = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil })

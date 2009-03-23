@@ -37,7 +37,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.xml
   def show
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id], :include => [:resources, :tags])
     @resources_ordered = @course.ordered_resources
     @deliverables_ordered = @course.ordered_deliverables
     @projects_ordered = @course.ordered_projects
@@ -57,7 +57,10 @@ class CoursesController < ApplicationController
   # GET /courses/list/1
   # GET /courses/list/1.xml
   def list
-    @course = Course.find(params[:id])
+    @course = Course.find(params[:id], 
+      :include => [:resources, :deliverables, 
+        {:projects => {:deliverables => [:resources,:collaborators,:tags]}}, 
+        :tags])
     @other_tags = []
     @course.projects.each do |proj|
       @other_tags += proj.tag_list
@@ -105,7 +108,7 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.xml
   def index
-    @courses = Course.find(:all)
+    @courses = Course.find(:all, :include => :tags)
 
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb

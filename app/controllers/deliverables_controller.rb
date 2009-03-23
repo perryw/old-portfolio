@@ -31,7 +31,7 @@ class DeliverablesController < ApplicationController
   # GET /deliverables
   # GET /deliverables.xml
   def index
-    @deliverables = Deliverable.find(:all)
+    @deliverables = Deliverable.find(:all, :include => [:resources, :collaborators, :tags])
     tag_cloud
     #p "Tags are: #{@tags}"
 
@@ -44,7 +44,7 @@ class DeliverablesController < ApplicationController
   # GET /deliverables/1
   # GET /deliverables/1.xml
   def show
-    @deliverable = Deliverable.find(params[:id])
+    @deliverable = Deliverable.find(params[:id], :include => [:resources, :collaborators, :tags])
     #@resources_ordered = @deliverable.ordered_resources
     respond_to do |format|
       format.html {
@@ -71,7 +71,7 @@ class DeliverablesController < ApplicationController
 
   # GET /deliverables/1/edit
   def edit
-    @deliverable = Deliverable.find(params[:id])
+    @deliverable = Deliverable.find(params[:id], :include =>[:resources, :tags, :collaborators])
     @collaborators = Collaborator.all
     @owners = Project.all + Course.all
     @resources = Resource.find(:all, :conditions => { :parent_id => nil, :resource_owner_id => nil }) + Resource.find(:all, :conditions => {:parent_id => nil, :resource_owner_id => @deliverable.id})

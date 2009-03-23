@@ -4,12 +4,12 @@ class GalleryController < ApplicationController
   # GET /gallery
   # GET /gallery.xml
   def index
-    @deliverables = Deliverable.all
-    @projects = Project.all
+    @deliverables = Deliverable.find(:all, :include => :resources)
+    @projects = Project.find(:all, :include => :resources)
     @deliverable_tags = Deliverable.tag_counts
     @deliverable_tags.reject!{ |tag| tag.name.first == '*'} unless logged_in?
     @project_tags = Project.tag_counts
-    @projects_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
+    @project_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
     
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }# index.html.erb
@@ -17,7 +17,7 @@ class GalleryController < ApplicationController
     end
   end
   def deliverables
-    @deliverables = Deliverable.all
+    @deliverables = Deliverable.find(:all, :include => :resources)
     @deliverable_tags = Deliverable.tag_counts.reject{ |tag| tag.name.first == '*' }
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
@@ -25,7 +25,7 @@ class GalleryController < ApplicationController
     end
   end
   def projects
-    @projects = Project.all
+    @projects = Project.find(:all, :include => :resources)
     @project_tags = Project.tag_counts.reject{ |tag| tag.name.first == '*' }
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
