@@ -16,9 +16,12 @@
     <b>Url</b>
     <br/>
     <%= form.text_field :url %>
-	  <%= check_box :resource, :has_slideshare %> is SlideShare URL?
-	  <%= check_box :resource, :is_overlay %> is an overlay image?	
+    <%= check_box :resource, :has_slideshare %> is SlideShare URL?
+    <br/>
+    <b>Embed URL</b>
+    <%= form.text_field :embed %>
 </p>
+<%= check_box :resource, :is_overlay %> is an overlay image?	
 
 <p>
     <b>Description</b>

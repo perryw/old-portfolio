@@ -1,3 +1,10 @@
+.attribute_crumb p {
+  vertical-align: middle;
+  margin-left: 0;
+}
+#course_projects_list .thumbnail a {
+  display: inherit;
+}
 /* from
  * http://www.openplans.org/projects/topp-design/blog/2008/09/26/better-blockquotes/
  */

@@ -4,7 +4,7 @@ class GalleryController < ApplicationController
   # GET /gallery
   # GET /gallery.xml
   def index
-    @deliverables = Deliverable.find(:all, :include => :resources)
+    @deliverables = Deliverable.find(:all)
     @projects = Project.find(:all, :include => :resources)
     @deliverable_tags = Deliverable.tag_counts
     @deliverable_tags.reject!{ |tag| tag.name.first == '*'} unless logged_in?

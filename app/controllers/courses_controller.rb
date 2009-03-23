@@ -71,7 +71,7 @@ class CoursesController < ApplicationController
     @course.resources.each do |rez|
       @other_tags += rez.tag_list
     end
-    @other_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
+    @other_tags.reject!{ |tag| tag.first == '*' } unless logged_in?
     @other_tags.uniq!
     @resources_ordered = @course.ordered_resources
     @deliverables_ordered = @course.ordered_deliverables
