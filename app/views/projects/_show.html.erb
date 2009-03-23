@@ -26,7 +26,7 @@
 	<ul id='deliverables_list'>
   		<% @project.ordered_deliverables.each do |@deliverable| -%>
 		    <li id='deliverables_<%=@deliverable.id%>'>
-		      <%= render :partial => 'deliverables/show' %>
+              <%= render :partial => 'deliverables/show', :locals => {:hide_key => true} %>
 		    </li>
   		<% end -%>
 	</ul>

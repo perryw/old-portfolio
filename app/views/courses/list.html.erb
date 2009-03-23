@@ -33,7 +33,7 @@
               <span class='key'>Description: </span><span class='value'><%=project.snippet%><%=link_to ' (more)', project%></span>
               <ul>
                 <% for @deliverable in project.ordered_deliverables -%>
-                <li class='courses_list_project_deliverable' id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show' %></li>
+                <li class='courses_list_project_deliverable' id="courses_list_project_deliverable_<%=@deliverable.id%>"><%=render :partial => 'deliverables/show', :locals => {:hide_key => true} %></li>
                 <% end -%>
               </ul>
             </div>

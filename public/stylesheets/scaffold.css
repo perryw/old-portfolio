@@ -1,5 +1,10 @@
-.attribute_crumb p {
-  vertical-align: middle;
+#gallery_projects_tag_cloud_sidebar, #galery_deliverables_tag_cloud_sidebar {
+  padding-bottom:8px;
+}
+.deliv_show img {
+  float: left;
+}
+.noindent {
   margin-left: 0;
 }
 #course_projects_list .thumbnail a {
@@ -68,8 +73,10 @@ blockquote .close-quote {
   margin-right: auto;
 }
 #tag_cloud {
+  height: 150px;
   padding: 8px 0 8px 0;
   margin: 0 auto 0 8px;
+  overflow:hidden;
 }
 .attribute_crumb {
   vertical-align: middle;

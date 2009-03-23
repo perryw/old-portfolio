@@ -95,7 +95,7 @@
                       :method => :get,
                       :update => 'p_page',
                       :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
                   },
                   {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index")	}
                 %>
@@ -108,7 +108,8 @@
                     :method => :get,
                     :update => 'p_page',
                     :loading => "$('spinner_div').show()",
-                    :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')"
+                    :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')",
+                    :failure => "alert('failed to load projects. please refresh')"
                   },
                   {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects")	}
                  %>
@@ -122,7 +123,7 @@
                           :method => :get,
                           :update => 'p_page',
                           :loading => "$('spinner_div').show()",
-                          :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
+                          :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
                       },
                     {	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index")}
                  %>
@@ -135,7 +136,8 @@
                         :method => :get,
                         :update => 'p_page',
                         :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')"
+                        :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')",
+                        :failure => "alert('failed to load deliverables. please refresh')"
                     },
                     {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
                 %>
@@ -148,7 +150,8 @@
                       :method => :get,
                       :update => 'p_page',
                       :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()"
+                      :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()",
+                      :failure => "alert('failed to properly load gallery. please refresh')"
                   },
                   {	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
                %>
