@@ -108,7 +108,7 @@
                     :method => :get,
                     :update => 'p_page',
                     :loading => "$('spinner_div').show()",
-                    :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')",
+                    :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')",
                     :failure => "alert('failed to load projects. please refresh')"
                   },
                   {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects")	}
@@ -136,7 +136,7 @@
                         :method => :get,
                         :update => 'p_page',
                         :loading => "$('spinner_div').show()",
-                        :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')",
+                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')",
                         :failure => "alert('failed to load deliverables. please refresh')"
                     },
                     {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables")}
@@ -150,7 +150,7 @@
                       :method => :get,
                       :update => 'p_page',
                       :loading => "$('spinner_div').show()",
-                      :success => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()",
+                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); Lightview.updateViews(); document.fire('jsviz:clicked'); loadSpotLights()",
                       :failure => "alert('failed to properly load gallery. please refresh')"
                   },
                   {	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index") }
