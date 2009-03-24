@@ -227,7 +227,7 @@ copyGalleryTagClouds = function() {
     //pCloud.style.visibility = ''; //pCloud.show();
     Element.show(pCloud);
     Event.observe(pCloud, 'mouseover', function(){ $('tag_cloud').morph('height:'+$('gallery_projects_tag_cloud_sidebar').getHeight()+'px'); return false;});
-    Event.observe(pCloud, 'mouseout', function(){ if(!$('tag_cloud').select('.highlight').length){return false;}$('tag_cloud').morph('height:150px'); return false;});
+    Event.observe(pCloud, 'mouseout', function(){ if($('tag_cloud').select('.highlight').length){return false;}$('tag_cloud').morph('height:150px'); return false;});
     Element.insert(sideBar,pCloud);
   }
   if ($('gallery_deliverables_tag_cloud')) {
@@ -236,7 +236,7 @@ copyGalleryTagClouds = function() {
     if( !$('gallery_projects_tag_cloud') ){
       Element.show(dCloud);
       Event.observe(dCloud, 'mouseover', function(){ $('tag_cloud').morph('height:'+$('gallery_deliverables_tag_cloud_sidebar').getHeight()+'px'); return false;});
-      Event.observe(dCloud, 'mouseout', function(){ if(!$('tag_cloud').select('.highlight').length){return false;} $('tag_cloud').morph('height:150px;'); return false;});
+      Event.observe(dCloud, 'mouseout', function(){ if($('tag_cloud').select('.highlight').length){return false;} $('tag_cloud').morph('height:150px;'); return false;});
     }
     Element.insert(sideBar, dCloud);
   }
