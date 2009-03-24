@@ -446,7 +446,10 @@ var SpotLight = Class.create({
       else {
         context.fillStyle = "rgba(255,255,255,0.4)";
         context.fillRect(0, 0, canvas.width, canvas.height);
-        context.drawImage(overlayImg, 0, 0);
+        try {
+          if(overlayImg.complete) //http://www.comptechdoc.org/independent/web/cgi/javamanual/javaimage.html
+            context.drawImage(overlayImg, 0, 0);
+        }catch(e){alert(e.name+' '+e.message);}
       }
       this.overlayImg = overlayImg;
     }
@@ -460,10 +463,9 @@ var SpotLight = Class.create({
       context.fillStyle = "rgba(255,255,255,0.4)";
       context.fillRect(0,0,canvas.width, canvas.height); 
       try {
-        context.drawImage(this.overlayImg, 0, 0);
+        if(this.overlayImage.complete)
+          context.drawImage(this.overlayImg, 0, 0);
       } catch (e) {
-        //alert('error trying to draw ' + this.overlayImg.src + ' for img ' +
-        //this.img.src);
         alert(e.name + ' ' + e.message);
       }
     }
