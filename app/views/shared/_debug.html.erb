@@ -16,9 +16,11 @@
 	<div id='json_div'> </div><br/>
   <a href="#" onclick="Element.toggle('stats_debug_info');return false">Stats</a>
 
-  <fieldset id="stats_debug_info" class="debug_info" style="display: none">
-			<div>Controller Queries: <%= queries.count_with_label :controller %></div>
-			<div>View Queries: <%= queries.count_with_label :view %></div>
-      <div>Runtime: <%= queries.runtime %></div>
-  </fieldset>
+  <% if false -%><!-- re-install query_stats and/or query_analyzer for query info -->
+    <fieldset id="stats_debug_info" class="debug_info" style="display: none">
+              <div>Controller Queries: <%= queries.count_with_label :controller %></div>
+              <div>View Queries: <%= queries.count_with_label :view %></div>
+        <div>Runtime: <%= queries.runtime %></div>
+    </fieldset>
+  <% end -%>
 </div>

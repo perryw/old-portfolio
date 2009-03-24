@@ -113,6 +113,10 @@ class SessionsController < ApplicationController
 
   private
 
+  def using_open_id?
+    false
+  end
+
   def successful_login(user)
     # Protects against session fixation attacks, causes request forgery
     # protection if user resubmits an earlier form using back
