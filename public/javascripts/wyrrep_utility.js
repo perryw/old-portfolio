@@ -375,26 +375,33 @@ var SpotLight = Class.create({
     return true;
   },
   fadeOut: function(intervalID) {
-    if( this.context.globalAlpha > 0.1 ) {
-      this.context.globalAlpha -= 0.1;
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    var context = this.context;
+    if( context.globalAlpha > 0.1 ) {
+      context.globalAlpha -= 0.1;
+      context.globalCompositeOperation = "copy";
+      context.fillStyle = "rgba(0,0,0,0)";
+      context.fillRect(0,0,this.canvas.width, this.canvas.height);
+      //context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       if( !this.overlayImg || !this.overlayImg.src || this.overlayImg.src == '') {
         if(console.log) console.warn('overlayimg not properly loaded');
         return;
       }
-      try{ this.context.drawImage(this.overlayImg, 0, 0);
+      try{ context.drawImage(this.overlayImg, 0, 0);
       }catch(e){
       if(console.error) console.log('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
     }
     else {
-      this.context.save();
-      this.context.globalAlpha = 0.06;
-      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      try{ this.context.drawImage(this.overlayImg, 0, 0);
+      context.save();
+      context.globalAlpha = 0.06;
+      context.globalCompositeOperation = "copy";
+      context.fillStyle = "rgba(0,0,0,0)";
+      context.fillRect(0,0,this.canvas.width, this.canvas.height);
+      //context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      try{ context.drawImage(this.overlayImg, 0, 0);
       }catch(e){if(console.error) console.error('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
-      this.context.restore();
+      context.restore();
       clearInterval(intervalID);
-      this.context.globalAlpha = 1.0;
+      context.globalAlpha = 1.0;
     }
 
     return true;
@@ -420,7 +427,10 @@ var SpotLight = Class.create({
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
     }
-    this.context.clearRect(0,0,canvas.width, canvas.height);
+    context.globalCompositeOperation = "copy";
+    context.fillStyle = "rgba(0,0,0,0)";
+    context.fillRect(0,0,canvas.width, canvas.height);
+    //this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     if (!this.overlayImg) {
       var overlayImg = canvas.childElements()[1];
