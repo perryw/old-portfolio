@@ -34,6 +34,6 @@
 	<% end -%>
 
 	<span class='gallery_tags'>
-      <%=index.tag_list.reject{|tag| tag.first == '*'}.collect{ |dt| link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr('^a-zA-Z0-9-_:.', '_')} tag") }.join(', ') %>
+      <%=filter_tag_list_unless(logged_in?,index.tag_list).collect{ |dt| link_to_function(dt, "toggleGalleryImgsByTag('#{dt}', '#{divname}')", :class => "#{dt.tr('^a-zA-Z0-9-_:.', '_')} tag") }.join(', ') %>
 	</span>
 </div>
