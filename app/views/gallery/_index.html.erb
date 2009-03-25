@@ -7,8 +7,8 @@
           %>
           <p>
             <canvas id='gallery_image_<%=index.id%>' src="<%=img.public_filename(:thumb)%>" overlay="<%=overlay_url%>" class='gallery_image'>
-               <%= image_tag(img.public_filename(:thumb), { :id => "cgallery_image_#{index.id}"}) %>
-               <%= image_tag( overlay_url, { :id => "cgallery_overlay_#{index.id}"}) %>
+            <%= image_tag(img.public_filename(:thumb), { :link_to => url_for(index), :class => 'gallery_background', :id => "cgallery_image_#{index.id}"}) %>
+              <%= image_tag( overlay_url, { :class => 'hideme', :id => "cgallery_overlay_#{index.id}"}) %>
             </canvas>
           </p>
 		<% elsif img.has_slideshare -%>
@@ -16,8 +16,8 @@
                   :title => "#{index.name} :: #{snippet} #{link_to 'More Detail', url_for(index)}"} %>
           <p>
             <canvas id='gallery_image_<%=index.id%>' src="/images/slideshare_200x50.png" overlay="<%=overlay_url%>" class='gallery_image'>
-              <%= image_tag('slideshare_200x50.png', { :id => "cgallery_image_#{index.id}" }) %>
-              <%= image_tag( overlay_url, { :id => "cgallery_overlay_#{index.id}"}) %>
+              <%= image_tag('slideshare_200x50.png', { :link_to => url_for(index), :class => 'gallery_background', :id => "cgallery_image_#{index.id}" }) %>
+              <%= image_tag( overlay_url, { :class => 'hideme', :id => "cgallery_overlay_#{index.id}"}) %>
             </canvas>
           </p>
 		<% end -%>
@@ -27,8 +27,8 @@
                   :title => "#{index.name} :: #{snippet || ''} #{link_to 'More Detail', url_for(index)}"} %>
       <p>
         <canvas id='gallery_image_<%=index.id%>' src="/images/no_image.png" overlay="<%=overlay_url%>" class='gallery_image'> 
-          <%= image_tag '/images/no_image.png', { :id => "cgallery_image_#{index.id}" } %>
-          <%= image_tag( overlay_url, { :id => "cgallery_overlay_#{index.id}"}) %>
+          <%= image_tag '/images/no_image.png', { :link_to => url_for(index), :class => 'gallery_background', :id => "cgallery_image_#{index.id}" } %>
+          <%= image_tag( overlay_url, { :class => 'hideme', :id => "cgallery_overlay_#{index.id}"}) %>
         </canvas>
       </p>
 	<% end -%>
