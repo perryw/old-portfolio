@@ -19,7 +19,7 @@ class GalleryController < ApplicationController
   def deliverables
     @deliverables = Deliverable.find(:all, :include => :resources)
     @deliverable_tags = Deliverable.tag_counts
-    @deliverable_tags.reject{ |tag| tag.name.first == '*' } unless logged_in?
+    @deliverable_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
       format.xml  { render :xml => @gallery }
@@ -28,7 +28,7 @@ class GalleryController < ApplicationController
   def projects
     @projects = Project.find(:all, :include => :resources)
     @project_tags = Project.tag_counts
-    @project_tags.reject{ |tag| tag.name.first == '*' } unless logged_in?
+    @project_tags.reject!{ |tag| tag.name.first == '*' } unless logged_in?
     respond_to do |format|
       format.html { render :layout => false if request.xhr? }
       format.xml  { render :xml => @gallery }
