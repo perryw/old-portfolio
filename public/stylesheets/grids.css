@@ -111,7 +111,7 @@ version: 3.0.0pr1
 	.yui-b{_position:static;}
 	.yui-main .yui-b{position:static;}
 
-	.yui-main {width:100%;}
+	.yui-main {width:auto;}
 		
 	.yui-t1 .yui-main,
 	.yui-t2 .yui-main,
@@ -138,8 +138,8 @@ version: 3.0.0pr1
 	.yui-t2 .yui-b {float:left;width:13.84615em;*width:13.50em;}
 	.yui-t2 .yui-main .yui-b {margin-left:14.84615em;*margin-left:14.475em;}
 
-	.yui-t3 .yui-b {float:left;width:15.0769em;*width:22.50em;}
-	.yui-t3 .yui-main .yui-b {margin-left:15.0769em;*margin-left:14.475em;}
+	.yui-t3 .yui-b {float:left;width:15.0769em;*width:15.0769em;}
+	.yui-t3 .yui-main .yui-b {margin-left:15.0769em;*margin-left:15.0769em;}
 
 	.yui-t4 .yui-b {float:right;width:13.8456em;*width:13.50em;}
 	.yui-t4 .yui-main .yui-b {margin-right:14.8456em;*margin-right:14.475em;}

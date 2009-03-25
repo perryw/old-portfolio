@@ -1,3 +1,6 @@
+.hideme {
+  display: none;
+}
 .smaller {
   font-size: 90%;
   float: right;

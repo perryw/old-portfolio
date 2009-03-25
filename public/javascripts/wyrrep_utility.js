@@ -271,7 +271,19 @@ loadSpotLights = function(){
     Event.stopObserving(window, 'load', loadSpotLights);
     copyGalleryTagClouds();
     $('loading').update("Drawing thumbnails...");
-    $$('.gallery_image').each( function(elem){new SpotLight(elem);});
+    var canvases = $$('.gallery_image');
+    if(canvases[0].getContext){
+      $$('.gallery_image').each( function(elem){ 
+        new SpotLight(elem);
+      });
+    }
+    else {
+      $$('.gallery_background').each( function(elem) {
+        elem.observe('click', function(e){
+          window.location = Event.element(e).link_to;
+        });
+      });
+    }
     $('loading').update("");
 }
 var SpotLight = Class.create({
