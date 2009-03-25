@@ -95,8 +95,10 @@ Lightview.observePrevNextUnbound = function(event) {
 
 Lightview.observeClicksUnbound = function(event){ // add observer for button clicks on lightview
 
-	if(!AUTH_TOKEN)
-		alert('no authenticity token set!');
+	if(!AUTH_TOKEN){
+      if(console.error)
+		console.error('no authenticity token set!');
+    }
 	var source = event.target;
 	source = (source == null)? null : source.href;
 
@@ -192,8 +194,9 @@ toggleDivByTag = function(container_prefix, container_id, nameOfTag) {
 	if (tmp && tmp.first() )
 		hasHighlight = tmp.first().hasClassName('highlight');
 	else {
-		alert("moveTo: don't know what to do with tag '"+nameOfTag+"'");
-		return false;
+      if(console.error)
+		console.error("moveTo: don't know what to do with tag '"+nameOfTag+"'");
+      return false;
 	}
 	
 	var numHighlightedTags = $('project_'+container_id+'_deliverables_tags').select('.highlight').length;
@@ -220,9 +223,11 @@ toggleInfoLink = function(project_prefix, project_id, link_elem) {
 copyGalleryTagClouds = function() {
   var sideBar = $('tag_cloud');
   if(sideBar) sideBar.innerHTML = '';
+  var deSelect = new Element('a', {'class':'smaller', href:$$('.current')[0].childElements()[0].href, "onclick":"$('tag_cloud').select('.highlight').invoke('toggleClassName','highlight'); return false;"}).update("select none");
+  sideBar.insert(deSelect, {position: top});
   if ($('gallery_projects_tag_cloud')) {
     var pCloud = Element.extend($('gallery_projects_tag_cloud').cloneNode(true));
-    if( !pCloud ) alert('ERROR: pCloud is null');
+    if( !pCloud ) { if(console.error) console.error('ERROR: pCloud is null'); }
     pCloud.id = 'gallery_projects_tag_cloud_sidebar';
     //pCloud.style.visibility = ''; //pCloud.show();
     Element.show(pCloud);
@@ -449,7 +454,7 @@ var SpotLight = Class.create({
         try {
           if(overlayImg.complete) //http://www.comptechdoc.org/independent/web/cgi/javamanual/javaimage.html
             context.drawImage(overlayImg, 0, 0);
-        }catch(e){alert(e.name+' '+e.message);}
+        }catch(e){if(console.error) console.error(e.name+' '+e.message);}
       }
       this.overlayImg = overlayImg;
     }
@@ -463,10 +468,10 @@ var SpotLight = Class.create({
       context.fillStyle = "rgba(255,255,255,0.4)";
       context.fillRect(0,0,canvas.width, canvas.height); 
       try {
-        if(this.overlayImage.complete)
+        if(this.overlayImg.complete)
           context.drawImage(this.overlayImg, 0, 0);
       } catch (e) {
-        alert(e.name + ' ' + e.message);
+        if(console.error) console.error(e.name + ' ' + e.message);
       }
     }
     context.restore();
@@ -488,7 +493,7 @@ var SpotLight = Class.create({
     context.fillStyle=gradient; //"rgba(255,255,255,1)";
     try{
       context.translate(x||old_x, y||old_y);
-      }catch(e){ alert('error trying to translate to ' +x+', ' + y); }
+      }catch(e){ if(console.error) console.error('error trying to translate to ' +x+', ' + y); }
     context.arc(0,0,radius,0,2*Math.PI,false);
     context.closePath();
     context.fill();

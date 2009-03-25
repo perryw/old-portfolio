@@ -1,3 +1,9 @@
+.smaller {
+  font-size: 90%;
+  float: right;
+  margin-top: -4px;
+  padding-right: 16px;
+}
 #tgp {
   padding: 0 16px 0 16px;
   background-color: transparent;
