@@ -223,7 +223,7 @@ toggleInfoLink = function(project_prefix, project_id, link_elem) {
 copyGalleryTagClouds = function() {
   var sideBar = $('tag_cloud');
   if(sideBar) sideBar.innerHTML = '';
-  var deSelect = new Element('a', {'class':'smaller', href:$$('.current')[0].childElements()[0].href, "onclick":"$('tag_cloud').select('.highlight').invoke('toggleClassName','highlight'); return false;"}).update("select none");
+  var deSelect = new Element('a', {'class':'smaller', href:Element.childElements($$('.current')[0]).href, "onclick":"$('tag_cloud').select('.highlight').invoke('toggleClassName','highlight'); return false;"}).update("select none");
   sideBar.insert(deSelect, {position: top});
   if ($('gallery_projects_tag_cloud')) {
     var pCloud = Element.extend($('gallery_projects_tag_cloud').cloneNode(true));
@@ -279,15 +279,24 @@ loadSpotLights = function(){
     }
     else {
       $$('.gallery_background').each( function(elem) {
+        //var linky = elem.up(2).childElements()[0].cloneNode(false);
+        //linky.update('');
         elem.observe('click', function(e){
           window.location = Event.element(e).link_to;
         });
-      });
+        elem.observe('mouseover', function(){
+          document.body.style.cursor='pointer';
+        });
+        elem.observe('mouseout', function() {
+          document.body.style.cursor='default';
+        });
+    });
     }
     $('loading').update("");
 }
 var SpotLight = Class.create({
   initialize: function(elem) {
+    this.isWebKit = navigator.userAgent.toLowerCase().indexOf('webkit') > -1;
     if( elem.tagName == "IMG" ) { // FIX THIS TO embed IMG instead of replacing
       var canvas = new Element("canvas", { "id": elem.id} );
       elem.parentNode.replaceChild(canvas, elem);
@@ -398,7 +407,8 @@ var SpotLight = Class.create({
       context.globalCompositeOperation = "copy";
       context.fillStyle = "rgba(0,0,0,0)";
       context.fillRect(0,0,this.canvas.width, this.canvas.height);
-      //context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      if(this.ischrome)
+        context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       if( !this.overlayImg || !this.overlayImg.src || this.overlayImg.src == '') {
         if(console.log) console.warn('overlayimg not properly loaded');
         return;
@@ -409,13 +419,14 @@ var SpotLight = Class.create({
     }
     else {
       context.save();
-      context.globalAlpha = 0.06;
-      context.globalCompositeOperation = "copy";
-      context.fillStyle = "rgba(0,0,0,0)";
-      context.fillRect(0,0,this.canvas.width, this.canvas.height);
-      //context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-      try{ context.drawImage(this.overlayImg, 0, 0);
-      }catch(e){if(console.error) console.error('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
+      if(this.isWebKit){
+        context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      }
+      else{
+        context.globalAlpha = 0.06;
+        try{ context.drawImage(this.overlayImg, 0, 0);
+        }catch(e){if(console.error) console.error('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
+      }
       context.restore();
       clearInterval(intervalID);
       context.globalAlpha = 1.0;
@@ -444,10 +455,7 @@ var SpotLight = Class.create({
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
     }
-    context.globalCompositeOperation = "copy";
-    context.fillStyle = "rgba(0,0,0,0)";
-    context.fillRect(0,0,canvas.width, canvas.height);
-    //this.context.clearRect(0,0,canvas.width, canvas.height);
+    this.context.clearRect(0,0,canvas.width, canvas.height);
     context.save();
     if (!this.overlayImg) {
       var overlayImg = canvas.childElements()[1];
