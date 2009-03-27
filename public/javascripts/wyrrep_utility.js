@@ -137,7 +137,14 @@ updateCurrMenuItem = function(newCurr) {
 	if(oldCurr.size()) 
       oldCurr[0].removeClassName('current');
 	var itm = $(newCurr).ancestors()[0];
-	if(itm) itm.addClassName('current');
+	if(itm){
+      itm.addClassName('current');
+      window.location.hash = $(newCurr).name;
+    }
+    else if(console.error){
+      console.error('error, could not find element with id='+newCurr);
+    }
+    return false;
 };
 toggleGalleryImgsByTag = function(tagName, containerName){
 	var container = $(containerName);
@@ -413,9 +420,11 @@ var SpotLight = Class.create({
         if(console.log) console.warn('overlayimg not properly loaded');
         return;
       }
-      try{ context.drawImage(this.overlayImg, 0, 0);
+      try{ 
+        if(this.overlayImg.complete)
+          context.drawImage(this.overlayImg, 0, 0);
       }catch(e){
-      if(console.error) console.log('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
+      if(console.error) console.error('error with fadeOut on ' + this.overlayImg.src + ' , GA>0.1: ' + e.name + ' ' + e.message);}
     }
     else {
       context.save();
@@ -424,7 +433,9 @@ var SpotLight = Class.create({
       }
       else{
         context.globalAlpha = 0.06;
-        try{ context.drawImage(this.overlayImg, 0, 0);
+        try{ 
+          if(this.overlayImg.complete)
+            context.drawImage(this.overlayImg, 0, 0);
         }catch(e){if(console.error) console.error('error fadeOut on ' + this.overlayImg.src + ' : ' + e.name + ' ' + e.message);}
       }
       context.restore();

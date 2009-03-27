@@ -54,13 +54,14 @@ JSONTreeLoader.prototype.load = function( ) {
 			window.CURR_CRUMB = parseInt(transport.responseText);
 		},
 		onFailure: function(request) { 
-			alert('failed to get current breadcrumb index with response ' + request); 
+          if(console.error)
+			console.error('failed to get current breadcrumb index with response ' + request); 
 		}
 	} );
 	new Ajax.Request('/breadcrumbs/get_breadcrumb', {
 		asynchronous:false, 
 		method:'get', 
-		onFailure:function(request){ alert('failed to get breadcrumb for JSViz'); }, 
+		onFailure:function(request){ if(console.error)console.error('failed to get breadcrumb for JSViz'); }, 
 		onSuccess: function(request){
 			localScope.handle(request);
 		}

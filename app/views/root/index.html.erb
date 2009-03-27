@@ -9,14 +9,16 @@
 	<% end -%><% end -%>
 <% end -%>
 
-<h1>Welcome to my application.</h1>
+<h1>Welcome to my online portfolio.</h1>
 <br/><br/>
- <div>
- 	<h6>Last 5 Checkins to the project, from Redmine's <span><a class='atom_feed' href='http://redmine.wyrrep.com/repositories/revisions/portfolio?format=atom'>Atom Feed</a></span></h2>
-	<ul>
-		<% for itm in @feed.items[0..4] -%>
-			<li><span class='key'><%= itm.title %></span>, <%= itm.description %></li>
-		<% end -%>
-	</ul>
- </div>
-
+<div>
+  <p style='margin-left: 16px; text-indent:-16px'>
+    <b>Note:</b> if you encounter Phusion Passenger errors that look like:<br/> 
+    <%= image_tag 'phusion_crash.png', :width => '25%', :height => '25%' %><br/>
+    or encounter an empty page, please refresh or click the link again.
+  </p>
+  <br/>
+  <p style='margin-left: 16px; text-indent:-16px'>
+  <b>Note #2:</b> this site is optimized for Firefox 3 and Safari 3&4, and works for the most part in Chrome (<a href='http://code.google.com/p/chromium/issues/detail?id=5281'>see here</a>) and the iPhone.  IE users will not be able to see any interactions involving SVG and CANVAS elements (sorry).
+  </p>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <h6>Last 5 Checkins to the project, from Redmine's <span><a class='atom_feed' href='http://redmine.wyrrep.com/repositories/revisions/portfolio?format=atom'>Atom Feed</a></span></h6>
+  <ul>
+      <% for itm in @feed.items[0..4] -%>
+          <li><span class='key'><%= itm.title %></span>, <%= itm.description %></li>
+      <% end -%>
+  </ul>
+</div>
+
