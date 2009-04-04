@@ -8,41 +8,41 @@
 	<!--%= stylesheet_link_tag 'Jash' %-->
 	<!--%= javascript_include_tag 'Jash' %-->
 	
-	<%= stylesheet_link_tag 'reset' %>
-	<%= stylesheet_link_tag 'fonts' %>
-	<%= stylesheet_link_tag 'grids' %>
-	<%= stylesheet_link_tag 'base' %>
-	<%= stylesheet_link_tag 'main' %>
+    <%= stylesheet_link_tag 'reset' %>
+    <%= stylesheet_link_tag 'fonts' %>
+    <%= stylesheet_link_tag 'grids' %>
+    <%= stylesheet_link_tag 'base' %>
+    <%= stylesheet_link_tag 'main' %>
 	
-	<%= stylesheet_link_tag 'scaffold' %>
-	<%= stylesheet_link_tag 'gallery' %>
-	<%= stylesheet_link_tag 'menu' %>
-	<%= stylesheet_link_tag 'breadcrumb' %>
-	<%= stylesheet_link_tag 'lightview' %>
+    <%= stylesheet_link_tag 'scaffold' %>
+    <%= stylesheet_link_tag 'gallery' %>
+    <%= stylesheet_link_tag 'menu' %>
+    <%= stylesheet_link_tag 'breadcrumb' %>
+    <%= stylesheet_link_tag 'lightview' %>
 
     <%= stylesheet_link_tag 'resume' %>
 </head>
 <body>
 	<div class='loading-container'><span id="loading">Loading CSS</span></div>
 	<%= javascript_tag 'var divtag=document.getElementById("loading"); divtag.innerHTML="Loading prototype...";' %>
-	<%= javascript_include_tag 'prototype' %>
+    <%= javascript_include_tag 'prototype_min' %>
 
 	<%= javascript_tag '$("loading").innerHTML="Now setting javascript variables...";' %>
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 	<%= javascript_tag "var CURR_CRUMB = #{session['breadcrumb_index']};"%>
 			
 	<%= javascript_tag '$("loading").innerHTML= "Loading script.aculo.us...";' %>
-	<%= javascript_include_tag 'scriptaculous'  %>
+    <%= javascript_include_tag 'scriptaculous_min'  %>
 	<%= javascript_include_tag :defaults %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Loading Lightview files...";' %>
-	<%= javascript_include_tag 'lightview' %>
+    <%= javascript_include_tag 'lightview' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding observers for Lightview buttons & utility functions...";' %>
-	<%= javascript_include_tag 'wyrrep_utility' %>
+    <%= javascript_include_tag 'wyrrep_utility' %>
 	
 	<%= javascript_tag '$("loading").innerHTML="Adding support for in-place edit...";' %>
-	<%= javascript_include_tag 'inplaceeditor_empty.js' %>
+    <%= javascript_include_tag 'inplaceeditor_empty_min' %>
 	<%= javascript_tag '$("loading").update("");' %>
 
 	<div id="main" class="yui-d2f"><!-- start YUI layout -->
@@ -55,161 +55,10 @@
               </div> 
 	    	</div> 
     		<div class="yui-u user_bar">
-				<%= render :partial => "shared/user_bar" %>
+              <%= render :partial => "shared/user_bar" %>
 			</div> 
 			<div id="menu_container">
-            <% ubermenu :id => 'blue', :class=>'menu' do |m| %>
-              <% m.action 'Homepage', root_path %>
-              <% if_logged_in? do %>
-                <% m.action 'Members', members_path, :class => 'menu_admin'%>
-                <% m.remote_action 'Collaborators', {
-                        :url => {
-                            :controller => 'collaborators',
-                            :action => 'index'
-                        },
-                        :method => :get,
-                        :update => 'p_page',
-                        :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_collaborators'); document.fire('jsviz:clicked')"
-                    },
-                    {	:id => 'menu_collaborators', :href => url_for(:controller => "collaborators", :action => "index"), :name => 'collaborators' }
-                 %>
-                <% m.remote_action "Courses", {
-                        :url=>{
-                            :controller=>'courses',
-                            :action=>'index'
-                        }, 
-                        :method => :get,
-                        :update => 'p_page',
-                        :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_courses'); document.fire('jsviz:clicked')"
-                    },
-                    {	:id => 'menu_courses', :href => url_for(:controller => "courses", :action => "index"), :name => 'courses' }
-                 %>
-              <% end -%>
-              <% if logged_in? -%>
-                <% m.remote_action 'Projects', {
-                        :url => {
-                          :controller => 'projects',
-                          :action => 'index'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); document.fire('jsviz:clicked')"
-                  },
-                  {	:id => 'menu_projects', :href => url_for(:controller => "projects", :action => "index"), :name => 'projects' }
-                %>
-              <% else -%>
-                <% m.remote_action 'Projects', {
-                    :url => {
-                        :controller => 'gallery',
-                        :action => 'projects'
-                    },
-                    :method => :get,
-                    :update => 'p_page',
-                    :loading => "$('spinner_div').show()",
-                    :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_projects'); loadSpotLights(); document.fire('jsviz:clicked')",
-                    :failure => "alert('failed to load projects. please refresh')"
-                  },
-                  {	:id => 'menu_projects', :href => url_for(:controller => "gallery", :action => "projects"), :name => 'projects' }
-                 %>
-              <% end -%>
-              <% if logged_in? -%>
-                <% m.remote_action 'Deliverables', {
-                                  :url => {
-                                      :controller => 'deliverables',
-                                      :action => 'index'
-                    },
-                          :method => :get,
-                          :update => 'p_page',
-                          :loading => "$('spinner_div').show()",
-                          :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); document.fire('jsviz:clicked')"
-                      },
-                      {	:id => 'menu_deliverables', :href => url_for(:controller=>"deliverables", :action => "index"), :name => 'deliverables' }
-                 %>
-              <% else -%>
-                <% m.remote_action 'Deliverables', {
-                        :url => {
-                            :controller => 'gallery',
-                            :action => 'deliverables'
-                        },
-                        :method => :get,
-                        :update => 'p_page',
-                        :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_deliverables'); loadSpotLights(); document.fire('jsviz:clicked')",
-                        :failure => "alert('failed to load deliverables. please refresh')"
-                    },
-                    {	:id => 'menu_deliverables', :href => url_for(:controller=>"gallery", :action => "deliverables"), :name => 'deliverables' }
-                %>
-              <% end -%>
-              <% m.remote_action 'Gallery', {
-                      :url => {
-                          :controller => 'gallery',
-                          :action => 'index'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_gallery'); loadSpotLights(); document.fire('jsviz:clicked'); Lightview.updateViews()",
-                      :failure => "alert('failed to properly load gallery. please refresh')"
-                  },
-                  {	:id => 'menu_gallery', :href => url_for(:controller => "gallery", :action => "index"), :name => 'gallery' }
-               %>
-              <% if logged_in? -%>
-                <% m.remote_action 'Resources', {
-                        :url => {
-                            :controller => 'resources',
-                            :action => 'index'
-                        },
-                        :method => :get,
-                        :update => 'p_page',
-                        :loading => "$('spinner_div').show()",
-                        :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_resources'); document.fire('jsviz:clicked')"
-                    },
-                    {	:id => 'menu_resources', :href => url_for(:controller => "resources", :action => "index"), :name => 'resources' }
-                 %>								
-               <% end -%>
-               <% m.remote_action 'About Me', {
-                      :url => {
-                        :controller => 'about',
-                        :action => 'index'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_about');document.fire('jsviz:clicked')"
-                  },
-                  { :id => 'menu_about', :href => url_for(:controller => "about", :action => "index"), :name => 'about' }
-               %>
-               <% m.remote_action 'Resume', {
-                      :url => {
-                        :controller => 'myself',
-                        :action => 'resume'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_myself');document.fire('jsviz:clicked')"
-                  },
-                  { :id => 'menu_myself', :href => url_for(:action => "resume", :controller => "myself"), :name => 'resume' }
-               %>
-               <% m.remote_action 'SVN History', {
-                      :url => {
-                        :controller => 'history',
-                        :action => 'index'
-                      },
-                      :method => :get,
-                      :update => 'p_page',
-                      :loading => "$('spinner_div').show()",
-                      :complete => "$('spinner_div').hide(); updateCurrMenuItem('menu_history');document.fire('jsviz:clicked')"
-                  },
-                  { :id => 'menu_history', :href => url_for(:action => "index", :controller => "history"), :name => 'history' }
-               %>
-              <% if_admin? do %>
-                <% m.action 'Admin', admin_controls_path, :class => 'menu_admin' %>
-              <% end %>
-            <% end %>
+              <%= render :partial => 'shared/menu' %>
 			</div>
 			<div id='rails_messages'>
 				<%= flash_messages %>

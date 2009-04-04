@@ -9,6 +9,7 @@
 .tr { background: url(/images/tr3.png) 100% 0 no-repeat }
 #bd {
 	margin-left: 16px;
+    margin-right: 16px;
 }
 #bd #left_column {
 	margin-top: 0;

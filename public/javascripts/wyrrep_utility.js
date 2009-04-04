@@ -131,15 +131,58 @@ Lightview.notObserved = true;
 Event.observe(document, 'dom:loaded', function(){
 	Lightview.attachPerryEvents();
 });
+checkHashName = function() { // adapted from http://www.ajaxonomy.com/2008/web-design/a-better-ajax-back-button-part2 and the Gucci online store
+  if(window.location.hash != window.currentHash){
+    var hashName = window.location.hash.sub('#','');
+    var hashNameLow = hashName.toLowerCase();
+    if(!window.cache)
+      window.cache = new Hash();
+    if(window.cache[hashNameLow]){
+      $('p_page').update(window.cache[hashNameLow]);
+    }
+    new Ajax.Request('/'+hashNameLow, 
+      {
+        asynchronous:true, evalScripts:true, method:'get', 
+        onComplete:function(request){
+          $('spinner_div').hide(); 
+          if(request.reponseText != $('p_page').innerHTML)
+            $('p_page').update(request.responseText);
+          updateCurrMenuItem('menu_'+hashNameLow, request.responseText); 
+          loadSpotLights(); 
+          document.fire('jsviz:clicked'); 
+        }, 
+        onFailure:function(request){
+          if(console.error)
+            console.error('failed to load '+hashNameLow+'. please refresh');
+        }, 
+        onLoading:function(request){
+          if(!window[hashName])
+            $('spinner_div').show();
+        }, 
+        parameters:'authenticity_token=' + encodeURIComponent('95f49415b042b6d94cc517d4fdb15a47d4f73b55')
+      }
+    ); 
+    window.currentHash = window.location.hash;
+  }
+  return false;
+};
+Event.observe(window, 'load', function() { window.currentHash = ''; window.checkHashNameInterval = new PeriodicalExecuter(checkHashName, 0.5);});
 
-updateCurrMenuItem = function(newCurr) {
+updateCurrMenuItem = function(newCurr, cacheContent) {
 	var oldCurr = $$('.current');
 	if(oldCurr.size()) 
       oldCurr[0].removeClassName('current');
 	var itm = $(newCurr).ancestors()[0];
 	if(itm){
       itm.addClassName('current');
-      window.location.hash = $(newCurr).name;
+      if(cacheContent){
+        if(!window.cache) window.cache = new Hash();
+        window.cache[$(newCurr).name] = cacheContent;
+      }
+      if(window.location.pathname == '/'){  // otherwise we get unexpected behavior
+        window.location.hash = $(newCurr).name;
+        window.currentHash = window.location.hash;
+      }
     }
     else if(console.error){
       console.error('error, could not find element with id='+newCurr);
@@ -329,6 +372,7 @@ var SpotLight = Class.create({
     this.old_y = 0;
     var scope = this;
     var canvas = this.canvas;
+    
     canvas.stopObserving('mouseover');
     canvas.observe('mouseover', function(ev){
       ev.stop(); // stop further propogation
@@ -391,8 +435,9 @@ var SpotLight = Class.create({
       if( this.iris_inter ) clearInterval( this.iris_inter );
       Lightview.show(this.canvas.up().siblings()[0]);
     }.bindAsEventListener(this));
+
+    this.initializeImages();
     
-    this.drawImage();
     this.inter = setInterval(function(){
       this.fadeOut(this.inter);
     }.bind(this), 100);
@@ -445,7 +490,7 @@ var SpotLight = Class.create({
 
     return true;
   },
-  drawImage: function(drawRadius){
+  initializeImages: function(){
     var canvas = this.canvas; var context = this.context;
     if(!this.img){
       var img = canvas.childElements()[0];
@@ -466,9 +511,7 @@ var SpotLight = Class.create({
       this.img = img;
       canvas.style.background = "url("+this.img.src+") no-repeat";
     }
-    this.context.clearRect(0,0,canvas.width, canvas.height);
-    context.save();
-    if (!this.overlayImg) {
+    if(!this.overlayImg) {
       var overlayImg = canvas.childElements()[1];
       if (!overlayImg) {
         overlayImg = new Image();
@@ -489,29 +532,26 @@ var SpotLight = Class.create({
       }
       this.overlayImg = overlayImg;
     }
-    else {
+  },
+  drawImage: function(drawRadius){
+    var canvas = this.canvas; var context = this.context;
+    context.save();
+    context.clearRect(0,0,canvas.width, canvas.height);
+    var radius = drawRadius? drawRadius : this.radius;
+    if( (this.x || this.old_x) && (this.y || this.old_y)) { 
       context.beginPath();
-      var radius = drawRadius? drawRadius : this.radius;
-      if( (this.x || this.old_x) && (this.y || this.old_y)) { 
         context.arc(this.x||this.old_x, this.y||this.old_y, radius, 0, Math.PI * 2, false); 
-        context.clip();
-      }
-      context.fillStyle = "rgba(255,255,255,0.4)";
-      context.fillRect(0,0,canvas.width, canvas.height); 
-      try {
-        if(this.overlayImg.complete)
-          context.drawImage(this.overlayImg, 0, 0);
-      } catch (e) {
-        if(console.error) console.error(e.name + ' ' + e.message);
-      }
+      context.clip();
+    }
+    context.fillStyle = "rgba(255,255,255,0.4)";
+    context.fillRect(0,0,canvas.width, canvas.height); 
+    try {
+      if(this.overlayImg.complete)
+        context.drawImage(this.overlayImg, 0, 0);
+    } catch (e) {
+      if(console.error) console.error(e.name + ' ' + e.message);
     }
     context.restore();
-  },
-  createClip: function(){
-    context.beginPath();
-    if(!this.x || !this.y) { context.arc((canvas.width / 2), (canvas.height / 2), this.radius, 0, Math.PI * 2, false); }
-    else { context.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false); }
-    context.clip();
   },
   move: function(){
     var old_x = this.old_x; var old_y = this.old_y; var radius = this.radius;

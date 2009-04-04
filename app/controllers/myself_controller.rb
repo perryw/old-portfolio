@@ -9,4 +9,8 @@ class MyselfController < ApplicationController
       format.html { render :layout => false if request.xhr? } #resume.html.erb
     end
   end
+  def download
+    send_file "#{RAILS_ROOT}/public/resume-perryw-hci.#{params[:id]}", 
+      {:disposition => 'attachment'}
+  end
 end

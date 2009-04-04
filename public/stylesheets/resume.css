@@ -93,9 +93,9 @@ div.Section3
 }
 #Skills div { margin-left:1in; margin-top:0; margin-bottom:0; text-indent:-.5in; }
 #Skills p { margin-top:0; margin-bottom:0; }
-#resume * { font-size: 14.0pt;
+#resume * { font-size: 12.5pt;
 	font-family:"Garamond", "serif";}
-#name { font-size: 16.0pt; }
+#name { font-size: 15.0pt; }
 #resume .stackright {
   text-align:right;
 }
@@ -109,3 +109,9 @@ div.Section3
   line-height: 11pt;
   font-size: 11pt;
 }
+#download_link {
+  position: absolute;
+}
+#download_link .pdf{
+     padding-right: 10px;
+)

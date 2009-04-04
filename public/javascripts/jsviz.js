@@ -20,7 +20,8 @@ function jsviz_init() {
 		this.divLocation.style.width = refDiv.getWidth()+"px";
 	}
 	//var layout = new SnowflakeLayout( divLocation, true );  commented out because it doesn't support cyclical graphs
-	this.layout  = new ForceDirectedLayout( this.divLocation, true); // doesn't properly detect SVG support in ff3
+    var useSVG = !(navigator.userAgent.indexOf('MSIE')> -1);
+	this.layout  = new ForceDirectedLayout( this.divLocation, useSVG); // doesn't properly detect SVG support in ff3
 	var layout = this.layout;
 	layout.view.skewBase=575;
 	layout.setSize();

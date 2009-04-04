@@ -1,14 +1,29 @@
+<% if false -%>
+  <h1>About Myself</h1>
+  <br/><br/>
+  <div id='whoami'>
+  </div>
+<% end -%>
 
-<h1>About Myself</h1>
-<br/><br/>
-<div id='whoami'>
-
-</div>
-
-<h3>About this site</h3>
-<br/><br/>
+<h1>About this website</h1>
+<br/>
 <div id='whatisthis'>
+  <p>
+    <b>Based on </b> the Rails 2.2.2 version of <%= link_to 'restful_authentication_tutorial', 'http://github.com/activefx/restful_authentication_tutorial/tree/master' %>
+  </p>
+  <br/>
+  <p>
+    <b>Additional Plugins Used:</b>
+  </p>
+  <ul>
+    <li><%= link_to 'attachment_fu', 'http://github.com/technoweenie/attachment_fu/tree/master'%> and <%= link_to 'responds_to_parent', 'http://sean.treadway.info/responds-to-parent/'%>, according to <%= link_to "Khamsouk Souvanlasy's blog post",'http://khamsouk.souvanlasy.com/2007/5/1/ajax-file-uploads-in-rails-using-attachment_fu-and-responds_to_parent' %></li>
+    <li><%= link_to 'acts_as_taggable_on', 'http://github.com/mbleigh/acts-as-taggable-on/tree/master'%></li>
+    <li><%= link_to 'in_place_editing', 'http://github.com/rails/in_place_editing/tree/master' %>, edited to work with <%=link_to 'In-Place Editor w/ Empty Text', 'http://codetocustomer.com/blog/2008/06/empty-text-for-ajaxinplaceeditor' %></li>
+    <li><%= link_to 'JSViz', 'http://www.jsviz.org/blog/' %> for breadcrumb navigation </li>
+  </ul>
 </div>
 
 <h3>Live Chat With Me! (maybe)</h3>
-<embed src="http://w.digsby.com/dw.swf?c=awu6d88i5hygehdy" type="application/x-shockwave-flash" wmode="transparent" width="210" height="300"></embed>
+<p>
+  <embed src="http://w.digsby.com/dw.swf?c=awu6d88i5hygehdy" type="application/x-shockwave-flash" wmode="transparent" width="210" height="300"></embed>
+</p>
