@@ -9,7 +9,6 @@ require 'rubygems'
 require 'yaml'
 ENV['GEM_PATH'] = '/home/perrywco/.gems:/usr/lib/ruby/gems/1.8'
 Gem.clear_paths
-require 'json/add/rails'
 require 'feed_tools'
 
 # Specifies gem version of Rails to use when vendor/rails is not present

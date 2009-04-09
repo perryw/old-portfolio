@@ -31,8 +31,10 @@ class Breadcrumb
   
   def to_s
     string = "########  BREADCRUMB ########\n"
-    @params.each do |k,v|
-      string += "\n#{k} => #{v}"
+    unless @params.nil?
+      @params.each do |k,v|
+        string += "\n#{k} => #{v}"
+      end
     end
     
     return string+"\n"
@@ -43,13 +45,12 @@ class Breadcrumb
   end
   
   def _dump(depth)
-    to_json
+    self.to_json
   end
   
   def Breadcrumb._load(obj)
     loaded = JSON.parse(obj) # JSON.load doesn't work!
     b = Breadcrumb.new(loaded["params"])
-    #b.controller, b.action = loaded["params"]["controller"], loaded["params"]["action"]
     b.parent, b.children = loaded["parent"], loaded["children"]
     b.is_future, b.cannot_undo, b.is_ajax = loaded['is_future'], loaded['cannot_undo'], loaded['is_ajax']
     return b
@@ -63,7 +64,7 @@ class Breadcrumb
       "cannot_undo" => @cannot_undo,
       "is_ajax" => @is_ajax,
       "params" => @params}
-    action_controller.to_json
-    #JSON.dump(action_controller)
+    #action_controller.to_json
+    JSON.dump(action_controller)
   end
 end

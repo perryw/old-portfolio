@@ -35,6 +35,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/about', :controller => 'about', :action => 'index'
   map.connect '/myself', :controller => 'myself', :action => 'resume'
   map.connect '/resume', :controller => 'myself', :action => 'resume'
+  map.conenct '/myself/download/:type', :controller => 'myself', :action => 'download', :type => /[A-Za-z0=9\-_]/
   map.connect 'myself/resume', :controller => 'myself', :action => 'resume'
   map.connect 'deliverables/index', :controller => 'deliverables', :action => 'index'
   map.connect 'deliverables', :controller => 'gallery', :action => 'deliverables'
