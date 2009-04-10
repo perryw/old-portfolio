@@ -171,9 +171,7 @@ checkHashName = function() { // adapted from http://www.ajaxonomy.com/2008/web-d
 Event.observe(window, 'load', function() { window.currentHash = ''; window.checkHashNameInterval = new PeriodicalExecuter(checkHashName, 0.5);});
 
 updateCurrMenuItem = function(newCurr, cacheContent) {
-	var oldCurr = $$('.current');
-	if(oldCurr.size()) 
-      oldCurr[0].removeClassName('current');
+    $$('.current').invoke("removeClassName","current");
 	var itm = $(newCurr).ancestors()[0];
 	if(itm){
       itm.addClassName('current');

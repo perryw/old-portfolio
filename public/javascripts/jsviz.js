@@ -125,8 +125,10 @@ function jsviz_init() {
                   nodeElement.onclick = new EventHandler( layout, 
                       function(dataNode, domElement, event){
                           Event.stop(event); // prevent propogation
-                          if( layout.mouseMoved ) { layout.mouseMoved = false; Event.stop(event); return false; }
-                          if( dataNode.isAjax ){
+                          if(layout.mouseMoved) { layout.mouseMoved = false; Event.stop(event); return false; }
+                          if(dataNode.isAjax){
+                            window.location.hash = dataNode.controller;
+                              /*
                               var paramString = '';//"authenticity_token=" + AUTH_TOKEN;
                               new Ajax.Updater( 'p_page', dataNode.URL, {
                                   asynchronous: true,
@@ -144,6 +146,7 @@ function jsviz_init() {
                                     document.fire('jsviz:clicked');
                                   }
                               });
+                              */
                           } 
                           else if( dataNode['cannotUndo'] ) {	}
                           else { window.location = dataNode.URL; }
