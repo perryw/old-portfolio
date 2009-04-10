@@ -18,8 +18,10 @@ class BreadcrumbsController < ApplicationController
       render :nothing => true
     end
   end
-  def get_currcrumb_idx
-    render :layout => false, :text => session['breadcrumb_index']
+  def get_breadcrumb_info
+    to_send = { "breadcrumb_index" => session['breadcrumb_index'],
+        "breadcrumb_history" => session['breadcrumb_history'] }
+    render :layout => false, :json => to_send
   end
   def get_yaml
     render :text => session['breadcrumb'].to_yaml

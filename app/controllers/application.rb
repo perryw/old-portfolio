@@ -55,6 +55,7 @@ protected
   
   # test to see if two breadcrumbs are on the same branch/trail
   # simple backwards tree search by going through each parent of the leaf
+  # search history included to prevent infinite recursion since we're doing a DFS
   def on_same_branch(root, leaf, firstTime = true, search_history = nil)
     return (firstTime) if(root == 0 or leaf == 0)
     return true if leaf == root
@@ -84,7 +85,7 @@ protected
     # url = eval(url) if url =~ /_path|_url|@/ # don't eval, handle in appropriate action  
     req_params = request.parameters
     actn = req_params[:action]
-    return if actn == 'get_breadcrumb' || actn == 'eat_breadcrumbs' || actn == 'get_currcrumb_idx' || actn == 'update_preview'
+    return if actn == 'get_breadcrumb' || actn == 'eat_breadcrumbs' || actn == 'get_breadcrumb_info' || actn == 'update_preview'
     
     session['breadcrumb'] ||= []
     session['breadcrumb_index'] ||= nil   # used to mark location on the breadcrumb trail
@@ -114,6 +115,7 @@ protected
           session['breadcrumb'][(bcIndex+1)..-1].each do |bc|
             bc.is_future = true
           end          
+          session['breadcrumb_back'] = true
         elsif bcIndex != currIndex  # branch converges with previous branch
           parents = session['breadcrumb'][bcIndex].parent
           
@@ -122,11 +124,13 @@ protected
             parents << currIndex   # append to end (root has no parents)
             session['breadcrumb'][currIndex].children << bcIndex unless session['breadcrumb'][currIndex].children.include?(bcIndex) 
           end
+          session['breadcrumb_back'] = false
         end
 
         session['breadcrumb_index'] = bcIndex
       else
         bcIndex = session['breadcrumb_index']
+        session['breadcrumb_history'] = false
         if bcIndex == (bcSize-1) ## we are continuing a branch
           b.parent << bcIndex
 

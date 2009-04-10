@@ -134,14 +134,15 @@ function jsviz_init() {
                                   method: 'get',
                                   parameters: paramString,
                                   onLoading: function(){ $('spinner_div').show();},
-                                  onComplete: function() { 
+                                  onComplete: function(request) { 
                                     $('spinner_div').hide(); 
                                     if($('entire_gallery')){
                                       Lightview.updateViews();
                                       loadSpotLights();
                                     }
-                                    updateCurrMenuItem('menu_'+dataNode.controller);
-                                    window.document.fire('jsviz:clicked'); }
+                                    updateCurrMenuItem('menu_'+dataNode.controller,request.responseText);
+                                    document.fire('jsviz:clicked');
+                                  }
                               });
                           } 
                           else if( dataNode['cannotUndo'] ) {	}

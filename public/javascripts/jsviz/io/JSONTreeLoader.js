@@ -48,10 +48,12 @@ JSONTreeLoader.prototype.notify = function() {
  */
 JSONTreeLoader.prototype.load = function( ) {
 	var localScope = this;
-	new Ajax.Request( '/breadcrumbs/get_currcrumb_idx', {
+	new Ajax.Request( '/breadcrumbs/get_breadcrumb_info', {
 		method: 'get',
 		onSuccess: function(transport) {
-			window.CURR_CRUMB = parseInt(transport.responseText);
+          var responseJSON = transport.responseJSON;
+          window.CURR_CRUMB = (responseJSON.breadcrumb_index);
+          window.breadcrumb_history = responseJSON["breadcrumb_history"];
 		},
 		onFailure: function(request) { 
           if(console.error)
@@ -179,7 +181,6 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 					continue;
 				}
 				e.domEdge.setAttribute("stroke", this.colorStrip[1]);
-				
 			}
 			this.dataGraph.addEdge(childNode, rootNode);
 					

@@ -133,6 +133,7 @@ Event.observe(document, 'dom:loaded', function(){
 });
 checkHashName = function() { // adapted from http://www.ajaxonomy.com/2008/web-design/a-better-ajax-back-button-part2 and the Gucci online store
   if(window.location.hash != window.currentHash){
+    $('loading').update('');
     var hashName = window.location.hash.sub('#','');
     var hashNameLow = hashName.toLowerCase();
     if(!window.cache)
@@ -148,8 +149,8 @@ checkHashName = function() { // adapted from http://www.ajaxonomy.com/2008/web-d
           if(request.reponseText != $('p_page').innerHTML)
             $('p_page').update(request.responseText);
           updateCurrMenuItem('menu_'+hashNameLow, request.responseText); 
-          loadSpotLights(); 
-          document.fire('jsviz:clicked'); 
+          if($('entire_gallery'))
+            loadSpotLights(); 
         }, 
         onFailure:function(request){
           if(console.error)
@@ -163,6 +164,7 @@ checkHashName = function() { // adapted from http://www.ajaxonomy.com/2008/web-d
       }
     ); 
     window.currentHash = window.location.hash;
+    document.fire('jsviz:clicked'); 
   }
   return false;
 };
@@ -322,12 +324,12 @@ loadSpotLights = function(){
     copyGalleryTagClouds();
     $('loading').update("Drawing thumbnails...");
     var canvases = $$('.gallery_image');
-    if(canvases[0].getContext){
+    if(canvases.length && canvases[0].getContext){
       $$('.gallery_image').each( function(elem){ 
         new SpotLight(elem);
       });
     }
-    else {
+    else if(canvases.length) {
       $$('.gallery_background').each( function(elem) {
         //var linky = elem.up(2).childElements()[0].cloneNode(false);
         //linky.update('');
@@ -340,7 +342,7 @@ loadSpotLights = function(){
         elem.observe('mouseout', function() {
           document.body.style.cursor='default';
         });
-    });
+      });
     }
     $('loading').update("");
 }
