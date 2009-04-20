@@ -52,7 +52,7 @@ function jsviz_init() {
 	 */
 		model: function( dataNode ) {
 			return {
-				mass: 0.5
+				mass: 0.2
 			};
 		},
 
@@ -229,13 +229,13 @@ function jsviz_init() {
 		var Len = 50 + Math.floor(Math.random() * 5) * 10;
 		if (isParentChild) {
 			return {
-				springConstant: 0.25,
+				springConstant: 0.15,
 				dampingConstant: 0.1,
 				restLength: Len
 			}
 		} else {
 			return {
-				springConstant: 0.3,
+				springConstant: 0.2,
 				dampingConstant: 0.28,
 				restLength: Len-20
 			}

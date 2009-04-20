@@ -93,7 +93,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	var rootNode = new DataGraphNode();
 
 	rootNode["root"] = true;
-  rootNode.text = this.nodeText(params);		
+    rootNode.text = this.nodeText(params);		
 	rootNode.URL = this.reconstructURL(params);
 	this.generateColorStrip();
   
@@ -119,6 +119,7 @@ JSONTreeLoader.prototype.handle = function( request ) {
 	
 	if (idx) {
 		this.layout.view.nodes[rootNode.id].domElement.childNodes[0].setAttribute("fill", rootNode["color"]);
+		this.layout.view.nodes[rootNode.id].domElement.childNodes[1].setAttribute("fill", rootNode.current? "black" : "#4C4C4C");
 	}
 	else {
 		this.dataGraph.addNode(rootNode);
@@ -142,7 +143,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	var childNode = new DataGraphNode();
 	var localScope = this;
 
-  childNode.text = this.nodeText(params);
+    childNode.text = this.nodeText(params);
 	childNode.URL = this.reconstructURL(params);
   
 	childNode.colorStripIndex=0;
@@ -168,6 +169,7 @@ JSONTreeLoader.prototype.branch = function( root, rootNode, distFromRoot ) {
 	}
 	if (idx) {
 		this.layout.view.nodes[childNode.id].domElement.childNodes[0].setAttribute("fill", childNode["color"]);
+		this.layout.view.nodes[childNode.id].domElement.childNodes[1].setAttribute("fill", childNode.current? "black" : "#4C4C4C");
 		//this.layout.view.nodes[childNode.id].domElement.childNodes[1].style.visibility='hidden';
 		var paren = childNode.parent.last();
 		var edge = this.layout.view.edges[childNode.id][paren.id] || this.layout.view.edges[paren.id][childNode.id];
