@@ -10,7 +10,7 @@ class MyselfController < ApplicationController
     end
   end
   def download
-    send_file "#{RAILS_ROOT}/public/resume-perryw-hci.#{params[:id]}", 
+    send_file "#{RAILS_ROOT}/public/resume-perryw-2010.#{params[:id]}", 
       {:disposition => 'attachment'}
   end
 end

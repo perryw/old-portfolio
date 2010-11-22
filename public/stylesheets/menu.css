@@ -1,5 +1,6 @@
 .menu_div {margin: 0; padding-bottom: 50px; width: 100%;}
 #menu_container {margin-top:5px; padding-bottom: 2.5em; width:100%; 
+  overflow: auto;
 	padding-top: 17px; 
 }
 ul#blue { margin:0; list-style-type:none; }

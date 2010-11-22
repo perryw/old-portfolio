@@ -17,7 +17,7 @@
 <% unless @project.project_url.nil? -%>
   <div>
     <span class='key'>Project URL:</span>
-    <span><%= link_to @project.project_url %></span>
+    <span><%= link_to @project.project_url, @project.project_url %></span>
   </div>
 <% end -%>
 <% unless @project.deliverables.blank? -%>

@@ -2109,7 +2109,7 @@ Element.Methods = {
 
     element = forElement;
     do {
-      if (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'HTML'))) {
+      if (!Prototype.Browser.Opera || (element.tagName && (element.tagName.toUpperCase() == 'BODY'))) {
         valueT -= element.scrollTop  || 0;
         valueL -= element.scrollLeft || 0;
       }
@@ -4022,31 +4022,31 @@ Object.extend(Event, (function() {
     stopObserving: function(element, eventName, handler) {
       element = $(element);
       var id = getEventID(element), name = getDOMEventName(eventName);
-      
+
       if (!handler && eventName) {
         getWrappersForEventName(id, eventName).each(function(wrapper) {
-          Event.stopObserving(element, eventName, wrapper.handler);
+          element.stopObserving(eventName, wrapper.handler);
         });
         return element;
-        
+
       } else if (!eventName) {
-        Object.keys(getCacheForID(id)).without("element").each(function(eventName) {
-          Event.stopObserving(element, eventName);
+        Object.keys(getCacheForID(id)).each(function(eventName) {
+          element.stopObserving(eventName);
         });
         return element;
       }
-      
+
       var wrapper = findWrapper(id, eventName, handler);
       if (!wrapper) return element;
-      
+
       if (element.removeEventListener) {
         element.removeEventListener(name, wrapper, false);
       } else {
         element.detachEvent("on" + name, wrapper);
       }
-      
+
       destroyWrapper(id, eventName, handler);
-      
+
       return element;
     },
 

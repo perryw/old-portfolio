@@ -31,6 +31,7 @@ p {
 }
 #user-bar-greeting {
 	float:right;
+    display:none;
 }
 #hd{
 	/*background: #569AE3;*/
