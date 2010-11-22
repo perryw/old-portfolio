@@ -1,0 +1,111 @@
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+@font-face
+	{font-family:Times;
+	panose-1:2 2 6 3 5 4 5 2 3 4;}
+@font-face
+	{font-family:Garamond;
+	panose-1:2 2 4 4 3 3 1 1 8 3;}
+@font-face
+	{font-family:"\@SimSun";
+	panose-1:2 1 6 0 3 1 1 1 1 1;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:14.0pt;
+	font-family:"Garamond","serif";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0in;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Garamond","serif";}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:center;
+	font-size:14.0pt;
+	font-family:"Garamond","serif";}
+#resume a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;}
+#resume a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";}
+span.msoIns
+	{mso-style-name:"";
+	text-decoration:underline;
+	color:teal;}
+span.msoDel
+	{mso-style-name:"";
+	text-decoration:line-through;
+	color:red;}
+.MsoChpDefault
+	{font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:.7in 1.0in .7in 1.0in;}
+div.Section1
+	{page:Section1;}
+@page Section2
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;}
+div.Section2
+	{page:Section2;}
+@page Section3
+	{size:8.5in 11.0in;
+	margin:.7in 1.0in .7in 1.0in;}
+div.Section3
+	{page:Section3;}
+ /* List Definitions */
+#resume ol
+	{margin-bottom:0in;}
+#resume ul
+	{margin-bottom:0; margin-top:0;  margin-left:.5in; padding-left:0; float:left; }
+#resume ul li { 
+  text-indent:-.5in; margin-left:.5in; list-style-position: inside;
+}
+#resume ul li p {
+  margin:0;
+  text-indent: -33px;
+  margin-left:0in;
+}
+#Skills div { margin-left:1in; margin-top:0; margin-bottom:0; text-indent:-.5in; }
+#Skills p { margin-top:0; margin-bottom:0; }
+#resume * { font-size: 12.0pt;
+	font-family:"Garamond", "serif";}
+#name { font-size: 14.0pt; }
+#resume .stackright {
+  text-align:right;
+}
+#resume div {
+  overflow:hidden;
+}
+#Skills div {
+  overflow: visible;
+}
+#resume br {
+  line-height: 12pt;
+  font-size: 12pt;
+}
